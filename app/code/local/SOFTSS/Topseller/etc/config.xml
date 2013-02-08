@@ -1,0 +1,87 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <SOFTSS_Topseller>
+            <version>0.1.0</version>
+        </SOFTSS_Topseller>
+    </modules>
+
+    <global>
+        <models>
+            <softsstopseller>
+                <class>SOFTSS_Topseller_Model</class>
+                <resourceModel>softsstopseller_resource</resourceModel>
+            </softsstopseller>
+
+           <softsstopseller_resource>
+                <class>SOFTSS_Topseller_Model_Resource</class>
+
+                <entities>
+                    <homepagetopseller>
+                        <table>softss_homepagetopseller</table>
+                    </homepagetopseller>
+                </entities>
+            </softsstopseller_resource>
+        </models>
+
+        <resources>
+            <softsstopseller_setup>
+                <setup>
+                    <module>SOFTSS_Topseller</module>
+                </setup>
+            </softsstopseller_setup>
+        </resources>
+
+        <blocks>
+            <softsstopseller><class>SOFTSS_Topseller_Block</class></softsstopseller>
+        </blocks>
+
+        <helpers>
+            <softsstopseller><class>SOFTSS_Topseller_Helper</class></softsstopseller>
+        </helpers>
+    </global>
+
+    <admin>
+        <routers>
+            <softsstopseller>
+                <use>admin</use>
+                <args>
+                    <module>SOFTSS_Topseller</module>
+                    <frontName>softsstopseller</frontName>
+                </args>
+            </softsstopseller>
+        </routers>
+    </admin>
+
+    <adminhtml>
+
+        <layout>
+            <updates>
+                <softsstopseller>
+                    <file>softsstopseller.xml</file>
+                </softsstopseller>
+            </updates>
+        </layout>
+
+        <translate>
+            <modules>
+                <SOFTSS_Topseller>
+                    <files>
+                        <default>SOFTSS_Topseller.csv</default>
+                    </files>
+                </SOFTSS_Topseller>
+            </modules>
+        </translate>
+
+    </adminhtml>
+
+    <frontend>
+        <layout>
+            <updates>
+                <topseller module="SOFTSS_Topseller">
+                    <file>topseller.xml</file>
+                </topseller>
+            </updates>
+        </layout>
+    </frontend>
+</config>

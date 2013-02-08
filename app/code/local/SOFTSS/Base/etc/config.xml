@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <modules>
+        <SOFTSS_Base>
+            <version>0.1.0</version>
+        </SOFTSS_Base>
+    </modules>
+
+    <global>
+        <helpers>
+            <softssbase>
+                <class>SOFTSS_Base_Helper</class>
+            </softssbase>
+        </helpers>
+    </global>
+</config>

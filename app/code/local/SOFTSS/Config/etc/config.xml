@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author J.galvez@pcfritz.de
+ **/
+-->
+<config>
+    
+    <modules>
+        <SOFTSS_Config>
+            <version>0.1.0</version>
+        </SOFTSS_Config>
+    </modules>
+    
+    <global>
+        <helpers>
+            <softssconfig>
+                <class>SOFTSS_Config_Helper</class>
+            </softssconfig>
+        </helpers>
+        <resources>
+            <softssconfig_setup>
+                <setup>
+                    <module>SOFTSS_Config</module>
+                    <class>SOFTSS_Config_Model_Setup</class>
+                </setup>
+            </softssconfig_setup>
+        </resources>
+    </global>
+    
+</config>
+
+
+

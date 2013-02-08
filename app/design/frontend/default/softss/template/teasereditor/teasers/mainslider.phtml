@@ -1,0 +1,35 @@
+<?php
+    $_cTeasers = $this->getHomepageSliderTeasers();
+    $_oHelper = Mage::helper('softssteasereditor');
+?>
+
+<?php if(count($_cTeasers) > 0): ?>
+<div class="slider-wrapper theme-default">
+    <div id="slider" class="nivoSlider">
+        <?php $i=1; ?>
+        <?php foreach ($_cTeasers as $_oTeaser): ?>
+            <?php $sLink = $_oTeaser->getLink() ?>
+            <?php if($sLink): ?>
+                <a href="<?php echo $sLink ?>" title="">
+            <?php endif; ?>
+
+            <img src="<?php echo $_oHelper->getImageUrl($_oTeaser); ?>" data-thumb="<?php echo $_oHelper->getImageUrl($_oTeaser); ?>" data-transition="slideInRight" alt="<?php echo $_oTeaser->getTitle()?>" title="<?php echo $_oTeaser->getTitle()?>" />
+
+            <?php if($sLink): ?>
+                </a>
+            <?php endif; ?>
+            <?php $i++; ?>
+        <?php endforeach; ?>
+    </div>
+    <div id="htmlcaption" class="nivo-html-caption">
+        <strong>This</strong> is an example of a <em>HTML</em> caption with <a href="#">a link</a>.
+    </div>
+</div>
+<script type="text/javascript">
+    //<![CDATA[
+    $j(window).load(function() {
+        $j('#slider').nivoSlider();
+    });
+    //]]>
+</script>
+<?php endif; ?>

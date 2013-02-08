@@ -1,0 +1,10 @@
+<div class="content-header">
+    <h3 class="icon-head head-products"><?php echo $this->__('Homepage Topsellers') ?></h3>
+    <p class="content-buttons form-buttons">
+        <?php echo $this->getSaveAndEditButtonHtml() ?>
+    </p>
+</div>
+<form action="<?php echo $this->getSaveUrl() ?>" method="post" id="softsstopseller_edit_form" enctype="multipart/form-data">
+    <?php echo $this->getBlockHtml('formkey')?>
+    <div style="display:none"></div>
+</form>

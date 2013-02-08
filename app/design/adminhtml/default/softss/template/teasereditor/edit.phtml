@@ -1,0 +1,55 @@
+<?php
+/**
+ * Template for SOFTSS_TeaserEditor_Block_Adminhtml_Edit
+ */
+?>
+<div class="content-header">
+    <h3 class="icon-head head-products"><?php echo $this->__('Teaser Editor') ?></h3>
+    <p class="content-buttons form-buttons">
+        <?php echo $this->getSaveAndEditButtonHtml() ?>
+    </p>
+</div>
+<form action="<?php echo $this->getSaveUrl() ?>" method="post" id="softssteasereditor_edit_form" enctype="multipart/form-data">
+    <?php echo $this->getBlockHtml('formkey')?>
+    <div style="display:none"></div>
+</form>
+
+<script type="text/javascript">
+    //<![CDATA[
+    var softssteasereditorTemplateSyntax = /(^|.|\r|\n)({{(\w+)}})/;
+    var softssteasereditorForm = new varienForm('softssteasereditor_edit_form', '<?php echo $this->getValidationUrl() ?>');
+    softssteasereditorForm._processValidationResult = function(transport) {
+        var response = transport.responseText.evalJSON();
+        if (response.error){
+            if (response.attribute && $(response.attribute)) {
+                $(response.attribute).setHasError(true, softssteasereditorForm);
+                Validation.ajaxError($(response.attribute), response.message);
+                if (!Prototype.Browser.IE){
+                    $(response.attribute).focus();
+                }
+            }
+            else if ($('messages')) {
+                $('messages').innerHTML = '<ul class="messages"><li class="error-msg"><ul><li>' + response.message + '</li></ul></li></ul>';
+            }
+        }
+        else{
+            softssteasereditorForm._submit();
+        }
+    };
+    function saveAndContinueEdit(urlTemplate) {
+        var template = new Template(urlTemplate, softssteasereditorTemplateSyntax);
+        var url = template.evaluate({tab_id:softssteasereditor_info_tabsJsTabs.activeTab.id});
+        softssteasereditorForm.submit(url);
+    }
+
+    Event.observe(window, 'load', function() {
+        var objName = '<?php echo $this->getSelectedTabId() ?>';
+        if (objName) {
+            obj = $(objName);
+            //IE fix (bubbling event model)
+            softssteasereditor_info_tabsJsTabs.setSkipDisplayFirstTab();
+            softssteasereditor_info_tabsJsTabs.showTabContent(obj);
+        }
+    });
+    //]]>
+</script>

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+
+    <modules>
+        <SOFTSS_TeaserEditor>
+            <version>0.1.0</version>
+        </SOFTSS_TeaserEditor>
+    </modules>
+
+    <admin>
+        <routers>
+            <softssteasereditor>
+                <use>admin</use>
+                <args>
+                    <module>SOFTSS_TeaserEditor</module>
+                    <frontName>softssteasereditor</frontName>
+                </args>
+            </softssteasereditor>
+        </routers>
+    </admin>
+
+   <adminhtml>
+       
+        <layout>
+            <updates>
+                <softssteasereditor>
+                    <file>softssteasereditor.xml</file>
+                </softssteasereditor>
+            </updates>
+        </layout>
+
+        <translate>
+            <modules>
+                <SOFTSS_TeaserEditor>
+                    <files>
+                        <default>SOFTSS_TeaserEditor.csv</default>
+                    </files>
+                </SOFTSS_TeaserEditor>
+            </modules>
+        </translate>
+        
+    </adminhtml>
+
+    <global>
+
+        <blocks>
+            <softssteasereditor>
+                <class>SOFTSS_TeaserEditor_Block</class>
+            </softssteasereditor>
+        </blocks>
+
+        <helpers>
+            <softssteasereditor>
+                <class>SOFTSS_TeaserEditor_Helper</class>
+            </softssteasereditor>
+        </helpers>
+
+        <models>
+            <softssteasereditor>
+                <class>SOFTSS_TeaserEditor_Model</class>
+                <resourceModel>softssteasereditor_resource</resourceModel>
+            </softssteasereditor>
+
+            <softssteasereditor_resource>
+                <class>SOFTSS_TeaserEditor_Model_Resource</class>
+                <entities>
+                    <teaser>
+                        <table>softss_teaser</table>
+                    </teaser>
+                    <teaser_group>
+                        <table>softss_teaser_group</table>
+                    </teaser_group>
+                </entities>
+            </softssteasereditor_resource>
+        </models>
+
+        <resources>
+            <softssteasereditor_setup>
+                <setup>
+                    <module>SOFTSS_TeaserEditor</module>
+                </setup>
+            </softssteasereditor_setup>
+        </resources>
+
+    </global>
+
+</config>

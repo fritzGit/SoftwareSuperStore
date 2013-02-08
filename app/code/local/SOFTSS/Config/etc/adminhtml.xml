@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<config>
+    <menu>
+        <softssconfig module="softssconfig">
+            <title>SoftwareSuperStore</title>
+            <sort_order>99</sort_order>
+        </softssconfig>
+    </menu>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <softssconfig translate="title" module="softssconfig">
+                        <title>SoftwareSuperStore Web Configuration</title>
+                        <sort_order>130</sort_order>
+                    </softssconfig>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>

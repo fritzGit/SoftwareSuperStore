@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<layout>
+    <softsstopseller_adminhtml_index_index>
+        <reference name="content">
+            <block type="softsstopseller/adminhtml_topsellergrid" name="softsstopseller_edit" />
+        </reference>
+        <reference name="left">
+            <block type="adminhtml/store_switcher" name="store_switcher" before="-"></block>
+        </reference>
+    </softsstopseller_adminhtml_index_index>
+
+    <softsstopseller_adminhtml_index_edit>
+        <reference name="content">
+            <block type="softsstopseller/adminhtml_edit" name="topseller_edit" />
+        </reference>
+        <reference name="left">
+            <block type="adminhtml/store_switcher" name="store_switcher" before="-"></block>
+        </reference>
+    </softsstopseller_adminhtml_index_edit>
+</layout>

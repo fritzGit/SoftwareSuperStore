@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+
+<layout>
+
+    <softssteasereditor_adminhtml_index_index>
+        <reference name="content">
+            <block type="softssteasereditor/adminhtml_teasergrid" name="teaser_grid" />
+        </reference>
+        <reference name="left">
+            <block type="adminhtml/store_switcher" name="store_switcher" before="-"></block>
+        </reference>
+    </softssteasereditor_adminhtml_index_index>
+
+    <softssteasereditor_adminhtml_index_edit>
+        <reference name="content">
+            <block type="softssteasereditor/adminhtml_edit" name="teaser_edit" />
+        </reference>
+        <reference name="left">
+            <block type="adminhtml/store_switcher" name="store_switcher" before="-"></block>
+        </reference>
+    </softssteasereditor_adminhtml_index_edit>
+
+</layout>
