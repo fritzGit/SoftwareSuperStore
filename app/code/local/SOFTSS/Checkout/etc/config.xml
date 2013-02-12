@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<config>
+    <modules>
+        <SOFTSS_Checkout>
+            <version>0.1.0</version>
+        </SOFTSS_Checkout>
+    </modules>
+
+    <global>
+    </global>
+
+    <frontend>
+        <routers>
+            <checkout>
+                <args>
+                    <modules>
+                         <SOFTSS_Checkout before="Mage_Checkout">SOFTSS_Checkout</SOFTSS_Checkout>
+                    </modules>
+                </args>
+            </checkout>
+        </routers>
+    </frontend>
+</config>
