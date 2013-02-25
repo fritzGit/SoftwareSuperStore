@@ -1176,16 +1176,6 @@ tr.summary-details-excluded { font-style:italic; }
     top: 40%;
 }
 
-#ajax_add_item_container{
-    background-color: #fff;
-    width:300px;
-    z-index: 110;
-    left:40%;
-    top:40%;
-    display: none;
-    position: absolute;
-}
-
 /* CMS Home Page */
 .cms-home .subtitle {}
 .cms-index-index .subtitle {}
@@ -1209,6 +1199,28 @@ tr.summary-details-excluded { font-style:italic; }
 /* Shopping Cart ========================================================================= */
 .cart .page-title { border-bottom:0; margin:0 0 12px; }
 .cart .page-title h1 { margin:10px 0 0; }
+
+/* ajax add to cart */
+#ajax_add_item_container{
+    background-color: #fff;
+    width:400px;
+    z-index: 110;
+    left:40%;
+    top:40%;
+    display: none;
+    position: absolute;
+    padding: 10px;
+}
+#ajax-container-head{text-align: right;}
+#ajax-cart-message{text-align: center;}
+#ajax-container-links{padding:10px; text-align: center;}
+#ajax-container-realated-items { height: 1%; overflow:hidden; padding: 0 0 10px; }
+#ajax-container-realated-items .viewport { float: left; width: 300px; height: 125px; overflow: hidden; position: relative; }
+#ajax-container-realated-items .buttons { background:url("../images/buttons.png") no-repeat scroll 0 0 transparent; display: block; margin: 30px 10px 0 0; background-position: 0 -38px; text-indent: -999em; float: left; width: 39px; height: 37px; overflow: hidden; position: relative; }
+#ajax-container-realated-items .next { background-position: 0 0; margin: 30px 0 0 10px;  }
+#ajax-container-realated-items .disable { visibility: hidden; }
+#ajax-container-realated-items .overview { list-style: none; position: absolute; padding: 0; margin: 0; width: 300px; left: 0; top: 0; }
+#ajax-container-realated-items .overview li{ float: left; margin: 0 20px 0 0; padding: 1px; height: 121px; border: 1px solid #dcdcdc; width: 130px;}
 
 /* Checkout Types */
 .cart .page-title .checkout-types li { margin:0 0 5px; }

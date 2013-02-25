@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <SOFTSS_Catalog>
+            <version>0.1.0</version>
+        </SOFTSS_Catalog>
+    </modules>
+
+    <global>
+        <blocks>
+            <softsscatalog><class>SOFTSS_Catalog_Block</class></softsscatalog>
+        </blocks>
+
+        <helpers>
+            <softsscatalog><class>SOFTSS_Catalog_Helper</class></softsscatalog>
+        </helpers>
+
+        <resources>
+            <softsscatalog_setup>
+                <setup>
+                    <module>SOFTSS_Catalog</module>
+                    <class>Mage_Eav_Model_Entity_Setup</class>
+                </setup>
+            </softsscatalog_setup>
+        </resources>
+    </global>
+</config>
