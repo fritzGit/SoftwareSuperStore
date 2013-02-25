@@ -23,7 +23,6 @@ class SOFTSS_Checkout_CartController extends Mage_Checkout_CartController {
             }
 
             $product = $this->_initProduct();
-            $related = $this->getRequest()->getParam('related_product');
 
             /**
              * Check product availability
@@ -34,9 +33,6 @@ class SOFTSS_Checkout_CartController extends Mage_Checkout_CartController {
             }
 
             $cart->addProduct($product, $params);
-            if (!empty($related)) {
-                $cart->addProductsByIds(explode(',', $related));
-            }
 
             $cart->save();
 
@@ -52,13 +48,18 @@ class SOFTSS_Checkout_CartController extends Mage_Checkout_CartController {
             //ajax response
             $response = array();
 
-            if (!$this->_getSession()->getNoCartRedirect(true)) {
-                if (!$cart->getQuote()->getHasError()){
-                    $message = $this->__('%s was added to your shopping cart.', Mage::helper('core')->escapeHtml($product->getName()));
-                    $response['message']=$message;
+            if (!$cart->getQuote()->getHasError()){
+                $cartmessage = $this->__('%s was added to your shopping cart.', Mage::helper('core')->escapeHtml($product->getName()));
 
-                    $this->getResponse()->setBody(Zend_Json::encode($response));
-                }
+                $ajaxSuccessBlockHTML = $this->getLayout()
+                                        ->createBlock('softsscheckout/ajax_addtocart','addedToCart', array('cart_message'=>$cartmessage, 'product'=>$product))
+                                        ->setTemplate("checkout/ajax/addedtocart.phtml")
+                                        ->toHtml();
+
+                $response['message']=$cartmessage;
+                $response['additemhtml']=$ajaxSuccessBlockHTML;
+                //json enconded response
+                $this->getResponse()->setBody(Zend_Json::encode($response));
             }
         } catch (Mage_Core_Exception $e) {
 
@@ -71,7 +72,7 @@ class SOFTSS_Checkout_CartController extends Mage_Checkout_CartController {
                     $error .= Mage::helper('core')->escapeHtml($message).'<br/>';
                 }
 
-                $response['error']=Mage::helper('core')->escapeHtml($e->getMessage());
+                $response['error']=Mage::helper('core')->escapeHtml($error);
                 $this->getResponse()->setBody(Zend_Json::encode($response));
             }
 

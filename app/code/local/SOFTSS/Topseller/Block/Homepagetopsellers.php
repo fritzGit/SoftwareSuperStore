@@ -1,8 +1,17 @@
 <?php
 /**
- * Created by jgalvez
- */
-class SOFTSS_Topseller_Block_Homepagetopsellers extends Amasty_Sorting_Block_Featured
+ * Homepagetopsellers.php (UTF-8)
+ * Overwrites the true topseller collection with your own selected products.
+ * In the admin area you can choose which products you want to show in the topseller list and in which position.
+ *
+ * Feb 15, 2013
+ * @author Juan Galvez :: juanjogalvez@gmail.com
+ * @package SOFTSS
+ * @subpackage
+ *
+ *
+ * */
+class SOFTSS_Topseller_Block_Homepagetopsellers extends SOFTSS_Topseller_Block_Topsellers
 {
     public function getCollection()
     {
@@ -15,10 +24,9 @@ class SOFTSS_Topseller_Block_Homepagetopsellers extends Amasty_Sorting_Block_Fea
         foreach($collection as $_product){
             $collectionIdsA[] = $_product->getId();
             array_push($collectionA, $_product);
-
         }
 
-        $collectionA = array_reverse ($collectionA);
+        $collectionA = array_reverse($collectionA);
 
         $storeID = Mage::app()->getStore()->getId();
         $homepagetopsellerCollection = Mage::getModel('softsstopseller/homepagetopseller')->getCollection()

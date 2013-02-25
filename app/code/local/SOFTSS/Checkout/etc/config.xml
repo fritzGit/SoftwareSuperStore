@@ -8,6 +8,17 @@
     </modules>
 
     <global>
+        <blocks>
+            <softsscheckout>
+                <class>SOFTSS_Checkout_Block</class>
+            </softsscheckout>
+        </blocks>
+
+        <models>
+            <softsscheckout>
+                <class>SOFTSS_Checkout_Model</class>
+            </softsscheckout>
+        </models>
     </global>
 
     <frontend>

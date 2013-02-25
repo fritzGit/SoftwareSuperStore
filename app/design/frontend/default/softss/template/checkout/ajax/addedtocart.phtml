@@ -1,0 +1,29 @@
+<?php
+    $collection = $this->getCollection();
+    $_helper = $this->helper('catalog/output');
+?>
+
+<div id="ajax-container-head"><a onclick="hideOverlay()">close</a></div>
+<div id="ajax-cart-message"><?php echo $this->cart_message; ?></div>
+<div id="ajax-container-links">
+    <button type="button" title="<?php echo $this->__('Continue Shopping') ?>" class="button btn-continue" onclick="hideOverlay()"><span><span><?php echo $this->__('Continue Shopping') ?></span></span></button>
+    <button type="button" title="<?php echo $this->__('View Cart') ?>" class="button btn-continue" onclick="setLocation('<?php echo Mage::helper('checkout/cart')->getCartUrl() ?>')"><span><span><?php echo $this->__('View Cart') ?></span></span></button>
+</div>
+<?php if(count($collection)>0): ?>
+<div id="ajax-container-realated-items">
+    <a class="buttons prev" href="#">left</a>
+    <div class="viewport">
+        <ul class="overview">
+        <?php foreach($collection as $_product): ?>
+            <li><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></li>
+        <?php endforeach; ?>
+        </ul>
+    </div>
+    <a class="buttons next" href="#">right</a>
+</div>
+<script type="text/javascript">
+    //<![CDATA[
+    $j('#ajax-container-realated-items').tinycarousel({display: 2, duration: 1000});
+    //]]>
+</script>
+<?php endif; ?>

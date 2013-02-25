@@ -50,10 +50,7 @@
 </div>
 
 <div id="overlay"></div>
-<div id="ajax_add_item_container">
-    <div class="ajax-container-head"><a onclick="hideOverlay()">close</a></div>
-    <div id="ajax-cart-message"></div>
-</div>
+<div id="ajax_add_item_container"></div>
 
 <script type="text/javascript">
     //<![CDATA[
@@ -69,15 +66,15 @@
             type: 'GET',
             dataType: 'json',
             beforeSend: function() {
-                var overlay = $j('#overlay').html('<img id="imgloading" src="<?php echo $this->getSkinUrl('images/ajax-loader.gif') ?>" />').show();
+                $j('#overlay').html('<img id="imgloading" src="<?php echo $this->getSkinUrl('images/ajax-loader.gif') ?>" />').show();
             },
             success: function(response) {
-                 $j('#ajax-cart-message').html(response.message);
-                 $j('#ajax_add_item_container').fadeIn();
+                $j('#ajax_add_item_container').html(response.additemhtml);
+                $j('#ajax_add_item_container').fadeIn();
             },
             error: function(response) {
-                alert(response.message);
                 $j('#overlay').hide();
+                alert(response.error);
             }
         });
     }
