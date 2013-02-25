@@ -1,0 +1,363 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * Shop System Plugins - Terms of use
+ *
+ * This terms of use regulates warranty and liability between
+ * Wirecard Central Eastern Europe (subsequently referred to as WDCEE)
+ * and it's contractual partners (subsequently referred to as customer or customers)
+ * which are related to the use of plugins provided by WDCEE.
+ * The Plugin is provided by WDCEE free of charge for it's customers and
+ * must be used for the purpose of WDCEE's payment platform integration only.
+ * It explicitly is not part of the general contract between WDCEE and it's customer.
+ * The plugin has successfully been tested under specific circumstances
+ * which are defined as the shopsystem's standard configuration (vendor's delivery state).
+ * The Customer is responsible for testing the plugin's functionality
+ * before putting it into production enviroment.
+ * The customer uses the plugin at own risk. WDCEE does not guarantee it's full
+ * functionality neither does WDCEE assume liability for any disadvantage related
+ * to the use of this plugin. By installing the plugin into the shopsystem the customer
+ * agrees to the terms of use. Please do not use this plugin if you do not agree to the terms of use!
+ *
+ * @category   Phoenix
+ * @package    Phoenix_WirecardQPay
+ * @copyright  Copyright (c) 2008 Phoenix Medien GmbH & Co. KG (http://www.phoenix-medien.de)
+ */
+ -->
+<config>
+    <modules>
+        <Phoenix_WirecardQPay>
+            <version>3.1.0</version>
+        </Phoenix_WirecardQPay>
+    </modules>
+    <global>
+        <models>
+            <qpay>
+                <class>Phoenix_WirecardQPay_Model</class>
+            </qpay>
+        </models>
+        <helpers>
+            <qpay>
+                <class>Phoenix_WirecardQPay_Helper</class>
+            </qpay>
+        </helpers>
+        <resources>
+            <qpay_setup>
+                <setup>
+                    <module>Phoenix_WirecardQPay</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </qpay_setup>
+            <qpay_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </qpay_write>
+            <qpay_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </qpay_read>
+        </resources>
+        <blocks>
+            <qpay><class>Phoenix_WirecardQPay_Block</class></qpay>
+        </blocks>
+        
+        <events>
+            <sales_order_payment_place_end>
+                <observers>
+                    <phoenix_qpay>
+                        <model>qpay/observer</model>
+                        <method>salesOrderPaymentPlaceEnd</method>
+                        <type>singleton</type>
+                    </phoenix_qpay>
+                </observers>
+            </sales_order_payment_place_end>
+        </events>
+    </global>
+    <frontend>
+        <routers>
+            <qpay>
+                <use>standard</use>
+                <args>
+                    <module>Phoenix_WirecardQPay</module>
+                    <frontName>qpay</frontName>
+                </args>
+            </qpay>
+        </routers>
+        <translate>
+            <modules>
+                <Phoenix_WirecardQPay>
+                    <files>
+                        <default>Phoenix_WirecardQPay.csv</default>
+                    </files>
+                </Phoenix_WirecardQPay>
+            </modules>
+        </translate>
+        <layout>
+            <updates>
+                <qpay>
+                    <file>qpay.xml</file>
+                </qpay>
+            </updates>
+        </layout>
+    </frontend>
+    <adminhtml>
+        <translate>
+            <modules>
+                <Phoenix_WirecardQPay>
+                    <files>
+                        <default>Phoenix_WirecardQPay.csv</default>
+                    </files>
+                </Phoenix_WirecardQPay>
+            </modules>
+        </translate>
+    </adminhtml>
+    <default>
+        <payment>
+            <qenta_select>
+                <active>0</active>
+                <model>qpay/select</model>
+                <title>Change this text</title>
+                <useIFrame>0</useIFrame>
+                <allowspecific>0</allowspecific>
+                <customer_id>D200001</customer_id>
+                <secret_key>B8AKTPWBRMNBV455FG6M2DANE99WU2</secret_key>
+                <logo_url>images/logo.gif</logo_url>
+                <service_url>about-magento-demo-store</service_url>
+                <send_additional_data>0</send_additional_data>
+                <auto_deposit>0</auto_deposit>
+            </qenta_select>
+            <qenta_cc>
+                <active>0</active>
+                <model>qpay/cc</model>
+                <title>CreditCard</title>
+                <useIFrame>0</useIFrame>
+                <data_storage>1</data_storage>
+                <show_issue_date>1</show_issue_date>
+                <show_issue_number>1</show_issue_number>
+                <allowspecific>0</allowspecific>
+                <customer_id>D200001</customer_id>
+                <secret_key>B8AKTPWBRMNBV455FG6M2DANE99WU2</secret_key>
+                <logo_url>images/logo.gif</logo_url>
+                <service_url>about-magento-demo-store</service_url>
+                <send_additional_data>0</send_additional_data>
+                <auto_deposit>0</auto_deposit>
+            </qenta_cc>
+            <qenta_elv>
+                <active>0</active>
+                <model>qpay/elv</model>
+                <title>Direct Debit</title>
+                <useIFrame>0</useIFrame>
+                <data_storage>1</data_storage>
+                <allowspecific>0</allowspecific>
+                <customer_id>D200001</customer_id>
+                <secret_key>B8AKTPWBRMNBV455FG6M2DANE99WU2</secret_key>
+                <logo_url>images/logo.gif</logo_url>
+                <service_url>about-magento-demo-store</service_url>
+                <send_additional_data>0</send_additional_data>
+            </qenta_elv>
+            <qenta_eps>
+                <active>0</active>
+                <model>qpay/eps</model>
+                <title>eps Online Bank Transfer</title>
+                <useIFrame>0</useIFrame>
+                <allowspecific>0</allowspecific>
+                <customer_id>D200001</customer_id>
+                <secret_key>B8AKTPWBRMNBV455FG6M2DANE99WU2</secret_key>
+                <logo_url>images/logo.gif</logo_url>
+                <service_url>about-magento-demo-store</service_url>
+                <send_additional_data>0</send_additional_data>
+            </qenta_eps>
+            <qenta_maestro>
+                <active>0</active>
+                <model>qpay/maestro</model>
+                <title>Maestro SecureCode</title>
+                <useIFrame>0</useIFrame>
+                <allowspecific>0</allowspecific>
+                <customer_id>D200001</customer_id>
+                <secret_key>B8AKTPWBRMNBV455FG6M2DANE99WU2</secret_key>
+                <logo_url>images/logo.gif</logo_url>
+                <service_url>about-magento-demo-store</service_url>
+                <send_additional_data>1</send_additional_data>
+                <auto_deposit>0</auto_deposit>
+            </qenta_maestro>
+            <qenta_pbx>
+                <active>0</active>
+                <model>qpay/pbx</model>
+                <title>paybox</title>
+                <useIFrame>0</useIFrame>
+                <data_storage>1</data_storage>
+                <allowspecific>0</allowspecific>
+                <customer_id>D200001</customer_id>
+                <secret_key>B8AKTPWBRMNBV455FG6M2DANE99WU2</secret_key>
+                <logo_url>images/logo.gif</logo_url>
+                <service_url>about-magento-demo-store</service_url>
+                <send_additional_data>0</send_additional_data>
+                <auto_deposit>0</auto_deposit>
+            </qenta_pbx>
+            <qenta_psc>
+                <active>0</active>
+                <model>qpay/psc</model>
+                <title>paysafecard</title>
+                <useIFrame>0</useIFrame>
+                <allowspecific>0</allowspecific>
+                <customer_id>D200001</customer_id>
+                <secret_key>B8AKTPWBRMNBV455FG6M2DANE99WU2</secret_key>
+                <logo_url>images/logo.gif</logo_url>
+                <service_url>about-magento-demo-store</service_url>
+                <send_additional_data>0</send_additional_data>
+                <auto_deposit>0</auto_deposit>
+            </qenta_psc>
+            <qenta_quick>
+                <active>0</active>
+                <model>qpay/quick</model>
+                <title>@Quick</title>
+                <useIFrame>0</useIFrame>
+                <allowspecific>0</allowspecific>
+                <customer_id>D200001</customer_id>
+                <secret_key>B8AKTPWBRMNBV455FG6M2DANE99WU2</secret_key>
+                <logo_url>images/logo.gif</logo_url>
+                <service_url>about-magento-demo-store</service_url>
+                <send_additional_data>0</send_additional_data>
+            </qenta_quick>
+            <qenta_wgp>
+                <active>0</active>
+                <model>qpay/wgp</model>
+                <title>giropay</title>
+                <useIFrame>0</useIFrame>
+                <data_storage>1</data_storage>
+                <allowspecific>0</allowspecific>
+                <customer_id>D200001</customer_id>
+                <secret_key>B8AKTPWBRMNBV455FG6M2DANE99WU2</secret_key>
+                <logo_url>images/logo.gif</logo_url>
+                <service_url>about-magento-demo-store</service_url>
+                <send_additional_data>0</send_additional_data>
+            </qenta_wgp>
+            <qenta_paypal>
+                <active>0</active>
+                <model>qpay/paypal</model>
+                <title>PayPal</title>
+                <useIFrame>0</useIFrame>
+                <allowspecific>0</allowspecific>
+                <customer_id>D200001</customer_id>
+                <secret_key>B8AKTPWBRMNBV455FG6M2DANE99WU2</secret_key>
+                <logo_url>images/logo.gif</logo_url>
+                <service_url>about-magento-demo-store</service_url>
+                <send_additional_data>0</send_additional_data>
+                <auto_deposit>0</auto_deposit>
+            </qenta_paypal>
+            <qenta_sofortueberweisung>
+                <active>0</active>
+                <model>qpay/sofortueberweisung</model>
+                <title>Sofortueberweisung</title>
+                <useIFrame>0</useIFrame>
+                <allowspecific>0</allowspecific>
+                <customer_id>D200001</customer_id>
+                <secret_key>B8AKTPWBRMNBV455FG6M2DANE99WU2</secret_key>
+                <logo_url>images/logo.gif</logo_url>
+                <service_url>about-magento-demo-store</service_url>
+                <send_additional_data>0</send_additional_data>
+            </qenta_sofortueberweisung>
+            <qenta_idl>
+                <active>0</active>
+                <model>qpay/idl</model>
+                <title>IDeal</title>
+                <useIFrame>0</useIFrame>
+                <allowspecific>0</allowspecific>
+                <customer_id>D200001</customer_id>
+                <secret_key>B8AKTPWBRMNBV455FG6M2DANE99WU2</secret_key>
+                <logo_url>images/logo.gif</logo_url>
+                <service_url>about-magento-demo-store</service_url>
+                <send_additional_data>0</send_additional_data>
+            </qenta_idl>
+            <qenta_c2p>
+                <active>0</active>
+                <model>qpay/clickTwoPay</model>
+                <title>CLICK2PAY</title>
+                <useIFrame>0</useIFrame>
+                <data_storage>1</data_storage>
+                <allowspecific>0</allowspecific>
+                <customer_id>D200001</customer_id>
+                <secret_key>B8AKTPWBRMNBV455FG6M2DANE99WU2</secret_key>
+                <logo_url>images/logo.gif</logo_url>
+                <service_url>about-magento-demo-store</service_url>
+                <send_additional_data>0</send_additional_data>
+            </qenta_c2p>
+            <qenta_invoice>
+                <active>0</active>
+                <model>qpay/invoice</model>
+                <title>Invoice</title>
+                <useIFrame>0</useIFrame>
+                <allowspecific>0</allowspecific>
+                <customer_id>D200001</customer_id>
+                <secret_key>B8AKTPWBRMNBV455FG6M2DANE99WU2</secret_key>
+                <logo_url>images/logo.gif</logo_url>
+                <service_url>about-magento-demo-store</service_url>
+                <send_additional_data>0</send_additional_data>
+            </qenta_invoice>
+            <qenta_banContactMisterCash>
+                <active>0</active>
+                <model>qpay/banContactMisterCash</model>
+                <title>BanContact/MisterCash</title>
+                <useIFrame>0</useIFrame>
+                <allowspecific>0</allowspecific>
+                <customer_id>D200001</customer_id>
+                <secret_key>B8AKTPWBRMNBV455FG6M2DANE99WU2</secret_key>
+                <logo_url>images/logo.gif</logo_url>
+                <service_url>about-magento-demo-store</service_url>
+                <send_additional_data>0</send_additional_data>
+            </qenta_banContactMisterCash>
+            <qenta_moneta>
+                <active>0</active>
+                <model>qpay/moneta</model>
+                <title>moneta.ru</title>
+                <useIFrame>0</useIFrame>
+                <allowspecific>0</allowspecific>
+                <customer_id>D200001</customer_id>
+                <secret_key>B8AKTPWBRMNBV455FG6M2DANE99WU2</secret_key>
+                <logo_url>images/logo.gif</logo_url>
+                <service_url>about-magento-demo-store</service_url>
+                <send_additional_data>0</send_additional_data>
+            </qenta_moneta>
+            <qenta_przelewy>
+                <active>0</active>
+                <model>qpay/przelewy</model>
+                <title>Przelewy24</title>
+                <useIFrame>0</useIFrame>
+                <allowspecific>0</allowspecific>
+                <customer_id>D200001</customer_id>
+                <secret_key>B8AKTPWBRMNBV455FG6M2DANE99WU2</secret_key>
+                <logo_url>images/logo.gif</logo_url>
+                <service_url>about-magento-demo-store</service_url>
+                <send_additional_data>0</send_additional_data>
+            </qenta_przelewy>
+            <qenta_poli>
+                <active>0</active>
+                <model>qpay/poli</model>
+                <title>POLi</title>
+                <useIFrame>0</useIFrame>
+                <allowspecific>0</allowspecific>
+                <customer_id>D200001</customer_id>
+                <secret_key>B8AKTPWBRMNBV455FG6M2DANE99WU2</secret_key>
+                <logo_url>images/logo.gif</logo_url>
+                <service_url>about-magento-demo-store</service_url>
+                <send_additional_data>0</send_additional_data>
+            </qenta_poli>
+        </payment>
+    </default> 
+</config>
