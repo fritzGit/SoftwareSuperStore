@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <config>
     <modules>
-        <SOFTSS_Checkout>
+        <SOFTSS_Catalog>
             <active>true</active>
             <codePool>local</codePool>
-        </SOFTSS_Checkout>
+        </SOFTSS_Catalog>
     </modules>
 </config>
