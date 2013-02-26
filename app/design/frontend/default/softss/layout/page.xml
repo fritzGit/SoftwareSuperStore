@@ -9,19 +9,7 @@ Default layout, loads most of the pages
         <block type="page/html" name="root" output="toHtml" template="page/3columns.phtml">
 
             <block type="page/html_head" name="head" as="head">
-               <!-- <action method="addItem"><type>absolute_js</type><name>http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js</name>
-                <action method="setText">
-                    <text><![CDATA[<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>]]></text>
-                </action>
-
-                <block type="core/text" name="google.cdn.jquery">
-                    <action method="setText">
-                        <text>
-                            <![CDATA[<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script><script type="text/javascript">jQuery.noConflict();</script>]]>
-                        </text>
-                    </action>
-                </block>-->
-                <action method="addJs"><script>jQuery/jquery-1.9.0.min.js</script></action>
+                <!-- <action method="addJs"><script>jQuery/jquery-1.9.0.min.js</script></action>-->
                 <action method="addJs"><script>jQuery/jquery.noConflict.js</script></action>
                 <action method="addJs"><script>prototype/prototype.js</script></action>
                 <action method="addJs"><script>lib/ccard.js</script></action>
@@ -102,6 +90,7 @@ Default layout, loads most of the pages
 
     </default>
 
+
     <print translate="label" module="page">
         <label>All Pages (Print Version)</label>
         <!-- Mage_Page -->
@@ -147,6 +136,15 @@ Default layout, loads most of the pages
             <action method="setTemplate"><template>page/1column.phtml</template></action>
             <!-- Mark root page block that template is applied -->
             <action method="setIsHandle"><applied>1</applied></action>
+        </reference>
+        <reference name="head">
+            <block type="core/text" name="google.jquery" >
+                <action method="setText">
+                    <text>
+                        <![CDATA[<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>]]>
+                    </text>
+                </action>
+            </block>
         </reference>
     </page_one_column>
 
