@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <SOFTSS_Page>
+            <version>0.1.0</version>
+        </SOFTSS_Page>
+    </modules>
+
+    <global>
+        <blocks>
+            <softsspage>
+                <class>SOFTSS_Page_Block</class>
+            </softsspage>
+        </blocks>
+
+        <helpers>
+            <softsspage>
+                <class>SOFTSS_Page_Helper</class>
+            </softsspage>
+        </helpers>
+    </global>
+</config>

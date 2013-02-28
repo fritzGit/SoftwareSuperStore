@@ -1,0 +1,24 @@
+<div class="header-container">
+    <div class="header">
+        <?php if ($this->getIsHomePage()):?>
+        <h1 class="logo"><strong><?php echo $this->getLogoAlt() ?></strong><a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>" class="logo"><img src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>" /></a></h1>
+        <?php else:?>
+        <a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>" class="logo"><strong><?php echo $this->getLogoAlt() ?></strong><img src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>" /></a>
+        <?php endif?>
+
+        <div class="login-cart">
+            <div class="login">
+                <?php if ($this->helper('customer')->isLoggedIn()):?>
+                    Welcome <?php echo Mage::getSingleton('customer/session')->getCustomer()->getName(); ?>
+                <?php else:?>
+                    Welcome visitor you can <a href="<?php echo $this->getUrl('customer/account/login/')?>" title="login">login</a> or <a href="<?php echo $this->getUrl('customer/account/create/')?>" title="create an account">create an account</a>
+                <?php endif?>
+            </div>
+            <div class="cartinfo">
+                <?php echo $this->getChildHtml('topCart') ?>
+            </div>
+        </div>
+
+        <?php echo $this->getChildHtml('topMenu') ?>
+    </div>
+</div>
