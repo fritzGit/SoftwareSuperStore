@@ -76,8 +76,8 @@ ul,ol         { list-style:none; }
 .page-print { background:#fff; padding:25px 30px; text-align:left; }
 .page-empty { background:#fff; padding:20px; text-align:left; }
 .page-popup { background:#fff; padding:25px 30px; text-align:left; }
-.main-container { background:#fbfaf6 url(../images/bkg_main1.gif) 50% 0 no-repeat; }
-.main { width:1160px; margin:0 auto; min-height:400px; padding:25px 25px 80px; background:#fff url(../images/bg.gif) 0 0 repeat; text-align:left; }
+.main-container { background:#fff url(../images/bg.png) 0 0 repeat;}
+.main { width:1160px; margin:0 auto; min-height:400px; padding:25px 25px 80px; background:url(../images/bg.gif) 0 0 repeat; text-align:left; }
 
 
 
@@ -501,13 +501,24 @@ tr.summary-details-excluded { font-style:italic; }
 .header .quick-access { float:right; width:600px; padding:28px 10px 0 0; }
 .header .welcome-msg { margin:0; color:#fff; text-align:right; }
 .header .welcome-msg a { color:#ebbc58; }
-.header .form-search { position:absolute; top:0; right:29px; width:315px; height:30px; background:url(../images/bkg_form-search.gif) 0 0 no-repeat; padding:1px 0 0 16px; }
-.header .form-search label { float:left; width:24px; height:21px; text-align:left; text-indent:-999em; overflow:hidden; }
-.header .form-search input.input-text { float:left; border-color:#5c7989; width:209px; margin-right:4px; }
-.header .form-search button.button { float:left; }
-.header .form-search button.button span { border:0; height:21px; background:url(../images/btn_search.gif) 0 0 no-repeat; padding:0 0 0 3px; font:bold 11px/21px Tahoma, Verdana, Arial, sans-serif; }
-.header .form-search button.button span span { background-position:100% 0; padding:0 6px 0 3px; }
-.header .form-search .search-autocomplete { z-index:999; left:40px !important; top:22px !important; }
+.header .form-search { position:absolute; top:78px; right:29px; width:308px; height:36px; }
+.header .form-search .searchinput{
+    width:200px;
+    height:36px;
+    line-height: 36px;
+    background-color: #d3d3d3;
+    color:#666666;
+    position:absolute;
+    top:0;
+    left:0;
+    padding: 0 15px 0 15px;
+    border:none;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+.header .searchbutton input{cursor:pointer; background:url(../images/buttons.png) 0 -120px no-repeat; width:62px; height:36px; border: none !important; padding: 0; margin: 0;}
+
+.header .form-search .search-autocomplete { z-index:999; left:28px !important; top:83px !important; }
 .header .form-search .search-autocomplete ul { border:1px solid #5c7989; background-color:#f9f5f0; }
 .header .form-search .search-autocomplete li { text-align:left; border-bottom:1px solid #f4eee7; padding:2px 8px 1px 8px; cursor:pointer; }
 .header .form-search .search-autocomplete li .amount { float:right; font-weight:bold; }
@@ -1141,13 +1152,13 @@ tr.summary-details-excluded { font-style:italic; }
 .main-teaser{width:1160px; margin: 0 auto;}
 .slider-wrapper {
 	width: 80%;
-	margin: 100px auto;
+	margin: 0 auto;
         vertical-align: baseline;
 }
 
-#hp-products { height: 250px; overflow:hidden; margin: 0 auto; text-align: center;}
+#hp-products { width:1000px; height: 250px; overflow:hidden; margin: 0 auto; text-align: center;}
 #hp-products strong{float: left;color: #011A35;}
-#hp-products .viewport { float: left; width: 1000px; height: 208px; overflow: hidden; position: relative; box-shadow: 0 1px 5px 0 #4A4A4A; }
+#hp-products .viewport { background-color: #fff; float: left; width: 1000px; height: 208px; overflow: hidden; position: relative; box-shadow: 0 1px 5px 0 #999; }
 #hp-products .buttons {
     background:url("../images/buttons.png") no-repeat 0 -60px transparent;
     display: block;
@@ -1169,10 +1180,10 @@ tr.summary-details-excluded { font-style:italic; }
 #hp-products .overview .product-name a { color:#203548; text-decoration:none; }
 #hp-products .overview .products-grid .price-box { margin:5px 0; }
 #hp-products .overview .availability { line-height:21px; }
-#hp-products .overview .actions {position: absolute; left:10px;bottom:0; width:160px; text-align: left;}
+#hp-products .overview .actions {position: absolute; left:10px;bottom:2px; width:160px; text-align: left;}
 .priceBubble{background:url("../images/buttons.png") no-repeat 0 0; width:50px; height:56px; position: absolute; top:36px; right:4px;}
 .priceBubble .price-box{position: absolute; top:5px; right:4px;width:40px;margin: 0;}
-.cartBubble{background:url("../images/buttons.png") no-repeat -140px 0; width:37px; height:41px; position: absolute; top:74px; right:10px; z-index: 10px;}
+.cartBubble{background:url("../images/buttons.png") no-repeat -140px 0; width:37px; height:41px; position: absolute; top:74px; right:10px; z-index: 10; cursor: pointer;}
 .carouselbuttons{float:right;height:21px; width: 50px; margin-bottom: 5px;}
 
 
@@ -1766,7 +1777,7 @@ tr.summary-details-excluded { font-style:italic; }
 .footer a { color:#fff; text-decoration:none; }
 .footer a:hover { text-decoration:underline; }
 .footer ul { display:inline; }
-.footer li { display:list-item;  background:url(../images/arr_footer.png) 0 5px no-repeat; padding:0 0 5px 7px; }
+.footer li { display:list-item;  background-image:url(../images/buttons.png) ; background-position: -280px -115px; background-repeat:  no-repeat; padding:0 0 5px 7px; }
 .footer li.last { background:none !important; padding-right:0 !important; }
 .footer .telnum{color:#ea00ab;font-size: 14px;}
 .footer-container .bottom-container { margin:0 0 5px; }
