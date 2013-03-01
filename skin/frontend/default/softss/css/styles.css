@@ -587,6 +587,8 @@ tr.summary-details-excluded { font-style:italic; }
 /********** Navigation > */
 /* ======================================================================================= */
 
+/* Homepage */
+h1.homepage-softwaress{color:#ff7300;}
 
 /* Sidebar =============================================================================== */
 .block { border:1px solid #c4c1bc; margin:0 0 15px; }
@@ -1157,9 +1159,11 @@ tr.summary-details-excluded { font-style:italic; }
 }
 
 #hp-products { width:1000px; height: 250px; overflow:hidden; margin: 0 auto; text-align: center;}
-#hp-products strong{float: left;color: #011A35;}
+#hp-latest-products{width:772px; height:271px;overflow:hidden; float:right; text-align: center;}
+#hp-products strong, #hp-latest-products strong{float: left;color: #011A35;}
 #hp-products .viewport { background-color: #fff; float: left; width: 1000px; height: 208px; overflow: hidden; position: relative; box-shadow: 0 1px 5px 0 #999; }
-#hp-products .buttons {
+#hp-latest-products .viewport{float: left; width: 772px; height: 250px; overflow: hidden; position: relative;}
+#hp-products .buttons, #hp-latest-products .buttons {
     background:url("../images/buttons.png") no-repeat 0 -60px transparent;
     display: block;
     margin: 0;
@@ -1170,22 +1174,27 @@ tr.summary-details-excluded { font-style:italic; }
     overflow: hidden;
     position: relative;
 }
-#hp-products .next { background-position: -140px -60px; margin-left: 5px;}
+#hp-products .next,#hp-latest-products .next { background-position: -140px -60px; margin-left: 5px;}
 #hp-products .disable {  }
-#hp-products .overview { list-style: none; position: absolute; padding: 0; margin: 0; left: 0; top: 0; }
+#hp-products .overview, #hp-latest-products .overview { list-style: none; position: absolute; padding: 0; margin: 0; left: 0; top: 0; }
 #hp-products .overview li{ background:url("../images/dline_short_solid.png") no-repeat 169px 0; float: left; margin: 0; padding: 0 0 0 10px; height: 208px; width: 190px; position: relative;}
-#hp-products .overview li.item.last { border-right:0; margin: 0;}
-#hp-products .overview .product-image { width:130px; height:130px; position: absolute; left:10px; top:50px; }
-#hp-products .overview .product-name { /*min-height:2.7em;*/ margin:0; color:#203548; text-align: left; padding-top: 5px;}
-#hp-products .overview .product-name a { color:#203548; text-decoration:none; }
+#hp-latest-products .overview li{ background:url("../images/dline_tall_transparent.png") no-repeat 0 0; float: left; margin: 0; padding: 0 0 0 10px; height: 250px; width: 183px; position: relative;}
+#hp-products .overview li.item.last, #hp-latest-products .overview li.item.last { border-right:0; margin: 0;}
+#hp-products .overview .product-image, #hp-latest-products .overview .product-image { width:130px; height:130px; position: absolute; left:10px; top:50px; }
+#hp-latest-products .overview .product-image {top:80px; }
+#hp-products .overview .product-name, #hp-latest-products .overview .product-name { /*min-height:2.7em;*/ margin:0; color:#203548; text-align: left; padding-top: 5px;}
+#hp-latest-products .overview .product-name{width:179px;}
+#hp-products .overview .product-name a, #hp-latest-products .overview .product-name a { color:#203548; text-decoration:none; }
 #hp-products .overview .products-grid .price-box { margin:5px 0; }
 #hp-products .overview .availability { line-height:21px; }
-#hp-products .overview .actions {position: absolute; left:10px;bottom:2px; width:160px; text-align: left;}
-.priceBubble{background:url("../images/buttons.png") no-repeat 0 0; width:50px; height:56px; position: absolute; top:36px; right:4px;}
-.priceBubble .price-box{position: absolute; top:5px; right:4px;width:40px;margin: 0;}
-.cartBubble{background:url("../images/buttons.png") no-repeat -140px 0; width:37px; height:41px; position: absolute; top:74px; right:10px; z-index: 10; cursor: pointer;}
+#hp-products .overview .actions, #hp-latest-products .overview .actions {position: absolute; left:10px;bottom:2px; width:160px; text-align: left;}
+#hp-products .priceBubble{background:url("../images/buttons.png") no-repeat 0 0; width:50px; height:56px; position: absolute; top:36px; right:4px;}
+#hp-products .priceBubble .price-box{position: absolute; top:5px; right:4px;width:40px;margin: 0;}
+#hp-latest-products .priceBubble{background:url("../images/buttons.png") no-repeat -280px 0; width:70px; height:22px; position: absolute; top:67px; right:13px;}
+#hp-latest-products .priceBubble .price-box{position: absolute; top:1px; left:10px;width:40px;margin: 0;}
+#hp-products .cartBubble{background:url("../images/buttons.png") no-repeat -140px 0; width:37px; height:41px; position: absolute; top:74px; right:10px; z-index: 10; cursor: pointer;}
+#hp-latest-products .cartBubble{background:url("../images/buttons.png") no-repeat -140px 0; width:37px; height:41px; position: absolute; top:84px; right:14px; z-index: 10; cursor: pointer;}
 .carouselbuttons{float:right;height:21px; width: 50px; margin-bottom: 5px;}
-
 
 #overlay{
     background-color: #000;
