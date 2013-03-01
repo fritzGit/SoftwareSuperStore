@@ -14,8 +14,11 @@
 <?php else: ?>
 
 <div id="hp-products">
-    <h2>Featured Products</h2>
+    <strong>Featured Products</strong>
+    <div class="carouselbuttons">
     <a class="buttons prev" href="#">left</a>
+    <a class="buttons next" href="#">right</a>
+    </div>
     <div class="viewport">
         <ul class="overview">
         <?php $_collectionSize = $_productCollection->count() ?>
@@ -23,7 +26,7 @@
         <?php $i=0; foreach ($_productCollection as $_product): ?>
         <li class="item<?php if(($i-1)%$_columnCount==0): ?> first<?php elseif($i%$_columnCount==0): ?> last<?php endif; ?>">
                 <h2 class="product-name"><a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($_product->getName(), null, true) ?>"><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></a></h2>
-                <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image"><img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(135); ?>" width="135" height="135" alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" /></a>
+                <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image"><img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(130); ?>" width="135" height="135" alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" /></a>
 
                 <div class="priceBubble">
                     <?php echo $this->getPriceHtml($_product, true) ?>
@@ -31,9 +34,7 @@
 
                 <div class="cartBubble" onclick="addProduct('<?php echo $_product->getId() ?>',1)"></div>
 
-                <div class="actions">
-                    <?php if(!$_product->isSaleable()): ?>
-                        In stock - 24 + Free Ship
+                <div class="actions"><?php if(!$_product->isSaleable()): ?>In stock - 24 + Free Ship
                     <?php else: ?>
                         <p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
                     <?php endif; ?>
@@ -43,7 +44,6 @@
         <?php endforeach ?>
         </ul>
     </div>
-    <a class="buttons next" href="#">right</a>
 </div>
 
 <div id="overlay"></div>
