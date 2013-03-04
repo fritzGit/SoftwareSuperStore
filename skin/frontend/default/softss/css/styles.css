@@ -525,14 +525,14 @@ tr.summary-details-excluded { font-style:italic; }
 .header .form-search .search-autocomplete li.odd { background-color:#fffefb; }
 .header .form-search .search-autocomplete li.selected { background-color:#f7e8dd; }
 
-.header-container .login-cart{width:672px; height:32px; background:url(../images/top_orange.png) 0 0 no-repeat; position: absolute; top:0; right:12px; z-index: 15;}
+.header-container .login-cart{width:672px; height:32px; background:url(../images/buttons.png) 0 -180px no-repeat; position: absolute; top:0; right:12px; z-index: 15;}
 .header-container .login{position: absolute; left:27px; top:6px;}
 .header-container .login-cart .cartinfo{position: absolute; right:27px; top:6px;}
 .shoppingcart{background:url(../images/buttons.png) -280px -60px no-repeat; padding:3px 0 1px 20px;display: inline;}
 
 
 /********** < Navigation */
-.nav-container {width:696px; height:50px; background:url(../images/top_black.png) 0 0 no-repeat; position: absolute; top:22px; right:0;}
+.nav-container {width:696px; height:50px; background:url(../images/buttons.png) 0 -240px no-repeat; position: absolute; top:22px; right:0;}
 #nav { margin:0 auto; padding:10px 0 0 25px; }
 
 /* All Levels */ /* Style consistent throughout all nav levels */
@@ -1148,6 +1148,11 @@ h1.homepage-softwaress{color:#ff7300;}
 .advanced-search-summary ul { float:left; width:49%; }
 .advanced-search-summary strong { color:#E17C24; padding-left:15px; background:url(../images/i_search_criteria.gif) 0 3px no-repeat; }
 .advanced-search-summary p { clear:both; font-weight:bold; margin:0; }
+
+/*Page Top Links*/
+#pagetoplinks-container{height:68px; background-color: #fff; border-bottom: 10px solid #f2f2f2;}
+#pagetoplinks-container .pagetoplinks{color:#ff7300; border-top: 2px solid #fff; height: 68px; width: 1072px; margin: 0 auto;}
+#pagetoplinks-container .toplink{background:#f2f2f2 url(../images/buttons.png) -360px -60px no-repeat; display: inline-block; width:170px; height: 45px; font-weight: bold;}
 
 /* Home Page*/
 .teaser-area{background-color: #fff;height:490px;}

@@ -51,6 +51,8 @@ Default layout, loads most of the pages
                 <block type="catalog/product_new" name="home.catalog.product.new" alias="latest_product_homepage" template="catalog/product/list/latest.phtml">
                    <action method="setProductsCount"><count>8</count></action>
                </block>
+
+               <block type="core/template" name="homepage-social" as="homepage-social" template="page/html/homepage-social.phtml" />
             </block>
         </reference>
 

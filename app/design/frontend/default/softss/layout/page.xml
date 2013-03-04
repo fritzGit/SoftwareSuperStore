@@ -57,6 +57,8 @@ Default layout, loads most of the pages
                 <block type="softssteasereditor/teaser" name="slider_teaser" as="slider_teaser" template="teasereditor/teasers/mainslider.phtml" />
             </block>
 
+            <block type="core/template" name="toplinks" as="toplinks" template="page/html/toplinks.phtml"/>
+
             <block type="core/text_list" name="left" as="left" translate="label">
                 <label>Left Column</label>
             </block>
@@ -135,15 +137,6 @@ Default layout, loads most of the pages
             <action method="setTemplate"><template>page/1column.phtml</template></action>
             <!-- Mark root page block that template is applied -->
             <action method="setIsHandle"><applied>1</applied></action>
-        </reference>
-        <reference name="head">
-            <block type="core/text" name="google.jquery" >
-                <action method="setText">
-                    <text>
-                        <![CDATA[<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>]]>
-                    </text>
-                </action>
-            </block>
         </reference>
     </page_one_column>
 
