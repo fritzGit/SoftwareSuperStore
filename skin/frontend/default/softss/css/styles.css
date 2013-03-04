@@ -77,7 +77,7 @@ ul,ol         { list-style:none; }
 .page-empty { background:#fff; padding:20px; text-align:left; }
 .page-popup { background:#fff; padding:25px 30px; text-align:left; }
 .main-container { background:#fff url(../images/bg.png) 0 0 repeat;}
-.main { width:1160px; margin:0 auto; min-height:400px; padding:25px 25px 80px; background:url(../images/bg.gif) 0 0 repeat; text-align:left; }
+.main { width:1160px; margin:0 auto; min-height:400px; padding:25px 25px 0; background:url(../images/bg.gif) 0 0 repeat; text-align:left; }
 
 
 
@@ -87,7 +87,7 @@ ul,ol         { list-style:none; }
 .col-right { float:right; width:195px; padding:0 0 1px; }
 
 /* 1 Column Layout */
-.col1-layout .main{width:1004px;padding:0 78px;}
+.col1-layout .main{width:1160px;}
 .col1-layout .col-main { float:none; width:auto; }
 
 /* 2 Columns Layout */
@@ -494,7 +494,7 @@ tr.summary-details-excluded { font-style:italic; }
 /* Header ================================================================================ */
 .logo { float:left; }
 .header-container {background:url(../images/bg.png) 0 0 repeat-x; color:#fff; height:120px;}
-.header { width:1004px; margin:0 auto; padding:0 0 0 78px;; text-align:right; position:relative; z-index:10; }
+.header { width:1160px; height:120px; margin:0 auto; padding:0; text-align:right; position:relative; z-index:10; }
 .header .logo { float:left; margin:3px 0 0 0; text-decoration:none !important; }
 .header .logo strong { position:absolute; top:-999em; left:-999em; width:0; height:0; font-size:0; line-height:0; text-indent:-999em; overflow:hidden; }
 .header h1.logo { margin:0; }
@@ -1152,7 +1152,7 @@ h1.homepage-softwaress{color:#ff7300;}
 /*Page Top Links*/
 #pagetoplinks-container{height:68px; background-color: #fff; border-bottom: 10px solid #f2f2f2;}
 #pagetoplinks-container .pagetoplinks{color:#ff7300; border-top: 2px solid #fff; height: 68px; width: 1072px; margin: 0 auto;}
-#pagetoplinks-container .toplink{background:#f2f2f2 url(../images/buttons.png) -360px -60px no-repeat; display: inline-block; width:170px; height: 45px; font-weight: bold;}
+#pagetoplinks-container .toplink{background:#f2f2f2 url(../images/buttons.png) -360px -60px no-repeat; display: inline-block; width:155px; height: 45px; padding:0 15px 0 0;font-weight: bold; text-align: left;}
 
 /* Home Page*/
 .teaser-area{background-color: #fff;height:490px;}
