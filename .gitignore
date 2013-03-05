@@ -27,7 +27,6 @@
 /skin/adminhtml/default/default/
 /app/code/core/Mage/
 /app/code/core/Zend/
-/app/design/adminhtml/default/
 !/app/design/adminhtml/default/softss/
 /app/design/frontend/default/default/
 /skin/frontend/default/default/
@@ -78,3 +77,5 @@ app/etc/local.xml
 /app/etc/modules/Mage_Centinel.xml
 /app/etc/modules/Mage_PageCache.xml
 /app/etc/modules/Mage_Api.xml
+!/app/design/adminhtml/default/softss/layout/softssteasereditor.xml
+!/app/design/adminhtml/default/softss/layout/softsstopseller.xml
