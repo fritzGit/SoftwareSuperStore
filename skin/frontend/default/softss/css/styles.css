@@ -1150,8 +1150,8 @@ h1.homepage-softwaress{color:#ff7300;}
 
 /*Page Top Links*/
 #pagetoplinks-container{height:68px; background-color: #fff; border-bottom: 10px solid #f2f2f2;}
-#pagetoplinks-container .pagetoplinks{color:#ff7300; border-top: 2px solid #fff; height: 68px; width: 1072px; margin: 0 auto;}
-#pagetoplinks-container .toplink{background:#f2f2f2 url(../images/buttons.png) -360px -60px no-repeat; display: inline-block; width:155px; height: 45px; padding:0 15px 0 0;font-weight: bold; text-align: left;}
+#pagetoplinks-container .pagetoplinks{background:#f2f2f2 url(../images/buttons.png) 0 -360px no-repeat; color:#ff7300; border-top: 2px solid #fff; height: 68px; width: 1072px; margin: 0 auto;}
+#pagetoplinks-container .toplink{background:#f2f2f2 url(../images/buttons.png) -422px 0 no-repeat; display: inline-block; width:155px; height: 45px; padding:0 15px 0 0;font-weight: bold; text-align: left;}
 
 /* Home Page*/
 .teaser-area{background-color: #fff;height:490px;}
