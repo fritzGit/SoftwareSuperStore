@@ -5,13 +5,13 @@
  **/
 -->
 <config>
-    
+
     <modules>
         <SOFTSS_Config>
-            <version>0.1.0</version>
+            <version>0.1.2</version>
         </SOFTSS_Config>
     </modules>
-    
+
     <global>
         <helpers>
             <softssconfig>
@@ -27,8 +27,5 @@
             </softssconfig_setup>
         </resources>
     </global>
-    
+
 </config>
-
-
-

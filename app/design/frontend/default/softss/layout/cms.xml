@@ -45,7 +45,7 @@ Default layout, loads most of the pages
             <block type="core/template" name="homepage" template="page/html/homepage.phtml">
 
                 <block type="softsscatalog/category_menu" name="home.catalog.category.menu" template="catalog/category/menu.phtml" />
-                
+
                 <block type="catalog/product_list" name="featured" template="catalog/product/homepage_list.phtml">
                    <action method="setCategoryId"><category_id>3</category_id></action>
                 </block>
@@ -54,7 +54,9 @@ Default layout, loads most of the pages
                    <action method="setProductsCount"><count>8</count></action>
                </block>
 
-               <block type="core/template" name="homepage-social" as="homepage-social" template="page/html/homepage-social.phtml" />
+               <block type="core/template" name="homepage-social" as="homepage-social" template="page/html/homepage-social.phtml">
+                    <block type="cms/block" block_id="about-us" name="about-us" />
+               </block>
             </block>
         </reference>
 

@@ -1,0 +1,20 @@
+<?php
+/**
+ * Catalog Category Menu
+ *
+ * @see SOFTSS_Catalog_Block_Category_Menu
+ */
+?>
+<?php
+    $_categoryCollection = $this->getCategories();
+?>
+<?php if(count($_categoryCollection) > 0): ?>
+<div id="categories">
+<h2><?php echo $this->__('All Categories'); ?></h2>
+<ul>
+<?php foreach ($_categoryCollection as $category): ?>
+    <li><a href="<?php echo $category->getUrl(); ?>"><?php echo $category->getName(); ?></a></li>
+<?php endforeach; ?>
+</ul>
+</div>
+<?php endif; ?>

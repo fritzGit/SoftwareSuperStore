@@ -3,48 +3,48 @@
         <?php #echo $this->getChildHtml() ?>
 
         <div class="footer-column">
-            <h3>Information</h3>
+            <h3><?php echo $this->__('Information'); ?></h3>
             <ul>
-                <li><a href="<?php echo $this->getUrl('aboutus') ?>">About Us</a></li>
-                <li><a href="<?php echo $this->getUrl('aboutus') ?>" rel="nofollow">Delivery Information</a></li>
-                <li><a href="<?php echo $this->getUrl('aboutus') ?>" rel="nofollow">Privacy Policy</a></li>
-                <li><a href="<?php echo $this->getUrl('aboutus') ?>" rel="nofollow">Terms & Conditions</a></li>
+                <li><a href="<?php echo $this->getUrl('about-us') ?>"><?php echo $this->__('About Us') ?></a></li>
+                <li><a href="<?php echo $this->getUrl('delivery-information') ?>" rel="nofollow"><?php echo $this->__('Delivery Information'); ?></a></li>
+                <li><a href="<?php echo $this->getUrl('privacy-policy') ?>" rel="nofollow"><?php echo $this->__('Privacy Policy'); ?></a></li>
+                <li><a href="<?php echo $this->getUrl('terms-conditions') ?>" rel="nofollow"><?php echo $this->__('Terms & Conditions'); ?></a></li>
             </ul>
         </div>
 
         <div class="footer-column">
-            <h3>Customer Service</h3>
+            <h3><?php echo $this->__('Customer Service'); ?></h3>
             <ul>
-                <li><a href="<?php echo $this->getUrl('aboutus') ?>" rel="nofollow">Contact Us</a></li>
-                <li><a href="<?php echo $this->getUrl('aboutus') ?>" rel="nofollow">Returns</a></li>
-                <li><a href="<?php echo $this->getUrl('aboutus') ?>">Site Map</a></li>
+                <li><a href="<?php echo $this->getUrl('contact-us') ?>" rel="nofollow"><?php echo $this->__('Contact Us'); ?></a></li>
+                <li><a href="<?php echo $this->getUrl('returns') ?>" rel="nofollow"><?php echo $this->__('Returns'); ?></a></li>
+                <li><a href="<?php echo $this->getUrl('site-map') ?>"><?php echo $this->__('Site Map'); ?></a></li>
             </ul>
         </div>
 
         <div class="footer-column">
-            <h3>Extras</h3>
+            <h3><?php echo $this->__('Extras'); ?></h3>
             <ul>
-                <li><a href="<?php echo $this->getUrl('aboutus') ?>">Discount Offers</a></li>
-                <li><a href="<?php echo $this->getUrl('aboutus') ?>" rel="nofollow">Technology Guide</a></li>
-                <li><a href="<?php echo $this->getUrl('aboutus') ?>" rel="nofollow">Coupon Email</a></li>
-                <li><a href="<?php echo $this->getUrl('aboutus') ?>" rel="nofollow">Apple Service Point</a></li>
+                <li><a href="<?php echo $this->getUrl('aboutus') ?>"><?php echo $this->__('Discount Offers'); ?></a></li>
+                <li><a href="<?php echo $this->getUrl('aboutus') ?>" rel="nofollow"><?php echo $this->__('Technology Guide'); ?></a></li>
+                <li><a href="<?php echo $this->getUrl('aboutus') ?>" rel="nofollow"><?php echo $this->__('Coupon Email'); ?></a></li>
+                <li><a href="<?php echo $this->getUrl('aboutus') ?>" rel="nofollow"><?php echo $this->__('Apple Service Point'); ?></a></li>
             </ul>
         </div>
 
         <div class="footer-column">
-            <h3>My Account</h3>
+            <h3><?php echo $this->__('My Account'); ?></h3>
             <ul>
-                <li><a href="<?php echo $this->getUrl('aboutus') ?>" rel="nofollow">My Account</a></li>
-                <li><a href="<?php echo $this->getUrl('aboutus') ?>" rel="nofollow">Order History</a></li>
-                <li><a href="<?php echo $this->getUrl('aboutus') ?>" rel="nofollow">Wish List</a></li>
-                <li><a href="<?php echo $this->getUrl('aboutus') ?>" rel="nofollow">Newsletter</a></li>
+                <li><a href="<?php echo $this->getUrl('aboutus') ?>" rel="nofollow"><?php echo $this->__('My Account'); ?></a></li>
+                <li><a href="<?php echo $this->getUrl('aboutus') ?>" rel="nofollow"><?php echo $this->__('Order History'); ?></a></li>
+                <li><a href="<?php echo $this->getUrl('aboutus') ?>" rel="nofollow"><?php echo $this->__('Wish List'); ?></a></li>
+                <li><a href="<?php echo $this->getUrl('aboutus') ?>" rel="nofollow"><?php echo $this->__('Newsletter'); ?></a></li>
             </ul>
         </div>
 
         <div class="footer-column contactDetails">
             <div class="footer-cards"><img src="<?php echo $this->getSkinUrl('images/cards.png') ?>" alt="paypal visa mastercard american express"/></div>
-            Call us <span class="telnum">5154-877-233</span><br/>
-            Email : info@softwaresuperstore.co.uk
+            Call us <span class="telnum"><?php echo Mage::getStoreConfig('general/store_information/phone'); ?></span><br/>
+            Email : <?php echo Mage::getStoreConfig('contacts/email/recipient_email'); ?>
         </div>
     </div>
     <div class="copyright"><?php echo $this->getCopyright() ?></div>
