@@ -54,9 +54,7 @@ Default layout, loads most of the pages
                    <action method="setProductsCount"><count>8</count></action>
                </block>
 
-               <block type="core/template" name="homepage-social" as="homepage-social" template="page/html/homepage-social.phtml">
-                    <block type="cms/block" block_id="about-us" name="about-us" />
-               </block>
+               <block type="core/template" name="homepage-social" as="homepage-social" template="page/html/homepage-social.phtml"/>
             </block>
         </reference>
 

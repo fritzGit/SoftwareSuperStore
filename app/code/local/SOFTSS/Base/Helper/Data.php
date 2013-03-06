@@ -21,5 +21,19 @@ class SOFTSS_Base_Helper_Data extends Mage_Core_Helper_Abstract
 
         return false;
     }
+
+    public function cutStr($text, $pos) {
+        if ($pos < strlen($text)) {
+        $text = substr($text, 0, $pos);
+
+        if (false !== ($strrpos = strrpos($text,' '))) {
+            $text = substr($text, 0, $strrpos);
+        }
+
+        $string = $text;
+        }
+
+        return $string;
+    }
 }
 ?>

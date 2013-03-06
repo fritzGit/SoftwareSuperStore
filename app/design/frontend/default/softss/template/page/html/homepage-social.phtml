@@ -1,8 +1,18 @@
+
 <div class="aboutus">
     <h2><?php echo $this->__('About Us'); ?></h2>
-    <?php echo $this->getChildHtml('about-us');  ?>
+    <?php $aboutusContent = Mage::getModel('cms/page')->load('about-us','identifier')->getContent();
+    $aboutusContent = strip_tags($aboutusContent);
+    if(strlen($aboutusContent)>200){
+        echo Mage::helper('softssbase')->cutStr($aboutusContent, 200).'...';
+        echo '<br/><a href="'.$this->getUrl('about-us').'" title="About Us">Read More</a>';
+    }else{
+        echo $aboutusContent;
+    }
+    ?>
+
 </div>
-<div class="tweeter">
+<div class="twitter">
     <h2><?php echo $this->__('Recent Tweet'); ?></h2>
 
 </div>

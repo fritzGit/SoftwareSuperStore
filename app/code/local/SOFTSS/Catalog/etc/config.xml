@@ -9,6 +9,11 @@
     <global>
         <blocks>
             <softsscatalog><class>SOFTSS_Catalog_Block</class></softsscatalog>
+            <catalog>
+                <rewrite>
+                    <product_list>SOFTSS_Catalog_Block_Product_List</product_list>
+                </rewrite>
+            </catalog>
         </blocks>
 
         <helpers>
