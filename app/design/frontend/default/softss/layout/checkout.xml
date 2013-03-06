@@ -62,7 +62,7 @@ Default layout, loads most of the pages
             <action method="addCss"><stylesheet>css/slider-default.css</stylesheet></action>
         </reference>
         <reference name="root">
-            <action method="setTemplate"><template>page/2columns-left-cart.phtml</template></action>
+            <action method="setTemplate"><template>page/2columns-left-custom.phtml</template></action>
         </reference>
         <reference name="content">
             <block type="checkout/cart" name="checkout.cart">
@@ -96,13 +96,13 @@ Default layout, loads most of the pages
         <reference name="left">
              <remove name="left.newsletter" />
              <remove name="left.permanent.callout" />
-             <block type="softsscatalog/category_menu" name="cart.catalog.category.menu" template="catalog/category/menu.phtml" />             
+             <block type="softsscatalog/category_menu" name="cart.catalog.category.menu" template="catalog/category/menu.phtml" />
         </reference>
         <block type="core/text_list" name="additional.product.info" translate="label">
             <label>Additional Product Info</label>
         </block>
         <reference name="before_footer">
-           <block type="catalog/product_list" name="featured" template="catalog/product/homepage_list.phtml">
+           <block type="catalog/product_list" name="featured" template="catalog/product/featured_list.phtml">
                <action method="setCategoryId"><category_id>3</category_id></action>
            </block>
         </reference>
