@@ -11,6 +11,12 @@
             <softsspage>
                 <class>SOFTSS_Page_Block</class>
             </softsspage>
+
+            <page>
+                <rewrite>
+                    <html_breadcrumbs>SOFTSS_Page_Block_Html_Breadcrumbs</html_breadcrumbs>
+                </rewrite>
+            </page>
         </blocks>
 
         <helpers>

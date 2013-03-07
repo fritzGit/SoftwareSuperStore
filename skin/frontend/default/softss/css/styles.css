@@ -478,9 +478,9 @@ p.required { font-size:11px; text-align:right; color:#EB340A; }
 .radial-orange-sunrise {
     /* fallback */
     background-color: #ff7300;
-    background-image: url(images/radial_fancy.png);
+    /*background-image: url(images/radial_fancy.png);
     background-position: 80% 20%;
-    background-repeat: no-repeat;
+    background-repeat: no-repeat;*/
 
     background: -webkit-gradient(radial, 50% 70%, 0, 50% 70%, 100, from(#ff7300), to(#e8aa28)); /* Safari 4-5, Chrome 1-9 */
     background: -webkit-radial-gradient(50% 80%, ellipse farthest-side, #ff7300, #e8aa28); /* Safari 5.1+, Chrome 10+ */
