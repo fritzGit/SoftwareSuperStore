@@ -98,6 +98,3 @@ app/etc/local.xml
 /js/mage/
 /js/varien/
 /.htaccess
-/.htaccess.sample
-/nbproject
-
