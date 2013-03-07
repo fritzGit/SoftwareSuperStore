@@ -1345,8 +1345,10 @@ h1.homepage-softwaress{color:#ff7300;padding:20px 0; font-family: 'Aller_Lt',San
 .advanced-search-summary p { clear:both; font-weight:bold; margin:0; }
 
 /*Page Top Links*/
-#pagetoplinks-container{height: 56px; background-color: #fff; border-bottom: 10px solid #f2f2f2; border-top: 2px solid #fff;}
-#pagetoplinks-container .pagetoplinks{background:#f2f2f2 url(../images/buttons.png) 0 -373px no-repeat; color:#ff7300; height:56px; padding:3px 23px; width:1045px; margin: 0 auto;}
+#pagetoplinks-container{background-color: #f2f2f2; border-bottom: 4px solid #fff;}
+#pagetoplinks-container .pagetoplinks{background: none; color:#ff7300; height:56px; padding:3px 23px; width:1045px; margin: 0 auto;}
+.col1-layout #pagetoplinks-container{height: 56px; background-color: #fff; border-bottom: 10px solid #f2f2f2; border-top: 2px solid #fff;}
+.col1-layout #pagetoplinks-container .pagetoplinks{background:#f2f2f2 url(../images/buttons.png) 0 -373px no-repeat;}
 #pagetoplinks-container .toplink{
     background:url(../images/buttons.png) -365px 5px no-repeat;
     float:left;
@@ -1475,20 +1477,30 @@ h1.homepage-softwaress{color:#ff7300;padding:20px 0; font-family: 'Aller_Lt',San
     background-color: #fff;
     width:400px;
     z-index: 110;
-    left:40%;
-    top:40%;
     display: none;
-    position: absolute;
     padding: 10px;
+    margin: auto;
+    position: absolute;
 }
 #ajax-container-head{text-align: right;}
+#ajax-container-head a{cursor: pointer;}
 #ajax-cart-message{text-align: center;}
 #ajax-container-links{padding:10px; text-align: center;}
 #ajax-container-realated-items { height: 1%; overflow:hidden; padding: 0 0 10px; }
 #ajax-container-realated-items .viewport { float: left; width: 300px; height: 125px; overflow: hidden; position: relative; }
-#ajax-container-realated-items .buttons { background:url("../images/buttons.png") no-repeat scroll 0 0 transparent; display: block; margin: 30px 10px 0 0; background-position: 0 -38px; text-indent: -999em; float: left; width: 39px; height: 37px; overflow: hidden; position: relative; }
-#ajax-container-realated-items .next { background-position: 0 0; margin: 30px 0 0 10px;  }
-#ajax-container-realated-items .disable { visibility: hidden; }
+#ajax-container-realated-items .buttons {
+    background: url("../images/buttons.png") no-repeat scroll 0 -60px transparent;
+    display: block;
+    margin: 30px 10px 0 0;
+    float: left;
+    width: 21px;
+    height: 21px;
+    overflow: hidden;
+    position: relative;
+    text-indent: -999em;
+}
+#ajax-container-realated-items .next { background-position: -140px -60px; margin: 30px 0 0 10px;  }
+#ajax-container-realated-items .disable { }
 #ajax-container-realated-items .overview { list-style: none; position: absolute; padding: 0; margin: 0; width: 300px; left: 0; top: 0; }
 #ajax-container-realated-items .overview li{ float: left; margin: 0 20px 0 0; padding: 1px; height: 121px; border: 1px solid #dcdcdc; width: 130px;}
 

@@ -9,12 +9,13 @@
     <button type="button" title="<?php echo $this->__('Continue Shopping') ?>" class="button btn-continue" onclick="hideOverlay()"><span><span><?php echo $this->__('Continue Shopping') ?></span></span></button>
     <button type="button" title="<?php echo $this->__('View Cart') ?>" class="button btn-continue" onclick="setLocation('<?php echo Mage::helper('checkout/cart')->getCartUrl() ?>')"><span><span><?php echo $this->__('View Cart') ?></span></span></button>
 </div>
-<?php if(count($collection)>0): ?>
+<?php if($collection->count()>0): ?>
 <div id="ajax-container-realated-items">
     <a class="buttons prev" href="#">left</a>
     <div class="viewport">
         <ul class="overview">
         <?php foreach($collection as $_product): ?>
+            <?php mage::log($_product->getName()); ?>
             <li><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></li>
         <?php endforeach; ?>
         </ul>

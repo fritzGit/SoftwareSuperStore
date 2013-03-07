@@ -64,21 +64,23 @@
 
     function addProduct(proudctID, quantity)
     {
+        var overlay=$j('#overlay');
         $j.ajax({
             url: '<?php echo Mage::getUrl('checkout/cart/addAjax'); ?>',
             data: 'product=' + proudctID + '&qty=' + quantity,
             type: 'GET',
             dataType: 'json',
             beforeSend: function() {
-                $j('#overlay').html('<img id="imgloading" src="<?php echo $this->getSkinUrl('images/ajax-loader.gif') ?>" />').show();
+                overlay.html('<img id="imgloading" src="<?php echo $this->getSkinUrl('images/ajax-loader.gif') ?>" />').show();
             },
             success: function(response) {
-                $j('#overlay').html('');
-                $j('#ajax_add_item_container').html(response.additemhtml);
-                $j('#ajax_add_item_container').fadeIn();
+                overlay.html('');
+                var ajaxContainer = $j('#ajax_add_item_container');
+                ajaxContainer.html(response.additemhtml);
+                ajaxContainer.fadeIn();
             },
             error: function(response) {
-                $j('#overlay').hide();
+                overlay.hide();
                 alert(response.error);
             }
         });
