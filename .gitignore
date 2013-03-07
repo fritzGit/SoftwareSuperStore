@@ -97,3 +97,4 @@ app/etc/local.xml
 /js/prototype/
 /js/mage/
 /js/varien/
+/.htaccess
