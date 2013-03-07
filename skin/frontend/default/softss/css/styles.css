@@ -468,9 +468,26 @@ p.required { font-size:11px; text-align:right; color:#EB340A; }
 .notice-msg { border-color:#fcd344; background-color:#fafaec; background-image:url(../images/i_msg-note.gif); color:#3d6611; }
 
 /* BreadCrumbs */
-.breadcrumbs { font-size:11px; line-height:1.25; margin:0 0 13px; }
-.breadcrumbs li { display:inline; }
-.breadcrumbs li strong { font-weight:bold; }
+#breadcrumb-container{ border-top:1px solid #ff7300; border-bottom:1px solid #ff7300; height:65px;}
+#breadcrumb-container .breadcrumbs { text-align: left; font-size:11px; padding:15px 0 0 0; display: block; margin: 0 auto; width: 1024px;}
+#breadcrumb-container .breadcrumbs h1{color: #fff; margin: 0; font-size: 25px; line-height: 22px;}
+#breadcrumb-container .breadcrumbs ul{display: block;}
+#breadcrumb-container .breadcrumbs li { display:inline; }
+#breadcrumb-container .breadcrumbs li strong { font-weight:bold; }
+
+.radial-orange-sunrise {
+    /* fallback */
+    background-color: #ff7300;
+    background-image: url(images/radial_fancy.png);
+    background-position: 80% 20%;
+    background-repeat: no-repeat;
+
+    background: -webkit-gradient(radial, 50% 70%, 0, 50% 70%, 100, from(#ff7300), to(#e8aa28)); /* Safari 4-5, Chrome 1-9 */
+    background: -webkit-radial-gradient(50% 80%, ellipse farthest-side, #ff7300, #e8aa28); /* Safari 5.1+, Chrome 10+ */
+    background: -moz-radial-gradient(50% 80%, ellipse farthest-side, #ff7300, #e8aa28); /* Firefox 3.6+ */
+    background: -ms-radial-gradient(50% 80%, ellipse farthest-side, #ff7300, #e8aa28); /* IE 10 */
+    /* Opera cannot do radial gradients yet */
+}
 
 /* Page Heading */
 .page-title { width:100%; overflow:hidden; border-bottom:1px solid #ccc; margin:0 0 25px; }

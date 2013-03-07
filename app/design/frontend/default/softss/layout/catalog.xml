@@ -43,6 +43,10 @@ Category default layout
             <remove name="left.newsletter"/>
             <block type="softsscatalog/category_menu" name="home.catalog.category.menu" template="catalog/category/menu.phtml" />
         </reference>
+        <reference name="breadcrumbs">
+            <label>Our Products</label>
+        </reference>
+
         <reference name="content">
             <block type="catalog/category_view" name="category.products" template="catalog/category/view.phtml">
                 <block type="catalog/product_list" name="product_list" template="catalog/product/list.phtml">
