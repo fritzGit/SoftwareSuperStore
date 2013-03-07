@@ -5,9 +5,8 @@ $catalogSearchHelper =  $this->helper('catalogsearch');
 ?>
 <form id="search_mini_form" action="<?php echo $catalogSearchHelper->getResultUrl() ?>" method="get">
     <div class="form-search">
-        <input id="search" type="text" name="<?php echo $catalogSearchHelper->getQueryParamName() ?>" value="<?php echo $this->__('Search') ?>" class="input-text searchinput" maxlength="<?php echo $catalogSearchHelper->getMaxQueryLength();?>" />
+        <input id="search" type="text" onfocus="clearText(this)" name="<?php echo $catalogSearchHelper->getQueryParamName() ?>" value="<?php echo $this->__('Search') ?>" class="input-text searchinput" maxlength="<?php echo $catalogSearchHelper->getMaxQueryLength();?>" />
         <div class="searchbutton"><input type="submit" name="" value=""></div>
-      <!--  <button type="submit" title="<?php echo $this->__('Search') ?>" class="searchbutton"><span><span><?php echo $this->__('Search') ?></span></span></button>-->
 
         <div id="search_autocomplete" class="search-autocomplete"></div>
         <script type="text/javascript">

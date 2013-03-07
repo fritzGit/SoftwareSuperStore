@@ -1989,7 +1989,7 @@ h1.homepage-softwaress{color:#ff7300;padding:20px 0; font-family: 'Aller_Lt',San
 .footer .footer-column{display: inline-block; float:left; width:178px;}
 .footer .footer-column h3{text-transform:uppercase;margin-bottom: 10px; font-weight:normal; font-family: 'Aller_Lt',Sans-Serif; font-size: 14px; font-weight: lighter;}
 .footer .footer-column .footer-cards{display: block;margin:2px 0 20px 0;}
-.footer-container .contactDetails{font-size: 12px;}
+.footer-container .contactDetails{font-size: 12px; width: 250px;}
 .footer a { color:#fff; text-decoration:none; }
 .footer a:hover { text-decoration:underline; }
 .footer ul { display:inline; }
@@ -1997,7 +1997,7 @@ h1.homepage-softwaress{color:#ff7300;padding:20px 0; font-family: 'Aller_Lt',San
 .footer li.last { background:none !important; padding-right:0 !important; }
 .footer .telnum{color:#ea00ab;font-size: 14px;}
 .footer-container .bottom-container { margin:0 0 5px; }
-.footer-container .copyright {padding:15px 0 0 0; height:25px; color:#fff; text-align: center; background-color: #0b0b0b;}
+.footer-container .copyright {padding:15px 0 0 0; height:25px; color:#fff; text-align: center; background-color: #0b0b0b; bottom: 0; width: 100%;}
 /* ======================================================================================= */
 
 /* Sample Data============================================================================ */

@@ -73,6 +73,7 @@
                 $j('#overlay').html('<img id="imgloading" src="<?php echo $this->getSkinUrl('images/ajax-loader.gif') ?>" />').show();
             },
             success: function(response) {
+                $j('#overlay').html('');
                 $j('#ajax_add_item_container').html(response.additemhtml);
                 $j('#ajax_add_item_container').fadeIn();
             },
@@ -81,11 +82,6 @@
                 alert(response.error);
             }
         });
-    }
-
-    function hideOverlay(){
-        $j('#overlay').fadeOut();
-        $j('#ajax_add_item_container').fadeOut();
     }
     //]]>
 </script>
