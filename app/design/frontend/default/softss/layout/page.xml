@@ -53,8 +53,6 @@ Default layout, loads most of the pages
                 </block>
             </block>
 
-            <block type="page/html_breadcrumbs" name="breadcrumbs" as="breadcrumbs"/>
-
             <block type="softssteasereditor/teaser" name="mainteaser_content" as="mainteaser_content" template="teasereditor/main.phtml" >
                 <block type="softssteasereditor/teaser" name="slider_teaser" as="slider_teaser" template="teasereditor/teasers/mainslider.phtml" />
             </block>
