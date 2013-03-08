@@ -1477,7 +1477,7 @@ h1.homepage-softwaress{color:#ff7300;padding:20px 0; font-family: 'Aller_Lt',San
 #ajax-container-realated-items .cartBubble
 {background:url("../images/buttons.png") no-repeat -140px 0; width:37px; height:41px; position: absolute; top:74px; right:16px; z-index: 10; cursor: pointer;}
 
-#hp-latest-products .cartBubble{background:url("../images/buttons.png") no-repeat -140px 0; width:37px; height:41px; position: absolute; top:84px; right:14px; z-index: 10; cursor: pointer;}
+#hp-latest-products .cartBubble{background:url("../images/buttons.png") no-repeat -140px 0; width:37px; height:41px; position: absolute; top:84px; right:10px; z-index: 10; cursor: pointer;}
 .carouselbuttons{float:right;height:21px; width: 50px; margin-bottom: 5px;}
 
 #overlay{
