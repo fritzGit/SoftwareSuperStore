@@ -11,7 +11,7 @@ class SOFTSS_Checkout_CartController extends Mage_Checkout_CartController {
      * Ajax add product to shopping cart action
      */
     public function addAjaxAction()
-    {Mage::log('foo');
+    {
         $cart   = $this->_getCart();
         $params = $this->getRequest()->getParams();
         try {
