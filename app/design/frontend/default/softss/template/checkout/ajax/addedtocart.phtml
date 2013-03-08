@@ -31,8 +31,6 @@
                     <?php echo $this->getPriceHtml($_product, true) ?>
                 </div>
 
-                <div class="cartBubble" onclick="addProduct('<?php echo $_product->getId() ?>',1)"></div>
-
                 <div class="actions"><?php if(!$_product->isSaleable()): ?>In stock - 24 + Free Ship
                     <?php else: ?>
                         <p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>

@@ -17,4 +17,34 @@ function hideOverlay(){
     $j('#ajax_add_item_container').fadeOut();
 }
 
+function addProduct(proudctID, quantity)
+{
+    var overlay=$j('#overlay');
+    var ajaxurl=baseurl+'checkout/cart/addAjax';
+    $j.ajax({
+        url: ajaxurl,
+        data: 'product=' + proudctID + '&qty=' + quantity,
+        type: 'GET',
+        dataType: 'json',
+        beforeSend: function() {
+            var imageurl = baseurl+'skin/frontend/default/softss/images/ajax-loader.gif';
+            overlay.html('<img id="imgloading" src="'+imageurl+'" />').show();
+        },
+        success: function(response) {
+            overlay.html('');
+            var ajaxContainer = $j('#ajax_add_item_container');
+            ajaxContainer.html(response.additemhtml);
+            ajaxContainer.fadeIn();
+            var shoppingcart = $j('.shoppingcartcontent');
+            if(shoppingcart.length){
+                shoppingcart.replaceWith(response.toplink);
+            }
+        },
+        error: function(response) {
+            overlay.hide();
+            alert("Error: Product was not added to cart.");
+        }
+    });
+}
+
 //]]>
