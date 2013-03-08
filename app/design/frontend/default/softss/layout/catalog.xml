@@ -5,9 +5,12 @@
 Default layout, loads most of the pages
 -->
 
-    <default>
-
-        <!-- Mage_Catalog -->
+    <default>     
+        
+         <!-- Mage_Catalog -->
+        <reference name="head">
+            <action method="addJs"><script>jQuery/jquery.tinycarousel.min.js</script></action>
+        </reference>
         <reference name="left">
             <block type="core/template" name="left.permanent.callout" template="callouts/left_col.phtml">
                 <action method="setImgSrc"><src>images/media/col_left_callout.jpg</src></action>
@@ -78,9 +81,7 @@ Category default layout
             </block>
         </reference>
         <reference name="before_footer">
-           <block type="catalog/product_list" name="featured" template="catalog/product/featured_list.phtml">
-               <action method="setCategoryId"><category_id>3</category_id></action>
-           </block>
+           <block type="softsscatalog/product_featured" name="featured" template="catalog/product/featured_list.phtml" />
         </reference>
     </catalog_category_default>
 

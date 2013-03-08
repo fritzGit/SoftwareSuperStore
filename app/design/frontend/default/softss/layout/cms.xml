@@ -46,9 +46,7 @@ Default layout, loads most of the pages
 
                 <block type="softsscatalog/category_menu" name="home.catalog.category.menu" template="catalog/category/menu.phtml" />
 
-                <block type="catalog/product_list" name="featured" template="catalog/product/featured_list.phtml">
-                   <action method="setCategoryId"><category_id>3</category_id></action>
-                </block>
+                <block type="softsscatalog/product_featured" name="featured" template="catalog/product/featured_list.phtml" />
 
                 <block type="catalog/product_new" name="home.catalog.product.new" alias="latest_product_homepage" template="catalog/product/list/latest.phtml">
                    <action method="setProductsCount"><count>8</count></action>

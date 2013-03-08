@@ -14,7 +14,7 @@
  *
  *
  * */
-class SOFTSS_Catalog_Block_Product_List extends Mage_Catalog_Block_Product_List{
+class SOFTSS_Catalog_Block_Product_List extends Mage_Catalog_Block_Product_List {
 
     /**
      * Need use as _prepareLayout - but problem in declaring collection from
