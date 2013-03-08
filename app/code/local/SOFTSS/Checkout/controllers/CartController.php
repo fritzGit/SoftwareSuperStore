@@ -29,7 +29,6 @@ class SOFTSS_Checkout_CartController extends Mage_Checkout_CartController {
              * Check product availability
              */
             if (!$product) {
-                Mage::log('Unable to find Product ID');
                 $this->_goBack();
                 return;
             }
