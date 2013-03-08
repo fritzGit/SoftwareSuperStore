@@ -111,6 +111,9 @@
             success: function(response) {
                 $j('#ajax_add_item_container').html(response.additemhtml);
                 $j('#ajax_add_item_container').fadeIn();
+                if($j('.shoppingcartcontent')){
+                    $j('.shoppingcartcontent').replaceWith(response.toplink);
+                }
             },
             error: function(response) {
                 $j('#overlay').hide();

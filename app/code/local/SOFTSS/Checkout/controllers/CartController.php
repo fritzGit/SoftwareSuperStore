@@ -53,14 +53,20 @@ class SOFTSS_Checkout_CartController extends Mage_Checkout_CartController {
             $response = array();
             if (!$cart->getQuote()->getHasError()){
                 $cartmessage = $this->__('%s was added to your shopping cart.', Mage::helper('core')->escapeHtml($product->getName()));
-
+                       
                 $ajaxSuccessBlockHTML = $this->getLayout()
                                         ->createBlock('softsscheckout/ajax_addtocart','addedToCart', array('cart_message'=>$cartmessage, 'product'=>$product))
                                         ->setTemplate("checkout/ajax/addedtocart.phtml")
                                         ->toHtml();
-
+                
+                $toplink = $this->getLayout()->createBlock('checkout/cart_sidebar')   
+                                        ->setTemplate("checkout/cart/header.phtml")
+                                        ->toHtml();
+                
                 $response['message']=$cartmessage;
                 $response['additemhtml']=$ajaxSuccessBlockHTML;
+                $response['toplink'] = $toplink;
+                
                 //json enconded response
                 $this->getResponse()
                         ->clearHeaders()

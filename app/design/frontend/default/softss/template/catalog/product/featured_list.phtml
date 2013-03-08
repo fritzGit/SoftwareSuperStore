@@ -74,6 +74,9 @@
                 var ajaxContainer = $j('#ajax_add_item_container');
                 ajaxContainer.html(response.additemhtml);
                 ajaxContainer.fadeIn();
+                if($j('.shoppingcartcontent')){
+                    $j('.shoppingcartcontent').replaceWith(response.toplink);
+                }
             },
             error: function(response) {
                 overlay.hide();
