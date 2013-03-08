@@ -43,11 +43,11 @@ class SOFTSS_Checkout_Block_Ajax_Addtocart extends Mage_Catalog_Block_Product_Ab
     protected function _prepareRelatedProducts($product)
     {
         $this->_productCollection = $product->getRelatedProductCollection()
-            ->addAttributeToSelect('required_options')
+            ->addAttributeToSelect(Mage::getSingleton('catalog/config')->getProductAttributes())
             ->setPositionOrder()
             ->addStoreFilter();
 
-        if(count($this->_productCollection) == 0)
+        if($this->_productCollection->count() == 0)
             return;
 
         if (Mage::helper('catalog')->isModuleEnabled('Mage_Checkout')) {
@@ -105,6 +105,7 @@ class SOFTSS_Checkout_Block_Ajax_Addtocart extends Mage_Catalog_Block_Product_Ab
     {
         /* @var $product Mage_Catalog_Model_Product */
         $this->_productCollection = $product->getUpSellProductCollection()
+            ->addAttributeToSelect(Mage::getSingleton('catalog/config')->getProductAttributes())
             ->setPositionOrder()
             ->addStoreFilter();
 

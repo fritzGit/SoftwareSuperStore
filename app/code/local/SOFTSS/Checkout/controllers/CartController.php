@@ -23,16 +23,21 @@ class SOFTSS_Checkout_CartController extends Mage_Checkout_CartController {
             }
 
             $product = $this->_initProduct();
+            $related = $this->getRequest()->getParam('related_product');
 
             /**
              * Check product availability
              */
             if (!$product) {
+                Mage::log('Unable to find Product ID');
                 $this->_goBack();
                 return;
             }
 
             $cart->addProduct($product, $params);
+            if (!empty($related)) {
+                $cart->addProductsByIds(explode(',', $related));
+            }
 
             $cart->save();
 
@@ -47,7 +52,6 @@ class SOFTSS_Checkout_CartController extends Mage_Checkout_CartController {
 
             //ajax response
             $response = array();
-
             if (!$cart->getQuote()->getHasError()){
                 $cartmessage = $this->__('%s was added to your shopping cart.', Mage::helper('core')->escapeHtml($product->getName()));
 
@@ -59,7 +63,10 @@ class SOFTSS_Checkout_CartController extends Mage_Checkout_CartController {
                 $response['message']=$cartmessage;
                 $response['additemhtml']=$ajaxSuccessBlockHTML;
                 //json enconded response
-                $this->getResponse()->setBody(Zend_Json::encode($response));
+                $this->getResponse()
+                        ->clearHeaders()
+                        ->setHeader('Content-Type', 'text/xml; charset=UTF-8')
+                        ->setBody(Zend_Json::encode($response));
             }
         } catch (Mage_Core_Exception $e) {
 
@@ -78,7 +85,6 @@ class SOFTSS_Checkout_CartController extends Mage_Checkout_CartController {
 
             Mage::logException($e);
         } catch (Exception $e) {
-
             Mage::logException($e);
 
             $response['error']=$this->__('Cannot add the item to shopping cart.');
