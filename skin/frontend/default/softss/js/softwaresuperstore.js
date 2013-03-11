@@ -3,6 +3,12 @@
  */
 
 //<![CDATA[
+j(document).ready(function(){
+    $j("#overlay").click(function() {
+        hideOverlay();
+    });
+});
+
 function clearText(field){
     if(field.defaultValue == field.value){
         field.value = "";
@@ -47,6 +53,11 @@ function addProduct(proudctID, quantity)
             alert("Error: Product was not added to cart.");
         }
     });
+}
+
+function sortbyChange(selectObj){
+    if(selectObj.value!="sortby")
+        setLocation(selectObj.value);
 }
 
 //]]>
