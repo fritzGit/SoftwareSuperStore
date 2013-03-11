@@ -34,6 +34,8 @@ function addProduct(proudctID, quantity)
             overlay.html('');
             var ajaxContainer = $j('#ajax_add_item_container');
             ajaxContainer.html(response.additemhtml);
+            ajaxContainer.css("top", ( $j(window).height() - ajaxContainer.height() ) / 2+$j(window).scrollTop() + "px");
+            ajaxContainer.css("left", ( $j(window).width() - ajaxContainer.width() ) / 2+$j(window).scrollLeft() + "px");
             ajaxContainer.fadeIn();
             var shoppingcart = $j('.shoppingcartcontent');
             if(shoppingcart.length){

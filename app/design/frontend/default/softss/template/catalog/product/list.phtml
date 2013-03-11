@@ -72,12 +72,14 @@
                     <?php echo $this->getPriceHtml($_product, true) ?>
                 </div>
 
+                <?php if($_product->isSaleable()): ?>
                 <div class="cartBubble" onclick="addProduct('<?php echo $_product->getId() ?>',1)"></div>
-
-                <div class="actions"><?php if($_product->isSaleable()): ?>In stock - 24 + Free Ship
-                    <?php else: ?>
-                        <p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
-                    <?php endif; ?>
+                <div class="actions">
+                   <?php echo $this->__('In stock - 24 + Free Ship'); ?>
+                <?php else: ?>
+                <div class="actions">
+                    <p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
+                <?php endif; ?>
                 </div>
             </li>
         <?php if ($i%$_columnCount==0 || $i==$_collectionSize): ?>
@@ -91,41 +93,4 @@
         <?php echo $this->getChildHtml('toolbar_bottom');?>
     </div>
 </div>
-
-
-<div id="overlay"></div>
-<div id="ajax_add_item_container"></div>
-
-<script type="text/javascript">
-    //<![CDATA[
-    function addProduct(proudctID, quantity)
-    {
-        $j.ajax({
-            url: '<?php echo Mage::getUrl('checkout/cart/addAjax'); ?>',
-            data: 'product=' + proudctID + '&qty=' + quantity,
-            type: 'GET',
-            dataType: 'json',
-            beforeSend: function() {
-                $j('#overlay').html('<img id="imgloading" src="<?php echo $this->getSkinUrl('images/ajax-loader.gif') ?>" />').show();
-            },
-            success: function(response) {
-                $j('#ajax_add_item_container').html(response.additemhtml);
-                $j('#ajax_add_item_container').fadeIn();
-                if($j('.shoppingcartcontent')){
-                    $j('.shoppingcartcontent').replaceWith(response.toplink);
-                }
-            },
-            error: function(response) {
-                $j('#overlay').hide();
-                alert(response.error);
-            }
-        });
-    }
-
-    function hideOverlay(){
-        $j('#overlay').fadeOut();
-        $j('#ajax_add_item_container').fadeOut();
-    }
-    //]]>
-</script>
 <?php endif; ?>
