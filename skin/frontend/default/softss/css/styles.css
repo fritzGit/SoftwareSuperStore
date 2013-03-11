@@ -507,15 +507,41 @@ p.required { font-size:11px; text-align:right; color:#EB340A; }
 .sub-title { clear:both; padding:15px 0 0; font-size:15px; font-weight:bold; margin:0 0 6px; color:#e25203; }
 
 /* Pager */
-.pager { font-size:11px; background-color:#c8c8c8; padding:4px 8px; border-top:1px solid #e2e2e2; text-align:center; }
+.pager { font-size:11px; background-color:#c8c8c8; padding:2px 8px; text-align:center; }
 .pager .amount { float:left; margin:0; }
 .pager .limiter { float:right; }
 .pager .limiter label { vertical-align:middle; }
 .pager .limiter select { padding:0; margin:0 0 1px; vertical-align:middle; }
-.pager .pages { margin:0 140px; }
-.pager .pages ol { display:inline; }
-.pager .pages li { display:inline; margin:0 2px; }
-.pager .pages .current {}
+.pager .pages { margin:0; }
+.pager .pages ol { display:inline; float:left;}
+.pager .pages li { display:inline; margin:0 1px; }
+.pager .pages .current {
+    background:url(../images/buttons.png) no-repeat -980px -120px;
+    height: 21px;
+    width: 21px;
+    line-height: 21px;
+    display: inline-block;
+    color:#fff;
+}
+.pager .pagerButtons{float:right;}
+.pager .pagerButtons a.previous{padding-right: 10px;}
+.pager .pagerButtons a{
+    text-decoration: none;
+    font-family: MyriadPro, 'Myriad Pro', MyriadPro-Regular, 'Myriad Pro Regular', Helvetica, Arial, sans-serif;
+    height: 21px;
+    width: 10px;
+    line-height: 22px;
+    text-decoration: none;
+    display: inline-block;
+}
+.pager .pages li a{
+    background:url(../images/buttons.png) no-repeat -840px -120px;
+    display: inline-block;
+    height: 21px;
+    line-height: 21px;
+    text-decoration: none;
+    width: 21px;
+}
 
 /* Sorter */
 .sorter { font-size:11px; background:none; padding:3px 8px; }
@@ -527,9 +553,9 @@ p.required { font-size:11px; text-align:right; color:#EB340A; }
 
 /* Toolbar */
 .toolbar {}
-.toolbar .pager { padding:3px 8px; }
+.toolbar .pager { padding:2px 8px; }
 .toolbar .sorter { border-bottom:1px solid #fff; }
-.toolbar-bottom {}
+
 
 /* Data Table */
 .data-table { width:100%; border:1px solid #bebcb7; }
@@ -981,7 +1007,7 @@ h1.homepage-softwaress{color:#ff7300;padding:20px 0; font-family: 'Aller_Lt',San
 .category-image { width:100%; overflow:hidden; margin:0 0 10px; text-align:center;}
 .category-image img {}
 .category-description { margin:0 0 10px; }
-.category-products {}
+.category-products {margin-bottom: 30px;}
 
 /* View Type: Grid */
 .products-grid {position:relative; }
@@ -1003,6 +1029,7 @@ h1.homepage-softwaress{color:#ff7300;padding:20px 0; font-family: 'Aller_Lt',San
 .products-grid .availability { line-height:21px; }
 .products-grid .priceBubble{background:url("../images/buttons.png") no-repeat -280px 0; width:70px; height:22px; position: absolute; top:67px; right:9px;}
 .products-grid .priceBubble .price-box{position: absolute; top:1px; left:10px;width:40px;margin: 0;}
+.products-grid .priceBubble .regular-price{padding-top: 2px;}
 .products-grid .cartBubble{background:url("../images/buttons.png") no-repeat -140px 0; width:37px; height:41px; position: absolute; top:84px; right:10px; z-index: 10; cursor: pointer;}
 
 .products-grid .actions { position: absolute; left:10px;bottom:2px; width:160px; text-align: left; }
