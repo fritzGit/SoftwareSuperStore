@@ -546,7 +546,7 @@ p.required { font-size:11px; text-align:right; color:#EB340A; }
 /* Sorter */
 .sorter { font-size:11px; background:none; padding:3px 8px; }
 .sorter .view-mode { float:left; margin:0; }
-.sorter .sort-by {background:#e4e4e4 url(../images/buttons.png) no-repeat -140px -114px; float:right; padding-right:10px; border:1px solid #C8C8C8; width:105px; overflow: hidden;}
+.sorter .sort-by {background:#e4e4e4 url(../images/buttons.png) no-repeat -741px 4px; float:right; padding-right:10px; border:1px solid #C8C8C8; width:105px; overflow: hidden;}
 .sorter .sort-by label { vertical-align:middle; }
 .sorter .sort-by select { padding:0; margin:0 0 1px; vertical-align:middle; background: transparent; border: none; width:130px;}
 .sorter .sort-by select .selected{color: #FF7300;}
@@ -1567,6 +1567,7 @@ h1.homepage-softwaress{color:#ff7300;padding:20px 0; font-family: 'Aller_Lt',San
 #ajax-container-head{text-align: right;}
 #ajax-container-head a{cursor: pointer;}
 #ajax-cart-message{text-align: center;}
+#ajax-product-view ul li{display: inline; padding: 0 10px 0 0;}
 #ajax-container-links{padding:10px; text-align: center;}
 #ajax-container-realated-items .viewport{float: left; width: 412px; height: 250px; overflow: hidden; position: relative;}
 #ajax-container-realated-items .buttons {
