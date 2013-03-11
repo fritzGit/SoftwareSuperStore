@@ -993,7 +993,7 @@ h1.homepage-softwaress{color:#ff7300;padding:20px 0; font-family: 'Aller_Lt',San
 .block-login .block-title strong { background-image:url(../images/i_ma-info.gif); }
 .block-login .block-content { padding:5px 10px; }
 .block-login label { font-weight:bold; color:#666; }
-.block-login input.input-text { display:block; width:167px; margin:3px 0; }
+.block-login input.input-text { display:block; width:254px; margin:3px 0; }
 .block-login .actions { background:none; padding:0; margin:3px 0 0; }
 .block-login .actions button.button span { border-color:#406a83; background:#618499; }
 
@@ -1895,6 +1895,36 @@ h1.homepage-softwaress{color:#ff7300;padding:20px 0; font-family: 'Aller_Lt',San
 
 .account-create {}
 
+/* ajax mini login */
+#ajax_login_container {
+    background-color: #fff;
+    width:450px;
+    z-index: 110;
+    display: none;
+    padding: 15px 15px 0;
+    margin: auto;
+    position: absolute;
+    text-align: left;
+}
+#overlaylogin {
+    background-color: #000;
+    filter:alpha(opacity=50);
+    -moz-opacity:0.5;
+    -khtml-opacity: 0.5;
+    opacity: 0.5;
+    display:none;
+    position:fixed;
+    top:0;
+    left:0;
+    height:100%;
+    width:100%;
+    z-index: 100;
+}
+#ajax_login_container_head { text-align: right; }
+#ajax_login_container_head a { cursor: pointer; }
+#ajax_login_container .block-content { background: none; }
+#ajax_login_container .buttons-set { border-top: none; margin: 0; }
+#ajax_login_container .button-div { border-top: 1px solid #E4E4E4; }
 /* Captcha ================================================================================ */
 .captcha-note      { clear:left; padding-top:5px; }
 .captcha-image     { float:left; display:inline;  margin:0; position:relative; width:258px; }

@@ -9,9 +9,9 @@
         <div class="login-cart">
             <div class="login">
                 <?php if ($this->helper('customer')->isLoggedIn()):?>
-                    Welcome <?php echo Mage::getSingleton('customer/session')->getCustomer()->getName(); ?>
+                    <?php echo $this->__('Welcome'); ?> <?php echo Mage::getSingleton('customer/session')->getCustomer()->getName(); ?><span class="separator">|</span><a href="<?php echo Mage::helper('customer')->getLogoutUrl(); ?>" class="link-logout"><?php echo $this->__('Log Out') ?></a>
                 <?php else:?>
-                    Welcome visitor you can <a href="<?php echo $this->getUrl('customer/account/login/')?>" title="login">login</a> or <a href="<?php echo $this->getUrl('customer/account/create/')?>" title="create an account">create an account</a>
+                    <?php echo $this->__('Welcome visitor you can'); ?> <a href="#" onclick="showAjaxLoginForm();" title="login"><?php echo $this->__('login'); ?></a> <?php echo $this->__('or'); ?> <a href="<?php echo $this->getUrl('customer/account/create/')?>" title="create an account"><?php echo $this->__('create an account'); ?></a>
                 <?php endif?>
             </div>
             <div class="cartinfo">
