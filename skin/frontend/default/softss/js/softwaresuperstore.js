@@ -3,7 +3,7 @@
  */
 
 //<![CDATA[
-j(document).ready(function(){
+$j(document).ready(function(){
     $j("#overlay").click(function() {
         hideOverlay();
     });
