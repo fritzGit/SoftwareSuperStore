@@ -2409,7 +2409,7 @@ h1.homepage-softwaress{color:#ff7300;padding:20px 0; font-family: 'Aller_Lt',San
 
 /* CMS Pages */
 .cms-nav {    
-    background-color: #D3D3D3;
+    background-color: #f2f2f2;
     border: medium none;
     border-radius: 5px 5px 5px 5px;
     padding: 15px;
@@ -2445,8 +2445,14 @@ h1.homepage-softwaress{color:#ff7300;padding:20px 0; font-family: 'Aller_Lt',San
 .cms-contact-us .col2-left-layout .col-left .cms-nav ul .contact-us span,
 .cms-delivery-information .col2-left-layout .col-left .cms-nav ul .delivery-information span,
 .cms-privacy-policy .col2-left-layout .col-left .cms-nav ul .privacy-policy span,
-.cms-term-conditions .col2-left-layout .col-left .cms-nav ul .term-conditions span { background: url("../images/buttons.png") no-repeat scroll -980px -120px transparent; color: #FFF; padding:5px 5px 3px 9px; }
-
+.cms-term-conditions .col2-left-layout .col-left .cms-nav ul .term-conditions span { 
+    background: url("../images/buttons.png") no-repeat scroll -980px -120px transparent;  
+    color: #FFF;
+    display: inline-block;
+    font-family: MyriadPro,'Myriad Pro',MyriadPro-Regular,'Myriad Pro Regular',Helvetica,Arial,sans-serif;
+    padding: 0 5px 0 8px;
+    width: 9px;
+}
 .cms-about-us .col2-left-layout .col-left .cms-nav ul .about-us a,
 .cms-contact-us .col2-left-layout .col-left .cms-nav ul .contact-us a,
 .cms-delivery-information .col2-left-layout .col-left .cms-nav ul .delivery-information a,
