@@ -2423,3 +2423,55 @@ h1.homepage-softwaress{color:#ff7300;padding:20px 0; font-family: 'Aller_Lt',San
 /* ======================================================================================= */
 
 .guest-select {width:305px !important;}
+
+/* CMS Pages */
+.cms-nav {    
+    background-color: #f2f2f2;
+    border: medium none;
+    border-radius: 5px 5px 5px 5px;
+    padding: 15px;
+}
+
+.cms-nav h3 {    
+    color: #000;
+    font-family: 'Aller_Lt',sans-serif;
+    font-weight: normal;
+}
+
+.cms-nav ul { background-image: url(images/arrow.gif); background-repeat: no-repeat; background-position: 0 .5em;  padding: 10px 0; line-height: 24px; }
+.cms-nav ul li a { text-decoration: none; } 
+.cms-nav ul li span {
+    margin:5px;
+}
+
+.col2-left-layout .col-left .cms-nav ul li span { padding:5px 5px 3px 9px; }
+
+.cms-about-us .col2-left-layout .col-main .page-title,
+.cms-contact-us .col2-left-layout .col-main .page-title,
+.cms-delivery-information .col2-left-layout .col-main .page-title,
+.cms-privacy-policy .col2-left-layout .col-main .page-title,
+.cms-term-conditions .col2-left-layout .col-main .page-title { margin-left:45px; overflow:hidden; border-bottom:1px solid #FF7300; }
+
+.cms-about-us .col2-left-layout .col-main .std,
+.cms-contact-us .col2-left-layout .col-main .std,
+.cms-delivery-information .col2-left-layout .col-main .std,
+.cms-privacy-policy .col2-left-layout .col-main .std, 
+.cms-term-conditions .col2-left-layout .col-main .std { margin-left:45px; }
+
+.cms-about-us .col2-left-layout .col-left .cms-nav ul .about-us span,
+.cms-contact-us .col2-left-layout .col-left .cms-nav ul .contact-us span,
+.cms-delivery-information .col2-left-layout .col-left .cms-nav ul .delivery-information span,
+.cms-privacy-policy .col2-left-layout .col-left .cms-nav ul .privacy-policy span,
+.cms-term-conditions .col2-left-layout .col-left .cms-nav ul .term-conditions span { 
+    background: url("../images/buttons.png") no-repeat scroll -980px -120px transparent;  
+    color: #FFF;
+    display: inline-block;
+    font-family: MyriadPro,'Myriad Pro',MyriadPro-Regular,'Myriad Pro Regular',Helvetica,Arial,sans-serif;
+    padding: 0 5px 0 8px;
+    width: 9px;
+}
+.cms-about-us .col2-left-layout .col-left .cms-nav ul .about-us a,
+.cms-contact-us .col2-left-layout .col-left .cms-nav ul .contact-us a,
+.cms-delivery-information .col2-left-layout .col-left .cms-nav ul .delivery-information a,
+.cms-privacy-policy .col2-left-layout .col-left .cms-nav ul .privacy-policy a,
+.cms-term-conditions .col2-left-layout .col-left .cms-nav ul .term-conditions a { color: #FF7300; }
