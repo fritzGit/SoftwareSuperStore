@@ -159,7 +159,7 @@ Product view
         <label>Catalog Product View (Any)</label>
         <!-- Mage_Catalog -->
         <reference name="root">
-            <action method="setTemplate"><template>page/2columns-right.phtml</template></action>
+            <action method="setTemplate"><template>page/1column.phtml</template></action>
         </reference>
         <reference name="head">
             <action method="addJs"><script>varien/product.js</script></action>
@@ -200,6 +200,23 @@ Product view
 
                 <block type="core/text_list" name="product.info.extrahint" as="extrahint" translate="label">
                     <label>Product View Extra Hint</label>
+                </block>
+
+                <block type="catalog/product_view_tabs" name="product.info.tabs" as="info_tabs" template="catalog/product/view/tabs.phtml" >
+                    <action method="addTab" translate="title" module="catalog">
+                        <alias>description</alias>
+                        <title>Product Description</title>
+                        <block>catalog/product_view_description</block>
+                        <template>catalog/product/view/description.phtml</template>
+                    </action>
+                    <action method="addTab" translate="title" module="review">
+                        <alias>reviews</alias>
+                        <title>Customer rating</title>
+                        <block>review/product_view_list</block>
+                        <template>review/product/view/list.phtml</template>
+                    </action>
+
+
                 </block>
 
                 <block type="catalog/product_view" name="product.info.options.wrapper" as="product_options_wrapper" template="catalog/product/view/options/wrapper.phtml" translate="label">

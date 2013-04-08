@@ -1,0 +1,46 @@
+<?php $_product = $this->getProduct(); ?>
+<?php $buttonTitle = $this->__('Add to Cart'); ?>
+<?php if($_product->isSaleable()): ?>
+    <div class="add-to-cart">
+        <?php if(!$_product->isGrouped()): ?>
+        <div id="qty_box">
+            <div class="qty_minus"></div>
+            <div class="qty_amount">1<br><?php echo $this->__('Piece') ?></div>
+            <div class="qty_plus"></div>
+        </div>
+        <input type="hidden" name="qty" id="qty" value="<?php echo $this->getProductDefaultQty() * 1 ?>" />
+        <?php endif; ?>
+        <button type="button" title="<?php echo $buttonTitle ?>" class="button btn-cart" onclick="productAddToCartForm.submit(this)"><span><span><?php echo $buttonTitle ?></span></span></button>
+        <?php echo $this->getChildHtml('', true, true) ?>
+    </div>
+<script type="text/javascript">
+        $j(function(){
+            var qty = parseInt ( $j('#qty').val() );
+            var txt = "<br /><?php echo $this->__('Piece') ?>";
+            var max = "101";
+            var qtyEle = $j('#qty');
+            var amount = $j('.qty_amount');
+            var qtyminus = $j('.qty_minus' );
+            var qtyplus = $j('.qty_plus' );
+
+            qtyminus.click( function() {
+                if( qty > 1 ) {
+                    qty -= 1;
+
+                    amount.html( qty + txt );
+                    qtyEle.val(qty);
+                }
+            });
+
+            qtyplus.click( function() {
+                if( max != -1 && qty < max ) {
+                    qty += 1;
+
+                    amount.html( qty + txt );
+                    qtyEle.val(qty);
+                }
+
+            });
+        });
+</script>
+<?php endif; ?>

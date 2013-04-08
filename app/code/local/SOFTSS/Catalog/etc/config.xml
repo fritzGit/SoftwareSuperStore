@@ -28,5 +28,9 @@
                 </setup>
             </softsscatalog_setup>
         </resources>
+
+        <currency type="GBP">
+				<symbol>GB$</symbol>
+			</currency>
     </global>
 </config>

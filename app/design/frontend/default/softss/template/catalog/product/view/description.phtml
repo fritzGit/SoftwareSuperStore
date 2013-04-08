@@ -1,0 +1,24 @@
+<?php
+/**
+ * Product description template
+ *
+ * @see Mage_Catalog_Block_Product_View_Description
+ */
+?>
+<?php $_description = $this->getProduct()->getDescription(); ?>
+<?php if ($_description): ?>
+    <h2><?php echo $this->__('Details') ?></h2>
+    <div class="left">
+        <div class="std">
+            <?php echo $this->helper('catalog/output')->productAttribute($this->getProduct(), $_description, 'description') ?>
+        </div>
+    </div>
+    <div class="right">
+        <div class="socialinks">
+
+        </div>
+        <ul class="product-specs">
+            <li></li>
+        </ul>
+    </div>
+<?php endif; ?>
