@@ -35,5 +35,34 @@ class SOFTSS_Base_Helper_Data extends Mage_Core_Helper_Abstract
 
         return $string;
     }
+
+    /**
+    * Converts elements divided by newline characters to list items
+    * @param String $text
+    * @param Array $htmlAttrs
+    */
+    function nl2li($text, array $htmlAttrs = null) {
+        if (!empty($htmlAttrs)) {
+            $attributes = array_walk($htmlAttrs, function($key, $value) {
+                return $key.' = "'.$value.'"';
+            });
+
+            $openingLi = '<li '.implode(' ', $attributes).'>';
+        }
+        else
+        {
+            $openingLi = '<li>';
+        }
+
+        $parsedText = '';
+
+        $token = strtok($text, "\n");
+        while($token !== false) {
+            $parsedText .= $openingLi.$token.'</li>'.PHP_EOL;
+            $token = strtok("\n");
+        }
+
+        return $parsedText;
+    }
 }
 ?>
