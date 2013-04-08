@@ -2433,7 +2433,7 @@ h1.homepage-softwaress{color:#ff7300;padding:20px 0; font-family: 'Aller_Lt',San
 .cms-contact-us .col2-left-layout .col-main .page-title,
 .cms-delivery-information .col2-left-layout .col-main .page-title,
 .cms-privacy-policy .col2-left-layout .col-main .page-title,
-.cms-term-conditions .col2-left-layout .col-main .page-title { margin-left:45px; overflow:hidden; border-bottom:1px solid #FF7300; }
+.cms-term-conditions .col2-left-layout .col-main .page-title { margin-left:45px; overflow:hidden; border-bottom:1px solid #FF7300; width:795px; }
 
 .cms-about-us .col2-left-layout .col-main .std,
 .cms-contact-us .col2-left-layout .col-main .std,
