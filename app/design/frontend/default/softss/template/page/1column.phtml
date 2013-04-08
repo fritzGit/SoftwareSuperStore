@@ -14,13 +14,13 @@
     <?php echo $this->getChildHtml('global_notices') ?>
     <div class="page">
         <?php echo $this->getChildHtml('header') ?>
+        <?php echo $this->getChildHtml('breadcrumbs') ?>
         <div class="main-container col1-layout">
             <?php if(!$this->getRequest()->getControllerName()=='product'): ?>
                 <?php echo $this->getChildHtml('mainteaser_content') ?>
                 <?php echo $this->getChildHtml('toplinks') ?>
             <?php endif; ?>
             <div class="main">
-                <?php echo $this->getChildHtml('breadcrumbs') ?>
                 <div class="col-main">
                     <?php echo $this->getChildHtml('global_messages') ?>
                     <?php echo $this->getChildHtml('content') ?>
