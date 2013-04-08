@@ -37,8 +37,7 @@
 
             <?php if ($_product->getShortDescription()):?>
                 <div class="short-description">
-                    <h2><?php echo $this->__('Quick Overview') ?></h2>
-                    <div class="std"><?php echo $_helper->productAttribute($_product, nl2br($_product->getShortDescription()), 'short_description') ?></div>
+                    <div class="std"><ul><?php echo $_helper->productAttribute($_product, $this->helper('softssbase')->nl2li($_product->getShortDescription()), 'short_description') ?></ul></div>
                 </div>
             <?php endif;?>
 
