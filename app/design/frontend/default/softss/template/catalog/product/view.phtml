@@ -22,15 +22,10 @@
         </div>
 
         <div class="product-shop">
-            <div class="product-name">
-                <h1><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></h1>
-            </div>
-
-            <?php echo $this->getChildHtml('product_type_data') ?>
             <?php echo $this->getTierPriceHtml() ?>
+            <?php echo $this->getChildHtml('product_type_data') ?>
 
             <hr/>
-
 
             <?php echo $this->getChildHtml('alert_urls') ?>
             <?php echo $this->getChildHtml('extrahint') ?>
