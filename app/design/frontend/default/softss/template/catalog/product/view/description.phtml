@@ -5,20 +5,62 @@
  * @see Mage_Catalog_Block_Product_View_Description
  */
 ?>
-<?php $_description = $this->getProduct()->getDescription(); ?>
+<?php $_product = $this->getProduct(); ?>
+<?php $_description = $_product->getDescription(); ?>
 <?php if ($_description): ?>
-    <h2><?php echo $this->__('Details') ?></h2>
     <div class="left">
         <div class="std">
-            <?php echo $this->helper('catalog/output')->productAttribute($this->getProduct(), $_description, 'description') ?>
+            <?php echo $this->helper('catalog/output')->productAttribute($_product, $_description, 'description') ?>
         </div>
     </div>
     <div class="right">
         <div class="socialinks">
 
+            <div class="fb-like" data-send="false" data-layout="button_count" data-width="150" data-show-faces="false" data-font="verdana"></div>
+
+            <div class="g-plusone" data-size="tall" data-annotation="inline" data-width="120"></div>
+
+            <div class="btn_twitter"><a href="https://twitter.com/share" class="twitter-share-button" data-via="twitterapi" data-lang="en">Tweet</a></div>
         </div>
         <ul class="product-specs">
-            <li></li>
+            <li><label><?php echo $this->__('Article number') ?></label><?php echo $_product->getId(); ?></li>
+            <?php if($_product->getPcType()): ?>
+            <li><label><?php echo $this->__('System requirements') ?></label><?php echo $_product->getPcType(); ?></li>
+            <?php endif; ?>
+            <?php if($_product->getManufacturer()): ?>
+            <li><label><?php echo $this->__('Manufacturer') ?></label><?php echo $_product->getAttributeText('manufacturer'); ?></li>
+            <?php endif; ?>
+            <?php if($_product->getLanguageVersion()): ?>
+            <li><label><?php echo $this->__('Language version') ?></label><?php echo $_product->getLanguageVersion(); ?></li>
+            <?php endif; ?>
+            <?php if($_product->getServicePack()): ?>
+            <li><label><?php echo $this->__('Service pack') ?></label><?php echo $_product->getServicePack(); ?></li>
+            <?php endif; ?>
         </ul>
     </div>
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+</script>
+
+<script type="text/javascript">
+  window.___gcfg = {lang: 'en-GB'};
+
+  (function() {
+    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    po.src = 'https://apis.google.com/js/plusone.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  })();
+</script>
+
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
+
 <?php endif; ?>
+

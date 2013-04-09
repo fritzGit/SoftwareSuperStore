@@ -34,7 +34,7 @@
                 <div class="priceBubble">
                     <?php echo $this->getPriceHtml($_product, true) ?>
                 </div>
-                
+
                 <?php if($_product->isSaleable()): ?>
                 <div class="cartBubble" onclick="addProduct('<?php echo $_product->getId() ?>',1)"></div>
                 <div class="actions">

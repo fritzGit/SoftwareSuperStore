@@ -124,6 +124,9 @@ Category layered navigation layout
                 </block>
             </block>
         </reference>
+        <reference name="before_footer">
+           <block type="softsscatalog/product_featured" name="featured" template="catalog/product/featured_list.phtml" />
+        </reference>
     </catalog_category_layered>
 
 <!--
