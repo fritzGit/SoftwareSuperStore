@@ -100,3 +100,4 @@ app/etc/local.xml
 /.htaccess
 /.htaccess.sample
 /nbproject
+!/lib/Zend/Locale/Data/root.xml
