@@ -11,9 +11,10 @@
 <body<?php echo $this->getBodyClass()?' class="'.$this->getBodyClass().'"':'' ?>>
 <?php echo $this->getChildHtml('after_body_start') ?>
 <div class="wrapper">
-    <?php echo $this->getChildHtml('global_notices') ?>
     <div class="page">
         <?php echo $this->getChildHtml('header') ?>
+        <?php echo $this->getChildHtml('global_messages') ?>
+        <?php echo $this->getChildHtml('global_notices') ?>
         <?php echo $this->getChildHtml('breadcrumbs') ?>
         <div class="main-container col1-layout">
             <?php if(!$this->getRequest()->getControllerName()=='product'): ?>
@@ -22,7 +23,6 @@
             <?php endif; ?>
             <div class="main">
                 <div class="col-main">
-                    <?php echo $this->getChildHtml('global_messages') ?>
                     <?php echo $this->getChildHtml('content') ?>
                 </div>
             </div>

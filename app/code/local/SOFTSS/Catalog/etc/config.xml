@@ -2,7 +2,7 @@
 <config>
     <modules>
         <SOFTSS_Catalog>
-            <version>0.1.2</version>
+            <version>0.1.3</version>
         </SOFTSS_Catalog>
     </modules>
 
@@ -12,6 +12,7 @@
             <catalog>
                 <rewrite>
                     <product_list>SOFTSS_Catalog_Block_Product_List</product_list>
+                    <product_view>SOFTSS_Catalog_Block_Product_View</product_view>
                 </rewrite>
             </catalog>
         </blocks>
@@ -28,9 +29,5 @@
                 </setup>
             </softsscatalog_setup>
         </resources>
-
-        <currency type="GBP">
-				<symbol>GB$</symbol>
-			</currency>
     </global>
 </config>

@@ -124,6 +124,9 @@ Category layered navigation layout
                 </block>
             </block>
         </reference>
+        <reference name="before_footer">
+           <block type="softsscatalog/product_featured" name="featured" template="catalog/product/featured_list.phtml" />
+        </reference>
     </catalog_category_layered>
 
 <!--
@@ -160,11 +163,7 @@ Product view
         <!-- Mage_Catalog -->
         <reference name="root">
             <action method="setTemplate"><template>page/1column.phtml</template></action>
-            <block type="softsspage/html_breadcrumbs" name="breadcrumbs" as="breadcrumbs">
-                <action method="setLabel">
-                    <label>Our Products</label>
-                </action>
-            </block>
+            <block type="softsspage/html_breadcrumbs" name="breadcrumbs" as="breadcrumbs"/>
         </reference>
         <reference name="head">
             <action method="addJs"><script>varien/product.js</script></action>
