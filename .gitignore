@@ -49,7 +49,6 @@
 /js/blank.html
 /app/Mage.php
 /app/.htaccess
-/lib/
 app/etc/local.xml.additional
 app/etc/local.xml.template
 app/etc/config.xml
@@ -101,3 +100,4 @@ app/etc/local.xml
 /.htaccess.sample
 /nbproject
 !/lib/Zend/Locale/Data/root.xml
+/lib/

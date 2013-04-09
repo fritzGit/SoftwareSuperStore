@@ -124,6 +124,7 @@ Category layered navigation layout
                 </block>
             </block>
         </reference>
+
         <reference name="before_footer">
            <block type="softsscatalog/product_featured" name="featured" template="catalog/product/featured_list.phtml" />
         </reference>
@@ -219,8 +220,6 @@ Product view
                         <block>review/product_view_list</block>
                         <template>review/product/view/list.phtml</template>
                     </action>
-
-
                 </block>
 
                 <block type="catalog/product_view" name="product.info.options.wrapper" as="product_options_wrapper" template="catalog/product/view/options/wrapper.phtml" translate="label">
