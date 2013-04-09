@@ -18,7 +18,7 @@
 /app/locale/es_ES/
 !/var/resource_config.json
 !/var/.htaccess
-!/media/
+/media/
 /skin/adminhtml/default/default/
 /app/code/core/Mage/
 /app/code/core/Zend/

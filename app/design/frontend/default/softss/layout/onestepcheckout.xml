@@ -53,6 +53,7 @@
         </reference>
         <reference name="content">
             <block type="onestepcheckout/checkout" name="onestepcheckout.checkout" template="onestepcheckout/checkout.phtml">
+                <block type="core/template" template="onestepcheckout/login_popup.phtml" name="login-popup" />
                 <block type="checkout/agreements" name="checkout.onepage.agreements" as="agreements" template="onestepcheckout/agreements.phtml"/>
                 <block type="onestepcheckout/fields" as="billing_address" name="onestepcheckout.billing.address" template="onestepcheckout/billing_fields.phtml" />
                 <block type="onestepcheckout/fields" as="shipping_address" name="onestepcheckout.shipping.address" template="onestepcheckout/shipping_fields.phtml" />
@@ -64,7 +65,6 @@
             </block>
         </reference>
         <reference name="before_body_end">
-            <block type="core/template" template="onestepcheckout/login_popup.phtml" name="login-popup" />
             <block type="core/template" as="preview" name="onestepcheckout.summary.preview" template="onestepcheckout/preview/preview.phtml" />
         </reference>
     </onestepcheckout_index_index>

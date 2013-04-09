@@ -2,8 +2,7 @@
 $_coreHelper = $this->helper('core');
 $checkoutHelper = Mage::helper('onestepcheckout/checkout');
 ?>
-
-<table class="onestepcheckout-summary">
+<table class="onestepcheckout-summary-head">
     <thead>
         <tr>
             <th class="name"><?php echo $this->__('Product'); ?></th>
@@ -11,6 +10,8 @@ $checkoutHelper = Mage::helper('onestepcheckout/checkout');
             <th class="total"><?php echo $this->__('Subtotal'); ?></th>
         </tr>
     </thead>
+</table>
+<table class="onestepcheckout-summary">
     <?php foreach($this->getItems() as $item): ?>
     <tr>
         <td class="name">
