@@ -6,7 +6,6 @@
             <?php echo $this->getChildHtml('form_fields_before')?>
             <h3><?php echo $this->__("You're reviewing:"); ?> <span><?php echo $this->htmlEscape($this->getProductInfo()->getName()) ?></span></h3>
             <?php if( $this->getRatings() && $this->getRatings()->getSize()): ?>
-                <h4><?php echo $this->__('How do you rate this product?') ?> <em class="required">*</em></h4>
                 <span id="input-message-box"></span>
 
                 <?php if( $this->getRatings() && $this->getRatings()->getSize()): ?>
@@ -68,7 +67,7 @@
                 </ul>
             </fieldset>
             <div class="buttons-set">
-                <button type="submit" title="<?php echo $this->__('Submit Review') ?>" class="button"><span><span><?php echo $this->__('Submit Review') ?></span></span></button>
+                <button type="submit" title="<?php echo $this->__('Submit Review') ?>" class="button black"><span><span><?php echo $this->__('Submit Review') ?></span></span></button>
             </div>
     </form>
     <script type="text/javascript">
