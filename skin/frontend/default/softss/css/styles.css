@@ -315,7 +315,7 @@ input.input-text:focus,select:focus,textarea:focus { background-color:#edf7fd; }
 .form-list label.required {}
 .form-list label.required em {
     float:right;
-    color: #E5620B;
+    color: #C11042;
     display: inline-block;
     font-size: 16px;
     font-weight: bold;
@@ -2167,6 +2167,7 @@ h1.homepage-softwaress{color:#ff7300;padding:20px 0; font-family: 'Aller_Lt',San
 
 
 /* My Account ============================================================================= */
+.my-account { padding-left: 15px; }
 .my-account .title-buttons .link-rss { float:none; margin:0; }
 
 /********** < Dashboard */
