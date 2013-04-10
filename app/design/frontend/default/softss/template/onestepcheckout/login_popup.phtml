@@ -25,13 +25,13 @@
                                     </div>
                                 </div>
                                 <div class="button-div">
-                                    <button id="onestepcheckout-forgot-button" type="button"><?php echo $this->__('Send password'); ?></button>
+                                    <button id="onestepcheckout-forgot-button" class="medium orange onestepcheckout-button" type="button"><span><span><?php echo $this->__('Send password'); ?></span></span></button>
                                 </div>                        
                             </li>
                         </ul>           
                     </form>
                    </div>              
-                <p style="margin-top: 10px;"><a href="javascript:void(0);" id="onestepcheckout-return-login-link"><?php echo $this->__('Return to login'); ?></a></p>
+                <p class="return-link"><a href="javascript:void(0);" id="onestepcheckout-return-login-link"><?php echo $this->__('Return to login'); ?></a></p>
                 </div>
             </div>  
             <div id="onestepcheckout-login-popup-contents-login">
@@ -51,32 +51,30 @@
                             <div class="field">
                                 <label class="required" for="id_onestepcheckout_username"><em>*</em><?php echo $this->__('Email address'); ?></label>
                                 <div class="input-box">
-                                    <input type="text" class="input-text required-entry validate-email" maxlength="255" title="<?php echo $this->__('Email address'); ?>" value="" name="onestepcheckout_username" id="id_onestepcheckout_username">
+                                    <input type="text" class="input-text required-entry validate-email" maxlength="255" title="<?php echo $this->__('Email address'); ?>" value="" name="ionestepcheckout_username" id="id_onestepcheckout_username">
                                 </div>
                             </div>
                             <div class="field">
                                 <label class="required" for="id_onestepcheckout_password"><em>*</em><?php echo $this->__('Password'); ?></label>
                                 <div class="input-box">
                                     <input type="password" class="input-text required-entry" maxlength="255" title="<?php echo $this->__('Password'); ?>" value="" name="onestepcheckout_password" id="id_onestepcheckout_password">
-                                    <p style="margin-top: 10px;"><a href="javascript:void(0);" id="onestepcheckout-forgot-password-link"><?php echo $this->__('Forgotten your password?'); ?></a></p>
-
                                 </div>
                             </div>
                             <div class="button-div">
-                                <button tabindex="102" id="onestepcheckout-login-button" type="button"><?php echo $this->__('Login'); ?></button>
-                            </div>
-
-                            </div>
+                                <button tabindex="102" class="medium orange onestepcheckout-button" id="onestepcheckout-login-button" type="button"><span><span><?php echo $this->__('Login'); ?></span></span></button>
+                            </div>                         
                         </li>
                     </ul>
                 </form>
                 </div>
+                <p class="forget-link"><a href="javascript:void(0);" id="onestepcheckout-forgot-password-link"><?php echo $this->__('Forgotten your password?'); ?></a></p>
             </div>       
     </div>
     <div class="onestepcheckout-popup-footer">&nbsp;</div>
 </div>
 
 <script>
+    
     var onestepcheckout_login_popup;
     var login_popup;
     Event.observe(window, 'load', function() {
