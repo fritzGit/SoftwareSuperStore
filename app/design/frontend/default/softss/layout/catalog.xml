@@ -189,8 +189,8 @@ Product view
                 <action method="setTierPriceTemplate"><template>catalog/product/view/tierprices.phtml</template></action>
 
                 <block type="catalog/product_list_upsell" name="product.info.upsell" as="upsell_products" template="catalog/product/list/upsell.phtml">
-                    <action method="setColumnCount"><columns>4</columns></action>
-                    <action method="setItemLimit"><type>upsell</type><limit>4</limit></action>
+                    <action method="setColumnCount"><columns>10</columns></action>
+                    <action method="setItemLimit"><type>upsell</type><limit>10</limit></action>
                 </block>
 
                 <block type="catalog/product_view_additional" name="product.info.additional" as="product_additional_data" />

@@ -1223,12 +1223,12 @@ h1.homepage-softwaress{color:#ff7300;padding:20px 0; font-family: 'Aller_Lt',San
 .add-to-box .add-to-links li { display:block !important; }
 .add-to-box .add-to-links li .separator { display:none !important; }
 
-.product-view { border:none; overflow: hidden; color:#5a5a5a;}
+.product-view { border:none; color:#5a5a5a;}
 
 .product-essential { padding:0; background:none; }
 .product-essential h2 { font:bold 13px/1.35 Arial, Helvetica, sans-serif; }
 
-.product-collateral { background:none; padding:45px 0 20px 0; }
+.product-collateral { overflow: hidden; background:none; padding:45px 0 10px 0; margin-bottom: 20px;}
 .product-collateral h2 { font-weight:bold; font-size:15px; color:#e26703; border-bottom:1px solid #e5dcc3; padding:0 0 1px; margin:0 0 15px; }
 .product-collateral .box-collateral { margin:0 0 25px; }
 
@@ -1434,15 +1434,14 @@ ul.product-specs label{width:50%; display: inline-block;}
 }
 .product-view .product-tabs-content h2 {margin: 0; font-size:20px; font-weight:bold; }
 .product-view .product-tabs-content{
-    margin: 0;
     -moz-box-shadow:0 0 3px #999;
     -webkit-box-shadow:0 0 3px #999;
     box-shadow:0 0 3px #999;
     width: 100%;
+    background-color:#fff;
 }
 .product-collateral .product-tabs-content .product-tabs-content-inner{
     position: relative;
-    background:#fff;
     position: relative;
     padding:55px 30px;
     display: inline-block;
@@ -1641,11 +1640,12 @@ ul.product-specs label{width:50%; display: inline-block;}
 }
 
 .col2-left-layout #hp-products{margin:50px auto 30px auto;}
-#hp-products { width:1024px; height: 240px; overflow:hidden; margin: 0 auto; text-align: center; display: inline-block;}
+#hp-products { width:1024px; height: 240px; margin: 0 auto; text-align: center; display: inline-block;}
 #hp-latest-products{width:772px; height:285px;overflow:hidden; float:right; text-align: center;}
 #hp-products strong, #hp-latest-products strong{float: left;color: #011A35; font-family: 'Aller_Lt',Sans-Serif; font-size: 22px; font-weight: lighter; line-height: 19px;}
 #hp-products .viewport { background-color: #fff; float: left; width: 1024px; height: 208px; overflow: hidden; position: relative; box-shadow: 6px 1px 4px 2px #C8C8C8; }
 #hp-latest-products .viewport{float: left; width: 772px; height: 250px; overflow: hidden; position: relative;}
+.product-view #hp-latest-products{margin:0 110px 20px 0;}
 #hp-products .buttons,
 #hp-latest-products .buttons,
 #ajax-container-realated-items .buttons{
@@ -1729,6 +1729,19 @@ ul.product-specs label{width:50%; display: inline-block;}
 
 #hp-latest-products .cartBubble{background:url("../images/buttons.png") no-repeat -140px 0; width:37px; height:41px; position: absolute; top:84px; right:10px; z-index: 10; cursor: pointer;}
 .carouselbuttons{float:right;height:21px; width: 50px; margin-bottom: 5px;}
+.carousellist-label{
+    background:url("../images/buttons.png") no-repeat 0 -480px;
+    color:#fff;
+    font-size: 14px;
+    height: 60px;
+    padding: 10px;
+    text-align: right;
+    width: 185px;
+    font-family: 'aller_lt',sans-serif;
+    line-height: 1.3;
+    display: inline-block;
+    margin:50px 0 0 -62px;
+}
 
 #overlay{
     background-color: #000;
