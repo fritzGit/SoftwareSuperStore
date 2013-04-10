@@ -248,6 +248,7 @@ $helper = Mage::helper('onestepcheckout/checkout');
                             <label for="id_subscribe_newsletter"><?php echo $this->__('Subscribe to our newsletter'); ?></label>
                         </div>
                                 <?php endif; ?>
+                    <p class="terms"><?php echo $this->__('Here you can learn about <strong><a href="/terms-conditions">Conditions</a></strong>, <strong><a href="/privacy-policy">Privacy Policy</a></strong> and our <strong><a href="/">Returns Policy</a></strong>.'); ?></p>
                     <p class="onestepcheckout-numbers onestepcheckout-numbers-4"><?php echo $this->__('Review your order'); ?></p>
 
                     <div class="onestepcheckout-summary">
@@ -268,6 +269,7 @@ $helper = Mage::helper('onestepcheckout/checkout');
                             <script>
                                 Event.observe(window, 'load', function() {
                                     $('onestepcheckout-coupon-add').observe('click', function(e)    {
+
 
                                         var coupon = $('id_couponcode').getValue();
                                         var couponNotice = $('coupon-notice');
