@@ -311,18 +311,18 @@ input.input-text:focus,select:focus,textarea:focus { background-color:#edf7fd; }
 /* Grouped fields */
 /*.form-list { width:535px; margin:0 auto; overflow:hidden; }*/
 .form-list li { margin:0 0 8px; }
-.form-list label { float:left; color:#000; font-weight:bold; position:relative; z-index:0; }
+.form-list label { float:left;font-weight:bold; position:relative; z-index:0; }
 .form-list label.required {}
-.form-list label.required em { 
-    float:right;  
-    color: #C11042;
+.form-list label.required em {
+    float:right;
+    color: #E5620B;
     display: inline-block;
     font-size: 16px;
     font-weight: bold;
     height: 12px;
     width: 9px;
-    top:0; 
-    right:-8px; 
+    top:0;
+    right:-8px;
 }
 .form-list li.control label { float:none; }
 .form-list li.control input.radio,
@@ -1071,7 +1071,7 @@ h1.homepage-softwaress{color:#ff7300;padding:20px 0; font-family: 'Aller_Lt',San
 /* Rating */
 .no-rating { margin:0; }
 
-.ratings { font-size:11px; line-height:1.25; margin:7px 0; }
+.ratings { line-height:1.25;  }
 .ratings strong { float:left; margin:1px 3px 0 0; }
 .ratings .rating-links { margin:0; }
 .ratings .rating-links .separator { margin:0 2px; }
@@ -1079,7 +1079,7 @@ h1.homepage-softwaress{color:#ff7300;padding:20px 0; font-family: 'Aller_Lt',San
 .ratings dd {}
 .rating-box { width:69px; height:13px; font-size:0; line-height:0; background:url(../images/bkg_rating.gif) 0 0 repeat-x; text-indent:-999em; overflow:hidden; }
 .rating-box .rating { float:left; height:13px; background:url(../images/bkg_rating.gif) 0 100% repeat-x; }
-.ratings .rating-box { float:left; margin-right:3px; }
+.ratings .rating-box { margin-bottom:3px; }
 .ratings .amount {}
 
 .ratings-table th,
@@ -1271,7 +1271,8 @@ h1.homepage-softwaress{color:#ff7300;padding:20px 0; font-family: 'Aller_Lt',San
 
 /* Product Shop */
 .product-view .product-shop { float:right; width:330px; }
-.col1-layout .product-view .product-shop { float:right; width:440px; margin-top: 60px;}
+.product-view .product-shop a{color:#5A5A5A;}
+.col1-layout .product-view .product-shop { float:right; width:440px; margin-top: 10px;}
 .col3-layout .product-view .product-shop { float:none; width:auto; }
 .product-view .product-shop .product-name { margin:0 0 5px; }
 .product-view .product-shop .product-name h1 { margin:0; font:'Aller_Rg', sans-serif; color:#FF7300;}
@@ -1283,6 +1284,7 @@ h1.homepage-softwaress{color:#ff7300;padding:20px 0; font-family: 'Aller_Lt',San
 .product-view .product-shop .add-to-links li{ display:inline; padding-right: 20px;}
 .product-view .product-shop .add-to-links li.last{padding-right: 0;}
 .product-view .product-shop .add-to-links a { color:#e5620b !important; font-weight:normal !important; text-decoration: none;}
+.col1-layout .product-view .product-shop .ratings{float:right;}
 .col1-layout .product-view .product-shop .no-rating{float:right;}
 .product-view .product-shop .short-description ul{list-style-type: none; list-style-position:inside; padding: 0px;margin: 0px;}
 .product-view .product-shop .short-description li{float:none; background: url(../images/buttons.png) -980px -180px no-repeat; padding: 2px 0 2px 25px;}

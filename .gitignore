@@ -99,6 +99,7 @@ app/etc/local.xml
 /.htaccess
 /.htaccess.sample
 /nbproject
+<<<<<<< HEAD
 
 /lib/phpseclib/
 /lib/googlecheckout/
@@ -695,3 +696,7 @@ app/etc/local.xml
 /lib/Zend/Locale/Data/ku.xml
 /lib/Zend/Locale/Data/ar_MA.xml
 /lib/Zend/Locale/Data/ms_MY.xml
+=======
+!/lib/Zend/Locale/Data/root.xml
+/lib/
+>>>>>>> 22336e5dfe352d12de537ee9a92feae1eda8f443

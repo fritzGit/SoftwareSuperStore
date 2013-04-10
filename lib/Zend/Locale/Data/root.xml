@@ -2811,7 +2811,11 @@
 				<symbol>₣</symbol>
 			</currency>
 			<currency type="GBP">
+<<<<<<< HEAD
 				<symbol>£</symbol>
+=======
+				<symbol>&lt;span&gt;£&lt;/span&gt;</symbol>
+>>>>>>> 22336e5dfe352d12de537ee9a92feae1eda8f443
 			</currency>
 			<currency type="GHC">
 				<symbol>₵</symbol>

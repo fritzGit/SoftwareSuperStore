@@ -6,7 +6,7 @@
             </div>
         <?php endif;?>
         <p class="rating-links">
-            <a href="<?php echo $this->getReviewsUrl() ?>"><?php echo $this->__('%d Review(s)', $this->getReviewsCount()) ?></a>
+            <a href="<?php echo $this->getProduct()->getProductUrl(); ?>#review-form" onclick="activateReviewTab()"><?php echo $this->__('%d Review(s)', $this->getReviewsCount()) ?></a>
             <span class="separator">|</span>
             <a href="<?php echo $this->getProduct()->getProductUrl(); ?>#review-form" onclick="activateReviewTab()"><?php echo $this->__('Add Your Review') ?></a>
         </p>

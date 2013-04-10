@@ -14,12 +14,5 @@
         </helpers>
 
 
-        <numbers>
-            <currencies>
-                <currency type="GBP">
-                        <symbol>&lt;span&gt;£&lt;/span&gt;</symbol>
-                </currency>
-            </currencies>
-        </numbers>
     </global>
 </config>
