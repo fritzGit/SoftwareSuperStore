@@ -590,8 +590,8 @@ p.required { font-size:11px; text-align:right; color:#EB340A; }
 
 /* Data Table */
 .data-table { width:100%; border:1px solid #bebcb7; }
-.data-table .odd  { background:#f8f7f5 }
-.data-table .even { background:#eeeded; }
+.data-table .odd  { background:#fff; }
+.data-table .even { background:#fff; }
 /*.data-table tr.odd:hover,
 .data-table tr.even:hover { background:#ebf1f6; }*/
 .data-table td.last,
@@ -605,7 +605,6 @@ p.required { font-size:11px; text-align:right; color:#EB340A; }
 .data-table thead th.wrap { white-space:normal; }
 .data-table thead th a,
 .data-table thead th a:hover { color:#fff; }
-.data-table thead th { background:url(../images/bkg_th.gif) repeat-x 0 100% #d9e5ee; }
 .data-table thead th .tax-flag { font-size:11px; white-space:nowrap; }
 
 .data-table tfoot { border-bottom:1px solid #d9dde3; }
@@ -615,10 +614,10 @@ p.required { font-size:11px; text-align:right; color:#EB340A; }
 .data-table tfoot strong { font-size:16px; }
 
 .data-table tbody th,
-.data-table tbody td { border-bottom:1px solid #d9dde3; }
+.data-table tbody td { border-bottom:none; }
 /* Bundle products tables */
-.data-table tbody.odd tr { background:#f8f7f5 !important; }
-.data-table tbody.even tr { background:#f6f6f6 !important; }
+.data-table tbody.odd tr { background:#fff !important; }
+.data-table tbody.even tr { background:#fff !important; }
 .data-table tbody.odd tr td,
 .data-table tbody.even tr td { border-bottom:0; }
 .data-table tbody.odd tr.border td,
@@ -905,16 +904,15 @@ h1.homepage-softwaress{color:#ff7300;padding:20px 0; font-family: 'Aller_Lt',San
     border-radius: 5px 5px 5px 5px;
     padding: 8px;
 }
-.block-account .block-title { font-family: 'Aller_Lt',sans-serif;  font-size:16px; color:#000; padding:3px 10px; }
+.block-account .block-title { font-size:22px; font-family: MyriadPro,'Myriad Pro',MyriadPro-Regular,'Myriad Pro Regular',Helvetica,Arial,sans-serif; color:#000; padding:3px 10px; }
 .block-account .block-content { padding:7px 0px; border:none; background:none; }
 .block-account .block-content ul { line-height: 24px; }
 .block-account .block-content li span {
     margin: 5px;
     padding: 5px 5px 3px 9px;
 }
-.block-account .block-content li.current span {
-    background: url("../images/buttons.png") no-repeat scroll -980px -120px transparent;
-    color: #FFFFFF;
+.block-account .block-content li.current span { 
+    background: url("../images/buttons.png") no-repeat scroll -840px -179px transparent;
     display: inline-block;
     font-family: MyriadPro,'Myriad Pro',MyriadPro-Regular,'Myriad Pro Regular',Helvetica,Arial,sans-serif;
     padding: 0 5px 0 8px;
@@ -981,7 +979,7 @@ h1.homepage-softwaress{color:#ff7300;padding:20px 0; font-family: 'Aller_Lt',San
     padding: 8px;
 }
 .block-compare .block-content { background:none; }
-.block-compare .block-title { color: #000000; font-family: 'Aller_Lt',sans-serif; font-size: 16px; padding: 3px 10px; }
+.block-compare .block-title { color: #000000; font-size: 18px; font-family: MyriadPro,'Myriad Pro',MyriadPro-Regular,'Myriad Pro Regular',Helvetica,Arial,sans-serif; padding: 3px 10px; }
 .block-compare button.button span { border-color:#406a83; background:#618499; }
 .page-popup .link-print { background:url(../images/i_print.gif) 0 2px no-repeat; padding:2px 0 2px 25px; font-weight:bold; color:#1e7ec8; }
 .compare-table { border:0; }
@@ -2365,34 +2363,95 @@ ul.product-specs label{width:50%; display: inline-block;}
 
 
 /* My Account ============================================================================= */
+.customer-account-index .main-container { background: #FFF; }
 .my-account { font-family: 'aller_lt',sans-serif; padding-left: 15px; }
 .my-account .title-buttons .link-rss { float:none; margin:0; }
+.my-account .page-title { font-family: MyriadPro,'Myriad Pro',MyriadPro-Regular,'Myriad Pro Regular',Helvetica,Arial,sans-serif; padding-bottom:20px; }
+.my-account .page-title h1 { font-size:34px; }
 
 /********** < Dashboard */
 .dashboard .welcome-msg { margin:0 8em 1.5em 0; }
 .dashboard .welcome-msg p { margin:0; }
+.dashboard .welcome-msg .hello { font-size:18px; padding-bottom:15px; }
 .dashboard .col2-set { margin:0 0 15px; }
 
 /* General Box */
-.box-account { background:#fff url(../images/bkg_account_box.gif) 0 0 repeat-x; border:1px solid #ccc; border-color:#ccc #999 #999 #ccc; padding:15px; margin: 0 0 20px; }
-.box-account .box-head { border-bottom:1px solid #d9dde3; margin:0 0 10px; text-align:right; }
-.box-account .box-head h2 { float:left; margin:0; font-size:13px; font-weight:bold; text-transform:uppercase; background-position:0 0; background-repeat:no-repeat; padding-left:21px; color:#e65505; }
+.box-account { margin: 0 0 20px; }
+.box-account .box-head { text-align:right; padding-bottom: 5px;  border-bottom: 1px solid #CCCCCC; margin-bottom: 25px; }
+.box-account .box-head h2 { float:left; margin:0; font-size:18px; font-weight:bold; color:#000; }
 
-.dashboard .box .box-title { background:url(../images/bkg_divider1.gif) 0 100% repeat-x; padding:0 0 2px; margin:0 0 8px; text-align:right; }
+.dashboard .box .box-title { background:url(../images/bkg_divider1.gif) 0 100% repeat-x; float:right; padding:0 0 2px; margin:0 0 8px; text-align:right; }
 .dashboard .box .box-title h3,
 .dashboard .box .box-title h4 { float:left; font-size:13px; font-weight:bold; margin:0; }
+.dashboard .box .box-title .edit, .dashboard .box .box-content .edit {   
+   background: url("../images/buttons.png") no-repeat scroll -835px -237px transparent;
+    color: #EA7900;
+    display: inline-block;
+    height: 22px;
+    text-decoration: none;
+    width: 40px; 
+}
+.dashboard .box .box-content .edit {   
+    float:right;
+    padding-left: 18px;
+    width:20px;
+}
+.dashboard .box .change, .dashboard .manage  { 
+    background-color: #000000;
+    border: medium none;
+    border-radius: 5px 5px 5px 5px;
+    color: #FFFFFF !important;
+    font-weight: normal;
+    padding: 7px;
+    text-decoration: none;
+}
+.dashboard .data-table { border:none; }
+.dashboard .data-table tr { height:30px; }
+.dashboard .data-table td { padding: 3px 15px; }
+.dashboard .data-table .link-reorder { font-weight:bold; color:#fff !important;  background-color: #000; border: medium none; border-radius: 5px 5px 5px 5px; font-weight: normal; padding: 7px; text-decoration: none;}
+.dashboard .data-table .link-view {   
+    background: url("../images/buttons.png") no-repeat scroll -975px -237px transparent;
+    display: inline-block;
+    height: 22px;
+    width: 30px; 
+}
 
 /* Block: Recent Orders */
 .dashboard .box-recent .box-head h2 { background-image:url(../images/i_folder-table.gif); }
+.dashboard .box-recent #my-orders-list-head {
+    background-color: #F2F2F2;
+    font-style: italic;
+    height:30px;
+    border: medium none;
+    border-radius: 5px 5px 5px 5px;
+    margin-bottom: 20px;
+}
+.dashboard .box-recent #my-orders-list-head ul { padding:5px; }
+.dashboard .box-recent #my-orders-list-head ul li {    
+    display: inline;
+    font-weight:bold;
+    list-style-type: none;
+}
+.dashboard .box-recent #my-orders-list-head ul #ordernr { padding: 0 45px 0 15px; }
+.dashboard .box-recent #my-orders-list-head ul #date { padding-right: 40px; }
+.dashboard .box-recent #my-orders-list-head ul #ship-to { padding-right: 305px; }
+.dashboard .box-recent #my-orders-list-head ul #amount { padding-right: 10px; }
 
-/* Block: Account Information */
+    /* Block: Account Information */
 .dashboard .box-info .box-head h2 { background-image:url(../images/i_ma-info.gif); }
 .dashboard .box-info h4 { font-size:11px; font-weight:bold; text-transform:uppercase; }
-
+.dashboard .box-info .box-content h2 { 
+    border-bottom: 1px solid #CCCCCC; 
+    color: #000000;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 25px;
+    padding-bottom: 5px;
+}
 /* Block: Reviews */
 .dashboard .box-reviews .box-head h2 { background-image:url(../images/i_ma-reviews.gif); }
-.dashboard .box-reviews .number { float:left; font-size:10px; font-weight:bold; line-height:1; color:#fff; margin:3px -20px 0 0; padding:2px 3px; background:#0a263c; }
-.dashboard .box-reviews .details { margin-left:20px; }
+.dashboard .box-reviews .number { float:left; font-size:10px; font-weight:bold; line-height:1; color:#fff; margin:3px 10px 0 0; background: url("../images/buttons.png") no-repeat scroll -840px -179px transparent; padding:7px; width:30px; }
+.dashboard .box-reviews .details { margin-left:20px; padding-top:5px; }
 .dashboard .box-reviews li.item { margin:0 0 7px; }
 .dashboard .box-reviews li.item.last { margin:0; }
 .dashboard .box-reviews .ratings { margin:7px 0 0; }
@@ -2674,8 +2733,8 @@ ul.product-specs label{width:50%; display: inline-block;}
 .cms-delivery-information .col2-left-layout .col-left .cms-nav ul .delivery-information span,
 .cms-privacy-policy .col2-left-layout .col-left .cms-nav ul .privacy-policy span,
 .cms-term-conditions .col2-left-layout .col-left .cms-nav ul .term-conditions span {
-    background: url("../images/buttons.png") no-repeat scroll -980px -120px transparent;
-    color: #FFF;
+    background: url("../images/buttons.png") no-repeat scroll -840px -179px transparent;
+    color: #FF7300;
     display: inline-block;
     font-family: MyriadPro,'Myriad Pro',MyriadPro-Regular,'Myriad Pro Regular',Helvetica,Arial,sans-serif;
     padding: 0 5px 0 8px;
