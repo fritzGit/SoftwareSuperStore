@@ -4,18 +4,24 @@
     $_basehelper = Mage::helper('softssbase');
     $cartproduct = $this->getProduct();
 ?>
-<div id="ajax-container-head"><a onclick="hideOverlay()">close</a></div>
-<div id="ajax-cart-message"><?php echo $this->cart_message; ?></div>
+<div id="ajax-container-head">
+    <div id="ajax-cart-message"><?php echo $this->cart_message; ?></div>
+    <a onclick="hideOverlay()" class="close">X</a>
+</div>
+<div class="clear"></div>
 <div id="ajax-product-view">
     <ul>
         <li><img src="<?php echo $this->helper('catalog/image')->init($cartproduct, 'small_image')->resize(80); ?>" width="80" height="80" alt="<?php echo $this->stripTags($this->getImageLabel($cartproduct, 'small_image'), null, true) ?>" /></li>
-        <li><?php echo $_helper->productAttribute($cartproduct, $cartproduct->getName(), 'name');?></li>
-        <li><?php echo $cartproduct->getPriceHtml($_product, true)  #$cartproduct->getPrice() ?></li>
+        <li>
+            <?php echo $_helper->productAttribute($cartproduct, $cartproduct->getName(), 'name');?><br/>
+            <span><?php echo $this->__('Article number');?> <?php echo $cartproduct->getId();?></span>
+        </li>
+        <li><?php echo $cartproduct->getFinalPrice();  #$cartproduct->getPrice() ?></li>
     </ul>
 </div>
 <div id="ajax-container-links">
-    <button type="button" title="<?php echo $this->__('Continue Shopping') ?>" class="button btn-continue" onclick="hideOverlay()"><span><span><?php echo $this->__('Continue Shopping') ?></span></span></button>
-    <button type="button" title="<?php echo $this->__('View Cart') ?>" class="button btn-continue" onclick="setLocation('<?php echo Mage::helper('checkout/cart')->getCartUrl() ?>')"><span><span><?php echo $this->__('View Cart') ?></span></span></button>
+    <button type="button" title="<?php echo $this->__('Continue Shopping') ?>" class="button btn-continue black" onclick="hideOverlay()"><span><span><?php echo $this->__('Continue Shopping') ?></span></span></button>
+    <button type="button" title="<?php echo $this->__('View Cart') ?>" class="button btn-continue black" onclick="setLocation('<?php echo Mage::helper('checkout/cart')->getCartUrl() ?>')"><span><span><?php echo $this->__('View Cart') ?></span></span></button>
 </div>
 <?php if($collection->count()>0): ?>
 <div id="ajax-container-realated-items">
