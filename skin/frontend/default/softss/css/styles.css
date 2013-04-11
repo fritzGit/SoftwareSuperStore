@@ -911,7 +911,7 @@ h1.homepage-softwaress{color:#ff7300;padding:20px 0; font-family: 'Aller_Lt',San
     margin: 5px;
     padding: 5px 5px 3px 9px;
 }
-.block-account .block-content li.current span { 
+.block-account .block-content li.current span {
     background: url("../images/buttons.png") no-repeat scroll -840px -179px transparent;
     display: inline-block;
     font-family: MyriadPro,'Myriad Pro',MyriadPro-Regular,'Myriad Pro Regular',Helvetica,Arial,sans-serif;
@@ -2363,11 +2363,13 @@ ul.product-specs label{width:50%; display: inline-block;}
 
 
 /* My Account ============================================================================= */
-.customer-account-index .main-container, 
-.customer-address-index .main-container { background: #FFF; }
-.my-account { font-family: 'aller_lt',sans-serif; padding-left: 15px; }
+.customer-account-index .main-container,
+.customer-address-index .main-container,
+.review-customer-index .main-container,
+.review-customer-view .main-container{ background: #FFF; }
+.my-account { font-family: 'aller_lt',sans-serif; padding-left: 50px; }
 .my-account .title-buttons .link-rss { float:none; margin:0; }
-.my-account .page-title { font-family: MyriadPro,'Myriad Pro',MyriadPro-Regular,'Myriad Pro Regular',Helvetica,Arial,sans-serif; padding-bottom:20px; }
+.my-account .page-title { font-family: MyriadPro,'Myriad Pro',MyriadPro-Regular,'Myriad Pro Regular',Helvetica,Arial,sans-serif; padding-bottom:10px; }
 .my-account .page-title h1 { font-size:34px; }
 .my-account .addresses-list h2 { color:#000; }
 /********** < Dashboard */
@@ -2384,20 +2386,20 @@ ul.product-specs label{width:50%; display: inline-block;}
 .dashboard .box .box-title { background:url(../images/bkg_divider1.gif) 0 100% repeat-x; float:right; padding:0 0 2px; margin:0 0 8px; text-align:right; }
 .dashboard .box .box-title h3,
 .dashboard .box .box-title h4 { float:left; font-size:13px; font-weight:bold; margin:0; }
-.dashboard .box .box-title .edit, .dashboard .box .box-content .edit {   
+.dashboard .box .box-title .edit, .dashboard .box .box-content .edit {
    background: url("../images/buttons.png") no-repeat scroll -835px -237px transparent;
     color: #EA7900;
     display: inline-block;
     height: 22px;
     text-decoration: none;
-    width: 40px; 
+    width: 40px;
 }
-.dashboard .box .box-content .edit {   
+.dashboard .box .box-content .edit {
     float:right;
     padding-left: 18px;
     width:20px;
 }
-.dashboard .box .change, .dashboard .manage  { 
+.blacklink, .dashboard .box .change, .dashboard .manage  {
     background-color: #000000;
     border: medium none;
     border-radius: 5px 5px 5px 5px;
@@ -2410,16 +2412,25 @@ ul.product-specs label{width:50%; display: inline-block;}
 .dashboard .data-table tr { height:30px; }
 .dashboard .data-table td { padding: 3px 15px; }
 .dashboard .data-table .link-reorder { font-weight:bold; color:#fff !important;  background-color: #000; border: medium none; border-radius: 5px 5px 5px 5px; font-weight: normal; padding: 7px; text-decoration: none;}
-.dashboard .data-table .link-view {   
+.dashboard .data-table .link-view {
     background: url("../images/buttons.png") no-repeat scroll -975px -237px transparent;
     display: inline-block;
     height: 22px;
-    width: 30px; 
+    width: 30px;
 }
+
+/* Block: Product reviews */
+ul.reviewlistheader, ul.reviewlist{padding:0 10px; line-height: 30px; width: 760px;;}
+ul.reviewlistheader li, ul.reviewlist li{display: inline-block; padding: 0 20px 0 0;}
+ul.reviewlistheader li.last, ul.reviewlist li.last{padding: 0; float: right;}
+ul.reviewlistheader li.date, ul.reviewlist li.date{width:5%;}
+ul.reviewlistheader li.productname,ul.reviewlist li.productname{width:30%;}
+ul.reviewlist li.productname a{ color:#EA7900; text-decoration: none;}
+ul.reviewlistheader li.review{}
 
 /* Block: Recent Orders */
 .dashboard .box-recent .box-head h2 { background-image:url(../images/i_folder-table.gif); }
-.dashboard .box-recent #my-orders-list-head {
+.dashboard .box-recent #my-orders-list-head, ul.reviewlistheader {
     background-color: #F2F2F2;
     font-style: italic;
     height:30px;
@@ -2427,8 +2438,8 @@ ul.product-specs label{width:50%; display: inline-block;}
     border-radius: 5px 5px 5px 5px;
     margin-bottom: 20px;
 }
-.dashboard .box-recent #my-orders-list-head ul { padding:5px; }
-.dashboard .box-recent #my-orders-list-head ul li {    
+.dashboard .box-recent #my-orders-list-head ul{ padding:5px; }
+.dashboard .box-recent #my-orders-list-head ul li {
     display: inline;
     font-weight:bold;
     list-style-type: none;
@@ -2438,11 +2449,11 @@ ul.product-specs label{width:50%; display: inline-block;}
 .dashboard .box-recent #my-orders-list-head ul #ship-to { padding-right: 305px; }
 .dashboard .box-recent #my-orders-list-head ul #amount { padding-right: 10px; }
 
-    /* Block: Account Information */
+/* Block: Account Information */
 .dashboard .box-info .box-head h2 { background-image:url(../images/i_ma-info.gif); }
 .dashboard .box-info h4 { font-size:11px; font-weight:bold; text-transform:uppercase; }
-.dashboard .box-info .box-content h2 { 
-    border-bottom: 1px solid #CCCCCC; 
+.dashboard .box-info .box-content h2 {
+    border-bottom: 1px solid #CCCCCC;
     color: #000000;
     font-size: 18px;
     font-weight: bold;
@@ -2455,7 +2466,7 @@ ul.product-specs label{width:50%; display: inline-block;}
 .dashboard .box-reviews .details { margin-left:20px; padding-top:5px; }
 .dashboard .box-reviews li.item { margin:0 0 7px; }
 .dashboard .box-reviews li.item.last { margin:0; }
-.dashboard .box-reviews .ratings { margin:7px 0 0; }
+.dashboard .box-reviews .ratings { margin:7px 0 0 33px; }
 
 /* Block: Tags */
 .dashboard .box-tags .box-head h2 { background-image:url(../images/i_ma-tags.gif); }
