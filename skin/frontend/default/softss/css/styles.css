@@ -590,8 +590,8 @@ p.required { font-size:11px; text-align:right; color:#EB340A; }
 
 /* Data Table */
 .data-table { width:100%; border:1px solid #bebcb7; }
-.data-table .odd  { background:#f8f7f5 }
-.data-table .even { background:#eeeded; }
+.data-table .odd  { background:#fff; }
+.data-table .even { background:#fff; }
 /*.data-table tr.odd:hover,
 .data-table tr.even:hover { background:#ebf1f6; }*/
 .data-table td.last,
@@ -605,7 +605,6 @@ p.required { font-size:11px; text-align:right; color:#EB340A; }
 .data-table thead th.wrap { white-space:normal; }
 .data-table thead th a,
 .data-table thead th a:hover { color:#fff; }
-.data-table thead th { background:url(../images/bkg_th.gif) repeat-x 0 100% #d9e5ee; }
 .data-table thead th .tax-flag { font-size:11px; white-space:nowrap; }
 
 .data-table tfoot { border-bottom:1px solid #d9dde3; }
@@ -615,10 +614,10 @@ p.required { font-size:11px; text-align:right; color:#EB340A; }
 .data-table tfoot strong { font-size:16px; }
 
 .data-table tbody th,
-.data-table tbody td { border-bottom:1px solid #d9dde3; }
+.data-table tbody td { border-bottom:none; }
 /* Bundle products tables */
-.data-table tbody.odd tr { background:#f8f7f5 !important; }
-.data-table tbody.even tr { background:#f6f6f6 !important; }
+.data-table tbody.odd tr { background:#fff !important; }
+.data-table tbody.even tr { background:#fff !important; }
 .data-table tbody.odd tr td,
 .data-table tbody.even tr td { border-bottom:0; }
 .data-table tbody.odd tr.border td,
@@ -913,8 +912,7 @@ h1.homepage-softwaress{color:#ff7300;padding:20px 0; font-family: 'Aller_Lt',San
     padding: 5px 5px 3px 9px;
 }
 .block-account .block-content li.current span { 
-    background: url("../images/buttons.png") no-repeat scroll -980px -120px transparent;
-    color: #FFFFFF;
+    background: url("../images/buttons.png") no-repeat scroll -840px -179px transparent;
     display: inline-block;
     font-family: MyriadPro,'Myriad Pro',MyriadPro-Regular,'Myriad Pro Regular',Helvetica,Arial,sans-serif;
     padding: 0 5px 0 8px;
@@ -2228,6 +2226,7 @@ ul.product-specs label{width:50%; display: inline-block;}
 
 
 /* My Account ============================================================================= */
+.customer-account-index .main-container { background: #FFF; }
 .my-account { font-family: 'aller_lt',sans-serif; padding-left: 15px; }
 .my-account .title-buttons .link-rss { float:none; margin:0; }
 .my-account .page-title { font-family: MyriadPro,'Myriad Pro',MyriadPro-Regular,'Myriad Pro Regular',Helvetica,Arial,sans-serif; padding-bottom:20px; }
@@ -2248,9 +2247,20 @@ ul.product-specs label{width:50%; display: inline-block;}
 .dashboard .box .box-title h3,
 .dashboard .box .box-title h4 { float:left; font-size:13px; font-weight:bold; margin:0; }
 .dashboard .data-table { border:none; }
+.dashboard .data-table tr { height:30px; }
+.dashboard .data-table .link-reorder { font-weight:bold; color:#fff !important;  background-color: #000; border: medium none; border-radius: 5px 5px 5px 5px; font-weight: normal; padding: 5px; text-decoration: none;}
+.dashboard .data-table .link-view { white-space:nowrap !important; }
+
 /* Block: Recent Orders */
 .dashboard .box-recent .box-head h2 { background-image:url(../images/i_folder-table.gif); }
-
+.dashboard .box-recent #my-orders-table-head {
+    background-color: #F2F2F2;
+    font-style: italic;
+    height:30px;
+    border: medium none;
+    border-radius: 5px 5px 5px 5px;
+    margin-bottom: 20px;
+}
 /* Block: Account Information */
 .dashboard .box-info .box-head h2 { background-image:url(../images/i_ma-info.gif); }
 .dashboard .box-info h4 { font-size:11px; font-weight:bold; text-transform:uppercase; }
@@ -2540,8 +2550,8 @@ ul.product-specs label{width:50%; display: inline-block;}
 .cms-delivery-information .col2-left-layout .col-left .cms-nav ul .delivery-information span,
 .cms-privacy-policy .col2-left-layout .col-left .cms-nav ul .privacy-policy span,
 .cms-term-conditions .col2-left-layout .col-left .cms-nav ul .term-conditions span {
-    background: url("../images/buttons.png") no-repeat scroll -980px -120px transparent;
-    color: #FFF;
+    background: url("../images/buttons.png") no-repeat scroll -840px -179px transparent;
+    color: #FF7300;
     display: inline-block;
     font-family: MyriadPro,'Myriad Pro',MyriadPro-Regular,'Myriad Pro Regular',Helvetica,Arial,sans-serif;
     padding: 0 5px 0 8px;
