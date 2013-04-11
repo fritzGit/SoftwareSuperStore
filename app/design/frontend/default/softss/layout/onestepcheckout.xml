@@ -42,12 +42,7 @@
 
     <onestepcheckout_index_index>
         <reference name="root">
-            <action method="setTemplate"><template>page/1column.phtml</template></action>
-            <block type="softsspage/html_breadcrumbs" name="breadcrumbs" as="breadcrumbs">
-                   <action method="setLabel">
-                       <label>Checkout</label>
-                   </action>
-            </block>    
+            <action method="setTemplate"><template>page/1column.phtml</template></action>             
             <action method="setHeaderTitle" translate="title">
                 <title>Checkout</title>
             </action>
