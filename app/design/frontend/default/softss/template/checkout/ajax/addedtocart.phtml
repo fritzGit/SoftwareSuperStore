@@ -4,19 +4,22 @@
     $_basehelper = Mage::helper('softssbase');
     $cartproduct = $this->getProduct();
 ?>
-<div id="ajax-container-head">
+<div id="ajax-container-head" class="bottom_shadow">
     <div id="ajax-cart-message"><?php echo $this->cart_message; ?></div>
     <a onclick="hideOverlay()" class="close">X</a>
 </div>
 <div class="clear"></div>
-<div id="ajax-product-view">
+<div id="ajax-product-view" class="bottom_shadow">
     <ul>
-        <li><img src="<?php echo $this->helper('catalog/image')->init($cartproduct, 'small_image')->resize(80); ?>" width="80" height="80" alt="<?php echo $this->stripTags($this->getImageLabel($cartproduct, 'small_image'), null, true) ?>" /></li>
-        <li>
+        <li><img src="<?php echo $this->helper('catalog/image')->init($cartproduct, 'small_image')->resize(76); ?>" width="76" height="76" alt="<?php echo $this->stripTags($this->getImageLabel($cartproduct, 'small_image'), null, true) ?>" /></li>
+        <li class="txt">
             <?php echo $_helper->productAttribute($cartproduct, $cartproduct->getName(), 'name');?><br/>
-            <span><?php echo $this->__('Article number');?> <?php echo $cartproduct->getId();?></span>
+            <span class="small"><?php echo $this->__('Article number');?>: <?php echo $cartproduct->getId();?></span>
         </li>
-        <li><?php echo $cartproduct->getFinalPrice();  #$cartproduct->getPrice() ?></li>
+        <li class="txt">
+            <?php echo Mage::helper('core')->currency($cartproduct->getFinalPrice(), true, false); ?><br/>
+            <span class="small"><?php echo $this->__('Quantity'); ?>: <?php echo $this->quantity; ?></span>
+        </li>
     </ul>
 </div>
 <div id="ajax-container-links">
@@ -25,8 +28,13 @@
 </div>
 <?php if($collection->count()>0): ?>
 <div id="ajax-container-realated-items">
-    <a class="buttons prev" href="#">left</a>
-    <div class="viewport">
+    <div class="otherproducttxt"><?php echo $this->__('You may also be interested in:'); ?></div>
+    <div class="carouselbuttons">
+        <a class="buttons prev" href="#">left</a>
+        <a class="buttons next" href="#">right</a>
+    </div>
+    <div class="top_shadow" style="display:inline-block">
+    <div class="viewport bottom_shadow">
         <ul class="overview">
         <?php $_collectionSize = $collection->count() ?>
         <?php $_columnCount = $this->getColumnCount(); ?>
@@ -55,11 +63,13 @@
         <?php endforeach ?>
         </ul>
     </div>
-    <a class="buttons next" href="#">right</a>
+    </div>
 </div>
 <script type="text/javascript">
     //<![CDATA[
-    $j('#ajax-container-realated-items').tinycarousel({display: 2, duration: 1000});
+    $j(document).ready(function(){
+        $j('#ajax-container-realated-items').tinycarousel({display: 1, duration: 1000});
+    });
     //]]>
 </script>
 <?php endif; ?>
