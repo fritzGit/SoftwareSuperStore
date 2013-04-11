@@ -589,7 +589,7 @@ p.required { font-size:11px; text-align:right; color:#EB340A; }
 
 
 /* Data Table */
-.data-table { width:100%; border:1px solid #bebcb7; }
+.data-table { width:100%; }
 .data-table .odd  { background:#fff; }
 .data-table .even { background:#fff; }
 /*.data-table tr.odd:hover,
@@ -2386,7 +2386,7 @@ ul.product-specs label{width:50%; display: inline-block;}
 .dashboard .box .box-title { background:url(../images/bkg_divider1.gif) 0 100% repeat-x; float:right; padding:0 0 2px; margin:0 0 8px; text-align:right; }
 .dashboard .box .box-title h3,
 .dashboard .box .box-title h4 { float:left; font-size:13px; font-weight:bold; margin:0; }
-.dashboard .box .box-title .edit, .dashboard .box .box-content .edit {
+.dashboard .box .box-title .edit, .dashboard .box .box-content .edit, .addresses-list .item .edit  {   
    background: url("../images/buttons.png") no-repeat scroll -835px -237px transparent;
     color: #EA7900;
     display: inline-block;
@@ -2394,7 +2394,7 @@ ul.product-specs label{width:50%; display: inline-block;}
     text-decoration: none;
     width: 40px;
 }
-.dashboard .box .box-content .edit {
+.dashboard .box .box-content .edit, .addresses-list .item .edit  {   
     float:right;
     padding-left: 18px;
     width:20px;
@@ -2411,8 +2411,8 @@ ul.product-specs label{width:50%; display: inline-block;}
 .dashboard .data-table { border:none; }
 .dashboard .data-table tr { height:30px; }
 .dashboard .data-table td { padding: 3px 15px; }
-.dashboard .data-table .link-reorder { font-weight:bold; color:#fff !important;  background-color: #000; border: medium none; border-radius: 5px 5px 5px 5px; font-weight: normal; padding: 7px; text-decoration: none;}
-.dashboard .data-table .link-view {
+.dashboard .data-table .link-reorder, .addresses-additional .link-remove { font-weight:bold; color:#fff !important;  background-color: #000; border: medium none; border-radius: 5px 5px 5px 5px; font-weight: normal; padding: 7px; text-decoration: none;}
+.dashboard .data-table .link-view {   
     background: url("../images/buttons.png") no-repeat scroll -975px -237px transparent;
     display: inline-block;
     height: 22px;
@@ -2480,14 +2480,21 @@ ul.reviewlistheader li.review{}
 /********** Dashboard > */
 
 /* Address Book */
-.addresses-list h2 { font-weight:bold; font-size:13px; color:#e26703; text-transform:uppercase; }
+.addresses-list h2 { 
+    border-bottom: 1px solid #CCCCCC;
+    color: #000000;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 25px;
+    padding-bottom: 5px;
+}
 .addresses-list h3 { font-weight:bold; font-size:13px; }
 .addresses-list address { margin:0 0 3px; }
 .addresses-list p { margin:0; }
 .addresses-list a { font-weight:bold; }
 .addresses-list .link-remove { color:#646464; }
 .addresses-list .separator { margin:0 3px; }
-.addresses-list li.item { padding:10px 13px; margin:0 0 10px; }
+.addresses-list li.item { margin:0 0 10px; }
 .addresses-list li.empty { background:none; border:0; padding:0; }
 .addresses-list li.empty p { font-weight:bold; }
 .addresses-list .addresses-additional li.item { background:none; border:0; padding:0; }
