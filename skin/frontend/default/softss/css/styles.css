@@ -333,7 +333,7 @@ input.input-text:focus,select:focus,textarea:focus { background-color:#edf7fd; }
 .form-list label.required {}
 .form-list label.required em {
     float:right;
-    color: #E5620B;
+    color: #C11042;
     display: inline-block;
     font-size: 16px;
     font-weight: bold;
@@ -520,7 +520,7 @@ p.required { font-size:11px; text-align:right; color:#EB340A; }
 }
 
 /* Page Heading */
-.page-title { width:100%; overflow:hidden; border-bottom:1px solid #ccc; margin:0 0 25px; }
+.page-title { width:100%; overflow:hidden; border-bottom:1px solid #ccc; margin:0 0 25px; padding-bottom: 15px; }
 .page-title h1,
 .page-title h2 { margin:0; font-size:22px; color:#0a263c; }
 .page-title .separator { margin:0 3px; }
@@ -832,7 +832,7 @@ h1.homepage-softwaress{color:#ff7300;padding:20px 0; font-family: 'Aller_Lt',San
 
 /* Sidebar =============================================================================== */
 .block { border:1px solid #c4c1bc; margin:0 0 15px; }
-.block .block-title { background:url(../images/bkg_block-title.gif) 0 0 repeat-x; border-bottom:1px solid #ddd; padding:2px 9px; }
+.block .block-title { background:url(../images/bkg_block-title.gif) 0 0 repeat-x; padding:2px 9px; }
 .block .block-title strong { display:block; font:bold 12px/16px Arial, Helvetica, sans-serif; min-height:16px; padding:1px 0 1px; text-transform:uppercase; color:#e26703; }
 .block .block-title strong span {}
 .block .block-title a { text-decoration:none !important; }
@@ -897,14 +897,32 @@ h1.homepage-softwaress{color:#ff7300;padding:20px 0; font-family: 'Aller_Lt',San
 .block-cart .mini-products-list .product-details .nobr { white-space:normal !important; }
 
 /* Block: Account */
-.block-account { border-color:#bbb; }
-.block-account .block-title { background:#fc9d36 url(../images/bkg_block-title-account.gif) 0 100% repeat-x; border:0; padding:3px 10px; }
-.block-account .block-title strong { font-size:13px; color:#fff; }
-.block-account .block-content { background:#fbfaf6; padding:7px 10px 7px; }
-.block-account .block-content li a { display:block; border-bottom:1px solid #ddd; padding:3px 0; color:#5f5d5c; text-decoration:none !important; }
-.block-account .block-content li a:hover { color:#ea7900; }
+.block-account {      
+    background-color: #F2F2F2;
+    border: medium none;
+    color:#000;
+    font-family: 'Aller_Lt', sans-serif;    
+    border-radius: 5px 5px 5px 5px;
+    padding: 8px;
+}
+.block-account .block-title { font-family: 'Aller_Lt',sans-serif;  font-size:16px; color:#000; padding:3px 10px; }
+.block-account .block-content { padding:7px 0px; border:none; background:none; }
+.block-account .block-content ul { line-height: 24px; }
+.block-account .block-content li span { 
+    margin: 5px;
+    padding: 5px 5px 3px 9px;
+}
+.block-account .block-content li.current span { 
+    background: url("../images/buttons.png") no-repeat scroll -980px -120px transparent;
+    color: #FFFFFF;
+    display: inline-block;
+    font-family: MyriadPro,'Myriad Pro',MyriadPro-Regular,'Myriad Pro Regular',Helvetica,Arial,sans-serif;
+    padding: 0 5px 0 8px;
+    width: 9px;
+}
+.block-account .block-content li a { padding:3px 0; color:#000; text-decoration:none !important; }
 .block-account .block-content li.last a { border-bottom:0; }
-.block-account .block-content li.current { border-bottom:1px solid #ddd; padding:3px 0; color:#ea7900; }
+.block-account .block-content li.current { padding:3px 0; color:#ea7900; }
 .block-account .block-content li.current.last { border-bottom:0; }
 
 /* Block: Currency Switcher */
@@ -954,7 +972,16 @@ h1.homepage-softwaress{color:#ff7300;padding:20px 0; font-family: 'Aller_Lt',San
 .block-related .product { margin-left:20px; }
 
 /* Block: Compare Products */
-.block-compare .block-title strong { background-image:url(../images/i_block-list.gif); background-position:0 1px; }
+.block-compare {
+    background-color: #F2F2F2;
+    border: medium none;
+    color:#000;
+    font-family: 'Aller_Lt', sans-serif;    
+    border-radius: 5px 5px 5px 5px;
+    padding: 8px;
+}
+.block-compare .block-content { background:none; }
+.block-compare .block-title { color: #000000; font-family: 'Aller_Lt',sans-serif; font-size: 16px; padding: 3px 10px; }
 .block-compare button.button span { border-color:#406a83; background:#618499; }
 .page-popup .link-print { background:url(../images/i_print.gif) 0 2px no-repeat; padding:2px 0 2px 25px; font-weight:bold; color:#1e7ec8; }
 .compare-table { border:0; }
@@ -2201,6 +2228,7 @@ ul.product-specs label{width:50%; display: inline-block;}
 
 
 /* My Account ============================================================================= */
+.my-account { font-family: 'aller_lt',sans-serif; padding-left: 15px; }
 .my-account .title-buttons .link-rss { float:none; margin:0; }
 
 /********** < Dashboard */
