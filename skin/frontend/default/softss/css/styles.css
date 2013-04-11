@@ -300,7 +300,19 @@ button.button {
     background:transparent;
     cursor:pointer;
 }
-button.button span { display:inline-block; border:1px solid #de5400; background:#f18200; padding:0 8px; font-family: 'Aller_rg', sans-serif; font-size: 17px; text-align:center; white-space:nowrap; color:#fff; }
+button.button span {
+    display:inline-block;
+    background:#f18200;
+    padding: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    font-family: 'Aller_rg', sans-serif;
+    font-size: 17px;
+    text-align:center;
+    white-space:nowrap;
+    color:#fff;
+}
 button.button span span { border:0; padding:0; }
 button.disabled span { border-color:#bbb !important; background:#bbb !important; }
 
@@ -309,10 +321,12 @@ button.btn-checkout span span { background-position:100% 0; padding:0 25px 0 16p
 button.btn-checkout.no-checkout span { background-position:0 100%; color:#b8baba; }
 button.btn-checkout.no-checkout span span { background-position:100% 100%; }
 
+button.button.btn-cart{background: #000 url(../images/buttons.png) -250px -467px no-repeat; padding-left: 20px;}
+button.button.btn-cart span{}
+
 button.button.black{}
 button.button.black span {
     background: #000;
-    border:1px solid #000;
     padding: 5px;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
@@ -1264,7 +1278,6 @@ h1.homepage-softwaress{color:#ff7300;padding:20px 0; font-family: 'Aller_Lt',San
 .add-to-box .add-to-cart { float:left; }
 .add-to-box .or { float:left; font-weight:bold; margin:0 7px; color:#666; }
 .add-to-box .add-to-links { float:left; margin:0; font-size:12px !important; line-height:1.25 !important; text-align:left !important; }
-.add-to-box .add-to-links li { display:block !important; }
 .add-to-box .add-to-links li .separator { display:none !important; }
 
 .product-view { border:none; color:#5a5a5a;}
@@ -2366,7 +2379,13 @@ ul.product-specs label{width:50%; display: inline-block;}
 .customer-account-index .main-container,
 .customer-address-index .main-container,
 .review-customer-index .main-container,
-.review-customer-view .main-container{ background: #FFF; }
+.review-customer-view .main-container,
+.wishlist-index-index .main-container{
+    background: #FFF;
+    min-height: 500px;
+    height:auto !important;
+    height: 500px;
+}
 .my-account { font-family: 'aller_lt',sans-serif; padding-left: 50px; }
 .my-account .title-buttons .link-rss { float:none; margin:0; }
 .my-account .page-title { font-family: MyriadPro,'Myriad Pro',MyriadPro-Regular,'Myriad Pro Regular',Helvetica,Arial,sans-serif; padding-bottom:10px; }
@@ -2386,7 +2405,7 @@ ul.product-specs label{width:50%; display: inline-block;}
 .dashboard .box .box-title { background:url(../images/bkg_divider1.gif) 0 100% repeat-x; float:right; padding:0 0 2px; margin:0 0 8px; text-align:right; }
 .dashboard .box .box-title h3,
 .dashboard .box .box-title h4 { float:left; font-size:13px; font-weight:bold; margin:0; }
-.dashboard .box .box-title .edit, .dashboard .box .box-content .edit, .addresses-list .item .edit  {   
+.dashboard .box .box-title .edit, .dashboard .box .box-content .edit, .addresses-list .item .edit  {
    background: url("../images/buttons.png") no-repeat scroll -835px -237px transparent;
     color: #EA7900;
     display: inline-block;
@@ -2394,7 +2413,7 @@ ul.product-specs label{width:50%; display: inline-block;}
     text-decoration: none;
     width: 40px;
 }
-.dashboard .box .box-content .edit, .addresses-list .item .edit  {   
+.dashboard .box .box-content .edit, .addresses-list .item .edit  {
     float:right;
     padding-left: 18px;
     width:20px;
@@ -2412,25 +2431,27 @@ ul.product-specs label{width:50%; display: inline-block;}
 .dashboard .data-table tr { height:30px; }
 .dashboard .data-table td { padding: 3px 15px; }
 .dashboard .data-table .link-reorder, .addresses-additional .link-remove { font-weight:bold; color:#fff !important;  background-color: #000; border: medium none; border-radius: 5px 5px 5px 5px; font-weight: normal; padding: 7px; text-decoration: none;}
-.dashboard .data-table .link-view {   
+.dashboard .data-table .link-view {
     background: url("../images/buttons.png") no-repeat scroll -975px -237px transparent;
     display: inline-block;
     height: 22px;
     width: 30px;
 }
 
-/* Block: Product reviews */
-ul.reviewlistheader, ul.reviewlist{padding:0 10px; line-height: 30px; width: 760px;;}
-ul.reviewlistheader li, ul.reviewlist li{display: inline-block; padding: 0 20px 0 0;}
-ul.reviewlistheader li.last, ul.reviewlist li.last{padding: 0; float: right;}
-ul.reviewlistheader li.date, ul.reviewlist li.date{width:5%;}
-ul.reviewlistheader li.productname,ul.reviewlist li.productname{width:30%;}
-ul.reviewlist li.productname a{ color:#EA7900; text-decoration: none;}
-ul.reviewlistheader li.review{}
+/* Block: Product reviews / wishlist */
+ul.accountlistheader, ul.accountlist{padding:0 10px; line-height: 30px; width: 760px; display: inline-block;}
+ul.accountlistheader li, ul.accountlist li{display: inline-block; padding: 0 20px 0 0; float:left;}
+ul.accountlistheader li.last, ul.accountlist li.last{padding: 0; float: right;}
+ul.accountlistheader li.date, ul.accountlist li.date{width:5%;}
+ul.accountlistheader li.image, ul.accountlist li.image{width:15%;}
+ul.accountlistheader li.productname,ul.accountlist li.productname{width:30%;}
+ul.accountlistheader li.productanddetails,ul.accountlist li.productanddetails{width:40%;}
+ul.accountlist li.productname a,ul.accountlist li.productanddetails a{ color:#EA7900; text-decoration: none;}
+ul.accountlistheader li.review{}
 
 /* Block: Recent Orders */
 .dashboard .box-recent .box-head h2 { background-image:url(../images/i_folder-table.gif); }
-.dashboard .box-recent #my-orders-list-head, ul.reviewlistheader {
+.dashboard .box-recent #my-orders-list-head, ul.accountlistheader {
     background-color: #F2F2F2;
     font-style: italic;
     height:30px;
@@ -2480,7 +2501,7 @@ ul.reviewlistheader li.review{}
 /********** Dashboard > */
 
 /* Address Book */
-.addresses-list h2 { 
+.addresses-list h2 {
     border-bottom: 1px solid #CCCCCC;
     color: #000000;
     font-size: 18px;

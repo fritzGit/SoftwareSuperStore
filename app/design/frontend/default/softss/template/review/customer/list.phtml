@@ -4,14 +4,14 @@
 </div>
 <?php if( $this->getCollection() && $this->count()): ?>
 
-    <ul class="reviewlistheader">
+    <ul class="accountlistheader">
         <li class="date"><?php echo $this->__('Date'); ?></li>
         <li class="productname"><?php echo $this->__('Product'); ?></li>
         <li class="review"><?php echo $this->__('Review'); ?></li>
         <li class="last">&nbsp;</li>
     </ul>
     <?php foreach ($this->getCollection() as $_review): ?>
-    <ul class="reviewlist">
+    <ul class="accountlist">
         <li class="date"><span class="nobr"><?php echo $this->dateFormat($_review->getReviewCreatedAt()); ?></span></li>
         <li class="productname"><h2 class="product-name"><a href="<?php echo $this->getProductLink() ?>id/<?php echo $_review->getEntityPkValue() ?>"><?php echo $this->htmlEscape($_review->getName()) ?></a></h2></li>
         <li>

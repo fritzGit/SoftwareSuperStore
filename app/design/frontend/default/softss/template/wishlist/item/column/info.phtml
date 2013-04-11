@@ -1,0 +1,17 @@
+<?php
+/* @var Mage_Wishlist_Model_Item $item */
+$item = $this->getItem();
+$product = $item->getProduct();
+?>
+<li class="productanddetails">
+    <h3 class="product-name"><a href="<?php echo $this->getProductUrl($item) ?>" title="<?php echo $this->escapeHtml($product->getName()) ?>"><?php echo $this->escapeHtml($product->getName()) ?></a></h3>
+    <span class="description std"><?php echo $this->escapeHtml($this->stripTags($product->getShortDescription()));?></span>
+    <textarea name="description[<?php echo $item->getWishlistItemId() ?>]" rows="3" cols="5" onfocus="focusComment(this)" onblur="focusComment(this)" title="<?php echo $this->__('Comment') ?>"><?php echo ($this->escapeHtml($item->getDescription())) ?></textarea>
+    <?php if($this->getSortedChildren()): ?>
+        <span class="item-manage">
+        <?php foreach($this->getSortedChildren() as $childName):?>
+            <?php echo $this->getChildHtml($childName, false);?>
+        <?php endforeach;?>
+        </span>
+    <?php endif; ?>
+</li>

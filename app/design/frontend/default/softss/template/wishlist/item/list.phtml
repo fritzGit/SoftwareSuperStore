@@ -1,0 +1,32 @@
+<?php
+    $columns = $this->getColumns();
+?>
+<ul class="accountlistheader">
+    <li class="image">&nbsp;</li>
+    <li class="productanddetails"><?php echo $this->__('Product details and comment'); ?></li>
+    <li><?php echo $this->__('Add to Cart'); ?></li>
+    <li class="last">&nbsp;</li>
+</ul>
+<?php if (count($this->getItems())): ?>
+    <?php foreach ($this->getItems() as $item): ?>
+        <ul id="item_<?php echo $item->getId();?>" class="accountlist">
+            <?php foreach ($columns as $column): ?>
+                <?php $column->setItem($item); echo $column->toHtml($item);?>
+            <?php endforeach; ?>
+        </ul>
+    <?php endforeach ?>
+<?php else: ?>
+    <p><?php echo $this->__('This Wishlist has no Items');?></p>
+<?php endif; ?>
+
+<?php foreach ($columns as $column): ?>
+    <?php echo $column->getAdditionalHtml();?>
+<?php endforeach; ?>
+<script type="text/javascript">
+//<![CDATA[
+
+<?php foreach ($columns as $column): ?>
+    <?php echo $column->getJs();?>
+<?php endforeach; ?>
+//]]>
+</script>
