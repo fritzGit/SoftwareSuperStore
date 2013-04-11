@@ -2253,12 +2253,13 @@ ul.product-specs label{width:50%; display: inline-block;}
 
 
 /* My Account ============================================================================= */
-.customer-account-index .main-container { background: #FFF; }
+.customer-account-index .main-container, 
+.customer-address-index .main-container { background: #FFF; }
 .my-account { font-family: 'aller_lt',sans-serif; padding-left: 15px; }
 .my-account .title-buttons .link-rss { float:none; margin:0; }
 .my-account .page-title { font-family: MyriadPro,'Myriad Pro',MyriadPro-Regular,'Myriad Pro Regular',Helvetica,Arial,sans-serif; padding-bottom:20px; }
 .my-account .page-title h1 { font-size:34px; }
-
+.my-account .addresses-list h2 { color:#000; }
 /********** < Dashboard */
 .dashboard .welcome-msg { margin:0 8em 1.5em 0; }
 .dashboard .welcome-msg p { margin:0; }
@@ -2365,7 +2366,7 @@ ul.product-specs label{width:50%; display: inline-block;}
 .addresses-list a { font-weight:bold; }
 .addresses-list .link-remove { color:#646464; }
 .addresses-list .separator { margin:0 3px; }
-.addresses-list li.item { background:#fff url(../images/bkg_account_box.gif) 0 0 repeat-x; border:1px solid #ccc; padding:10px 13px; margin:0 0 10px; }
+.addresses-list li.item { padding:10px 13px; margin:0 0 10px; }
 .addresses-list li.empty { background:none; border:0; padding:0; }
 .addresses-list li.empty p { font-weight:bold; }
 .addresses-list .addresses-additional li.item { background:none; border:0; padding:0; }
