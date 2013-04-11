@@ -2267,20 +2267,48 @@ ul.product-specs label{width:50%; display: inline-block;}
 
 /* General Box */
 .box-account { margin: 0 0 20px; }
-.box-account .box-head { text-align:right; padding-bottom: 18px;  border-bottom: 1px solid #CCCCCC; margin-bottom: 28px; }
+.box-account .box-head { text-align:right; padding-bottom: 5px;  border-bottom: 1px solid #CCCCCC; margin-bottom: 25px; }
 .box-account .box-head h2 { float:left; margin:0; font-size:18px; font-weight:bold; color:#000; }
 
-.dashboard .box .box-title { background:url(../images/bkg_divider1.gif) 0 100% repeat-x; padding:0 0 2px; margin:0 0 8px; text-align:right; }
+.dashboard .box .box-title { background:url(../images/bkg_divider1.gif) 0 100% repeat-x; float:right; padding:0 0 2px; margin:0 0 8px; text-align:right; }
 .dashboard .box .box-title h3,
 .dashboard .box .box-title h4 { float:left; font-size:13px; font-weight:bold; margin:0; }
+.dashboard .box .box-title .edit, .dashboard .box .box-content .edit {   
+   background: url("../images/buttons.png") no-repeat scroll -835px -237px transparent;
+    color: #EA7900;
+    display: inline-block;
+    height: 22px;
+    text-decoration: none;
+    width: 40px; 
+}
+.dashboard .box .box-content .edit {   
+    float:right;
+    padding-left: 18px;
+    width:20px;
+}
+.dashboard .box .change, .dashboard .manage  { 
+    background-color: #000000;
+    border: medium none;
+    border-radius: 5px 5px 5px 5px;
+    color: #FFFFFF !important;
+    font-weight: normal;
+    padding: 7px;
+    text-decoration: none;
+}
 .dashboard .data-table { border:none; }
 .dashboard .data-table tr { height:30px; }
-.dashboard .data-table .link-reorder { font-weight:bold; color:#fff !important;  background-color: #000; border: medium none; border-radius: 5px 5px 5px 5px; font-weight: normal; padding: 5px; text-decoration: none;}
-.dashboard .data-table .link-view { white-space:nowrap !important; }
+.dashboard .data-table td { padding: 3px 15px; }
+.dashboard .data-table .link-reorder { font-weight:bold; color:#fff !important;  background-color: #000; border: medium none; border-radius: 5px 5px 5px 5px; font-weight: normal; padding: 7px; text-decoration: none;}
+.dashboard .data-table .link-view {   
+    background: url("../images/buttons.png") no-repeat scroll -975px -237px transparent;
+    display: inline-block;
+    height: 22px;
+    width: 30px; 
+}
 
 /* Block: Recent Orders */
 .dashboard .box-recent .box-head h2 { background-image:url(../images/i_folder-table.gif); }
-.dashboard .box-recent #my-orders-table-head {
+.dashboard .box-recent #my-orders-list-head {
     background-color: #F2F2F2;
     font-style: italic;
     height:30px;
@@ -2288,14 +2316,32 @@ ul.product-specs label{width:50%; display: inline-block;}
     border-radius: 5px 5px 5px 5px;
     margin-bottom: 20px;
 }
-/* Block: Account Information */
+.dashboard .box-recent #my-orders-list-head ul { padding:5px; }
+.dashboard .box-recent #my-orders-list-head ul li {    
+    display: inline;
+    font-weight:bold;
+    list-style-type: none;
+}
+.dashboard .box-recent #my-orders-list-head ul #ordernr { padding: 0 45px 0 15px; }
+.dashboard .box-recent #my-orders-list-head ul #date { padding-right: 40px; }
+.dashboard .box-recent #my-orders-list-head ul #ship-to { padding-right: 305px; }
+.dashboard .box-recent #my-orders-list-head ul #amount { padding-right: 10px; }
+
+    /* Block: Account Information */
 .dashboard .box-info .box-head h2 { background-image:url(../images/i_ma-info.gif); }
 .dashboard .box-info h4 { font-size:11px; font-weight:bold; text-transform:uppercase; }
-
+.dashboard .box-info .box-content h2 { 
+    border-bottom: 1px solid #CCCCCC; 
+    color: #000000;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 25px;
+    padding-bottom: 5px;
+}
 /* Block: Reviews */
 .dashboard .box-reviews .box-head h2 { background-image:url(../images/i_ma-reviews.gif); }
-.dashboard .box-reviews .number { float:left; font-size:10px; font-weight:bold; line-height:1; color:#fff; margin:3px -20px 0 0; padding:2px 3px; background:#0a263c; }
-.dashboard .box-reviews .details { margin-left:20px; }
+.dashboard .box-reviews .number { float:left; font-size:10px; font-weight:bold; line-height:1; color:#fff; margin:3px 10px 0 0; background: url("../images/buttons.png") no-repeat scroll -840px -179px transparent; padding:7px; width:30px; }
+.dashboard .box-reviews .details { margin-left:20px; padding-top:5px; }
 .dashboard .box-reviews li.item { margin:0 0 7px; }
 .dashboard .box-reviews li.item.last { margin:0; }
 .dashboard .box-reviews .ratings { margin:7px 0 0; }

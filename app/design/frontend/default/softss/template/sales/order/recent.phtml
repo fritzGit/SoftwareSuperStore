@@ -31,24 +31,16 @@
         <?php if( sizeof($_orders->getItems()) > 0 ): ?><a href="<?php echo $this->getUrl('sales/order/history') ?>"><?php echo $this->__('View All') ?></a><?php endif; ?>
     </div>
 <?php if( sizeof($_orders->getItems()) > 0 ): ?>
-    <table class="data-table" id="my-orders-table-head">
-            <col width="1" />
-            <col width="1" />
-            <col />
-            <col width="1" />
-            <col width="1" />
-            <col width="1" />
-            <thead>
-                <tr>
-                    <th><?php echo $this->__('Order #') ?></th>
-                    <th><?php echo $this->__('Date') ?></th>
-                    <th><?php echo $this->__('Ship To') ?></th>
-                    <th><span class="nobr"><?php echo $this->__('Order Total') ?></span></th>
-                    <th><?php echo $this->__('Status') ?></th>
-                    <th>&nbsp;</th>
-                </tr>
-            </thead>
-    </table>
+    <div id="my-orders-list-head">      
+        <ul>
+            <li id="ordernr"><?php echo $this->__('Order #') ?></li>
+            <li id="date"><?php echo $this->__('Date') ?></li>
+            <li id="ship-to"><?php echo $this->__('Ship To') ?></li>
+            <li id="amount"><span class="nobr"><?php echo $this->__('Order Total') ?></span></li>
+            <li><?php echo $this->__('Status') ?></li>
+            <li>&nbsp;</li>
+        </ul>
+    </div>
     <table class="data-table" id="my-orders-table">
     <col width="1" />
     <col width="1" />
@@ -66,7 +58,7 @@
                     <td><?php echo $_order->getStatusLabel() ?></td>
                     <td class="a-center">
                         <span class="nobr">
-                        <a href="<?php echo $this->getViewUrl($_order) ?>"><span class="link-view"></span></a>
+                        <a class="link-view" href="<?php echo $this->getViewUrl($_order) ?>"></a>
                         <?php if ($this->helper('sales/reorder')->canReorder($_order)) : ?>
                             <span class="separator">|</span> <a href="<?php echo $this->getReorderUrl($_order) ?>" class="link-reorder"><?php echo $this->__('Reorder') ?></a>
                         <?php endif ?>
