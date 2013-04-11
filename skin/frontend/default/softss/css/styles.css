@@ -299,9 +299,6 @@ button.button {
     margin:0;
     background:transparent;
     cursor:pointer;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
 }
 button.button span { display:inline-block; border:1px solid #de5400; background:#f18200; padding:0 8px; font-family: 'Aller_rg', sans-serif; font-size: 17px; text-align:center; white-space:nowrap; color:#fff; }
 button.button span span { border:0; padding:0; }
@@ -313,7 +310,14 @@ button.btn-checkout.no-checkout span { background-position:0 100%; color:#b8baba
 button.btn-checkout.no-checkout span span { background-position:100% 100%; }
 
 button.button.black{}
-button.button.black span {background: #000; border:1px solid #000; padding: 5px;}
+button.button.black span {
+    background: #000;
+    border:1px solid #000;
+    padding: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
 
 p.control input.checkbox,
 p.control input.radio { margin-right:6px; }
@@ -1792,7 +1796,8 @@ ul.product-specs label{width:50%; display: inline-block;}
 
 /* ajax add to cart */
 #ajax_add_item_container{
-    background-color: #fff;
+    background: url("../images/bg.png") repeat scroll 0 0 #FFFFFF;
+    border: 1px solid #F18200;
     width:474px;
     z-index: 110;
     display: none;
@@ -1800,7 +1805,7 @@ ul.product-specs label{width:50%; display: inline-block;}
     margin: auto;
     position: absolute;
 }
-#ajax-container-head{text-align: right;}
+#ajax-container-head{text-align: left; height:50px; background-color: #fff; color: #F18200; font-weight: bold; font-family: 'Aller_Lt',sans-serif;}
 #ajax-container-head a{cursor: pointer;}
 #ajax-cart-message{text-align: center;}
 #ajax-product-view ul li{display: inline; padding: 0 10px 0 0;}
