@@ -1910,7 +1910,7 @@ ul.product-specs label{width:50%; display: inline-block;}
 
 /* Shopping Cart ========================================================================= */
 .cart .page-title { border-bottom:0; margin:0 0 12px; }
-.cart .page-title h1 { font-family: 'Aller_Lt',sans-serif; margin: 2px 0 0;}
+.cart .page-title h1 { font-family: 'Aller_Lt',sans-serif; margin: 2px 0 0; font-size: 34px; }
 
 /* ajax add to cart */
 #ajax_add_item_container{
