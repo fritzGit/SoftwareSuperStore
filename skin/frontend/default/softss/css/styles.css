@@ -897,22 +897,22 @@ h1.homepage-softwaress{color:#ff7300;padding:20px 0; font-family: 'Aller_Lt',San
 .block-cart .mini-products-list .product-details .nobr { white-space:normal !important; }
 
 /* Block: Account */
-.block-account {      
+.block-account {
     background-color: #F2F2F2;
     border: medium none;
     color:#000;
-    font-family: 'Aller_Lt', sans-serif;    
+    font-family: 'Aller_Lt', sans-serif;
     border-radius: 5px 5px 5px 5px;
     padding: 8px;
 }
 .block-account .block-title { font-family: 'Aller_Lt',sans-serif;  font-size:16px; color:#000; padding:3px 10px; }
 .block-account .block-content { padding:7px 0px; border:none; background:none; }
 .block-account .block-content ul { line-height: 24px; }
-.block-account .block-content li span { 
+.block-account .block-content li span {
     margin: 5px;
     padding: 5px 5px 3px 9px;
 }
-.block-account .block-content li.current span { 
+.block-account .block-content li.current span {
     background: url("../images/buttons.png") no-repeat scroll -980px -120px transparent;
     color: #FFFFFF;
     display: inline-block;
@@ -976,7 +976,7 @@ h1.homepage-softwaress{color:#ff7300;padding:20px 0; font-family: 'Aller_Lt',San
     background-color: #F2F2F2;
     border: medium none;
     color:#000;
-    font-family: 'Aller_Lt', sans-serif;    
+    font-family: 'Aller_Lt', sans-serif;
     border-radius: 5px 5px 5px 5px;
     padding: 8px;
 }
@@ -1825,19 +1825,46 @@ ul.product-specs label{width:50%; display: inline-block;}
 #ajax_add_item_container{
     background: url("../images/bg.png") repeat scroll 0 0 #FFFFFF;
     border: 1px solid #F18200;
-    width:474px;
+    width:660px;
+    height: 495px;
     z-index: 110;
     display: none;
-    padding: 10px;
     margin: auto;
     position: absolute;
 }
-#ajax-container-head{text-align: left; height:50px; background-color: #fff; color: #F18200; font-weight: bold; font-family: 'Aller_Lt',sans-serif;}
-#ajax-container-head a{cursor: pointer;}
-#ajax-cart-message{text-align: center;}
-#ajax-product-view ul li{display: inline; padding: 0 10px 0 0;}
-#ajax-container-links{padding:10px; text-align: center;}
-#ajax-container-realated-items .viewport{float: left; width: 412px; height: 250px; overflow: hidden; position: relative;}
+#ajax-container-head{
+    text-align:left;
+    height:45px;
+    background-color: #fff;
+    color:#F18200;
+    font-weight:bold;
+    -webkit-box-shadow: 0 8px 6px -6px #ccc;
+    -moz-box-shadow: 0 8px 6px -6px #ccc;
+    box-shadow: 0 8px 6px -6px #666;
+}
+#ajax-container-head a.close{cursor: pointer; float: right; background: url(../images/buttons.png) -947px -120px no-repeat; margin-left: 10px; text-decoration: none;}
+#ajax-container-head a.close:hover{text-decoration: none;}
+#ajax-cart-message{text-align: left; float: left; line-height: 45px; padding: 0 10px;}
+#ajax-product-view{
+    background-color: #fff;
+    margin: 20px;
+    -moz-box-shadow:0 6px 4px -4px #999;
+    -webkit-box-shadow:0 6px 4px -4px #999;
+    box-shadow:0 6px 4px -4px #999;
+    text-align: left;
+}
+#ajax-product-view ul{
+    margin:10px;
+}
+#ajax-product-view ul li{
+    display: inline-block;
+    padding: 0 30px 0 0;
+    color: #000;
+}
+#ajax-container-links{padding:0 20px; text-align:left;}
+#ajax-container-links button{margin-right: 5px;}
+#ajax-container-realated-items .viewport{float: left; width: 660px; height: 250px; overflow: hidden; position: relative;}
+#ajax-container-realated-items .viewport li{background-color: #fff;}
 #ajax-container-realated-items .buttons {
     background: url("../images/buttons.png") no-repeat scroll 0 -60px transparent;
     display: block;
