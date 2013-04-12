@@ -150,7 +150,7 @@ div.onestepcheckout-threecolumns div.onestepcheckout-column-left {
     width: 32%;
     float: left;
     margin-right: 15px;
-    background-color: #f2f2f2;
+    background-color: #FFF;
     border: medium none;
     border-radius: 5px 5px 5px 5px;
     padding-top: 15px;
@@ -165,7 +165,7 @@ div.onestepcheckout-threecolumns div.onestepcheckout-column-middle {
     float: left;
     margin-right: 15px;
     padding: 18px;
-    background-color: #F2F2F2;
+    background-color: #FFF;
     border: medium none;
     border-radius: 5px 5px 5px 5px;
 }
@@ -174,7 +174,7 @@ div.onestepcheckout-threecolumns div.onestepcheckout-column-right-top {
     width: 32%;
     float: left;
     padding-top: 15px;
-    background-color: #F2F2F2;
+    background-color: #FFF;
     border: medium none;
     border-radius: 5px 5px 5px 5px;
 }
