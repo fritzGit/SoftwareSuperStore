@@ -2404,7 +2404,9 @@ ul.product-specs label{width:50%; display: inline-block;}
 .customer-account-login .main-container,
 .customer-account-forgotpassword .main-container,
 .customer-account-edit .main-container,
-.sales-order-view .main-container { 
+.sales-order-view .main-container,
+.newsletter-manage-index .main-container,
+.downloadable-customer-products .main-container { 
     background: #FFF;
     min-height: 750px;
     height:auto !important;
