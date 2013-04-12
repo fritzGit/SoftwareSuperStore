@@ -2403,7 +2403,8 @@ ul.product-specs label{width:50%; display: inline-block;}
 .customer-account-create .main-container,
 .customer-account-login .main-container,
 .customer-account-forgotpassword .main-container,
-.downloadable-customer-products .main-container{
+.customer-account-edit .main-container,
+.sales-order-view .main-container { 
     background: #FFF;
     min-height: 750px;
     height:auto !important;
@@ -2415,6 +2416,7 @@ ul.product-specs label{width:50%; display: inline-block;}
 .my-account .page-title { font-family: MyriadPro,'Myriad Pro',MyriadPro-Regular,'Myriad Pro Regular',Helvetica,Arial,sans-serif; padding-bottom:10px; }
 .my-account .page-title h1 { font-size:34px; }
 .my-account .addresses-list h2 { color:#000; }
+.my-account .fieldset h2 { font-weight:bold; padding-bottom: 20px; }
 /********** < Dashboard */
 .dashboard .welcome-msg { margin:0 8em 1.5em 0; }
 .dashboard .welcome-msg p { margin:0; }
