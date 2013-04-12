@@ -341,7 +341,7 @@ div.checkoutcontainer div.input-address-short,div.checkoutcontainer div.input-fi
     float: left;
 }
 div.checkoutcontainer .input-box .required {
-    color: #C11042;
+    color: #000;
     display: inline-block;
     font-size: 16px;
     font-weight: bold;
