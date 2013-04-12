@@ -861,16 +861,15 @@ $helper = Mage::helper('onestepcheckout/checkout');
      * Default magento agreements end
      */
     ?>
-                
-                </div>
-                    <div class="onestepcheckout-place-order-wrapper">
-                        <button type="button" title="<?php echo $this->__('Place order now'); ?>" id="onestepcheckout-place-order" class="button black" onclick="javascript:void(0);"><span><span><?php echo $this->__('Place order now'); ?></span></span></button>
-                    </div>
-                <div style="clear: both;">&nbsp;</div>
-            </div>
-            
-        </fieldset>
-    </form>
+     
+        </div>                           
+        <div class="onestepcheckout-place-order-wrapper">
+            <button type="button" title="<?php echo $this->__('Place order now'); ?>" id="onestepcheckout-place-order" class="button black onestepcheckout-place-order" onclick="javascript:void(0);"><span><span><?php echo $this->__('Place order now'); ?></span></span></button>
+        </div>
+    <div style="clear: both;">&nbsp;</div>
+</div>
+</fieldset>
+</form>
 
     <?php /* if(!$this->isCustomerLoggedIn() && $helper->showLoginLink()): ?>
       <?php echo $this->getChildHtml('login-popup'); ?>
