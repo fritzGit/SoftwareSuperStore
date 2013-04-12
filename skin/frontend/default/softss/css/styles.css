@@ -550,7 +550,7 @@ p.required { font-size:11px; text-align:right; color:#898989; }
 .sub-title { clear:both; padding:15px 0 0; font-size:15px; font-weight:bold; margin:0 0 6px; color:#e25203; }
 
 /* Pager */
-.pager { font-size:11px; background-color:#c8c8c8; padding:2px 8px; text-align:center; }
+.pager { font-size:11px; padding:0 8px; text-align:center; }
 .pager .amount { float:left; margin:0; }
 .pager .limiter { float:right; }
 .pager .limiter label { vertical-align:middle; }
@@ -2340,7 +2340,7 @@ ul.product-specs label{width:50%; display: inline-block;}
     width:100%;
     z-index: 100;
 }
-#ajax_login_container_head a { 
+#ajax_login_container_head a {
      background: url("../images/buttons.png") no-repeat scroll -975px -299px transparent;
     display: block;
     height: 22px;
@@ -2348,7 +2348,7 @@ ul.product-specs label{width:50%; display: inline-block;}
     position: absolute;
     top: -12px;
     width: 30px;
-    cursor: pointer; 
+    cursor: pointer;
 }
 #ajax_login_container .block { border:none; }
 #ajax_login_container .block-content { background: none; }
@@ -2458,13 +2458,14 @@ ul.product-specs label{width:50%; display: inline-block;}
 .dashboard .data-table .link-reorder, .addresses-additional .link-remove,
 .my-account .link-reorder,
 .my-account .link-print
-{ font-weight:bold; display: inline-block; color:#fff !important;  background-color: #000; border: medium none; border-radius: 5px 5px 5px 5px; font-weight: normal; padding: 5px 7px; text-decoration: none;}
+{ font-weight:bold; display: inline-block; color:#fff !important;  background-color: #000; border: medium none; border-radius: 5px 5px 5px 5px; font-weight: normal; padding: 3px 7px; text-decoration: none;}
 
-.dashboard .data-table .link-view {
+.my-account .link-view {
     background: url("../images/buttons.png") no-repeat scroll -975px -237px transparent;
     display: inline-block;
     height: 22px;
     width: 30px;
+    text-indent: -9000px;
 }
 
 /* Block: Product reviews / wishlist */
@@ -2480,6 +2481,12 @@ ul.accountlistheader li.sku,ul.accountlist li.sku{width:5%;}
 ul.accountlistheader li.price,ul.accountlist li.price{width:5%;}
 ul.accountlistheader li.qty,ul.accountlist li.qty{width:5%;}
 ul.accountlistheader li.productanddetails,ul.accountlist li.productanddetails{width:40%;}
+
+ul.accountlistheader li.ordernum,ul.accountlist li.ordernum{width:10%;}
+ul.accountlistheader li.shipto,ul.accountlist li.shipto{width:20%;}
+ul.accountlistheader li.ordertotal,ul.accountlist li.ordertotal{width:10%;}
+ul.accountlistheader li.status,ul.accountlist li.status{width:10%;}
+
 ul.accountlist li.productname a,ul.accountlist li.productanddetails a{ color:#EA7900; text-decoration: none;}
 ul.accountlistheader li.review{}
 ul.accountlist.grand_total{font-weight: bold;}

@@ -8,25 +8,25 @@
 <ul class="accountlistheader">
     <li  class="ordernum"><?php echo $this->__('Order #') ?></li>
     <li class="date"><?php echo $this->__('Date') ?></li>
-    <li><?php echo $this->__('Ship To') ?></li>
-    <li><span class="nobr"><?php echo $this->__('Order Total') ?></li>
-    <li class="last"><span class="nobr"><?php echo $this->__('Order Status') ?></span></li>
+    <li class="shipto"><?php echo $this->__('Ship To') ?></li>
+    <li class="ordertotal"><span class="nobr"><?php echo $this->__('Order Total') ?></li>
+    <li class="status"><span class="nobr"><?php echo $this->__('Order Status') ?></span></li>
+    <li class="last">&nbsp;</li>
 </ul>
 
 <?php $_odd = ''; ?>
 <?php foreach ($_orders as $_order): ?>
-<ul>
+<ul class="accountlist">
     <li class="ordernum"><?php echo $_order->getRealOrderId() ?></li>
     <li class="date"><span class="nobr"><?php echo $this->formatDate($_order->getCreatedAtStoreDate()) ?></span></li>
-    <li><?php echo $_order->getShippingAddress() ? $this->htmlEscape($_order->getShippingAddress()->getName()) : '&nbsp;' ?></li>
-    <li><?php echo $_order->formatPrice($_order->getGrandTotal()) ?></li>
-    <li><em><?php echo $_order->getStatusLabel() ?></em></li>
-    <li class="a-center">
-        <span class="nobr"><a href="<?php echo $this->getViewUrl($_order) ?>"><?php echo $this->__('View Order') ?></a>
-            <?php /*<span class="separator">|</span><a href="<?php echo $this->getTrackUrl($_order) ?>"><?php echo $this->__('Track Order') ?></a>&nbsp;*/ ?>
+    <li class="shipto"><?php echo $_order->getShippingAddress() ? $this->htmlEscape($_order->getShippingAddress()->getName()) : '&nbsp;' ?></li>
+    <li class="ordertotal"><?php echo $_order->formatPrice($_order->getGrandTotal()) ?></li>
+    <li class="status"><em><?php echo $_order->getStatusLabel() ?></em></li>
+    <li class="last">
+        <span class="nobr"><a href="<?php echo $this->getViewUrl($_order) ?>" class="link-view"><?php echo $this->__('View Order') ?></a>
             <?php if ($this->helper('sales/reorder')->canReorder($_order)) : ?>
-            <span class="separator">|</span> <a href="<?php echo $this->getReorderUrl($_order) ?>" class="link-reorder"><?php echo $this->__('Reorder') ?></a>
-        <?php endif ?>
+                <a href="<?php echo $this->getReorderUrl($_order) ?>" class="link-reorder"><?php echo $this->__('Reorder') ?></a>
+            <?php endif ?>
         </span>
     </li>
 </ul>
