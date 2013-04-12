@@ -2403,7 +2403,8 @@ ul.product-specs label{width:50%; display: inline-block;}
 .customer-account-create .main-container,
 .customer-account-login .main-container,
 .customer-account-forgotpassword .main-container,
-.customer-account-edit .main-container { 
+.customer-account-edit .main-container,
+.sales-order-view .main-container { 
     background: #FFF;
     min-height: 750px;
     height:auto !important;
