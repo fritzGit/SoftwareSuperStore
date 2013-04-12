@@ -2380,12 +2380,14 @@ ul.product-specs label{width:50%; display: inline-block;}
 .customer-address-index .main-container,
 .review-customer-index .main-container,
 .review-customer-view .main-container,
-.wishlist-index-index .main-container{
+.wishlist-index-index .main-container,
+.sales-order-history .main-container{
     background: #FFF;
-    min-height: 500px;
+    min-height: 750px;
     height:auto !important;
-    height: 500px;
+    height: 750px;
 }
+
 .my-account { font-family: 'aller_lt',sans-serif; padding-left: 50px; }
 .my-account .title-buttons .link-rss { float:none; margin:0; }
 .my-account .page-title { font-family: MyriadPro,'Myriad Pro',MyriadPro-Regular,'Myriad Pro Regular',Helvetica,Arial,sans-serif; padding-bottom:10px; }
