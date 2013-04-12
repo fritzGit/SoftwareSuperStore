@@ -2482,7 +2482,7 @@ ul.accountlistheader li.sku,ul.accountlist li.sku{width:5%;}
 ul.accountlistheader li.price,ul.accountlist li.price{width:5%;}
 ul.accountlistheader li.qty,ul.accountlist li.qty{width:5%;}
 ul.accountlistheader li.productanddetails,ul.accountlist li.productanddetails{width:40%;}
-
+ul.accountlistheader li.producttitle,ul.accountlist li.producttitle{width:48%;}
 ul.accountlistheader li.ordernum,ul.accountlist li.ordernum{width:10%;}
 ul.accountlistheader li.shipto,ul.accountlist li.shipto{width:20%;}
 ul.accountlistheader li.ordertotal,ul.accountlist li.ordertotal{width:10%;}

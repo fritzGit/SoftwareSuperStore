@@ -1,0 +1,38 @@
+<?php
+/**
+ * @see Mage_Downloadable_Block_Customer_Products_List
+ */
+?>
+<?php $_items = $this->getItems(); ?>
+<div class="page-title">
+    <h1><?php echo Mage::helper('downloadable')->__('My Downloadable Products') ?></h1>
+</div>
+<?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+<?php echo $this->getChildHtml('pager'); ?>
+<?php if(count($_items)): ?>
+<ul class="accountlistheader">
+    <li class="ordernum"><?php echo Mage::helper('downloadable')->__('Order #') ?></li>
+    <li class="date"><?php echo Mage::helper('downloadable')->__('Date') ?></li>
+    <li class="producttitle"><?php echo Mage::helper('downloadable')->__('Title') ?></li>
+    <li class="status"><?php echo Mage::helper('downloadable')->__('Status') ?></li>
+    <li class="last"><span class="nobr"><?php echo Mage::helper('downloadable')->__('Remaining Downloads') ?></span></li>
+</ul>
+
+<?php $_odd = ''; ?>
+<?php foreach ($_items as $_item): ?>
+    <ul class="accountlist">
+        <li class="ordernum"><a href="<?php echo $this->getOrderViewUrl($_item->getPurchased()->getOrderId()) ?>" title="<?php echo Mage::helper('downloadable')->__('View Order') ?>"><?php echo $_item->getPurchased()->getOrderIncrementId() ?></a></li>
+        <li class="date"><span class="nobr"><?php echo $this->formatDate($_item->getPurchased()->getCreatedAt()) ?></span></li>
+        <li class="producttitle"><?php echo $this->escapeHtml($_item->getPurchased()->getProductName()) ?> - <a href="<?php echo $this->getDownloadUrl($_item) ?>" title="<?php echo Mage::helper('downloadable')->__('Start Download') ?>" <?php echo $this->getIsOpenInNewWindow()?'onclick="this.target=\'_blank\'"':''; ?>><?php echo $this->escapeHtml($_item->getLinkTitle()); ?></a></li>
+        <li class="status"><em><?php echo Mage::helper('downloadable')->__(ucfirst($_item->getStatus())) ?></em></li>
+        <li class="last"><?php echo $this->getRemainingDownloads($_item) ?></li>
+    </ul>
+<?php endforeach; ?>
+
+<?php else: ?>
+    <p><?php echo Mage::helper('downloadable')->__('You have not purchased any downloadable products yet.'); ?></p>
+<?php endif; ?>
+<?php echo $this->getChildHtml('pager'); ?>
+<div class="buttons-set">
+    <p class="back-link"><a href="<?php echo $this->escapeUrl($this->getBackUrl()) ?>"><small>&laquo; </small><?php echo $this->__('Back') ?></a></p>
+</div>
