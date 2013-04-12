@@ -343,14 +343,13 @@ input.input-text:focus,select:focus,textarea:focus { background-color:#edf7fd; }
 /* Grouped fields */
 /*.form-list { width:535px; margin:0 auto; overflow:hidden; }*/
 .form-list li { margin:0 0 8px; }
-.form-list label { float:left;font-weight:bold; position:relative; z-index:0; }
+.form-list label { float:left; position:relative; z-index:0; }
 .form-list label.required {}
 .form-list label.required em {
     float:right;
-    color: #C11042;
+    color: #000;
     display: inline-block;
     font-size: 16px;
-    font-weight: bold;
     height: 12px;
     width: 9px;
     top:0;
@@ -363,7 +362,7 @@ input.input-text:focus,select:focus,textarea:focus { background-color:#edf7fd; }
 /*.form-list li.fields { margin-right:-15px; }*/
 .form-list .input-box { display:block; clear:both; width:260px; }
 .form-list .field { float:left; width:275px; }
-.form-list input.input-text { width:254px; }
+.form-list input.input-text { width:254px; height:30px; }
 .form-list textarea { width:254px; height:10em; }
 .form-list select { width:260px; }
 .form-list li.wide .input-box { width:535px; }
@@ -390,7 +389,7 @@ input.input-text:focus,select:focus,textarea:focus { background-color:#edf7fd; }
 .form-list .customer-name-prefix-middlename-suffix .input-box { width:auto; }
 
 .form-list .name-prefix { width:65px; }
-.form-list .name-prefix select { width:55px; }
+.form-list .name-prefix select { width:55px; height:35px; }
 .form-list .name-prefix input.input-text { width:49px; }
 
 .form-list .name-suffix { width:65px; }
@@ -480,14 +479,14 @@ input.input-text:focus,select:focus,textarea:focus { background-color:#edf7fd; }
 .buttons-set-order { margin:10px 0 0; }
 .buttons-set-order .please-wait { padding:12px 7px 0 0; }
 
-.fieldset { border:1px solid #bbafa0; background:#fbfaf6; padding:22px 25px 12px 33px; margin:28px 0; }
+.fieldset { padding:0px 25px 0px 0px; margin:30px 0; }
 .fieldset .legend { float:left; font-weight:bold; font-size:13px; border:1px solid #f19900; background:#f9f3e3; color:#e76200; margin:-33px 0 0 -10px; padding:0 8px; position:relative; }
 
 /* Form Validation */
 .validation-advice { clear:both; min-height:13px; margin:3px 0 0; padding-left:17px; font-size:11px; font-weight:bold; line-height:13px; background:url(../images/validation_advice_bg.gif) 2px 0 no-repeat; color:#eb340a; }
 .validation-failed { border:1px dashed #eb340a !important; background:#faebe7 !important; }
 .validation-passed {}
-p.required { font-size:11px; text-align:right; color:#EB340A; }
+p.required { font-size:11px; text-align:right; color:#898989; }
 /* Expiration date and CVV number validation fix */
 .v-fix { float:left; }
 .v-fix .validation-advice { display:block; width:12em; margin-right:-12em; position:relative; }
@@ -536,7 +535,7 @@ p.required { font-size:11px; text-align:right; color:#EB340A; }
 /* Page Heading */
 .page-title { width:100%; overflow:hidden; border-bottom:1px solid #ccc; margin:0 0 25px; padding-bottom: 15px; }
 .page-title h1,
-.page-title h2 { margin:0; font-size:22px; color:#0a263c; }
+.page-title h2 { margin:0; font-size:34px; color:#0a263c; }
 .page-title .separator { margin:0 3px; }
 .page-title .link-rss { float:right; margin:7px 0 0; }
 .title-buttons { text-align:right; }
@@ -1062,7 +1061,7 @@ h1.homepage-softwaress{color:#ff7300;padding:20px 0; font-family: 'Aller_Lt',San
 /* Block: Login */
 .block-login .block-title strong { background-image:url(../images/i_ma-info.gif); }
 .block-login .block-content { padding:5px 10px; }
-.block-login label { font-weight:bold; color:#666; }
+.block-login label { color:#000; }
 .block-login input.input-text { display:block; width:254px; margin:3px 0; }
 .block-login .actions { background:none; padding:0; margin:3px 0 0; }
 .block-login .actions button.button span { border-color:#406a83; background:#618499; }
@@ -2304,17 +2303,21 @@ ul.product-specs label{width:50%; display: inline-block;}
 
 
 /* Account Login/Create Pages ============================================================ */
-.account-login .content { min-height:345px; padding:14px 21px; background:#faf7ee url(../images/bkg_login-box.gif) 0 0 repeat-x; border:1px solid #bbb6a5; border-bottom:0; }
-.account-login .content h2 { font-weight:bold; font-size:13px; margin:0 0 14px; padding:0 0 5px 23px; border-bottom:1px solid #ddd; background-position:0 1px; background-repeat:no-repeat; text-transform:uppercase; color:#e76200; }
+.account-login .content { min-height:120px; border-bottom:0; }
+.account-login .content h2 { font-weight:bold; font-size:18px; padding:0 0 20px 0px; color:#000; }
 .account-login .new-users h2 { background-image:url(../images/i_page1.gif)}
 .account-login .registered-users h2 { background-image:url(../images/i_page2.gif); }
-.account-login .buttons-set { border:1px solid #bbb6a5; border-top:0; margin:0; padding:8px 13px; background:#dee5e8 url(../images/bkg_buttons-set1.gif) 0 0 repeat-x; }
+.account-login .buttons-set { margin:0; padding:8px 13px; }
+.account-login .f-left { color: #E26703; text-decoration: none; }
 
 .account-create {}
-
+.account-create .fieldset h2 { font-weight: bold; font-size: 18px; padding-bottom:20px; }
+.buttons-set .required { color: #898989; font-size: 11px; padding-right: 15px; }
+.forgetpassword h2 { font-weight:bold; padding-bottom: 20px; }
 /* ajax mini login */
 #ajax_login_container {
     background-color: #fff;
+    border-radius: 5px;
     width:450px;
     z-index: 110;
     display: none;
@@ -2337,11 +2340,25 @@ ul.product-specs label{width:50%; display: inline-block;}
     width:100%;
     z-index: 100;
 }
-#ajax_login_container_head { text-align: right; }
-#ajax_login_container_head a { cursor: pointer; }
+#ajax_login_container_head a { 
+     background: url("../images/buttons.png") no-repeat scroll -975px -299px transparent;
+    display: block;
+    height: 22px;
+    left: 465px;
+    position: absolute;
+    top: -12px;
+    width: 30px;
+    cursor: pointer; 
+}
+#ajax_login_container .block { border:none; }
 #ajax_login_container .block-content { background: none; }
+#ajax_login_container .block-title { border-bottom: 1px solid #E4E4E4; }
+#ajax_login_container .block-title strong span { color: #000; font-family: 'Aller_Lt',Sans-Serif; font-size: 18px; }
 #ajax_login_container .buttons-set { border-top: none; margin: 0; }
-#ajax_login_container .button-div { border-top: 1px solid #E4E4E4; }
+#ajax_login_container .block-content ul li { display: inline; list-style-type: none; padding-right: 5px; }
+#ajax_login_container .input-box { width:218px; }
+#ajax_login_container .input-box input { height:30px; width:218px; }
+#ajax_login_container .f-left { color: #E26703; text-decoration: none; }
 /* Captcha ================================================================================ */
 .captcha-note      { clear:left; padding-top:5px; }
 .captcha-image     { float:left; display:inline;  margin:0; position:relative; width:258px; }
@@ -2383,7 +2400,9 @@ ul.product-specs label{width:50%; display: inline-block;}
 .review-customer-view .main-container,
 .wishlist-index-index .main-container,
 .sales-order-history .main-container,
-.sales-order-view .main-container{
+.customer-account-create .main-container,
+.customer-account-login .main-container,
+.customer-account-forgotpassword .main-container { 
     background: #FFF;
     min-height: 750px;
     height:auto !important;

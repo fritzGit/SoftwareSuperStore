@@ -26,11 +26,12 @@
 ?>
 <div id="overlaylogin"></div>
 <div id="ajax_login_container">
-    <div id="ajax_login_container_head"><a onclick="hideLoginOverlay()">close</a></div>
+    <div id="ajax_login_container_head"><a onclick="hideLoginOverlay()"></a></div>
     <div id="message-div"></div>
     <div class="block block-login">
         <div class="block-title">
             <strong><span><?php echo $this->__('Login') ?></span></strong>
+            <span><?php echo $this->__('* Required Fields') ?></span>
         </div>
         <form method="post" id="login-form-ajax">
             <div class="block-content">
@@ -42,23 +43,18 @@
                         </div>
                     </li>
                     <li>
-                        <label for="mini-password" class="required"><em>*</em><?php echo $this->__('Password') ?></label>
+                        <label for="mini-password" class="required"><em>*</em><?php echo $this->__('Password:') ?></label>
                         <div class="input-box">
                             <input type="password" name="login[password]" id="mini-password" class="input-text required-entry validate-password" />
                         </div>
                     </li> 
                 </ul>
                 <div class="col2-set">
-                    <p class="required"><?php echo $this->__('* Required Fields') ?></p>
-                    <div class="button-div">
-                        <div class="left">
-                            <div class="buttons-set">
-                                <button type="button" title="<?php echo $this->__('Create an Account') ?>" class="button" onclick="window.location='<?php echo $this->getCreateAccountUrl() ?>';"><span><span><?php echo $this->__('Create an Account') ?></span></span></button>
-                            </div>
-                        </div>
-                        <div class="right">
-                            <div class="buttons-set">
-                                <button type="button" class="button" onclick="ajaxLoginPost();"><span><span><?php echo $this->__('Login') ?></span></span></button>                        </div>
+                    <div class="button-div">  
+                        <div class="buttons-set">
+                            <a href="<?php echo $this->getUrl('customer/account/forgotpassword') ?>" class="f-left"><?php echo $this->__('Forgot your password?') ?></a>
+                            <button type="button" class="button black" onclick="ajaxLoginPost();"><span><span><?php echo $this->__('Login') ?></span></span></button>                  
+                            <button type="button" title="<?php echo $this->__('Create an Account') ?>" class="button black" onclick="window.location='<?php echo $this->getCreateAccountUrl() ?>';"><span><span><?php echo $this->__('Create an Account') ?></span></span></button>
                         </div>
                     </div>
                 </div>            

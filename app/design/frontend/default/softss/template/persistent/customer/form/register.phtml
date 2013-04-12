@@ -42,7 +42,7 @@
         <div class="fieldset">
             <input type="hidden" name="success_url" value="<?php echo $this->getSuccessUrl() ?>" />
             <input type="hidden" name="error_url" value="<?php echo $this->getErrorUrl() ?>" />
-            <h2 class="legend"><?php echo $this->__('Personal Information') ?></h2>
+            <h2><?php echo $this->__('Personal Information') ?></h2>
             <ul class="form-list">
                 <li class="fields">
                     <?php echo $this->getLayout()->createBlock('customer/widget_name')->setObject($this->getFormData())->setForceUseCustomerAttributes(true)->toHtml() ?>
@@ -78,7 +78,7 @@
     <?php if($this->getShowAddressFields()): ?>
         <div class="fieldset">
             <input type="hidden" name="create_address" value="1" />
-            <h2 class="legend"><?php echo $this->__('Address Information') ?></h2>
+            <h2><?php echo $this->__('Address Information') ?></h2>
             <ul class="form-list">
                 <li class="fields">
                     <div class="field">
@@ -151,7 +151,7 @@
         </div>
     <?php endif; ?>
         <div class="fieldset">
-            <h2 class="legend"><?php echo $this->__('Login Information') ?></h2>
+            <h2><?php echo $this->__('Login Information') ?></h2>
             <ul class="form-list">
                 <li class="fields">
                     <div class="field">
@@ -173,8 +173,8 @@
             <?php echo $this->getChildHtml('persistent.remember.me.tooltip'); ?>
         </div>
         <div class="buttons-set">
-            <p class="required"><?php echo $this->__('* Required Fields') ?></p>
-            <button type="submit" title="<?php echo $this->__('Submit') ?>" class="button"><span><span><?php echo $this->__('Submit') ?></span></span></button>
+            <span class="required"><?php echo $this->__('* Required Fields') ?></span>
+            <button type="submit" title="<?php echo $this->__('Submit') ?>" class="button black"><span><span><?php echo $this->__('Submit') ?></span></span></button>
         </div>
         <?php if (Mage::helper('checkout')->isContextCheckout()): ?>
             <input name="context" type="hidden" value="checkout" />
