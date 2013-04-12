@@ -702,12 +702,13 @@ tr.summary-details-excluded { font-style:italic; }
 .link-cart { color:#dc6809 !important; font-weight:bold; }
 .link-wishlist { color:#dc6809 !important; font-weight:bold; }
 .link-reorder { font-weight:bold; color:#dc6809 !important; }
+.sales-order-view .link-reorder{margin: 0 5px;}
 .link-compare { font-weight:bold; }
 .link-print { /*background:url(../images/i_print.gif) 0 2px no-repeat; padding:2px 0 2px 25px;*/ font-weight:bold; color:#dc6809; }
 .link-rss { background:url(../images/i_rss.gif) 0 2px no-repeat; padding-left:18px; line-height:14px; white-space:nowrap; }
-.btn-remove  { display:block; width:11px; height:11px; font-size:0; line-height:0; background:url(../images/btn_remove.gif) 0 0 no-repeat; text-indent:-999em; overflow:hidden; }
+.btn-remove  { display:block; width:13px; height:20px; font-size:0; line-height:0; background:url(../images/buttons.png) -840px -300px no-repeat; text-indent:-999em; overflow:hidden; }
 .btn-previous  { display:block; width:11px; height:11px; font-size:0; line-height:0; background:url(../images/btn_previous.gif) 0 0 no-repeat; text-indent:-999em; overflow:hidden; }
-.btn-remove2 { display:block; width:16px; height:16px; font-size:0; line-height:0; background:url(../images/btn_trash.gif) 0 0 no-repeat; text-indent:-999em; overflow:hidden; }
+.btn-remove2 { display:block; width:13px; height:20px; font-size:0; line-height:0; background:url(../images/buttons.png) -840px -300px no-repeat; text-indent:-999em; overflow:hidden; }
 .btn-edit    { display:block; width:11px; height:11px; font-size:0; line-height:0; background:url(../images/btn_edit.gif) 0 0 no-repeat; text-indent:-999em; overflow:hidden; }
 
 .cards-list dt { margin:5px 0 0; }
@@ -2381,14 +2382,15 @@ ul.product-specs label{width:50%; display: inline-block;}
 .review-customer-index .main-container,
 .review-customer-view .main-container,
 .wishlist-index-index .main-container,
-.sales-order-history .main-container{
+.sales-order-history .main-container,
+.sales-order-view .main-container{
     background: #FFF;
     min-height: 750px;
     height:auto !important;
     height: 750px;
 }
 
-.my-account { font-family: 'aller_lt',sans-serif; padding-left: 50px; }
+.my-account { font-family: 'aller_lt',sans-serif; padding-left: 50px; margin-bottom: 50px;}
 .my-account .title-buttons .link-rss { float:none; margin:0; }
 .my-account .page-title { font-family: MyriadPro,'Myriad Pro',MyriadPro-Regular,'Myriad Pro Regular',Helvetica,Arial,sans-serif; padding-bottom:10px; }
 .my-account .page-title h1 { font-size:34px; }
@@ -2432,7 +2434,11 @@ ul.product-specs label{width:50%; display: inline-block;}
 .dashboard .data-table { border:none; }
 .dashboard .data-table tr { height:30px; }
 .dashboard .data-table td { padding: 3px 15px; }
-.dashboard .data-table .link-reorder, .addresses-additional .link-remove { font-weight:bold; color:#fff !important;  background-color: #000; border: medium none; border-radius: 5px 5px 5px 5px; font-weight: normal; padding: 7px; text-decoration: none;}
+.dashboard .data-table .link-reorder, .addresses-additional .link-remove,
+.my-account .link-reorder,
+.my-account .link-print
+{ font-weight:bold; display: inline-block; color:#fff !important;  background-color: #000; border: medium none; border-radius: 5px 5px 5px 5px; font-weight: normal; padding: 5px 7px; text-decoration: none;}
+
 .dashboard .data-table .link-view {
     background: url("../images/buttons.png") no-repeat scroll -975px -237px transparent;
     display: inline-block;
@@ -2443,13 +2449,22 @@ ul.product-specs label{width:50%; display: inline-block;}
 /* Block: Product reviews / wishlist */
 ul.accountlistheader, ul.accountlist{padding:0 10px; line-height: 30px; width: 760px; display: inline-block;}
 ul.accountlistheader li, ul.accountlist li{display: inline-block; padding: 0 20px 0 0; float:left;}
+ul.accountlist li{line-height: 2;}
 ul.accountlistheader li.last, ul.accountlist li.last{padding: 0; float: right;}
 ul.accountlistheader li.date, ul.accountlist li.date{width:5%;}
 ul.accountlistheader li.image, ul.accountlist li.image{width:15%;}
 ul.accountlistheader li.productname,ul.accountlist li.productname{width:30%;}
+ul.accountlistheader li.productnamelong,ul.accountlist li.productnamelong{width:59%;}
+ul.accountlistheader li.sku,ul.accountlist li.sku{width:5%;}
+ul.accountlistheader li.price,ul.accountlist li.price{width:5%;}
+ul.accountlistheader li.qty,ul.accountlist li.qty{width:5%;}
 ul.accountlistheader li.productanddetails,ul.accountlist li.productanddetails{width:40%;}
 ul.accountlist li.productname a,ul.accountlist li.productanddetails a{ color:#EA7900; text-decoration: none;}
 ul.accountlistheader li.review{}
+ul.accountlist.grand_total{font-weight: bold;}
+
+.accountlist .price-box{margin: 0;}
+.accountlist .regular-price .price{color:#000;}
 
 /* Block: Recent Orders */
 .dashboard .box-recent .box-head h2 { background-image:url(../images/i_folder-table.gif); }
@@ -2523,7 +2538,7 @@ ul.accountlistheader li.review{}
 .addresses-list .addresses-additional li.item { background:none; border:0; padding:0; }
 
 /* Order View */
-.order-info { background:#dee5e8; border:1px solid #d0cbc1; padding:4px 8px; margin:0 0 8px; }
+.order-info { }
 .order-info dt,
 .order-info dd,
 .order-info ul,
@@ -2533,13 +2548,29 @@ ul.accountlistheader li.review{}
 
 .order-date { margin:10px 0; }
 
-.order-info-box { background:#fff url(../images/bkg_block-title.gif) 0 0 repeat-x; border:1px solid #d0cbc1; padding:12px 15px; margin:0 0 15px; }
-.order-info-box h2 { font-weight:bold; font-size:13px; }
+.order-info-box {
+    width:340px;
+    margin:40px 50px 0 0;
+    min-height: 50px;
+    height:auto !important;
+    height: 50px;
+    display:inline-block;
+    float: left;
+}
+.order-info-box.date{margin-right: 0; width:100%;}
+.order-info-box.last{margin-right: 0;}
+.order-info-box h2 { font-weight:bold; font-size:18px; border-bottom: 1px solid #c6c6c6; padding-bottom: 10px; margin-bottom: 10px;}
 .order-info-box .box-payment p { margin:0 0 3px; }
 .order-info-box .box-payment th { font-weight:bold; padding-right:7px; }
 
 .order-items { width:100%; overflow-x:auto; }
-.order-items h2,
+.order-items h2{
+    border-bottom: 1px solid #C6C6C6;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+}
 .order-items h3 { clear:none; font-weight:bold; font-size:13px; padding:0; margin:0 0 5px; color:#0a263c; }
 .order-items .product-name { font-size:1em !important; font-weight:bold !important; }
 .order-items .link-print { color:#1e7ec8; font-weight:normal; }
