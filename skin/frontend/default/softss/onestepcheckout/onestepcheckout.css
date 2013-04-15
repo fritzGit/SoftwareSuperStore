@@ -152,7 +152,7 @@ div.onestepcheckout-threecolumns div.onestepcheckout-column-left {
     margin-right: 15px;
     background-color: #FFF;
     border: medium none;
-    border-radius: 5px 5px 5px 5px;
+    border-radius: 5px;
     padding-top: 15px;
 }
 div.onestepcheckout-threecolumns div.onestepcheckout-column-left .inner-col {
@@ -161,13 +161,13 @@ div.onestepcheckout-threecolumns div.onestepcheckout-column-left .inner-col {
 }
 
 div.onestepcheckout-threecolumns div.onestepcheckout-column-middle {
-    width: 29%;
+    background-color: #FFFFFF;
+    border: medium none;
+    border-radius: 5px;
     float: left;
     margin-right: 15px;
-    padding: 18px;
-    background-color: #FFF;
-    border: medium none;
-    border-radius: 5px 5px 5px 5px;
+    padding: 15px;
+    width: 30%;
 }
 
 div.onestepcheckout-threecolumns div.onestepcheckout-column-right-top {
@@ -176,14 +176,14 @@ div.onestepcheckout-threecolumns div.onestepcheckout-column-right-top {
     padding-top: 15px;
     background-color: #FFF;
     border: medium none;
-    border-radius: 5px 5px 5px 5px;
+    border-radius: 5px;
 }
 div.onestepcheckout-threecolumns div.onestepcheckout-column-right {
     color:#FFF;
     float: left;
     padding-top: 15px;
     border: medium none;
-    border-radius: 5px 5px 5px 5px;
+    border-radius: 5px;
     background-color: #FF7300;
     width: 32%;
 }
@@ -241,7 +241,7 @@ div.onestepcheckout-error {
     width: 85% !important;
 }
 .onestepcheckout-column-left #billing_address {
-    margin-left:15px;
+    margin-left:9px;
 }
 
 div.onestepcheckout-enable-newsletter {
@@ -303,8 +303,10 @@ table.onestepcheckout-totals td.value {
 }
 
 div.onestepcheckout-place-order-wrapper {
-    text-align: right;
+    display: inline-block;
+    float: right;
     padding-top: 20px;
+    text-align: right;
 }
 
 div.checkoutcontainer {
@@ -603,7 +605,10 @@ div.onestepcheckout-skin-magento p.onestepcheckout-numbers-4 {
     padding-top:25px;
 }
 #onestepcheckout-login-form-div {  
+    background: none repeat scroll 0 0 #FFFFFF;
+    border-radius: 5px 5px 5px 5px;
     height: 140px;
+    padding: 15px;
 }
 #onestepcheckout-login-form-div h1 {  
     color:#000;   
@@ -736,6 +741,7 @@ div.onestepcheckout-comments textarea {
     text-transform: uppercase;
     color: #404040;
     font-weight: bold;
+    margin-left: 15px;
     padding-top: 5px;
 }
 
