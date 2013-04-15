@@ -589,7 +589,7 @@ p.required { font-size:11px; text-align:right; color:#898989; }
 /* Sorter */
 .sorter { font-size:11px; background:none; padding:3px 8px; }
 .sorter .view-mode { float:left; margin:0; }
-.sorter .sort-by {background:#e4e4e4 url(../images/buttons.png) no-repeat -741px 4px; float:right; padding-right:10px; border:1px solid #C8C8C8; width:105px; overflow: hidden;}
+.sorter .sort-by {background:#e4e4e4 url(../images/buttons.png) no-repeat -741px 4px; float:right; padding-right:10px; border:1px solid #C8C8C8; width:105px; overflow: hidden; margin-top: 14px;}
 .sorter .sort-by label { vertical-align:middle; }
 .sorter .sort-by select { padding:0; margin:0 0 1px; vertical-align:middle; background: transparent; border: none; width:130px;}
 .sorter .sort-by select .selected{color: #FF7300;}
@@ -1694,7 +1694,7 @@ ul.product-specs label{width:50%; display: inline-block;}
 #hp-latest-products{width:772px; height:285px;overflow:hidden; float:right; text-align: center;}
 #hp-products strong, #hp-latest-products strong{float: left;color: #011A35; font-family: 'Aller_Lt',Sans-Serif; font-size: 22px; font-weight: lighter; line-height: 19px;}
 #hp-products .viewport { background-color: #fff; float: left; width: 1024px; height: 208px; overflow: hidden; position: relative;}
-#hp-latest-products .viewport{float: left; width: 772px; height: 250px; overflow: hidden; position: relative;}
+#hp-latest-products .viewport{float: left; width: 772px; height: 251px; overflow: hidden; position: relative;}
 .product-view #hp-latest-products{margin:0 110px 20px 0;}
 #hp-products .buttons,
 #hp-latest-products .buttons,
@@ -1719,7 +1719,16 @@ ul.product-specs label{width:50%; display: inline-block;}
 #ajax-container-realated-items .overview li
 { background:url("../images/dline_short_solid.png") no-repeat 169px 0; float: left; margin: 0; padding: 0 0 0 10px; height: 208px; width: 196px; position: relative;}
 
-#hp-latest-products .overview li{ background:url("../images/dline_tall_transparent.png") no-repeat 0 0; float: left; margin: 0; padding: 0 0 0 10px; height: 250px; width: 183px; position: relative;}
+#hp-latest-products .overview li{
+    background:url("../images/dline_tall_transparent.png") no-repeat 0 0;
+    float: left;
+    margin: 0;
+    padding: 0 0 0 10px;
+    height: 250px; width: 183px;
+    position: relative;
+    border-left: 1px solid #ECECEC;
+    border-top: 1px solid #ECECEC;
+}
 
 #hp-products .overview li.item.last,
 #hp-latest-products .overview li.item.last,
@@ -1756,7 +1765,16 @@ ul.product-specs label{width:50%; display: inline-block;}
 #hp-products .overview .actions,
 #hp-latest-products .overview .actions,
 #ajax-container-realated-items .overview .actions
-{position: absolute; left:10px;bottom:2px; width:160px; text-align: left;}
+{
+    position: absolute;
+    left:0;
+    bottom:0;
+    width:150px;
+    padding: 0 0 2px 10px;
+    text-align: left;
+    border-bottom: 1px solid #ECECEC;
+}
+#hp-products .overview .actions{border:none;}
 
 #hp-products .priceBubble,
 #ajax-container-realated-items .priceBubble{background:url("../images/buttons.png") no-repeat 0 0; width:50px; height:56px; position: absolute; top:36px; right:10px;}
