@@ -235,6 +235,7 @@ div.onestepcheckout-error {
     background-image: url(images/onestepcheckout-error.jpg);
     background-repeat: no-repeat;
     background-position: 5px 5px;
+    border-radius:5px;
 }
 
 .onestepcheckout-column-left .onestepcheckout-error {
