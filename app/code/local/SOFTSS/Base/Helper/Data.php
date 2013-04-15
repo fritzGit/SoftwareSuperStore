@@ -41,7 +41,7 @@ class SOFTSS_Base_Helper_Data extends Mage_Core_Helper_Abstract
     * @param String $text
     * @param Array $htmlAttrs
     */
-    function nl2li($text, array $htmlAttrs = null) {
+    public function nl2li($text, array $htmlAttrs = null) {
         if (!empty($htmlAttrs)) {
             $attributes = array_walk($htmlAttrs, function($key, $value) {
                 return $key.' = "'.$value.'"';
@@ -63,6 +63,17 @@ class SOFTSS_Base_Helper_Data extends Mage_Core_Helper_Abstract
         }
 
         return $parsedText;
+    }
+
+    public function getIsHomePage(){
+        $page = Mage::app()->getFrontController()->getRequest()->getRouteName();
+
+        if ($page == 'cms'){
+            if(Mage::getSingleton('cms/page')->getIdentifier() == Mage::app()->getStore()->getConfig('web/default/cms_home_page'))
+                return true;
+        }
+
+        return false;
     }
 }
 ?>

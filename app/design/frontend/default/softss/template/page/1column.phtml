@@ -17,7 +17,7 @@
         <?php echo $this->getChildHtml('global_notices') ?>
         <?php echo $this->getChildHtml('breadcrumbs') ?>
         <div class="main-container col1-layout">
-            <?php if(!$this->getRequest()->getControllerName()=='product'): ?>
+            <?php if(Mage::helper('softssbase')->getIsHomePage()): ?>
                 <?php echo $this->getChildHtml('mainteaser_content') ?>
                 <?php echo $this->getChildHtml('toplinks') ?>
             <?php endif; ?>
