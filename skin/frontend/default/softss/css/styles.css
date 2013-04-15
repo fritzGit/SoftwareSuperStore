@@ -1654,7 +1654,15 @@ ul.product-specs label{width:50%; display: inline-block;}
 .send-friend .buttons-set .limit { float:right; margin:0 7px 0 0; font-size:11px; line-height:21px; }
 /* ======================================================================================= */
 
-
+/* Contact us */
+#contactForm h2 {
+   font-size: 18px;
+   font-weight: bold;
+   padding-bottom: 20px;
+}
+#contactForm .fieldset {
+    margin-left:45px;
+}
 /* Content Styles ================================================================= */
 .product-name { margin:0; font-size:1em; font-weight:normal; }
 .product-name a { color:#203548; }
@@ -2435,7 +2443,12 @@ ul.product-specs label{width:50%; display: inline-block;}
 .customer-account-edit .main-container,
 .sales-order-view .main-container,
 .newsletter-manage-index .main-container,
-.downloadable-customer-products .main-container {
+.downloadable-customer-products .main-container,
+.cms-about-us .main-container,
+.contacts-index-index .main-container,
+.cms-delivery-information .main-container,
+.cms-privacy-policy .main-container,
+.cms-terms-conditions .main-container {
     background: #FFF;
     min-height: 750px;
     height:auto !important;
@@ -2860,22 +2873,22 @@ ul.accountlist.grand_total{font-weight: bold;}
 .col2-left-layout .col-left .cms-nav ul li span { padding:5px 5px 3px 9px; }
 
 .cms-about-us .col2-left-layout .col-main .page-title,
-.cms-contact-us .col2-left-layout .col-main .page-title,
+.contacts-index-index .col2-left-layout .col-main .page-title,
 .cms-delivery-information .col2-left-layout .col-main .page-title,
 .cms-privacy-policy .col2-left-layout .col-main .page-title,
-.cms-term-conditions .col2-left-layout .col-main .page-title { margin-left:45px; overflow:hidden; border-bottom:1px solid #FF7300; width:795px; }
+.cms-terms-conditions .col2-left-layout .col-main .page-title { margin-left:45px; overflow:hidden; border-bottom:1px solid #FF7300; width:795px; }
 
 .cms-about-us .col2-left-layout .col-main .std,
-.cms-contact-us .col2-left-layout .col-main .std,
+.contacts-index-index .col2-left-layout .col-main .std,
 .cms-delivery-information .col2-left-layout .col-main .std,
 .cms-privacy-policy .col2-left-layout .col-main .std,
-.cms-term-conditions .col2-left-layout .col-main .std { margin-left:45px; }
+.cms-terms-conditions .col2-left-layout .col-main .std { margin-left:45px; }
 
 .cms-about-us .col2-left-layout .col-left .cms-nav ul .about-us span,
-.cms-contact-us .col2-left-layout .col-left .cms-nav ul .contact-us span,
+.contacts-index-index .col2-left-layout .col-left .cms-nav ul .contact-us span,
 .cms-delivery-information .col2-left-layout .col-left .cms-nav ul .delivery-information span,
 .cms-privacy-policy .col2-left-layout .col-left .cms-nav ul .privacy-policy span,
-.cms-term-conditions .col2-left-layout .col-left .cms-nav ul .term-conditions span {
+.cms-terms-conditions .col2-left-layout .col-left .cms-nav ul .term-conditions span {
     background: url("../images/buttons.png") no-repeat scroll -840px -179px transparent;
     color: #FF7300;
     display: inline-block;
@@ -2884,7 +2897,7 @@ ul.accountlist.grand_total{font-weight: bold;}
     width: 9px;
 }
 .cms-about-us .col2-left-layout .col-left .cms-nav ul .about-us a,
-.cms-contact-us .col2-left-layout .col-left .cms-nav ul .contact-us a,
+.contacts-index-index .col2-left-layout .col-left .cms-nav ul .contact-us a,
 .cms-delivery-information .col2-left-layout .col-left .cms-nav ul .delivery-information a,
 .cms-privacy-policy .col2-left-layout .col-left .cms-nav ul .privacy-policy a,
-.cms-term-conditions .col2-left-layout .col-left .cms-nav ul .term-conditions a { color: #FF7300; }
+.cms-terms-conditions .col2-left-layout .col-left .cms-nav ul .term-conditions a { color: #FF7300; } 
