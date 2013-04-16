@@ -518,11 +518,11 @@ p.required { font-size:11px; text-align:right; color:#898989; }
 .error-msg,
 .success-msg,
 .note-msg,
-.notice-msg { border-radius:5px; border-style:solid !important; border-width:1px !important; background-position:10px 9px !important; background-repeat:no-repeat !important; min-height:24px !important; padding:8px 8px 8px 32px !important; font-size:11px !important; font-weight:bold !important; }
-.error-msg { border-radius:5px; border-color:#f16048; background-color:#faebe7; background-image:url(../images/i_msg-error.gif); color:#df280a; }
-.success-msg { border-radius:5px; border-color:#446423; background-color:#eff5ea; background-image:url(../images/i_msg-success.gif); color:#3d6611; }
+.notice-msg { clear:both; border-radius:5px; border-style:solid !important; border-width:1px !important; background-position:10px 9px !important; background-repeat:no-repeat !important; min-height:24px !important; padding:8px 8px 8px 32px !important; font-size:11px !important; font-weight:bold !important; }
+.error-msg { clear:both; border-radius:5px; border-color:#f16048; background-color:#faebe7; background-image:url(../images/i_msg-error.gif); color:#df280a; }
+.success-msg { clear:both; border-radius:5px; border-color:#446423; background-color:#eff5ea; background-image:url(../images/i_msg-success.gif); color:#3d6611; }
 .note-msg,
-.notice-msg { border-radius:5px; border-color:#fcd344; background-color:#fafaec; background-image:url(../images/i_msg-note.gif); color:#3d6611; }
+.notice-msg { clear:both; border-radius:5px; border-color:#fcd344; background-color:#fafaec; background-image:url(../images/i_msg-note.gif); color:#3d6611; }
 
 /* BreadCrumbs */
 #breadcrumb-container{ height:78px; background: url("../images/bg.png") repeat-x scroll 0 0 transparent;}
@@ -880,9 +880,8 @@ h1.homepage-softwaress{color:#ff7300;padding:20px 0; font-family: 'Aller_Lt',San
 
 .sidebar #categories{margin-top:6px;}
 #categories{
-     min-height:400px;
+     min-height:250px;
      height:auto !important;
-     height:400px;
      margin: 1px 0 10px 0;
      font-family: 'CALIBRI_1',sans-serif;
      font-size: 14px;
@@ -999,16 +998,18 @@ h1.homepage-softwaress{color:#ff7300;padding:20px 0; font-family: 'Aller_Lt',San
 
 /* Block: Compare Products */
 .block-compare {
-    background-color: #F2F2F2;
+    background-color: #FFFFFF;
     border: medium none;
-    color:#000;
-    font-family: 'Aller_Lt', sans-serif;
     border-radius: 5px 5px 5px 5px;
+    color: #000000;
+    font-family: 'Aller_Lt',sans-serif;
     padding: 8px;
+    width: 170px;
+
 }
+.block-compare .actions { background:none; padding:6px 0; } 
 .block-compare .block-content { background:none; }
 .block-compare .block-title { color: #000000; font-size: 18px; font-family: MyriadPro,'Myriad Pro',MyriadPro-Regular,'Myriad Pro Regular',Helvetica,Arial,sans-serif; padding: 3px 10px; }
-.block-compare button.button span { border-color:#406a83; background:#618499; }
 .page-popup .link-print { background:url(../images/i_print.gif) 0 2px no-repeat; padding:2px 0 2px 25px; font-weight:bold; color:#1e7ec8; }
 .compare-table { border:0; }
 .compare-table thead tr.first th,

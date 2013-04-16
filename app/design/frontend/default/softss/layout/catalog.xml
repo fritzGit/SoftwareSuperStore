@@ -51,6 +51,7 @@ Category default layout
             <remove name="left.permanent.callout"/>
             <remove name="left.newsletter"/>
             <block type="softsscatalog/category_menu" name="home.catalog.category.menu" template="catalog/category/menu.phtml" />
+            <block type="catalog/product_compare_sidebar" after="home.catalog.category.menu" name="catalog.compare.sidebar" template="catalog/product/compare/sidebar.phtml"/>
         </reference>
 
         <reference name="content">
