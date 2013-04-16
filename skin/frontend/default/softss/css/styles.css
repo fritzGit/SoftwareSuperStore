@@ -1734,7 +1734,8 @@ ul.product-specs label{width:50%; display: inline-block;}
 #hp-products .next,#hp-latest-products .next { background-position: -140px -60px; margin-left: 5px;}
 #hp-products .disable {  }
 #hp-products .overview,
-#hp-latest-products .overview
+#hp-latest-products .overview,
+#ajax-container-realated-items .overview
 { list-style: none; position: absolute; padding: 0; margin: 0; left: 0; top: 0; }
 
 #hp-products .overview li,
@@ -2017,12 +2018,7 @@ ul.product-specs label{width:50%; display: inline-block;}
 }
 .shadowtop{box-shadow: 0 -6px 4px -4px #ccc; display: inline-block;}
 #ajax-container-realated-items .viewport{
-    float: left;
-    width: 612px;
-    overflow: hidden;
-    background-color: #fff;
-    position: relative;
-    margin: 0 auto;
+    float: left; width: 612px; height: 251px; overflow: hidden; position: relative;
 }
 #ajax-container-realated-items .buttons {
     background: url("../images/buttons.png") no-repeat scroll 0 -60px transparent;
@@ -2900,4 +2896,4 @@ ul.accountlist.grand_total{font-weight: bold;}
 .contacts-index-index .col2-left-layout .col-left .cms-nav ul .contact-us a,
 .cms-delivery-information .col2-left-layout .col-left .cms-nav ul .delivery-information a,
 .cms-privacy-policy .col2-left-layout .col-left .cms-nav ul .privacy-policy a,
-.cms-terms-conditions .col2-left-layout .col-left .cms-nav ul .term-conditions a { color: #FF7300; } 
+.cms-terms-conditions .col2-left-layout .col-left .cms-nav ul .term-conditions a { color: #FF7300; }

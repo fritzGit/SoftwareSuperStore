@@ -12,7 +12,7 @@ class SOFTSS_TeaserEditor_Helper_Data extends Mage_Core_Helper_Abstract
      * Get Image path for teasers
      */
     public function getTeaserImageDir() {
-        return 'softss_teasers' . DS;
+        return 'softss_teasers/';
     }
 
     /**

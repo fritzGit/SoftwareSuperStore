@@ -39,6 +39,7 @@ function addProduct(proudctID, quantity)
         success: function(response) {
             overlay.html('');
             var ajaxContainer = $j('#ajax_add_item_container');
+
             ajaxContainer.html(response.additemhtml);
             ajaxContainer.css("top", ( $j(window).height() - ajaxContainer.height() ) / 2+$j(window).scrollTop() + "px");
             ajaxContainer.css("left", ( $j(window).width() - ajaxContainer.width() ) / 2+$j(window).scrollLeft() + "px");
@@ -46,6 +47,11 @@ function addProduct(proudctID, quantity)
             var shoppingcart = $j('.shoppingcartcontent');
             if(shoppingcart.length){
                 shoppingcart.replaceWith(response.toplink);
+            }
+        },
+        complete : function(){
+            if($j('#ajax-container-realated-items').length){
+                initCarousel();
             }
         },
         error: function(response) {
@@ -61,7 +67,7 @@ function sortbyChange(selectObj){
 }
 
 function showAjaxLoginForm(){
-    
+
        var overlay=$j('#overlaylogin');
        overlay.fadeIn();
        var ajaxContainer = $j('#ajax_login_container');
@@ -71,12 +77,12 @@ function showAjaxLoginForm(){
 }
 
 function ajaxLoginPost(){
-    
+
     var overlay=$j('#overlaylogin');
     var ajaxurl=baseurl+'customer/account/loginAjaxPost';
     var loginForm = new VarienForm('login-form-ajax', true);
 
-    if(loginForm.validator && loginForm.validator.validate()){ 
+    if(loginForm.validator && loginForm.validator.validate()){
         $j.ajax({
             url: ajaxurl,
             type: 'POST',
@@ -87,18 +93,18 @@ function ajaxLoginPost(){
                 overlay.html('<img id="imgloading" src="'+imageurl+'" />').show();
             },
             success: function(response) {
-                overlay.html('');  
-                if(response.error) {             
+                overlay.html('');
+                if(response.error) {
                      var message = '<ul class="messages"><li class="error-msg"><ul><li>' + response.message + '</li></ul></li></ul>';
                      $j('#message-div').html(message);
                 } else {
                    window.location.href=response.url;
-                } 
+                }
                 var ajaxContainer = $j('#ajax_login_container');
                 ajaxContainer.fadeIn();
             },
             error: function(response) {
-                overlay.hide();            
+                overlay.hide();
                 alert("Error while trying to login.");
             }
         });
