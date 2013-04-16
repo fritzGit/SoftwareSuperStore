@@ -1955,7 +1955,7 @@ ul.product-specs label{width:50%; display: inline-block;}
     background: url("../images/bg.png") repeat scroll 0 0 #FFFFFF;
     border: 1px solid #F18200;
     width:660px;
-    height: 495px;
+    min-height: 215px;
     z-index: 110;
     display: none;
     margin: auto;
@@ -2018,7 +2018,7 @@ ul.product-specs label{width:50%; display: inline-block;}
 }
 .shadowtop{box-shadow: 0 -6px 4px -4px #ccc; display: inline-block;}
 #ajax-container-realated-items .viewport{
-    float: left; width: 612px; height: 251px; overflow: hidden; position: relative;
+    float: left; width: 612px; height: 208px; overflow: hidden; position: relative;
 }
 #ajax-container-realated-items .buttons {
     background: url("../images/buttons.png") no-repeat scroll 0 -60px transparent;
