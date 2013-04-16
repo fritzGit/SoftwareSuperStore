@@ -913,8 +913,9 @@ h1.homepage-softwaress{color:#ff7300;padding:20px 0; font-family: 'Aller_Lt',San
 .block-viewed .block-title strong,
 .block-compared .block-title strong,
 .block-related .block-title strong,
-.block-tags .block-title strong,
-.block-login .block-title strong {  background-position:0 0; background-repeat:no-repeat; padding-left:21px; }
+.block-tags .block-title strong {  background-position:0 0; background-repeat:no-repeat; padding-left:21px; }
+
+.block-login .block-title strong {  background-position:0 0; background-repeat:no-repeat; text-align: left; }
 
 /* Mini Products List */
 .mini-products-list .product-image { float:left; width:50px; border:1px solid #a9a9a9; }
@@ -1372,7 +1373,8 @@ ul.product-specs label{width:50%; display: inline-block;}
 
 #imagewhitebg{
     background-color: #fff;
-    width: 30%;
+    width: 23%;
+    margin-left: 3px;
     height:490px;
     position: absolute;
     top:120px;
@@ -2386,7 +2388,7 @@ ul.product-specs label{width:50%; display: inline-block;}
 }
 #ajax_login_container .block { border:none; }
 #ajax_login_container .block-content { background: none; }
-#ajax_login_container .block-title { border-bottom: 1px solid #E4E4E4; }
+#ajax_login_container .block-title { border-bottom: 1px solid #E4E4E4; color:#afafaf; text-align: right; }
 #ajax_login_container .block-title strong span { color: #000; font-family: 'Aller_Lt',Sans-Serif; font-size: 18px; }
 #ajax_login_container .buttons-set { border-top: none; margin: 0; }
 #ajax_login_container .block-content ul li { display: inline; list-style-type: none; padding-right: 5px; }

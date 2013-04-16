@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * @category  Devcores
+ * @package   Devcores_Userlike
+ * @author    Devcores <info@devcores.com>
+ * @author    Sven Gebhardt <sven@devcores.com>
+ * @copyright 2012 Devcores UG (haftungsbeschraenkt)
+ * @link      http://devcores.com/
+ */
+-->
+<layout version="0.1.0">
+    <default>
+        <reference name="before_body_end">
+            <block type="userlike/basecode" name="userlike_basecode" template="userlike/basecode.phtml" />
+        </reference>
+    </default>
+</layout>

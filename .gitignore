@@ -23,7 +23,6 @@
 /app/code/core/Mage/
 /app/code/core/Zend/
 !/app/design/adminhtml/default/softss/
-/app/design/frontend/default/default/
 /skin/frontend/default/default/
 /pkginfo
 /shell
@@ -700,3 +699,5 @@ app/etc/local.xml
 !/lib/Zend/Locale/Data/root.xml
 /lib/
 >>>>>>> 22336e5dfe352d12de537ee9a92feae1eda8f443
+/app/design/frontend/default/default/etc/
+/app/design/frontend/default/default/locale/
