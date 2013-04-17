@@ -43,7 +43,7 @@ $helper = Mage::helper('onestepcheckout/checkout');
                             var billing = new Billing();
 
                         </script>
-                        <ul>
+                        <ul id="billing_address_list_custom">
                             <li>
                                 <p class="onestepcheckout-numbers onestepcheckout-numbers-<?php echo $step_counter++; ?>"><span>1</span><?php echo $this->__('Billing address'); ?></p>
     <?php if (isset($this->formErrors['billing_error']) && count($this->formErrors['billing_errors']) > 0): ?>
@@ -61,7 +61,6 @@ $helper = Mage::helper('onestepcheckout/checkout');
                                 </li>
     <?php endif; ?>
                             <li>
-                                <div class="inner-col">
                                     <ul id="billing_address_list" <?php echo (($this->customerHasAddresses() && !$this->getNewAddressSelectValueOnError('billing')) ? 'style = "display:none"' : false ); ?>>
                                     <?php
                                     $prefix = $this->getLayout()->createBlock('customer/widget_name')
@@ -99,7 +98,6 @@ $helper = Mage::helper('onestepcheckout/checkout');
                                             <?php echo $customerAttributes->setExcludeFileAttributes(true)->toHtml() ?>
                                         <?php endif; ?>
                                     </ul>
-                                </div>
                             </li>
                             <li>
                                 <?php $uncheck = (!empty($_POST['billing']) && empty($_POST['billing']['use_for_shipping'])); ?>
@@ -119,7 +117,7 @@ $helper = Mage::helper('onestepcheckout/checkout');
                             <script type="text/javascript">
                                 var shipping = new Shipping();
                             </script>
-                            <ul>
+                              <ul id="shipping_address_list_custom">
                                 <li class="shipping-address-title">
                                     <?php echo $this->__('Shipping address'); ?>
                                 </li>
@@ -132,7 +130,6 @@ $helper = Mage::helper('onestepcheckout/checkout');
                                 <li id="shipping_address_list" <?php if ($this->customerHasAddresses() && !$this->getNewAddressSelectValueOnError('shipping')) {
                                     echo '  style="display: none;" ';
                                 } ?>>
-                                    <div class="inner-col">
                                         <ul>
                                             <?php $prefix = $this->getLayout()->createBlock('customer/widget_name')
                                                     ->setObject($this->getAddress())
@@ -166,7 +163,6 @@ $helper = Mage::helper('onestepcheckout/checkout');
                                         </ul>
                                         <input type="hidden" name="shipping[address_id]" value="<?php echo $this->getQuote()->getShippingAddress()->getId() ?>" id="shipping:address_id" />
                                         <!-- END LIST OF SHIPPIING FIELDS -->
-                                    </div>
                                 </li>
                             </ul>
                         </div>
@@ -867,9 +863,10 @@ $helper = Mage::helper('onestepcheckout/checkout');
             <button type="button" title="<?php echo $this->__('Place order now'); ?>" id="onestepcheckout-place-order" class="button black onestepcheckout-place-order" onclick="javascript:void(0);"><span><span><?php echo $this->__('Place order now'); ?></span></span></button>
         </div>
     <div style="clear: both;">&nbsp;</div>
-</div>
+
 </fieldset>
 </form>
+</div>
 
     <?php /* if(!$this->isCustomerLoggedIn() && $helper->showLoginLink()): ?>
       <?php echo $this->getChildHtml('login-popup'); ?>
