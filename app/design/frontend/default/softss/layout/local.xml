@@ -10,15 +10,15 @@
  */
 -->
 <layout version="0.1.0">
-
     <default>
-     <!--   <reference name="head">
-            <block type="core/text" name="google.cdn.jquery">
-                <action method="setText">
+       <reference name="head">
+           <action method="addItem"><type>skin_js</type><name>PIE/PIE.js</name><params/><if>lte IE 8</if></action>
+           <action method="addItem"><type>skin_js</type><name>js/pie-functions.js</name></action>
+            <!--<block type="core/text" name="google.cdn.jquery">
+                 <action method="setText">
                     <text><![CDATA[<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>]]></text>
                 </action>
-            </block>
-        </reference>-->
+            </block>-->
+        </reference>
     </default>
-
 </layout>
