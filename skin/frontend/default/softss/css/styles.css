@@ -83,8 +83,8 @@ ul,ol         { list-style:none; }
 
 
 /* Base Columns */
-.col-left { float:left; width:194px; padding:0 0 1px; }
-.col-main { float:left; width:830px; padding:0 0 1px; }
+.col-left { float:left; width:240px; padding:0 0 1px; }
+.col-main { float:left; width:784px; padding:0 0 1px; }
 .col-right { float:right; width:195px; padding:0 0 1px; }
 
 /* 1 Column Layout */
@@ -603,7 +603,7 @@ p.required { font-size:11px; text-align:right; color:#898989; }
 /* Sorter */
 .sorter { font-size:11px; background:none; padding:3px 8px; }
 .sorter .view-mode { float:left; margin:0; }
-.sorter .sort-by {background:#e4e4e4 url(../images/buttons.png) no-repeat -741px 4px; float:right; padding-right:10px; border:1px solid #C8C8C8; width:105px; overflow: hidden; margin-top: 14px;}
+.sorter .sort-by {background:#e4e4e4 url(../images/buttons.png) no-repeat -741px 4px; float:right; padding-right:10px; border:1px solid #C8C8C8; width:102px; overflow: hidden; margin-top: 14px;}
 .sorter .sort-by label { vertical-align:middle; }
 .sorter .sort-by select { padding:0; margin:0 0 1px; vertical-align:middle; background: transparent; border: none; width:130px;}
 .sorter .sort-by select .selected{color: #FF7300;}
@@ -882,9 +882,8 @@ h1.homepage-softwaress{color:#ff7300;padding:20px 0; font-family: 'Aller_Lt',San
 
 .sidebar #categories{margin-top:6px;}
 #categories{
-     min-height:400px;
+     min-height:250px;
      height:auto !important;
-     height:400px;
      margin: 1px 0 10px 0;
      font-family: 'CALIBRI_1',sans-serif;
      font-size: 14px;
@@ -916,8 +915,9 @@ h1.homepage-softwaress{color:#ff7300;padding:20px 0; font-family: 'Aller_Lt',San
 .block-viewed .block-title strong,
 .block-compared .block-title strong,
 .block-related .block-title strong,
-.block-tags .block-title strong,
-.block-login .block-title strong {  background-position:0 0; background-repeat:no-repeat; padding-left:21px; }
+.block-tags .block-title strong {  background-position:0 0; background-repeat:no-repeat; padding-left:21px; }
+
+.block-login .block-title strong {  background-position:0 0; background-repeat:no-repeat; text-align: left; }
 
 /* Mini Products List */
 .mini-products-list .product-image { float:left; width:50px; border:1px solid #a9a9a9; }
@@ -935,7 +935,7 @@ h1.homepage-softwaress{color:#ff7300;padding:20px 0; font-family: 'Aller_Lt',San
     padding: 8px;
 }
 .block-account .block-title { font-size:22px; font-family: MyriadPro,'Myriad Pro',MyriadPro-Regular,'Myriad Pro Regular',Helvetica,Arial,sans-serif; color:#000; padding:3px 10px; }
-.block-account .block-content { padding:7px 0px; border:none; background:none; font-family: 'CALIBRI_1',sans-serif; font-size: 14px;}
+.block-account .block-content { padding:7px 0px; border:none; background:none; font-family: 'CALIBRI_1',sans-serif; font-size: 13px;}
 .block-account .block-content ul { line-height: 24px; }
 .block-account .block-content li span {
     margin: 5px;
@@ -1001,16 +1001,18 @@ h1.homepage-softwaress{color:#ff7300;padding:20px 0; font-family: 'Aller_Lt',San
 
 /* Block: Compare Products */
 .block-compare {
-    background-color: #F2F2F2;
+    background-color: #FFFFFF;
     border: medium none;
-    color:#000;
-    font-family: 'Aller_Lt', sans-serif;
     border-radius: 5px 5px 5px 5px;
-    padding: 8px;
+    color: #000000;
+    font-family: 'Aller_Lt',sans-serif;
+    margin-right: 45px;
+    padding: 10px;
+
 }
+.block-compare .actions { background:none; padding:6px 0; } 
 .block-compare .block-content { background:none; }
 .block-compare .block-title { color: #000000; font-size: 18px; font-family: MyriadPro,'Myriad Pro',MyriadPro-Regular,'Myriad Pro Regular',Helvetica,Arial,sans-serif; padding: 3px 10px; }
-.block-compare button.button span { border-color:#406a83; background:#618499; }
 .page-popup .link-print { background:url(../images/i_print.gif) 0 2px no-repeat; padding:2px 0 2px 25px; font-weight:bold; color:#1e7ec8; }
 .compare-table { border:0; }
 .compare-table thead tr.first th,
@@ -1373,7 +1375,8 @@ ul.product-specs label{width:50%; display: inline-block;}
 
 #imagewhitebg{
     background-color: #fff;
-    width: 30%;
+    width: 23%;
+    margin-left: 3px;
     height:490px;
     position: absolute;
     top:120px;
@@ -1957,7 +1960,7 @@ ul.product-specs label{width:50%; display: inline-block;}
     background: url("../images/bg.png") repeat scroll 0 0 #FFFFFF;
     border: 1px solid #F18200;
     width:660px;
-    height: 495px;
+    min-height: 215px;
     z-index: 110;
     display: none;
     margin: auto;
@@ -2021,7 +2024,7 @@ ul.product-specs label{width:50%; display: inline-block;}
 }
 .shadowtop{box-shadow: 0 -6px 4px -4px #ccc; display: inline-block;}
 #ajax-container-realated-items .viewport{
-    float: left; width: 612px; height: 251px; overflow: hidden; position: relative;
+    float: left; width: 612px; height: 208px; overflow: hidden; position: relative;
 }
 #ajax-container-realated-items .buttons {
     background: url("../images/buttons.png") no-repeat scroll 0 -60px transparent;
@@ -2388,7 +2391,7 @@ ul.product-specs label{width:50%; display: inline-block;}
 }
 #ajax_login_container .block { border:none; }
 #ajax_login_container .block-content { background: none; }
-#ajax_login_container .block-title { border-bottom: 1px solid #E4E4E4; }
+#ajax_login_container .block-title { border-bottom: 1px solid #E4E4E4; color:#afafaf; text-align: right; }
 #ajax_login_container .block-title strong span { color: #000; font-family: 'Aller_Lt',Sans-Serif; font-size: 18px; }
 #ajax_login_container .buttons-set { border-top: none; margin: 0; }
 #ajax_login_container .block-content ul li { display: inline; list-style-type: none; padding-right: 5px; }
@@ -2875,7 +2878,7 @@ ul.accountlist.grand_total{font-weight: bold;}
 .contacts-index-index .col2-left-layout .col-main .page-title,
 .cms-delivery-information .col2-left-layout .col-main .page-title,
 .cms-privacy-policy .col2-left-layout .col-main .page-title,
-.cms-terms-conditions .col2-left-layout .col-main .page-title { margin-left:45px; overflow:hidden; border-bottom:1px solid #FF7300; width:795px; }
+.cms-terms-conditions .col2-left-layout .col-main .page-title { margin-left:45px; overflow:hidden; border-bottom:1px solid #FF7300; width:739px; }
 
 .cms-about-us .col2-left-layout .col-main .std,
 .contacts-index-index .col2-left-layout .col-main .std,

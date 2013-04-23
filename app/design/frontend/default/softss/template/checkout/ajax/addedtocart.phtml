@@ -25,7 +25,11 @@
 <div id="ajax-container-links">
     <button type="button" title="<?php echo $this->__('Continue Shopping') ?>" class="button btn-continue black" onclick="hideOverlay()"><span><span><?php echo $this->__('Continue Shopping') ?></span></span></button>
     <button type="button" title="<?php echo $this->__('View Cart') ?>" class="button btn-continue black" onclick="setLocation('<?php echo Mage::helper('checkout/cart')->getCartUrl() ?>')"><span><span><?php echo $this->__('View Cart') ?></span></span></button>
+    <div class="right">
+        <?php echo $this->getLayout()->createBlock('checkout/onepage_link')->setTemplate("checkout/onepage/link.phtml")->toHtml(); ?>
+    </div>
 </div>
+
 <?php if($collection->count()>0): ?>
 <div id="ajax-container-realated-items">
    <!--<div class="otherproducttxt"><?php echo $this->__('You may also be interested in:'); ?></div>-->

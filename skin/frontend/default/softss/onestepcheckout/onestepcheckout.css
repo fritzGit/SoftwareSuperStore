@@ -155,7 +155,7 @@ div.onestepcheckout-threecolumns div.onestepcheckout-column-left {
     border-radius: 5px;
     padding-top: 15px;
 }
-div.onestepcheckout-threecolumns div.onestepcheckout-column-left .inner-col {
+ #billing_address_list_custom, #shipping_address_list_custom {
     padding:0 18px;
     text-align: right;
 }
@@ -214,6 +214,13 @@ p.onestepcheckout-numbers-5 span {
     padding: 0 5px 0 7px;
     width: 15px;
     font-weight: normal;
+}
+p.onestepcheckout-numbers-1,
+p.onestepcheckout-numbers-2,
+p.onestepcheckout-numbers-3,
+p.onestepcheckout-numbers-4,
+p.onestepcheckout-numbers-5 {
+    text-align: left;
 }
 
 #onestepcheckout-email-error {
@@ -336,6 +343,7 @@ div.checkoutcontainer div.input-error input,div.checkoutcontainer div.input-erro
 
 div.checkoutcontainer div.input-different-shipping {
     margin-top: 10px;
+    text-align: left;
 }
 
 div.checkoutcontainer div.input-address-short,div.checkoutcontainer div.input-firstname,div.checkoutcontainer div.input-lastname,div.checkoutcontainer div.input-email,div.checkoutcontainer div.input-telephone,div.checkoutcontainer div.input-company,div.checkoutcontainer div.input-fax,div.checkoutcontainer div.input-password
@@ -744,6 +752,7 @@ div.onestepcheckout-comments textarea {
     font-weight: bold;
     margin-left: 15px;
     padding-top: 5px;
+    text-align: left;
 }
 
 .onestepcheckout-giftmessagecontainer {

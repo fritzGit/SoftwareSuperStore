@@ -7,12 +7,13 @@
 class SOFTSS_Checkout_Block_Ajax_Addtocart extends Mage_Catalog_Block_Product_Abstract
 {
     protected $_productCollection;
-
+    protected $_fallback;
     /*
      *
      */
     public function _construct()
     {
+        $this->_fallback = true;
         $this->collection_type = Mage::getStoreConfig('checkout/ajaxcartadd/collection_type');
         $this->item_limit = Mage::getStoreConfig('checkout/ajaxcartadd/item_limit');
 
@@ -34,6 +35,12 @@ class SOFTSS_Checkout_Block_Ajax_Addtocart extends Mage_Catalog_Block_Product_Ab
           break;
         default:
           $this->_prepareCrossellProducts($this->product);
+        }
+                
+        if($this->_productCollection->count() == 0 && $this->collection_type != Mage::getStoreConfig('checkout/ajaxcartadd/collection_type_fallback') && $this->_fallback) {
+            $this->_fallback = false;
+            $this->collection_type = Mage::getStoreConfig('checkout/ajaxcartadd/collection_type_fallback');
+            $this->_prepareCollection();
         }
     }
 
