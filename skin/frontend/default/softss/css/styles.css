@@ -504,6 +504,13 @@ p.required { font-size:11px; text-align:right; color:#898989; }
    height:auto !important;
    height: 45px;
 }
+.toolbar-bottom .toolbar{
+   min-height: 0;
+   height:auto !important;
+}
+.toolbar-bottom .toolbar .pager{
+
+}
 .toolbar .pager { padding:2px 8px; }
 .toolbar .sorter { }
 .toolbar-bottom .toolbar {background-color: #c8c8c8;}
@@ -1700,7 +1707,7 @@ ul.product-specs label{width:50%; display: inline-block;}
 #hp-latest-products .priceBubble .regular-price{padding-top: 1px;}
 
 .priceBubble .regular-price{display: block; padding-top: 8px;}
-.priceBubble .old-price{line-height: 10px;}
+.priceBubble .old-price{line-height: 9px;}
 .priceBubble .old-price .price{font-weight: normal; color: #000; font-size: 10px; line-height: 0;}
 .priceBubble .special-price{padding: 0; line-height: 12px;}
 .priceBubble .special-price .price{color: #fff; font-size: 12px;}
