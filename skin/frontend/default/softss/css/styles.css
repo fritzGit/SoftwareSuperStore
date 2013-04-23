@@ -376,7 +376,7 @@ input.input-text:focus,select:focus,textarea:focus { background-color:#edf7fd; }
 /*.form-list li.fields { margin-right:-15px; }*/
 .form-list .input-box { display:block; clear:both; width:260px; }
 .form-list .field { float:left; width:275px; }
-.form-list input.input-text { width:254px; height:30px; }
+.form-list input.input-text { width:234px; height:30px; line-height: 30px; padding: 0 10px;}
 .form-list textarea { width:254px; height:10em; }
 .form-list select { width:260px; }
 .form-list li.wide .input-box { width:535px; }
@@ -518,11 +518,11 @@ p.required { font-size:11px; text-align:right; color:#898989; }
 .error-msg,
 .success-msg,
 .note-msg,
-.notice-msg { border-radius:5px; border-style:solid !important; border-width:1px !important; background-position:10px 9px !important; background-repeat:no-repeat !important; min-height:24px !important; padding:8px 8px 8px 32px !important; font-size:11px !important; font-weight:bold !important; }
-.error-msg { border-radius:5px; border-color:#f16048; background-color:#faebe7; background-image:url(../images/i_msg-error.gif); color:#df280a; }
-.success-msg { border-radius:5px; border-color:#446423; background-color:#eff5ea; background-image:url(../images/i_msg-success.gif); color:#3d6611; }
+.notice-msg { border-radius:5px; border-style:solid !important; border-width:1px !important; background-position:10px 9px !important; background-repeat:no-repeat !important; min-height:24px !important; padding:8px 8px 8px 32px !important; font-size:11px !important; font-weight:bold !important; clear: left;}
+.error-msg { border-radius:5px; border-color:#f16048; background-color:#faebe7; background-image:url(../images/i_msg-error.gif); color:#df280a; clear: left;}
+.success-msg { border-radius:5px; border-color:#446423; background-color:#eff5ea; background-image:url(../images/i_msg-success.gif); color:#3d6611; clear: left;}
 .note-msg,
-.notice-msg { border-radius:5px; border-color:#fcd344; background-color:#fafaec; background-image:url(../images/i_msg-note.gif); color:#3d6611; }
+.notice-msg { border-radius:5px; border-color:#fcd344; background-color:#fafaec; background-image:url(../images/i_msg-note.gif); color:#3d6611; clear: left;}
 
 /* BreadCrumbs */
 #breadcrumb-container{ height:78px; background: url("../images/bg.png") repeat-x scroll 0 0 transparent;}
@@ -852,6 +852,8 @@ tr.summary-details-excluded { font-style:italic; }
 
 /* Homepage */
 h1.homepage-softwaress{color:#ff7300;padding:20px 0; font-family: 'Aller_Lt',Sans-Serif; font-size: 22px; font-weight: lighter;}
+
+.homepage-lastest{width:775px;}
 
 #home-page-social{margin: 30px 0 40px 0; display: inline-block;}
 #home-page-social .aboutus, #home-page-social .twitter{width:200px; float:left; padding-right: 35px;}
@@ -1713,10 +1715,10 @@ ul.product-specs label{width:50%; display: inline-block;}
 
 .col2-left-layout #hp-products{margin:50px auto 30px auto;}
 #hp-products { width:1024px; height: 240px; margin: 0 auto; text-align: center; display: inline-block;}
-#hp-latest-products{width:772px; height:285px;overflow:hidden; float:right; text-align: center;}
+#hp-latest-products{width:775px; height:285px;overflow:hidden; float:right; text-align: center;}
 #hp-products strong, #hp-latest-products strong{float: left;color: #011A35; font-family: 'Aller_Lt',Sans-Serif; font-size: 22px; font-weight: lighter; line-height: 19px;}
 #hp-products .viewport { background-color: #fff; float: left; width: 1024px; height: 208px; overflow: hidden; position: relative;}
-#hp-latest-products .viewport{float: left; width: 772px; height: 251px; overflow: hidden; position: relative;}
+#hp-latest-products .viewport{float: left; width: 775px; height: 251px; overflow: hidden; position: relative;}
 .product-view #hp-latest-products{margin:0 109px 20px 0;}
 #hp-products .buttons,
 #hp-latest-products .buttons,
@@ -1819,7 +1821,7 @@ ul.product-specs label{width:50%; display: inline-block;}
 {background:url("../images/buttons.png") no-repeat -140px 0; width:37px; height:41px; position: absolute; top:74px; right:16px; z-index: 10; cursor: pointer;}
 
 #hp-latest-products .cartBubble{background:url("../images/buttons.png") no-repeat -140px 0; width:37px; height:41px; position: absolute; top:84px; right:10px; z-index: 10; cursor: pointer;}
-.carouselbuttons{float:right;height:21px; width: 50px; margin-bottom: 5px;}
+.carouselbuttons{float:right;height:21px; width: 47px; margin-bottom: 5px;}
 .carousellist-label{
     background:url("../images/buttons.png") no-repeat 0 -480px;
     color:#fff;
@@ -1980,6 +1982,7 @@ ul.product-specs label{width:50%; display: inline-block;}
     width: 15px;
     text-decoration: none;
     color: #fff;
+    line-height: 19px;
 }
 #ajax-container-head a.close:hover{text-decoration: none;}
 #ajax-cart-message{text-align: left; float: left; line-height: 45px; margin: 0 20px;}
@@ -1999,7 +2002,7 @@ ul.product-specs label{width:50%; display: inline-block;}
     font-size: 16px;
     line-height: 1;
 }
-#ajax-product-view ul li.txt{padding: 25px 30px;}
+#ajax-product-view ul li.txt{padding: 25px 30px 0 30px;}
 #ajax-product-view ul li span.small{
     color:#b9b9b9;
     font-size: 11px;

@@ -108,7 +108,7 @@
                            <span><?php echo $this->__('Special Financial Calculator'); ?></span>
                         </td>
                         <td colspan="5"class="a-right">
-                           <span><?php echo $this->__('incl VAT and plus shipping costs'); ?></span>
+                           <span><?php echo $this->__('incl VAT and shipping costs'); ?></span>
                         </td>
                     </tr>
                 </tfoot>
@@ -129,7 +129,7 @@
                         <?php if ($methodHtml = $this->getMethodHtml($method)): ?>
                         <?php echo $methodHtml; ?>
                         <?php endif; ?>
-                    <?php endforeach; ?>                
+                    <?php endforeach; ?>
                 <?php endif; ?>
             </div>
             <script type="text/javascript">decorateTable('shopping-cart-table')</script>
@@ -144,6 +144,6 @@
                 <?php /* Extensions placeholder */ ?>
                 <?php echo $this->getChildHtml('checkout.cart.extra') ?>
             </div>
-        </div>            
+        </div>
     </div>
 </div>
