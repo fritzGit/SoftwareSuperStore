@@ -458,7 +458,11 @@ p.required { font-size:11px; text-align:right; color:#898989; }
 .pager .limiter { float:right; }
 .pager .limiter label { vertical-align:middle; }
 .pager .limiter select { padding:0; margin:0 0 1px; vertical-align:middle; }
-.pager .pages { margin:0; }
+.pager .pages {
+    float: left;
+    margin: 0;
+    padding: 2px 8px;
+}
 .pager .pages ol { display:inline; float:left;}
 .pager .pages li { display:inline; margin:0 1px; }
 .pager .pages .current {
@@ -469,7 +473,7 @@ p.required { font-size:11px; text-align:right; color:#898989; }
     display: inline-block;
     color:#ff7300;
 }
-.pager .pagerButtons{float:right;}
+.pager .pagerButtons{float:right;padding: 2px 8px;}
 .pager .pagerButtons a.previous{
     background-position: -975px 3px;
     margin-right: 15px;
@@ -520,8 +524,6 @@ p.required { font-size:11px; text-align:right; color:#898989; }
 .toolbar-bottom .toolbar .pager{
 
 }
-.toolbar .pager { padding:2px 8px; }
-.toolbar .sorter { }
 .toolbar-bottom .toolbar {background-color: #c8c8c8;}
 
 
