@@ -154,3 +154,7 @@ iframe.hover-fix { position:absolute; left:-1px; top:-1px; z-index:-1; backgroun
 
 ul.accountlistheader{display: block;}
 ul.accountlist{float:left; margin-bottom: 8px;}
+.pager .pagerButtons a.previous{
+    /* IE8 */
+    -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(mirror=1)";
+}
