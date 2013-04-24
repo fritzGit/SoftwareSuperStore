@@ -32,7 +32,6 @@ class SOFTSS_Checkout_CartController extends Mage_Checkout_CartController {
                 $this->_goBack();
                 return;
             }
-
             $cart->addProduct($product, $params);
             if (!empty($related)) {
                 $cart->addProductsByIds(explode(',', $related));

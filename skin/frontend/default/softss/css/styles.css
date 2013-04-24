@@ -1682,6 +1682,7 @@ ul.product-specs label{width:50%; display: inline-block;}
     font-family: 'CALIBRI_1',Sans-Serif;
     font-size: 16px;
     line-height: 19px;
+    width: 95%;
 }
 #hp-latest-products .overview h2.product-name{width:179px; font-family: 'CALIBRI_1',Sans-Serif; font-size: 16px; line-height: 19px;}
 
@@ -1807,7 +1808,7 @@ ul.product-specs label{width:50%; display: inline-block;}
 }
 .topbottom_curved_shadow:after
 {
-	right:10px;
+    right:10px;
     left:auto;
     -webkit-transform:skew(8deg) rotate(3deg);
        -moz-transform:skew(8deg) rotate(3deg);
@@ -1882,7 +1883,7 @@ ul.product-specs label{width:50%; display: inline-block;}
     height: 19px;
     margin: 10px 20px;
     font-weight: lighter;
-    padding: 2px 0 0 8px;
+    padding: 3px 0 0 7px;
     text-decoration: none;
     width: 15px;
     text-decoration: none;
@@ -1940,6 +1941,7 @@ ul.product-specs label{width:50%; display: inline-block;}
 }
 #ajax-container-realated-items .carouselbuttons .next { background-position: -140px -60px; margin: 0 0 0 5px;  }
 #ajax-container-realated-items .disable { }
+#ajax-container-realated-items .overview .actions{border: 0;}
 
 /* Checkout Types */
 .cart .page-title .checkout-types li { margin:0 0 5px; }
