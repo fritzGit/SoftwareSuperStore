@@ -2354,7 +2354,7 @@ ul.product-specs label{width:50%; display: inline-block;}
 .downloadable-customer-products .main-container,
 .cms-about-us .main-container,
 .contacts-index-index .main-container,
-.cms-delivery-information .main-container,
+.cms-return-policy .main-container,
 .cms-privacy-policy .main-container,
 .cms-terms-conditions .main-container {
     background: #FFF;
@@ -2782,19 +2782,19 @@ ul.accountlist.grand_total{font-weight: bold;}
 
 .cms-about-us .col2-left-layout .col-main .page-title,
 .contacts-index-index .col2-left-layout .col-main .page-title,
-.cms-delivery-information .col2-left-layout .col-main .page-title,
+.cms-return-policy .col2-left-layout .col-main .page-title,
 .cms-privacy-policy .col2-left-layout .col-main .page-title,
 .cms-terms-conditions .col2-left-layout .col-main .page-title { margin-left:45px; overflow:hidden; border-bottom:1px solid #FF7300; width:739px; }
 
 .cms-about-us .col2-left-layout .col-main .std,
 .contacts-index-index .col2-left-layout .col-main .std,
-.cms-delivery-information .col2-left-layout .col-main .std,
+.cms-return-policy .col2-left-layout .col-main .std,
 .cms-privacy-policy .col2-left-layout .col-main .std,
 .cms-terms-conditions .col2-left-layout .col-main .std { margin-left:45px; }
 
 .cms-about-us .col2-left-layout .col-left .cms-nav ul .about-us span,
 .contacts-index-index .col2-left-layout .col-left .cms-nav ul .contact-us span,
-.cms-delivery-information .col2-left-layout .col-left .cms-nav ul .delivery-information span,
+.cms-return-policy .col2-left-layout .col-left .cms-nav ul .return-policy span,
 .cms-privacy-policy .col2-left-layout .col-left .cms-nav ul .privacy-policy span,
 .cms-terms-conditions .col2-left-layout .col-left .cms-nav ul .term-conditions span {
     background: url("../images/buttons.png") no-repeat scroll -840px -179px transparent;
@@ -2806,6 +2806,6 @@ ul.accountlist.grand_total{font-weight: bold;}
 }
 .cms-about-us .col2-left-layout .col-left .cms-nav ul .about-us a,
 .contacts-index-index .col2-left-layout .col-left .cms-nav ul .contact-us a,
-.cms-delivery-information .col2-left-layout .col-left .cms-nav ul .delivery-information a,
+.cms-return-policy .col2-left-layout .col-left .cms-nav ul .return-policy a,
 .cms-privacy-policy .col2-left-layout .col-left .cms-nav ul .privacy-policy a,
 .cms-terms-conditions .col2-left-layout .col-left .cms-nav ul .term-conditions a { color: #FF7300; }
