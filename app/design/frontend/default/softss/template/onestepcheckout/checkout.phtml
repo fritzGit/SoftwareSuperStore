@@ -45,7 +45,7 @@ $helper = Mage::helper('onestepcheckout/checkout');
                         </script>
                         <ul id="billing_address_list_custom">
                             <li>
-                                <p class="onestepcheckout-numbers onestepcheckout-numbers-<?php echo $step_counter++; ?>"><span>1</span><?php echo $this->__('Billing address'); ?></p>
+                                <p class="onestepcheckout-numbers onestepcheckout-numbers-<?php echo $step_counter++; ?>"><span><?php echo $step_counter-1; ?></span><?php echo $this->__('Billing address'); ?></p>
     <?php if (isset($this->formErrors['billing_error']) && count($this->formErrors['billing_errors']) > 0): ?>
                                     <div class="onestepcheckout-error">
                                     <?php echo $this->__('Please check red fields below and try again.'); ?>
@@ -182,7 +182,7 @@ $helper = Mage::helper('onestepcheckout/checkout');
                             <?php echo $this->getChildHtml('choose-shipping-method'); ?>
         <?php else: ?>
                             <div class="onestepcheckout-shipping-method">
-                                   <p class="onestepcheckout-numbers onestepcheckout-numbers-<?php echo $step_counter++; ?>"><span>2</span><?php echo $this->__('Shipping method'); ?></p>
+                                   <p class="onestepcheckout-numbers onestepcheckout-numbers-<?php echo $step_counter++; ?>"><span><?php echo $step_counter-1; ?></span><?php echo $this->__('Shipping method'); ?></p>
 
                                     <?php if (isset($this->formErrors['shipping_method']) && $this->formErrors['shipping_method']): ?>
                                     <div class="onestepcheckout-error onestepcheckout-shipment-method-error">
@@ -210,7 +210,7 @@ $helper = Mage::helper('onestepcheckout/checkout');
                         <?php endif; ?>
                         <?php echo $this->getChildHtml('choose-payment-method'); ?>
                     <?php else: ?>
-                            <p class="onestepcheckout-numbers onestepcheckout-numbers-<?php echo $step_counter++; ?>"><span>3</span><?php echo $this->__('Payment method'); ?></p>
+                            <p class="onestepcheckout-numbers onestepcheckout-numbers-<?php echo $step_counter++; ?>"><span><?php echo $step_counter-1; ?></span><?php echo $this->__('Payment method'); ?></p>
                             <?php if (isset($this->formErrors['payment_method']) && $this->formErrors['payment_method']): ?>
                             <div class="onestepcheckout-error onestepcheckout-payment-method-error">
                             <?php echo $this->__('Please choose a payment method.'); ?>
@@ -236,7 +236,7 @@ $helper = Mage::helper('onestepcheckout/checkout');
     <?php endif; ?>
                 </div>
                 <div class="onestepcheckout-column-right-top">
-                           <p class="onestepcheckout-numbers onestepcheckout-numbers-<?php echo $step_counter++; ?>"><span>4</span><?php echo $this->__('Newsletter'); ?></p>
+                           <p class="onestepcheckout-numbers onestepcheckout-numbers-<?php echo $step_counter++; ?>"><span><?php echo $step_counter-1; ?></span><?php echo $this->__('Newsletter'); ?></p>
 
                           <?php $customerEmail = (($this->isCustomerLoggedIn())) ? $this->getQuote()->getCustomer()->getEmail() : false; ?>
                     <?php if ($this->settings['enable_newsletter'] && !$this->isSubScribed($customerEmail)): ?>
@@ -251,7 +251,7 @@ $helper = Mage::helper('onestepcheckout/checkout');
 
                 <div class="onestepcheckout-column-right">
 
-                   <p class="onestepcheckout-numbers onestepcheckout-numbers-<?php echo $step_counter++; ?>"><span>5</span><?php echo $this->__('Review your order'); ?></p>
+                   <p class="onestepcheckout-numbers onestepcheckout-numbers-<?php echo $step_counter++; ?>"><span><?php echo $step_counter-1; ?></span><?php echo $this->__('Review your order'); ?></p>
 
                     <div class="onestepcheckout-summary">
     <?php echo $this->getChildHtml('summary'); ?>

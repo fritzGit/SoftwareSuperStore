@@ -415,7 +415,7 @@ p.required { font-size:11px; text-align:right; color:#898989; }
 
 /* BreadCrumbs */
 #breadcrumb-container{ height:78px; background: url("../images/bg.png") repeat-x scroll 0 0 transparent;}
-#breadcrumb-container .breadcrumbs { position: relative; text-align: left; font-size:11px; padding:15px 0 0 90px; display: block; margin: 0 auto; width: 1112px; height:78px; background:url(../images/buttons.png) 0 -600px no-repeat;}
+#breadcrumb-container .breadcrumbs { position: relative; text-align: left; font-size:11px; padding:15px 0 0 90px; display: block; margin: 0 auto; width: 1112px; height:78px; background:url(../images/buttons.png) 0 -600px no-repeat; z-index: 1;}
 #breadcrumb-container .breadcrumbs h1{color: #fff; font-size: 25px; line-height: 22px; text-shadow: 1px 1px 2px #000;}
 #breadcrumb-container .breadcrumbs ul{display: block;}
 #breadcrumb-container .breadcrumbs li { display:inline; }
@@ -1229,9 +1229,9 @@ h1.homepage-softwaress{color:#ff7300;padding:20px 0; font-family: 'Aller_Lt',San
     width: 409px;
     text-align: center;
 }
-.product-view .product-img-box p.product-image{margin: 0;}
-.product-view .product-img-box .product-image-zoom { position:relative; width:470px; height:265px; overflow:hidden; z-index:9; }
-.product-view .product-img-box .product-image-zoom img { position:absolute; left:0; top:0; cursor:move; }
+.product-view .product-img-box p.product-image{margin: auto; padding-top:30px; }
+.product-view .product-img-box .product-image-zoom { position:relative; width:300px; height:300px; overflow:hidden; z-index:9; }
+.product-view .product-img-box .product-image-zoom img { cursor:move; }
 .product-view .product-img-box .zoom-notice { font-size:11px; margin:0 0 5px; text-align:center; }
 .product-view .product-img-box .zoom { position:relative; z-index:9; height:18px; margin:0 auto 13px; padding:0 28px; background:url(../images/slider_bg.gif) 50% 50% no-repeat; cursor:pointer; }
 .product-view .product-img-box .zoom.disabled { -moz-opacity:.3; -webkit-opacity:.3; -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=30)";/*IE8*/ opacity:.3; }
@@ -1243,6 +1243,7 @@ h1.homepage-softwaress{color:#ff7300;padding:20px 0; font-family: 'Aller_Lt',San
 .product-view .product-img-box .more-views ul { margin-left:-9px }
 .product-view .product-img-box .more-views li { float:left; margin:0 0 8px 9px; }
 .product-view .product-img-box .more-views li a { float:left; width:56px; height:56px; border:2px solid #ddd; overflow:hidden; }
+.product-view .product-img-box .image-div { background: none repeat scroll 0 0 #FFFFFF; height: 412px; width: 390px; }
 
 .product-image-popup { margin:0 auto; }
 .product-image-popup .buttons-set { float:right; clear:none; border:0; margin:0; padding:0; }
