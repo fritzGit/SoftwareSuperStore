@@ -1612,10 +1612,10 @@ ul.product-specs label{width:50%; display: inline-block;}
 .dotted-divider{background:#f2f2f2 url(../images/buttons.png) -700px -120px repeat-y; width:2px; height:50px; margin:4px 20px 0 20px; display: inline-block; float: left;}
 
 /* Home Page*/
-.teaser-area{background-color: #fff;height:490px;}
+.teaser-area{background-color: #fff;height:350px;}
 .main-teaser{width:1160px; margin: 0 auto;}
 .slider-wrapper {
-	width: 80%;
+	width: 100%;
 	margin: 0 auto;
         vertical-align: baseline;
 }
