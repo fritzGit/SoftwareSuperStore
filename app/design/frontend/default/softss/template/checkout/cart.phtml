@@ -95,19 +95,13 @@
                     <?php endif; ?>
                 </thead>
                 <tfoot>
-                    <tr>
-                        <td colspan="1" class="a-left">
-                            <span><?php echo $this->__('Financial Calculator'); ?></span>
-                        </td>
-                        <td colspan="5"class="a-right">
+                    <tr>                   
+                        <td colspan="6"class="a-right">
                             <?php echo $this->getChildHtml('totals'); ?>
                         </td>
                     </tr>
-                    <tr>
-                        <td colspan="1" class="a-left">
-                           <span><?php echo $this->__('Special Financial Calculator'); ?></span>
-                        </td>
-                        <td colspan="5"class="a-right">
+                    <tr>                    
+                        <td colspan="6"class="a-right">
                            <span><?php echo $this->__('incl VAT and shipping costs'); ?></span>
                         </td>
                     </tr>
