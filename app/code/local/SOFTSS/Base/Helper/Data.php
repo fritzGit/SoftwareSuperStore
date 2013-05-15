@@ -16,7 +16,7 @@ class SOFTSS_Base_Helper_Data extends Mage_Core_Helper_Abstract
     }
 
     public function createDirectory($sDirpath){
-        if(mkdir($sDirpath, 0777))
+        if(mkdir($sDirpath, 0775))
            return true;
 
         return false;
