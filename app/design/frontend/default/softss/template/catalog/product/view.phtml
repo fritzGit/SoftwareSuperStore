@@ -35,8 +35,6 @@
                     <div class="std"><ul><?php echo $_helper->productAttribute($_product, $this->helper('softssbase')->nl2li($_product->getShortDescription()), 'short_description') ?></ul></div>
                 </div>
             <?php endif;?>
-
-            <?php echo $this->getReviewsSummaryHtml($_product, false, true)?>
             <hr/>
             <?php if (!$this->hasOptions()):?>
                 <div class="add-to-box">
@@ -56,6 +54,8 @@
             <?php endif;?>
 
             <hr/>
+
+            <?php echo $this->getReviewsSummaryHtml($_product, false, true)?>
 
             <?php echo $this->getChildHtml('other');?>
 
