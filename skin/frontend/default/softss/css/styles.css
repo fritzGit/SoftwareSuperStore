@@ -1114,6 +1114,8 @@ h1.homepage-softwaress{color:#ff7300;padding:20px 0; font-family: 'Aller_Lt',San
 .old-price { margin:0; }
 .old-price .price-label { white-space:nowrap; color:#999; }
 .old-price .price { font-weight:bold; color:#c76200; text-decoration:line-through; }
+.product-essential .old-price .price {color:#000;font-family: 'Aller_Rg',sans-serif;font-size: 25px;}
+.product-essential .price-box .special-price .price{color:#000;font-family: 'Aller_Rg',sans-serif;font-size: 50px;font-weight: bold;}
 
 /* Special price */
 .special-price { margin:0; padding:3px 0; }
@@ -1296,7 +1298,9 @@ ul.product-specs label{width:50%; display: inline-block;}
 
 .price-box .regular-price .price span,
 .priceBubble .special-price .price span,
-.priceBubble .old-price .price span
+.priceBubble .old-price .price span,
+.product-essential .old-price .price span,
+.product-essential .price-box .special-price .price span
 {font-size: 0.7em; padding-right: 1px;}
 
 .col1-layout .product-view .product-shop hr{
