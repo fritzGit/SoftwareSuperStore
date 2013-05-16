@@ -1856,7 +1856,7 @@ ul.product-specs label{width:50%; display: inline-block;}
 /* ======================================================================================= */
 
 /* Shopping Cart ========================================================================= */
-.cart .page-title { border-bottom:0; margin:0 0 12px; }
+.cart .page-title { border-bottom:0; margin:0px; }
 .cart .page-title h1 { font-family: 'Aller_Lt',sans-serif; margin: 2px 0 0; font-size: 34px; }
 
 /* ajax add to cart */
@@ -1946,7 +1946,7 @@ ul.product-specs label{width:50%; display: inline-block;}
 
 /* Checkout Types */
 .cart .page-title .checkout-types li { margin:0 0 5px; }
-.cart .title-buttons .checkout-types { float:right; }
+.cart .title-buttons .checkout-types { float:right;  margin-top: 45px; }
 .cart .title-buttons .checkout-types li { float:left; margin:0 0 5px 5px; }
 .cart .checkout-types .paypal-or { margin:0 8px; line-height:2.3; }
 .cart .totals .checkout-types .paypal-or { clear:both; display:block; padding:8px 55px 0 0; line-height:1.0; font-size:11px; }
