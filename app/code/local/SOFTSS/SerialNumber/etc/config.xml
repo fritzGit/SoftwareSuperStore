@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <SOFTSS_SerialNumber>
+            <version>0.1.0</version>
+        </SOFTSS_SerialNumber>
+    </modules>
+
+    <global> 
+
+        <helpers>
+            <softssserialnumber>
+                <class>SOFTSS_SerialNumber_Helper</class>
+            </softssserialnumber>
+        </helpers>
+        <models>
+            <softssserialnumber>
+                <class>SOFTSS_SerialNumber_Model</class>
+            </softssserialnumber>
+        </models>
+    </global>
+
+    <frontend>
+        <routers>
+            <softssserialnumber>
+                <use>standard</use>
+                <args>
+                    <module>SOFTSS_SerialNumber</module>
+                    <frontName>serialnumber</frontName>
+                </args>
+            </softssserialnumber>
+        </routers>
+    </frontend>
+    <crontab>
+        <jobs>
+            <softssserialnumber>
+                <run>
+                    <model>serialNumber/observer::scheduledSerialNumber</model>
+                </run>
+            </softssserialnumber>
+        </jobs>
+    </crontab>
+</config>

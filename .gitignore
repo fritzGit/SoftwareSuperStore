@@ -18,7 +18,6 @@
 /app/locale/es_ES/
 !/var/resource_config.json
 !/var/.htaccess
-/media/
 /skin/adminhtml/default/default/
 /app/code/core/Mage/
 /app/code/core/Zend/
@@ -852,3 +851,10 @@ app/etc/local.xml
 /lib/Varien/Data/Form/Filter/
 /lib/Varien/Data/Tree/
 /app/design/adminhtml/default/default/locale/
+/media/customer/
+/media/video/
+/media/catalog/
+/media/fonts/
+/media/email/
+/media/softss_teasers/
+/media/tmp/
