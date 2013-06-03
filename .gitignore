@@ -855,3 +855,4 @@ app/etc/local.xml
 /lib/Varien/Data/Collection/
 /lib/Varien/Data/Form/Filter/
 /lib/Varien/Data/Tree/
+/app/design/adminhtml/default/default/locale/
