@@ -19,6 +19,18 @@
                 <class>SOFTSS_Checkout_Model</class>
             </softsscheckout>
         </models>
+        <helpers>
+            <softsscheckout><class>SOFTSS_Checkout_Helper</class></softsscheckout>
+        </helpers>
+        <sales>
+            <quote>
+                <item>
+                    <product_attributes>
+                        <pcf_supplier_product_id/>
+                    </product_attributes>
+                </item>
+            </quote>
+        </sales>
     </global>
 
     <frontend>
@@ -31,5 +43,6 @@
                 </args>
             </checkout>
         </routers>
-    </frontend>
+    </frontend>    
+ 
 </config>

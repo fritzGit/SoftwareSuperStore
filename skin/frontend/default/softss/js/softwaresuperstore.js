@@ -116,4 +116,30 @@ function hideLoginOverlay(){
     $j('#ajax_login_container').fadeOut();
 }
 
+function ajaxCheckProductAvailability(){   
+    
+    var aUrl=baseurl+'checkout/cart/softDistributionProductAvailability';
+
+        $j.ajax({
+            url: aUrl,
+            type: 'GET',
+            dataType: 'json',
+            success: function(response) {   
+                
+                if(response.error) {
+                     window.location.href = baseurl+'checkout/cart/softDistributionResponse?error=true';
+                } else if(response.products) {
+                     window.location.href = baseurl+'checkout/cart/softDistributionResponse?products='+response.products;                
+                } else {
+                    $('onestepcheckout-form').submit();
+                }
+
+            },
+            error: function(response) {                
+                 window.location.href = baseurl+'checkout/cart/softDistributionResponse?error=true';
+            }
+         
+        });
+}
+
 //]]>

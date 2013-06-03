@@ -1080,8 +1080,9 @@ $helper = Mage::helper('onestepcheckout/checkout');
                                                     submitelement.removeClassName('orange').addClassName('grey');
                                                     submitelement.disabled = true;
 
-                                                    /* Submit the form */
-                                                    $('onestepcheckout-form').submit();
+                                                    //ajax check product avaiability with softdistribution   
+                                                    ajaxCheckProductAvailability();                                            
+                                                    
                                                 }
                                             }
                                         });

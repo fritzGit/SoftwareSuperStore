@@ -43,7 +43,76 @@
                         </item_limit>
                     </fields>
                 </ajaxcartadd>
+                <softdistribution translate="label">
+                    <label>Softdistribution Acount Data</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>160</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>                  
+                        <url translate="label comment">
+                            <label>Request Product Availability Url</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </url>
+                        <url_import_product_detail translate="label comment">
+                            <label>Request Import Product Detail Url</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </url_import_product_detail>
+                        <url_import translate="label comment">
+                            <label>Request Import Url</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>4</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </url_import>
+                        <import_category translate="label comment">
+                            <label>Request Import Category</label>
+                            <frontend_type>text</frontend_type>
+                            <comment>Separate by ",".</comment>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </import_category>                             
+                        <territory translate="label comment">
+                            <label>Request Import Territory</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>6</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </territory>
+                        <resellerid translate="label comment">
+                            <label>Reseller ID</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>7</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </resellerid>
+                        <password translate="label comment">
+                            <label>Password</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>8</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </password>
+                    </fields>
+                </softdistribution>
             </groups>
         </checkout>
     </sections>
 </config>
+
+
