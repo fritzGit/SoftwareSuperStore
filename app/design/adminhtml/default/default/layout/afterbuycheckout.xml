@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <afterbuycheckout_adminhtml_afterbuycheckout_index>
+        <reference name="content">
+            <block type="afterbuycheckout/adminhtml_afterbuycheckout" name="afterbuycheckout" />
+        </reference>
+    </afterbuycheckout_adminhtml_afterbuycheckout_index>
+</layout>

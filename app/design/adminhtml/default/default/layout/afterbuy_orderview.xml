@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<layout>
+ <adminhtml_sales_order_view>
+ <reference name="order_info">
+ <action method="setTemplate">
+ <template>afterbuy_orderview/info.phtml</template>
+ </action>
+ </reference>
+ </adminhtml_sales_order_view>
+</layout>
