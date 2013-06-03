@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <SOFTSS_Import>
+            <version>0.1.0</version>
+        </SOFTSS_Import>
+    </modules>
+
+    <global> 
+
+        <helpers>
+            <softssimport>
+                <class>SOFTSS_Import_Helper</class>
+            </softssimport>
+        </helpers>
+    </global>
+
+    <frontend>
+        <routers>
+            <softssimport>
+                <use>standard</use>
+                <args>
+                    <module>SOFTSS_Import</module>
+                    <frontName>import</frontName>
+                </args>
+            </softssimport>
+        </routers>
+    </frontend>
+</config>

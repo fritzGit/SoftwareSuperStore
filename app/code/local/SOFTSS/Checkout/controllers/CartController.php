@@ -95,6 +95,92 @@ class SOFTSS_Checkout_CartController extends Mage_Checkout_CartController {
             $this->getResponse()->clearHeaders()->setHeader('Content-Type', 'text/xml; charset=UTF-8')->setbody(Zend_Json::encode($response));
         }
     }
+    
+     /*
+     * Add session messages and redirect to the cart
+     */
+    public function softDistributionResponseAction()
+    {        
+       
+        if($this->getRequest()->getParam('error')) {
+           Mage::getSingleton('checkout/session')->addError("An error occured. Please try later.");
+        } else {
+            
+            $products = $this->getRequest()->getParam('products');
+            $aProducts = explode(",", $products);
+            $productsStr = "";
+            $cartHelper = Mage::helper('checkout/cart');
+
+            $items = Mage::getSingleton('checkout/session')->getQuote()->getAllItems();      
+            
+            foreach($items as $item) {
+
+               if(in_array($item->getProduct()->getPcfSupplierProductId(), $aProducts)) {
+                   
+                   $productsStr .= $item->getProduct()->getName();
+                   $cartHelper->getCart()->removeItem($item->getId())->save();
+                   
+                   $product = Mage::getModel('catalog/product')->load($item->getProduct()->getId());
+                   $stockData = $product->getStockData();
+                   $stockData['is_in_stock'] = 0;
+                   $product->setStockData($stockData);
+                   
+                   $product->save();
+               }                   
+
+            }
+            Mage::getSingleton('checkout/session')->addError("Some products are out of stock. The following products were removed from your cart: ".$productsStr);
+            
+        }
+        
+        $this->_redirect('checkout/cart');
+        return;
+    }
+    
+    public function softDistributionProductAvailabilityAction() 
+    {                
+
+        //ajax response
+        $response = array();
+        
+        try {      
+            
+            $url = Mage::helper('softsscheckout')->getSoftDistributionUrl(); 
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+            curl_setopt($ch, CURLOPT_URL, $url);    // get the url contents
+
+            $data = curl_exec($ch); // execute curl request
+            curl_close($ch);
+
+            $xml = simplexml_load_string($data);
+            
+            $codes = array("N_A","OOS","PRE_SELL","PRE_SELL_ONLY","PRE_SELL_BONUS","DELISTED");
+            $productIds = array();
+            
+            if($xml->status == 1) {
+                $response['products'] = false;
+            } else {
+                
+                foreach($xml->products->product as $product){                 
+                    
+                  if(in_array($product->availability, $codes)) {                      
+                      $productIds[] = $product->productversionid;
+                  }
+                }
+                $response['products'] = implode(",", $productIds);
+            }                        
+        
+          } catch (Exception $e) {
+            Mage::logException($e);
+            $response['error'] = true;          
+            
+          }
+          
+            $response['error'] = false;
+            $this->getResponse()->setbody(Zend_Json::encode($response));
+        
+    }
 }
 
 ?>
