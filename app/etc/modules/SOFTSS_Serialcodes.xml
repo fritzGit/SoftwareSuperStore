@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <SOFTSS_Serialcodes>
+            <active>true</active>
+            <codePool>local</codePool>
+        </SOFTSS_Serialcodes>
+    </modules>
+</config>

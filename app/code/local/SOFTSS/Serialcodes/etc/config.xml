@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <SOFTSS_Serialcodes>
+            <version>0.1.0</version>
+        </SOFTSS_Serialcodes>
+    </modules>
+
+    <global>     
+        <events>
+                <checkout_onepage_controller_success_action>
+                        <observers>
+                                <serialcodes>
+                                        <type>singleton</type>
+                                        <class>SOFTSS_Serialcodes_Model_Observer</class>
+                                        <method>addCodesToOrder</method>
+                                </serialcodes>
+                        </observers>
+                </checkout_onepage_controller_success_action>
+        </events>
+    </global>
+   
+</config>

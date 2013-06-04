@@ -1081,7 +1081,8 @@ $helper = Mage::helper('onestepcheckout/checkout');
                                                     submitelement.disabled = true;
 
                                                     //ajax check product avaiability with softdistribution   
-                                                    ajaxCheckProductAvailability();                                            
+                                                    //ajaxCheckProductAvailability();        
+                                                     $('onestepcheckout-form').submit();
                                                     
                                                 }
                                             }

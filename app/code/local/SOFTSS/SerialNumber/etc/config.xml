@@ -6,8 +6,7 @@
         </SOFTSS_SerialNumber>
     </modules>
 
-    <global> 
-
+    <global>     
         <helpers>
             <softssserialnumber>
                 <class>SOFTSS_SerialNumber_Helper</class>
@@ -18,9 +17,46 @@
                 <class>SOFTSS_SerialNumber_Model</class>
             </softssserialnumber>
         </models>
+        <resources>
+            <softssserialnumber_setup>
+                <setup>
+                    <module>SOFTSS_SerialNumber</module>
+                    <class>Mage_Sales_Model_Resource_Setup</class>
+                </setup>
+            </softssserialnumber_setup>
+        </resources>
+        <template>
+            <email>
+                <serialnumber_email translate="label" module="softssserialnumber">
+                    <label>Serial Number Email</label>
+                    <file>serialnumber.html</file>
+                    <type>html</type>
+                </serialnumber_email>
+            </email>
+        </template>
     </global>
-
-    <frontend>
+    <adminhtml>
+        <acl>
+            <resources>
+                <admin>
+                    <children>
+                        <system>
+                            <children>
+                                <config>
+                                    <children>
+                                        <serialnumber_conf>
+                                            <title>Serial Number Email Settings</title>
+                                        </serialnumber_conf>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+    </adminhtml>
+    <!--<frontend>
         <routers>
             <softssserialnumber>
                 <use>standard</use>
@@ -30,14 +66,26 @@
                 </args>
             </softssserialnumber>
         </routers>
-    </frontend>
+    </frontend> 
     <crontab>
         <jobs>
-            <softssserialnumber>
+            <send_serialnumber_email>
+                <schedule>
+                    <cron_expr>*/30 * * * *</cron_expr>
+                </schedule>             
                 <run>
-                    <model>serialNumber/observer::scheduledSerialNumber</model>
+                    <model>serialNumber/observer::scheduledSerialNumberEmail</model>
                 </run>
-            </softssserialnumber>
+            </send_serialnumber_email>
         </jobs>
-    </crontab>
+    </crontab> -->
+    <default>
+        <serialnumber_conf>
+            <serialnumber_email>
+                <name>softwaresuperstore Team</name>
+                <sender_email_identity>support</sender_email_identity>
+                <serialnumber_email_template>serialnumber_email</serialnumber_email_template>
+            </serialnumber_email>
+        </serialnumber_conf>
+    </default>
 </config>

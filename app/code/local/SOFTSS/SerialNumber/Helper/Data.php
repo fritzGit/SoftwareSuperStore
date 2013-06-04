@@ -6,7 +6,7 @@
  */
 
 /**
- * Serial Number account controller
+ * Serial Number helper
  *
  * @encoding    UTF-8
  * @package     SOFTSS
@@ -14,16 +14,9 @@
  * @author      Nikolas Koumarianos <n.entwickler@pcfritz.de>
  * 
  */
-class SOFTSS_SerialNumber_EmailController extends Mage_Core_Controller_Front_Action
+class SOFTSS_SerialNumber_Helper_Data extends Mage_Core_Helper_Abstract 
 {
-      
-
-    public function sendAction()
-    {           
-        
-     
-
-    }
-
+    //put your code here
 }
 
+?>
