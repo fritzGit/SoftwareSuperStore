@@ -131,7 +131,8 @@ class Afterbuy_Afterbuycheckout_Model_Orderafterbuy extends Mage_Sales_Model_Ord
     	$carrierModel = $order->getData('shipping_carrier');
     	//$cart = Mage::helper('checkout/cart');
     	$shipping_adress = $order->getShippingAddress();
-    	$shipping = $shipping_adress->getData();
+        if($shipping_adress)
+            $shipping = $shipping_adress->getData();
     	$billing_adress = $order->getBillingAddress();
     	$billing = $billing_adress->getData();
     	$itemCollection = $order->getItemsCollection();
@@ -194,6 +195,7 @@ class Afterbuy_Afterbuycheckout_Model_Orderafterbuy extends Mage_Sales_Model_Ord
 			($billing['postcode']      	== "") ||
 			($billing['city']      		== "" ))
 		{
+                    if($shipping){
 			$ab_data.=
 			"&KFirma=".urlencode(utf8_decode($shipping['company']))
 			."&KAnrede=".urlencode(utf8_decode($shipping['prefix']))
@@ -203,6 +205,7 @@ class Afterbuy_Afterbuycheckout_Model_Orderafterbuy extends Mage_Sales_Model_Ord
 			."&KPLZ=".urlencode($shipping['postcode'])
 			."&KOrt=".urlencode(utf8_decode($shipping['city']))
 			."&KLand=".urlencode($shipping['country_id']);
+                    }
 		}
 		else
 		{
