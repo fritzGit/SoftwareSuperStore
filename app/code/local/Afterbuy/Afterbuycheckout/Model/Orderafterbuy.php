@@ -325,7 +325,7 @@ class Afterbuy_Afterbuycheckout_Model_Orderafterbuy extends Mage_Sales_Model_Ord
 					}
 
 				}
-				if ($artikel_single['product_type'] == 'simple' || $artikel_single['product_type'] == 'grouped' )
+				if ($artikel_single['product_type'] == 'simple' || $artikel_single['product_type'] == 'grouped' || $artikel_single['product_type'] == 'downloadable')
 				{
 					$attribut_string = "";
 					if (is_array($artikel_single['product_options']) && isset($artikel_single['product_options']))
@@ -338,7 +338,7 @@ class Afterbuy_Afterbuycheckout_Model_Orderafterbuy extends Mage_Sales_Model_Ord
 							$artikel_options_key['options'] = "";
 					}
 					else
-						$artikel_options_key = $artikel_options[$artikel_key];
+                                            $artikel_options_key = $artikel_options[$artikel_key];
 					if (is_array($artikel_options_key) && array_key_exists('options', $artikel_options_key))
 					{
 						if (count($artikel_options_key['options'])>0)
@@ -517,14 +517,14 @@ class Afterbuy_Afterbuycheckout_Model_Orderafterbuy extends Mage_Sales_Model_Ord
 		elseif 	($zahlart == 'checkmo')
 			$zahlart_text = 'Ueberweisung';
 		elseif 	($zahlart == 'bankpayment')
-			$zahlart_text = 'Vorkasse / �berweisung';
+			$zahlart_text = 'Vorkasse / Überweisung';
 		elseif 	($zahlart == 'heidelpay_cc')
 			$zahlart_text = 'Kreditkarte';
 		elseif 	($zahlart == 'quent_cc')
 			$zahlart_text = 'Kreditkarte';
 		elseif 	($zahlart == 'pnsofortueberweisung')
 		{
-			$zahlart_text = 'Sofort�berweisung';
+			$zahlart_text = 'Sofortüberweisung';
 			if ($order->getStatusLabel() == 'Neu')
 				$this->payment_state = 1;
 		}
