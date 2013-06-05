@@ -916,7 +916,7 @@ h1.homepage-softwaress{color:#ff7300;padding:20px 0; font-family: 'Aller_Lt',San
 }
 .block-compare .actions { background:none; padding:6px 0; }
 .block-compare .block-content { background:none; }
-.block-compare .block-title { color: #000000; font-size: 18px; font-family: MyriadPro,'Myriad Pro',MyriadPro-Regular,'Myriad Pro Regular',Helvetica,Arial,sans-serif; padding: 3px 10px; }
+.block-compare .block-title { color: #000000; font-size: 16px; font-family: MyriadPro,'Myriad Pro',MyriadPro-Regular,'Myriad Pro Regular',Helvetica,Arial,sans-serif; padding: 3px 10px; }
 .page-popup .link-print { background:url(../images/i_print.gif) 0 2px no-repeat; padding:2px 0 2px 25px; font-weight:bold; color:#1e7ec8; }
 .compare-table { border:0; }
 .compare-table thead tr.first th,

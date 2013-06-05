@@ -49,16 +49,20 @@
             <?php endforeach; ?>
         </dl>
         <?php endif;?>
+        
+        <?php $productAttributeSet = Mage::getModel('eav/entity_attribute_set')->load($_item->getProduct()->getAttributeSetId())->getAttributeSetName(); ?>
+        <?php if($productAttributeSet != 'office' && $productAttributeSet != 'windows'): ?>
         <!-- downloadable -->
-        <?php /* if ($links = $this->getLinks()): ?>
+        <?php if ($links = $this->getLinks()): ?>
         <dl class="item-options">
             <dt><?php echo $this->getLinksTitle() ?></dt>
             <?php foreach ($links as $link): ?>
                 <dd><?php echo $this->escapeHtml($link->getTitle()); ?></dd>
             <?php endforeach; ?>
         </dl>
-        <?php endif;  */?>
+        <?php endif;  ?>
         <!-- EOF downloadable -->
+        <?php endif;  ?>
 
         <?php if ($messages = $this->getMessages()): ?>
         <?php foreach ($messages as $message): ?>

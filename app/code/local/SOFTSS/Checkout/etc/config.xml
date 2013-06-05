@@ -26,7 +26,8 @@
             <quote>
                 <item>
                     <product_attributes>
-                        <pcf_supplier_product_id/>
+                        <softss_supplier_product_id/>
+                        <softss_download_url/>
                     </product_attributes>
                 </item>
             </quote>

@@ -35,7 +35,7 @@
                 <?php if($_product->isSaleable()): ?>
                 <div class="cartBubble" onclick="addProduct('<?php echo $_product->getId() ?>',1)"></div>
                 <div class="actions">
-                   <?php echo $this->__('In stock - 24 + Free Ship'); ?>
+                    <?php echo $this->__('In stock - ').(int)Mage::getModel('cataloginventory/stock_item')->loadByProduct($_product)->getQty(); ?>
                 <?php else: ?>
                 <div class="actions">
                     <p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>

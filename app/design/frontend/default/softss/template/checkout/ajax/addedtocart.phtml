@@ -55,7 +55,9 @@
                     <?php echo $this->getPriceHtml($_product, true) ?>
                 </div>
 
-                <div class="actions"><?php if(!$_product->isSaleable()): ?>In stock - <?php echo (int) Mage::getModel('cataloginventory/stock_item')->loadByProduct($_product)->getQty(); ?> + Free Ship
+                <div class="actions">
+                    <?php if($_product->isSaleable()): ?>
+                    <?php echo $this->__('In stock - ').(int)Mage::getModel('cataloginventory/stock_item')->loadByProduct($_product)->getQty(); ?>
                     <?php else: ?>
                         <p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
                     <?php endif; ?>
