@@ -5,7 +5,7 @@
  * NOTICE OF LICENSE
  *
  * This source file is subject to German Copyright Law (Urheberrecht)
- * The license file is bundled with this software 
+ * The license file is bundled with this software
  * If you did not receive a copy of the license and are unable to
  * obtain it through the world-wide-web, please send an email
  * to license@pimpmyxtc.de so we can send you a copy immediately.
@@ -31,9 +31,9 @@ class Afterbuy_Afterbuycheckout_Model_Orderafterbuy extends Mage_Sales_Model_Ord
 	public $afterbuy_string = "";
 	public $order_id = "";
 	public $mailadresse_error = "";
-	
+
 	public $payment_state = 0;
-	
+
 	public $checkout_activate = 1;
 	public $handler = 'checkout'; //cron oder checkout
 	public $history = "";
@@ -47,13 +47,13 @@ class Afterbuy_Afterbuycheckout_Model_Orderafterbuy extends Mage_Sales_Model_Ord
         $read = Mage::getSingleton('core/resource')->getConnection('core_read');
         $result = $read->fetchAll($sql);
         if (count($result) > 0) {
-            $kdnr = $result[0]['kundennr'];        
+            $kdnr = $result[0]['kundennr'];
         } else {
             $kdnr = '';
         }
 
         return $kdnr;
-        
+
     }
 
 	public function place()
@@ -62,17 +62,17 @@ class Afterbuy_Afterbuycheckout_Model_Orderafterbuy extends Mage_Sales_Model_Ord
 		{
 			//Order-ID
 			$this->order_id = $this->getRealOrderId();
-			
+
 			$this->createAfterbuyString();
 			$this->send();
 		}
 		parent::place();
 
     }
-	
-	
+
+
 	/**
-	 * Umwandlung Punkt-getrennte Preise in Komma-getrennte Preise 
+	 * Umwandlung Punkt-getrennte Preise in Komma-getrennte Preise
 	 *
 	 * @param mixed $wert
 	 * @return string
@@ -82,7 +82,7 @@ class Afterbuy_Afterbuycheckout_Model_Orderafterbuy extends Mage_Sales_Model_Ord
 		$wert2 = str_replace('.', ',', $wert);
 		return $wert2;
 	}
-	
+
     /**
      * Decrypt data
      *
@@ -96,7 +96,7 @@ class Afterbuy_Afterbuycheckout_Model_Orderafterbuy extends Mage_Sales_Model_Ord
         }
         return $data;
     }
-	
+
 	/**
 	 * Setter OrderID
      *
@@ -106,7 +106,7 @@ class Afterbuy_Afterbuycheckout_Model_Orderafterbuy extends Mage_Sales_Model_Ord
 	{
 		$this->order_id = $orderid;
 	}
-	
+
 	protected function _prepareHistoryItem($label, $notified, $created, $comment = '')
     {
         return array(
@@ -116,79 +116,86 @@ class Afterbuy_Afterbuycheckout_Model_Orderafterbuy extends Mage_Sales_Model_Ord
             'created_at' => $created
         );
     }
-	
+
 	public function createAfterbuyString()
     {
     	$user = Mage::getModel('afterbuycheckout/afterbuycheckout')->load(1);
 		if ($user->getData('status') != 1)
 			return;
-		
+
 		$this->payment_state = 0;
 		$order = Mage::getModel('sales/order')->loadByIncrementId($this->order_id);
 		$_totalData = $order->getData();
-		
-        
+
+
     	$carrierModel = $order->getData('shipping_carrier');
     	//$cart = Mage::helper('checkout/cart');
     	$shipping_adress = $order->getShippingAddress();
-    	$shipping = $shipping_adress->getData();
+        if($shipping_adress)
+            $shipping = $shipping_adress->getData();
     	$billing_adress = $order->getBillingAddress();
     	$billing = $billing_adress->getData();
     	$itemCollection = $order->getItemsCollection();
 
     	$payment = $order->getPayment();
     	$payment_data = $payment->getData();
+        //jg change incase of underfined var
+        if(isset($payment_data['additional_information']['paypal_payer_id']))
 		$paypal_payer_id = $payment_data['additional_information']['paypal_payer_id'];
+        else
+            $paypal_payer_id = null;
+
 		$transaction_id = $order->getPayment()->getLastTransId();
 		$zahlart =$payment_data['method'];
-		
+
 		$this->history = array();
 		foreach ($order->getAllStatusHistory() as $orderComment)
 		{
-					
+
 			$this->history[] = $this->_prepareHistoryItem(
 					$orderComment->getStatusLabel(),
 					$orderComment->getIsCustomerNotified(),
 					$orderComment->getCreatedAtDate(),
 					$orderComment->getComment()
-				);		
+				);
 		}
 		//echo $order->getState();
 		//echo $order->getStatusLabel();
-		
-		//Paymorrow und Sofortüberweisung nur, wenn bereits bezahlt
+
+		//Paymorrow und Sofortï¿½berweisung nur, wenn bereits bezahlt
 		if (1 != 1)
 		//if (($zahlart == 'paymorrow' && $order->getState() != 'processing') ||
 		//	($zahlart == 'pnsofortueberweisung' && $order->getState() != 'complete') )
-			
+
 			/*($zahlart == 'pnsofortueberweisung' && $order->getState() == 'canceled') ||
 			($zahlart == 'pnsofortueberweisung' && $order->getState() == 'pending_payment') )*/
 			return;
-		
-		
+
+
 		$note = $order->getEmailCustomerNote();
 		$artikel_anz = 0;
-		foreach ($itemCollection as $item) 
+		foreach ($itemCollection as $item)
 		{
 			$artikel_anz++;
 			$artikel[] = $item->getData();
 			$artikel_options[] = $item->getProductOptions();
-			
+
 		}
 		$this->check_doppelbestellung = $user->getData('check_doppelbestellung');
 		$this->mailadresse_error = $user->getData('shopbetreiber_mailadresse');
-		$ab_data = 
+		$ab_data =
 			"Action=new".
 			"&PartnerID=".$user->getData('partner_id').
 			"&PartnerPass=".$user->getData('partner_pass').
 			"&UserID=".$user->getData('user_name');
-			
+
 		if( ($billing['firstname'] 	 	== "") ||
 			($billing['lastname'] 		== "") ||
 			($billing['street']  		== "") ||
 			($billing['postcode']      	== "") ||
 			($billing['city']      		== "" ))
 		{
+                    if($shipping){
 			$ab_data.=
 			"&KFirma=".urlencode(utf8_decode($shipping['company']))
 			."&KAnrede=".urlencode(utf8_decode($shipping['prefix']))
@@ -198,7 +205,8 @@ class Afterbuy_Afterbuycheckout_Model_Orderafterbuy extends Mage_Sales_Model_Ord
 			."&KPLZ=".urlencode($shipping['postcode'])
 			."&KOrt=".urlencode(utf8_decode($shipping['city']))
 			."&KLand=".urlencode($shipping['country_id']);
-		}	
+                    }
+		}
 		else
 		{
 			$ab_data.=
@@ -209,11 +217,11 @@ class Afterbuy_Afterbuycheckout_Model_Orderafterbuy extends Mage_Sales_Model_Ord
 			."&KStrasse=".urlencode(utf8_decode($billing['street']))
 			."&KPLZ=".urlencode($billing['postcode'])
 			."&KOrt=".urlencode(utf8_decode($billing['city']))
-			."&KTelefon=".urlencode($billing['telephone'])				
-			."&KLand=".urlencode($billing['country_id']);	
-		}				
+			."&KTelefon=".urlencode($billing['telephone'])
+			."&KLand=".urlencode($billing['country_id']);
+		}
 		$ab_data.="&Kemail=".urlencode($_totalData['customer_email']);
-		
+
 		if( ($billing['company']    	== $shipping['company']) &&
 			($billing['firstname'] 	 	== $shipping['firstname']) &&
 			($billing['lastname'] 		== $shipping['lastname']) &&
@@ -231,7 +239,7 @@ class Afterbuy_Afterbuycheckout_Model_Orderafterbuy extends Mage_Sales_Model_Ord
 				$array_shipping_name = array_reverse(explode(" ",$shipping['firstname']));
 				$shipping['lastname'] = $array_shipping_name[0];
 				$shipping['firstname'] = str_replace(" ".$shipping['lastname'], "", $shipping['firstname']);
-				
+
 			}
 			$ab_data.=
 			"&KLFirma=".urlencode(utf8_decode($shipping['company']))
@@ -240,77 +248,77 @@ class Afterbuy_Afterbuycheckout_Model_Orderafterbuy extends Mage_Sales_Model_Ord
 			."&KLStrasse=".urlencode(utf8_decode($shipping['street']))
 			."&KLPLZ=".urlencode($shipping['postcode'])
 			."&KLOrt=".urlencode(utf8_decode($shipping['city']))
-			."&KLTelefon=".urlencode($shipping['telephone'])	
+			."&KLTelefon=".urlencode($shipping['telephone'])
 			."&KLLand=".urlencode(utf8_decode($shipping['country_id']));
 		}
 
-		
-		$ab_data .= "&Artikelerkennung=".$user->getData('artikelerkennung');	
-		$ab_data .= "&Kundenerkennung=".$user->getData('kundenerkennung');	
+
+		$ab_data .= "&Artikelerkennung=".$user->getData('artikelerkennung');
+		$ab_data .= "&Kundenerkennung=".$user->getData('kundenerkennung');
 		$ab_data .= "&NoFeedback=".$user->getData('feedback');
 		$ab_data .= "&NoVersandCalc=".$user->getData('versand');
 
-		
-		
+
+
 		$ab_data .= "&VID=".$this->order_id;
-		$benutzername = $this->order_id;	
-				
+		$benutzername = $this->order_id;
+
 		/*$read = Mage::getSingleton('core/resource')->getConnection('core_read');
 		$sql  = "select * from  sales_flat_quote_payment ";
 		$test = $read->fetchAssoc($sql);*/
-		//$test = $read->query($sql); 
+		//$test = $read->query($sql);
 		$ab_data.="&Kbenutzername=".urlencode($benutzername);
-		
-		//$benutzername = $_totalData['customer_email'];	
-		
-		
+
+		//$benutzername = $_totalData['customer_email'];
+
+
 		$i = 0;
 		$configurable_flag = 0;
 		$temp_art_preis = 0;
 		$temp_art_steuer = 0;
-		
+
 		foreach ($artikel as $artikel_key => $artikel_single)
-		{	
-			
+		{
+
 			//if ($artikel_single['quote_parent_item_id'] == "" )
 			if (!array_key_exists('quote_parent_item_id', $artikel_single))
 				$artikel_single['quote_parent_item_id'] = "";
 			if ($artikel_single['quote_parent_item_id'] == ""  AND $artikel_single['product_type'] != 'configurable' )
-			{	
+			{
 				$i++;
 
 				$artnr = preg_replace('/[^0-9]*/','',$artikel_single['sku']);
 				$product = Mage::getModel('catalog/product');;
 				$productId = $product->getIdBySku($artikel_single['sku']);
-				$product_c = $product->load($productId); 
+				$product_c = $product->load($productId);
 				//echo $product_c->getProductUrl();
 				$ab_data .= "&ArtikelLink_".($i)."=".$product_c->getProductUrl();
-				
+
 				if ($artnr == "")
-					$artnr = "11111111";		
+					$artnr = "11111111";
 				$ab_data .= "&Artikelnr_".($i)."=".urlencode($artnr);
 				//$ab_data .= "&AlternArtikelNr1_".($i)."=".urlencode($transaction_id);
-				
+
 				$ab_data .= "&ArtikelStammID_".($i)."=".urlencode($artikel_single['sku']);
-			 	$ab_data .= "&ArtikelGewicht_".($i)."=".urlencode($this->shop_preis_to_ab_preis($artikel_single['row_weight']));      						
+			 	$ab_data .= "&ArtikelGewicht_".($i)."=".urlencode($this->shop_preis_to_ab_preis($artikel_single['row_weight']));
 				$ab_data.= "&Artikelname_".($i)."=".urlencode((utf8_decode($artikel_single['name'])))
 							."&ArtikelMenge_".($i)."=".urlencode($this->shop_preis_to_ab_preis($artikel_single['qty_ordered']));
 				if ($artikel_single['product_type'] == 'configurable' OR $artikel_single['product_type'] == 'super')
 				{
 					$attribut_string = "";
-					$configurable_flag = 1;	
+					$configurable_flag = 1;
 					$artikel_options_key = $artikel_options[$artikel_key];
-					
-					if (array_key_exists('attributes_info', $artikel_options_key)) 
+
+					if (array_key_exists('attributes_info', $artikel_options_key))
 					{
 						foreach($artikel_options_key['attributes_info'] as $attribut_single)
 						{
 							if ($attribut_string != "")
 								$attribut_string .= "|";
-							$attribut_string .= 
+							$attribut_string .=
 								urlencode(utf8_decode($attribut_single['label'])).":".
 								urlencode(utf8_decode($attribut_single['value']));
-						}	
+						}
 						if ($attribut_string != "")
 							$ab_data .= "&Attribute_".($i)."=".$attribut_string;
 					}
@@ -325,26 +333,26 @@ class Afterbuy_Afterbuycheckout_Model_Orderafterbuy extends Mage_Sales_Model_Ord
 						unset($unserialized_options['info_buyRequest']);
 						if (!array_key_exists('options', $unserialized_options))
 							$artikel_options_key['options'] = $unserialized_options['options'];
-						else	
+						else
 							$artikel_options_key['options'] = "";
 					}
 					else
 						$artikel_options_key = $artikel_options[$artikel_key];
-					if (is_array($artikel_options_key) && array_key_exists('options', $artikel_options_key)) 
+					if (is_array($artikel_options_key) && array_key_exists('options', $artikel_options_key))
 					{
 						if (count($artikel_options_key['options'])>0)
 						{
-						
+
 							foreach($artikel_options_key['options'] as $attribut_single)
 							{
 								if ($attribut_string != "")
 									$attribut_string .= "|";
-								$attribut_string .= 
+								$attribut_string .=
 									urlencode(utf8_decode($attribut_single['label'])).":".
 									urlencode(utf8_decode($attribut_single['value']));
-							}	
-						}	
-						
+							}
+						}
+
 					}
 					if ($temp_art_preis == 0)
 					{
@@ -352,23 +360,24 @@ class Afterbuy_Afterbuycheckout_Model_Orderafterbuy extends Mage_Sales_Model_Ord
 							$temp_art_preis = $this->shop_preis_to_ab_preis((float)$artikel_single['price_incl_tax']);
 						else
 							$temp_art_preis = $this->shop_preis_to_ab_preis(((float)$artikel_single['row_total']+(float)$artikel_single['tax_amount'])/$artikel_single['qty_ordered']);
-						
+
 						$temp_art_steuer = $this->shop_preis_to_ab_preis($artikel_single['tax_percent']);
 					}
-					
+
 					$ab_data .=	"&ArtikelEpreis_".($i)."=".urlencode($temp_art_preis)
 						."&ArtikelMwSt_".($i)."=".urlencode($temp_art_steuer);
-						
+
 					$temp_art_preis = (float)0;
 					$temp_art_steuer = (float)0;
 
 				}
-				if ($attribut_string_configurable != "")
+                                //jg change to avoid Undefined variable
+				if (isset($attribut_string_configurable))
 				{
 					$ab_data .= "&Attribute_".($i)."=".$attribut_string_configurable;
-					$attribut_string_configurable = "";					
-				}		
-				else	
+					$attribut_string_configurable = "";
+				}
+				else
 				{
 					$ab_data .= "&Attribute_".($i)."=".$attribut_string;
 					$attribut_string = "";
@@ -381,20 +390,20 @@ class Afterbuy_Afterbuycheckout_Model_Orderafterbuy extends Mage_Sales_Model_Ord
 				if ($artikel_single['product_type'] == 'configurable')
 				{
 					$attribut_string_configurable = "";
-					$configurable_flag = 1;	
+					$configurable_flag = 1;
 					$artikel_options_key = $artikel_options[$artikel_key];
-					
-					if (array_key_exists('attributes_info', $artikel_options_key)) 
+
+					if (array_key_exists('attributes_info', $artikel_options_key))
 					{
 						foreach($artikel_options_key['attributes_info'] as $attribut_single)
 						{
 							if ($attribut_string_configurable != "")
 								$attribut_string_configurable .= "|";
-							$attribut_string_configurable .= 
+							$attribut_string_configurable .=
 								urlencode(utf8_decode($attribut_single['label'])).":".
 								urlencode(utf8_decode($attribut_single['value']));
-						}	
-						
+						}
+
 					}
 					$temp_art_preis = $this->shop_preis_to_ab_preis(((float)$artikel_single['row_total']+(float)$artikel_single['tax_amount'])/$artikel_single['qty_ordered']);
 					$temp_art_steuer = $this->shop_preis_to_ab_preis($artikel_single['tax_percent']);
@@ -402,12 +411,13 @@ class Afterbuy_Afterbuycheckout_Model_Orderafterbuy extends Mage_Sales_Model_Ord
 				}
 			}
 		}
-		
-		if ((float)$_totalData['cod_fee'] != 0)
+                // jg change Undefined index
+		if (isset($_totalData['cod_fee']))
 		{
+                    if ((float)$_totalData['cod_fee'] != 0){
 			if ($this->zahlartenaufschlag == 1)
 				$ab_data .= "&ZahlartenAufschlag=".urlencode($this->shop_preis_to_ab_preis((float)$_totalData['cod_fee']));
-		  
+
 			else
 			{
 				$i++;
@@ -416,14 +426,16 @@ class Afterbuy_Afterbuycheckout_Model_Orderafterbuy extends Mage_Sales_Model_Ord
 				$ab_data .=	"&ArtikelEpreis_".($i)."=".urlencode($this->shop_preis_to_ab_preis((float)$_totalData['cod_fee']));
 				$ab_data .=	"&ArtikelMwSt_".($i)."=".urlencode($this->shop_preis_to_ab_preis($artikel_single['tax_percent']));
 				$ab_data .=	"&ArtikelMenge_".($i)."=1";
-				
+
 			}
+                    }
 		}
-		if ((float)$_totalData['discount_amount'] != 0)
+		if (isset($_totalData['discount_amount']))
 		{
+                    if ((float)$_totalData['discount_amount'] != 0){
 			if ($this->zahlartenaufschlag == 1)
 				$ab_data .= "&ZahlartenAufschlag=".urlencode($this->shop_preis_to_ab_preis((float)$_totalData['discount_amount']));
-		  
+
 			else
 			{
 				$i++;
@@ -432,13 +444,14 @@ class Afterbuy_Afterbuycheckout_Model_Orderafterbuy extends Mage_Sales_Model_Ord
 				$ab_data .=	"&ArtikelEpreis_".($i)."=".urlencode($this->shop_preis_to_ab_preis((float)$_totalData['discount_amount']));
 				$ab_data .=	"&ArtikelMwSt_".($i)."=".urlencode($this->shop_preis_to_ab_preis($artikel_single['tax_percent']));
 				$ab_data .=	"&ArtikelMenge_".($i)."=1";
-				
+
 			}
+                    }
 		}
-		
-//		$ab_data.="&PosAnz=".$artikel_anz;		
-		$ab_data.="&PosAnz=".$i;		
-		
+
+//		$ab_data.="&PosAnz=".$artikel_anz;
+		$ab_data.="&PosAnz=".$i;
+
 		$zahlart =$payment_data['method'];
 		if ($zahlart == 'paypal_standard')
 		{
@@ -461,78 +474,78 @@ class Afterbuy_Afterbuycheckout_Model_Orderafterbuy extends Mage_Sales_Model_Ord
 		elseif 	($zahlart == 'debit')
 		{
 			$zahlart_text = 'Bankeinzug';
-			if($payment_data['cc_type'] != "")	
+			if($payment_data['cc_type'] != "")
 			{
 				$ab_data .= "&BLZ=".$this->decrypt($payment_data['cc_type']);
-			
+
 			}
-			if($payment_data['cc_number_enc'] != "")	
+			if($payment_data['cc_number_enc'] != "")
 			{
 				$ab_data .= "&Kontonummer=".$this->decrypt($payment_data['cc_number_enc']);
 			}
 			//$ab_data .= "&Bankname=".ereg_replace(" ","%20",$b_data['banktransfer_bankname'])."&";
-			
-			if($payment_data['cc_owner'] != "")	
+
+			if($payment_data['cc_owner'] != "")
 			{
 				$ab_data .= "&Kontoinhaber=".urlencode(utf8_decode($payment_data['cc_owner']));
-			}	
+			}
 		}
-		elseif ($zahlart == 'paymorrow')	
+		elseif ($zahlart == 'paymorrow')
 		{
 			$zahlart_text = 'Paymorrow';
-			if($payment->getPaymorrowBankCode($request['nationalBankCode']) != "")	
+			if($payment->getPaymorrowBankCode($request['nationalBankCode']) != "")
 			{
 				$ab_data .= "&BLZ=".$payment->getPaymorrowBankCode($request['nationalBankCode']);
 			$ab_data .= "&ZahlartFID=99";
-			
+
 			}
-			if($payment->getPaymorrowAccountNumber($request['nationalBankAccountNumber']) != "")	
+			if($payment->getPaymorrowAccountNumber($request['nationalBankAccountNumber']) != "")
 			{
 				$ab_data .= "&Kontonummer=".$payment->getPaymorrowAccountNumber($request['nationalBankAccountNumber']);
 			}
 			//$ab_data .= "&Bankname=".ereg_replace(" ","%20",$b_data['banktransfer_bankname'])."&";
-			
-			/*if($payment_data['cc_owner'] != "")	
+
+			/*if($payment_data['cc_owner'] != "")
 			{
 				$ab_data .= "&Kontoinhaber=".urlencode(utf8_decode($payment_data['cc_owner']));
-			}			*/	
-		
+			}			*/
+
 		}
 		elseif 	($zahlart == 'pickup')
 			$zahlart_text = 'Barzahlung';
 		elseif 	($zahlart == 'checkmo')
 			$zahlart_text = 'Ueberweisung';
 		elseif 	($zahlart == 'bankpayment')
-			$zahlart_text = 'Vorkasse / Überweisung';		
+			$zahlart_text = 'Vorkasse / ï¿½berweisung';
 		elseif 	($zahlart == 'heidelpay_cc')
-			$zahlart_text = 'Kreditkarte';	
+			$zahlart_text = 'Kreditkarte';
 		elseif 	($zahlart == 'quent_cc')
-			$zahlart_text = 'Kreditkarte';	
+			$zahlart_text = 'Kreditkarte';
 		elseif 	($zahlart == 'pnsofortueberweisung')
 		{
-			$zahlart_text = 'Sofortüberweisung';	
+			$zahlart_text = 'Sofortï¿½berweisung';
 			if ($order->getStatusLabel() == 'Neu')
-				$this->payment_state = 1;			
+				$this->payment_state = 1;
 		}
 		elseif ($zahlart == 'cashondelivery')
 			$zahlart_text = 'Nachnahme Deutschland';
 		elseif ($zahlart == 'billsafe')
 		{
-			$zahlart_text = 'Rechnungskauf (BillSAFE)';	
+			$zahlart_text = 'Rechnungskauf (BillSAFE)';
 			$this->payment_state = 1;
 		}
 		elseif ($zahlart == 'moneybookers_acc')
-			$zahlart_text = 'Kreditkarte';					
+			$zahlart_text = 'Kreditkarte';
 		elseif 	($zahlart == 'hpcc')
-			$zahlart_text = 'Kreditkarte';	
+			$zahlart_text = 'Kreditkarte';
 		elseif ($zahlart == 'ig_cashondelivery')
 		{
 			$zahlart_text = 'Versand per Nachnahme';
 			$zahl_id = "4";
 		}
-		else	
+		else
 			$zahlart_text = $zahlart;
-		
+
 		//echo $payment->getMethodInstance()->getCode();// != 'cashondelivery'
 		/* COD
 		$cod = $order->getCodFee();
@@ -541,34 +554,34 @@ class Afterbuy_Afterbuycheckout_Model_Orderafterbuy extends Mage_Sales_Model_Ord
 		$ab_data.= "&Zahlart=".urlencode($zahlart_text);
 		$versandart = $_totalData['shipping_method'];
 		$versandart2 = $_totalData['shipping_description'];
-		
+
 		if ($versandart2 != "")
 			$versandart_text = urlencode($versandart2);
 		else
-		{	
+		{
 			if ($versandart == 'flatrate_flatrate')
 				$versandart_text = 'Festpreis';
 			elseif ($versandart == 'freeshipping_freeshipping')
-				$versandart_text = 'versandkostenfrei';		
+				$versandart_text = 'versandkostenfrei';
 			elseif (substr($versandart,0,10) == 'matrixrate')
 				$versandart_text = 'Versandmatrix';
-			
+
 			else
 				$versandart_text = $versandart;
-		}	
+		}
 		$ab_data.= "&Versandart=".urlencode($versandart_text);
 		if ($this->check_doppelbestellung == 1)
 			$ab_data.= "&CheckVID=1";
-		
+
 		/*** REMOVE ***/
 		//$this->payment_state = 1;
 		/*** REMOVE ***/
 		if ($this->payment_state == 1)
 			$ab_data.= "&SetPay=1";
-		
+
 		if ($_totalData['shipping_incl_tax'] != "")
 			$shipping_complete = (float)$_totalData['shipping_incl_tax'] ;
-		else	
+		else
 			$shipping_complete = ((float)$_totalData['shipping_amount'] + (float)$_totalData['shipping_tax_amount']);
 		$ab_data.= "&Versandkosten=".urlencode(str_replace('.', ',', $shipping_complete));
 		//$ab_data.= "&Versandkosten=".urlencode(str_replace('.', ',', $_totalData['shipping_amount']));
@@ -576,7 +589,7 @@ class Afterbuy_Afterbuycheckout_Model_Orderafterbuy extends Mage_Sales_Model_Ord
 		//falls vorhanden:
 		//$kommentar = $this->getBiebersdorfCustomerordercomment();
 		//$ab_data.= "&Kommentar=".urlencode($kommentar);
-		
+
 		/*$kommentar = $order->getData('customer_note');
 		$ab_data.= "&Kommentar=".urlencode($kommentar);*/
 		// echo "<pre>";
@@ -586,16 +599,16 @@ class Afterbuy_Afterbuycheckout_Model_Orderafterbuy extends Mage_Sales_Model_Ord
 			$last_comment = array_shift($this->history);
 			$ab_data.= "&Kommentar=".urlencode($last_comment['comment']);
 		}
-		
+
 		$this->afterbuy_string = $ab_data;
-		
+
 
     }
-	
-		
+
+
 	public function send()
 	{
-	
+
 		if ($this->afterbuy_string != "")
 		{
 			$afterbuy_URL = 'https://api.afterbuy.de/afterbuy/ShopInterface.aspx?';
@@ -614,7 +627,7 @@ class Afterbuy_Afterbuycheckout_Model_Orderafterbuy extends Mage_Sales_Model_Ord
 			$result = curl_exec($ch);
 			curl_close($ch);
 
-			
+
 			$mail_content = '&Uuml;bertragung der Bestellung an Afterbuy: '.chr(13).chr(10).$result.chr(13).chr(10).$this->afterbuy_string.chr(13).chr(10);
 			Mage::log(__LINE__ . ' | ' . __METHOD__ . "Daten: ".$afterbuy_URL.$this->afterbuy_string);
 			if ($this->showResult == 1)
@@ -623,12 +636,12 @@ class Afterbuy_Afterbuycheckout_Model_Orderafterbuy extends Mage_Sales_Model_Ord
 			/*****************************************/
 			if (preg_match("/<success>1<\/success>/", $result))
 			{
-				$tableName = Mage::getSingleton('core/resource')->getTableName('afterbuyorderdata'); 
-				
+				$tableName = Mage::getSingleton('core/resource')->getTableName('afterbuyorderdata');
+
 				$write = Mage::getSingleton("core/resource")->getConnection("core_write");
-				$query = "insert into ".$tableName." (shoporderid, success, errorcode, bezahlt, kundennr, aid, uid, update_time) 
+				$query = "insert into ".$tableName." (shoporderid, success, errorcode, bezahlt, kundennr, aid, uid, update_time)
 					values (:shoporderid, :success, :errorcode, :bezahlt, :kundennr, :aid, :uid, NOW())";
-					
+
 				$binds = array(
 					'shoporderid'       => $this->order_id,
 					'success'     		=> $xml->success,
@@ -643,10 +656,10 @@ class Afterbuy_Afterbuycheckout_Model_Orderafterbuy extends Mage_Sales_Model_Ord
 			}
 			else
 			{
-				$tableName = Mage::getSingleton('core/resource')->getTableName('afterbuyorderdata'); 
-				
+				$tableName = Mage::getSingleton('core/resource')->getTableName('afterbuyorderdata');
+
 				$write = Mage::getSingleton("core/resource")->getConnection("core_write");
-				$query = "insert into ".$tableName." (shoporderid, success, errorcode, kundennr, aid, uid, update_time) 
+				$query = "insert into ".$tableName." (shoporderid, success, errorcode, kundennr, aid, uid, update_time)
 					values (:shoporderid, :success, :errorcode, :kundennr, :aid, :uid, NOW())";
 				$binds = array(
 					'shoporderid'       => $this->order_id,
@@ -662,22 +675,22 @@ class Afterbuy_Afterbuycheckout_Model_Orderafterbuy extends Mage_Sales_Model_Ord
 					'Folgende Fehlermeldung wurde gemeldet:'.chr(13).chr(10).$result.chr(13).chr(10);
 				//mail("", "Afterbuy-Fehl&uuml;bertragung", $mail_content);
 				Mage::log("Afterbuy-Fehl&uuml;bertragung".$mail_content);
-				
+
 				if ($this->logging_file == 1)
 					file_put_contents('/app/code/local/Afterbuy/Afterbuycheckout/Model/afterbuylog.txt', $this->afterbuy_string."\r\n".$result);
 				//$transport = Mage::helper('smtppro')->getTransport();
 				$mail = new Zend_Mail();
-	   
+
 				$mail->setBodyText($mail_content);
 				$mail->setFrom($this->mailadresse_error, 'Afterbuy');
 				$mail->addTo($this->mailadresse_error, 'Admin');
 				$mail->setSubject('Afterbuy Fehler');
 				$mail->send();
 				//$mail->send($transport);
-				
+
 			}
 		}
-		
+
 	}
-   
+
 }
