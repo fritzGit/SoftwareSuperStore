@@ -18,25 +18,32 @@
 class SOFTSS_Serialcodes_Model_Observer extends Mmsmods_Serialcodes_Model_Observer
 {
  
-     protected $_logFileName = 'serialnumbers.log';
+     //protected $_logFileName = 'serialnumbers.log';
     
 	public function addCodesToOrder($observer)
 	{
 		$session = Mage::getSingleton('checkout/session');
 		$order = Mage::getSingleton('sales/order')->load($session->getLastOrderId());
 		$storeid = $order->getStoreId();
-		$orderId = $order->getIncrementId();
-		$status = $order->getStatus();
-		$payment = $order->getPayment()->getMethodInstance()->getCode();
+		//$orderId = $order->getIncrementId();
+		//$status = $order->getStatus();
+		//$payment = $order->getPayment()->getMethodInstance()->getCode();
 		$items = $order->getAllItems();
-		$templatearray = array();
-		$saved = 0;
-                $aSerialNumbers = array();
+		//$templatearray = array();
+		//$saved = 0;
+                //$aSerialNumbers = array();
 		foreach ($items as $item)
 		{
 			$product = Mage::getModel('catalog/product')->setStoreId($storeid)->load($item->getProductId());
 			if ($product->getSerialCodeSerialized())
 			{
+                            
+                             $order->setData('softss_has_serialcode', 1);
+                             $order->save();
+                             break;
+                            
+                            
+                            /*
 				if($parent = $item->getParentItem())
 				{
 					if($parent->getProductType() == 'configurable' && !Mage::getModel('catalog/product')->load($parent->getProductId())->getSerialCodeSerialized())
@@ -115,9 +122,9 @@ class SOFTSS_Serialcodes_Model_Observer extends Mmsmods_Serialcodes_Model_Observ
 						$item->save();
 						$saved = 1;
 					}
-				}
+				*/}
 			}
-			if($saved && $email = $product->getData('serial_code_send_warning'))
+			/*if($saved && $email = $product->getData('serial_code_send_warning'))
 			{
 				$level = $product->getData('serial_code_warning_level');
 				$available = count(Mage::getSingleton('serialcodes/serialcodes')->getCollection()->addFieldToFilter('sku',array('like' => $sku))->addFieldToFilter('status',array('like' => 0))->load());
@@ -319,6 +326,6 @@ class SOFTSS_Serialcodes_Model_Observer extends Mmsmods_Serialcodes_Model_Observ
 					}
 				}
 			}
-		}
-	}
+		} */
+	} 
 }

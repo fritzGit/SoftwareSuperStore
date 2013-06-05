@@ -56,7 +56,7 @@
             </resources>
         </acl>
     </adminhtml>
-    <!--<frontend>
+    <frontend>
         <routers>
             <softssserialnumber>
                 <use>standard</use>
@@ -71,14 +71,14 @@
         <jobs>
             <send_serialnumber_email>
                 <schedule>
-                    <cron_expr>*/30 * * * *</cron_expr>
+                    <cron_expr>*/15 * * * *</cron_expr>
                 </schedule>             
                 <run>
                     <model>serialNumber/observer::scheduledSerialNumberEmail</model>
                 </run>
             </send_serialnumber_email>
         </jobs>
-    </crontab> -->
+    </crontab> 
     <default>
         <serialnumber_conf>
             <serialnumber_email>
