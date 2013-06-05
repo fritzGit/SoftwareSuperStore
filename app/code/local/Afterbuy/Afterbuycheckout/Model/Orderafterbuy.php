@@ -222,12 +222,13 @@ class Afterbuy_Afterbuycheckout_Model_Orderafterbuy extends Mage_Sales_Model_Ord
 		}
 		$ab_data.="&Kemail=".urlencode($_totalData['customer_email']);
 
-		if( ($billing['company']    	== $shipping['company']) &&
+		/*if( ($billing['company']    	== $shipping['company']) &&
 			($billing['firstname'] 	 	== $shipping['firstname']) &&
 			($billing['lastname'] 		== $shipping['lastname']) &&
 			($billing['street']  		== $shipping['street']) &&
 			($billing['postcode']      	== $shipping['postcode']) &&
-			($billing['city']      		== $shipping['city'] ))
+			($billing['city']      		== $shipping['city'] ))*/
+                if(true)
 		{
 			$ab_data .= "&Lieferanschrift=0";
 		}
