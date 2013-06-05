@@ -30,6 +30,7 @@ class Afterbuy_Afterbuycheckout_Model_Orderafterbuy extends Mage_Sales_Model_Ord
 
 	public $afterbuy_string = "";
 	public $order_id = "";
+        public $checkstatus_order_id = "";
 	public $mailadresse_error = "";
 
 	public $payment_state = 0;
@@ -105,6 +106,14 @@ class Afterbuy_Afterbuycheckout_Model_Orderafterbuy extends Mage_Sales_Model_Ord
 	public function setOrderID($orderid)
 	{
 		$this->order_id = $orderid;
+	}
+
+        /*
+     * @param   string $orderid
+     */
+	public function setCheckStatusOrderID($orderid)
+	{
+		$this->checkstatus_order_id = $orderid;
 	}
 
 	protected function _prepareHistoryItem($label, $notified, $created, $comment = '')
@@ -606,8 +615,31 @@ class Afterbuy_Afterbuycheckout_Model_Orderafterbuy extends Mage_Sales_Model_Ord
 
     }
 
+    protected function createAfterbuyCallString($afterbuyorderid){
+        $singleCall = '<?xml version="1.0" encoding="utf-8"?>
+                <Request>
+                    <AfterbuyGlobal>
+                        <PartnerID>1000004718</PartnerID>
+                        <PartnerPassword>DiY01kVWcG633/9rIq7f/njkP</PartnerPassword>
+                        <UserID>pcfritz</UserID><UserPassword>+2(cN%SS</UserPassword>
+                        <CallName>GetSoldItems</CallName>
+                        <DetailLevel>2</DetailLevel>
+                        <ErrorLanguage>EN</ErrorLanguage>
+                    </AfterbuyGlobal>
+                    <DataFilter>
+                        <Filter>
+                            <FilterName>OrderID</FilterName>
+                            <FilterValues>
+                                <FilterValue>{orderid}</FilterValue>
+                            </FilterValues>
+                        </Filter>
+                    </DataFilter>
+                </Request>';
 
-	public function send()
+            return str_replace('{orderid}', $afterbuyorderid, $singleCall);
+    }
+
+        public function send()
 	{
 
 		if ($this->afterbuy_string != "")
@@ -691,6 +723,102 @@ class Afterbuy_Afterbuycheckout_Model_Orderafterbuy extends Mage_Sales_Model_Ord
 
 			}
 		}
+
+	}
+
+        public function checkAndUpdateStatus($checkandupdateXMLString, $afterbuyID)
+	{
+            $afterbuy_URL = 'https://api.afterbuy.de/afterbuy/ShopInterface.aspx?';
+
+            // connect
+            $ch = curl_init();
+
+            curl_setopt($ch, CURLOPT_URL, "$afterbuy_URL");
+
+            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+            curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+
+            curl_setopt($ch, CURLOPT_POST, 1);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+            curl_setopt($ch, CURLOPT_POSTFIELDS, $checkandupdateXMLString);
+            $result = curl_exec($ch);
+            curl_close($ch);
+
+
+            $mail_content = 'Afterbuy status check: '.chr(13).chr(10).$result.chr(13).chr(10).' Afterbuy orderID:'.$afterbuyID.chr(13).chr(10);
+            Mage::log(__LINE__ . ' | ' . __METHOD__ . "Daten: ".$afterbuy_URL.$checkandupdateXMLString);
+            if ($this->showResult == 1)
+                    print_r($result);
+            $xml = new SimpleXMLElement($result);
+            /*****************************************/
+            if (preg_match("/<success>1<\/success>/", $result))
+            {
+                    $tableName = Mage::getSingleton('core/resource')->getTableName('afterbuyorderdata');
+
+                    $write = Mage::getSingleton("core/resource")->getConnection("core_write");
+                    $query = "update ".$tableName." set bezahlt = :bezahlt, update_time = NOW() WHERE increment_id = :increment_id";
+
+                    $abPaymentDate = (string)$xml->PaymentInfo->PaymentDate;
+                    $abAlreadyPaid = (string)$xml->PaymentInfo->AlreadyPaid;
+                    $abFullAmount = (string)$xml->PaymentInfo->FullAmount;
+
+                    if(isset($abPaymentDate) && $abAlreadyPaid == $abFullAmount)
+                        $status = 2; // compleate
+                    else
+                        $status = 1; // in process
+
+                    $binds = array(
+                            'increment_id'      => $this->checkstatus_order_id,
+                            'bezahlt'     	=> $status
+                    );
+
+                    $write->query($query, $binds);
+
+                    if($status == 2){
+                        //get Order
+                        $order = Mage::getModel('sales/order')->load($this->checkstatus_order_id);
+                        $order->setState(Mage_Sales_Model_Order::STATE_COMPLETE, true)->save();
+                    }elseif($status == 2){
+                        //get Order
+                        $order = Mage::getModel('sales/order')->load($this->checkstatus_order_id);
+                        $order->setState(Mage_Sales_Model_Order::STATE_PROCESSING, true)->save();
+                    }
+            }
+            else
+            {
+                   /* $tableName = Mage::getSingleton('core/resource')->getTableName('afterbuyorderdata');
+
+                    $write = Mage::getSingleton("core/resource")->getConnection("core_write");
+                    $query = "insert into ".$tableName." (shoporderid, success, errorcode, kundennr, aid, uid, update_time)
+                            values (:shoporderid, :success, :errorcode, :kundennr, :aid, :uid, NOW())";
+                    $binds = array(
+                            'shoporderid'       => $this->order_id,
+                            'success'     		=> '0',
+                            'errorcode'     	=> $xml->errorlist->error,
+                            'kundennr'     		=> '',
+                            'aid'   			=> '',
+                            'uid'      			=> ''
+                    );
+
+                    $write->query($query, $binds);*/
+                    $mail_content = 'Fehler bei &Uuml;bertragung der Bestellung an Afterbuy: '.chr(13).chr(10).
+                            'Folgende Fehlermeldung wurde gemeldet:'.chr(13).chr(10).$result.chr(13).chr(10);
+                    //mail("", "Afterbuy-Fehl&uuml;bertragung", $mail_content);
+                    Mage::log("Afterbuy-Fehl&uuml;bertragung".$mail_content);
+
+                    if ($this->logging_file == 1)
+                            file_put_contents('/app/code/local/Afterbuy/Afterbuycheckout/Model/afterbuylog.txt', $this->afterbuy_string."\r\n".$result);
+                    //$transport = Mage::helper('smtppro')->getTransport();
+                    $mail = new Zend_Mail();
+
+                    $mail->setBodyText($mail_content);
+                    $mail->setFrom($this->mailadresse_error, 'Afterbuy');
+                    $mail->addTo($this->mailadresse_error, 'Admin');
+                    $mail->setSubject('Afterbuy Fehler');
+                    $mail->send();
+                    //$mail->send($transport);
+
+            }
 
 	}
 
