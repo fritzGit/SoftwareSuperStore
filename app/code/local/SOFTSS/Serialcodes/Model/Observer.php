@@ -18,7 +18,7 @@
 class SOFTSS_Serialcodes_Model_Observer extends Mmsmods_Serialcodes_Model_Observer
 {
  
-     protected $_logFileName = 'serilanumbers.log';
+     protected $_logFileName = 'serialnumbers.log';
     
 	public function addCodesToOrder($observer)
 	{
@@ -70,6 +70,7 @@ class SOFTSS_Serialcodes_Model_Observer extends Mmsmods_Serialcodes_Model_Observ
 							$status == 'pending_paypal' || 
 							$status == 'fraud' || 
 							$status == 'holded' || 
+                                                        $payment == 'checkmo' || 	
 							$payment == 'cashondelivery' || 
 							$payment == 'banktransfer' || 
 							$payment == 'purchaseorder' || 
@@ -156,67 +157,98 @@ class SOFTSS_Serialcodes_Model_Observer extends Mmsmods_Serialcodes_Model_Observ
                    Mage::log("Order with serial numbers found.Order Id: ".$order->getId(), null, $this->_logFileName);       
                     
                    $pdfFilePath = Mage::getBaseDir('media').DS.'pdf'.DS; 
-                   $serialNumberPath = Mage::getBaseDir('media').DS.'serialnumbers'.DS; 
-                                   
+                   $serialNumberPath = Mage::getBaseDir('media').DS.'serial_numbers'.DS; 
+                   $serials = 0;              
                    
                    if (!file_exists($serialNumberPath)) {
                         mkdir($serialNumberPath, 0777, true);
                    }                   
     
-                   $templateId = Mage::getStoreConfig('serialnumber_conf/serialnumber_email/serialnumber_email_template');
-                   $eTemplate = Mage::getModel('core/email_template')->load($templateId);
+                   $template = Mage::getStoreConfig('serialnumber_conf/serialnumber_email/serialnumber_email_template');
+				   	if (is_numeric($template))
+					{
+						$eTemplate = Mage::getModel('core/email_template')->load($template);
+					} else {
+						$eTemplate = Mage::getModel('core/email_template')->loadDefault($template);
+					}
                    
                    foreach ($aSerialNumbers as $aSerialNumber) {
-                       
+                     try { 
                        if($aSerialNumber['attribute_set'] == 'windows') {
+                           
+                            $filePath = $serialNumberPath . $aSerialNumber['serialnumber'] . '.pdf';
                            
                             $pdf = Zend_Pdf::load($pdfFilePath.'windows.pdf');
                             $page = $pdf->pages[0];
                             $font = Zend_Pdf_Font::fontWithName(Zend_Pdf_Font::FONT_HELVETICA);
                             $page->setFont($font, 11);
-                            $page->drawText($aSerialNumber['serialnumber'], 180, 157);
-                            $pdf->save($serialNumberPath . $aSerialNumber['serialnumber'] . '.pdf');                            
-                            $eTemplate->getMail()->createAttachment(file_get_contents($serialNumberPath . $aSerialNumber['serialnumber'] . '.pdf')) = $aSerialNumber['serialnumber'] . '.pdf';
+                            $page->drawText($aSerialNumber['serialnumber'], 115, 110);
+                            $pdf->save($filePath);  
+                            if(file_exists($filePath)){
+                                  $eTemplate->getMail()->createAttachment(
+                                    file_get_contents($filePath), 'application/pdf', Zend_Mime::DISPOSITION_ATTACHMENT,
+                                    Zend_Mime::ENCODING_BASE64, basename($filePath)
+                                );
+                            }   
+                            $serials = 1;
                             Mage::log("Serial Number created with Id: ".$aSerialNumber['serialnumber'], null, $this->_logFileName);        
 
                            
                            
                        } elseif($aSerialNumber['attribute_set'] == 'office') {
                            
+                            $filePath = $serialNumberPath . $aSerialNumber['serialnumber'] . '.pdf';
+
                             $pdf = Zend_Pdf::load($pdfFilePath.'office.pdf');
                             $page = $pdf->pages[0];
                             $font = Zend_Pdf_Font::fontWithName(Zend_Pdf_Font::FONT_HELVETICA);
                             $page->setFont($font, 11);
                             $page->drawText($aSerialNumber['serialnumber'], 180, 157);
-                            $pdf->save($serialNumberPath . $aSerialNumber['serialnumber'] . '.pdf');     
-                            $eTemplate->getMail()->createAttachment(file_get_contents($serialNumberPath . $aSerialNumber['serialnumber'] . '.pdf'))  = $aSerialNumber['serialnumber'] . '.pdf';
+                            $pdf->save($filePath);     
+                            if(file_exists($filePath)){
+                                   $eTemplate->getMail()->createAttachment(
+                                     file_get_contents($filePath), 'application/pdf', Zend_Mime::DISPOSITION_ATTACHMENT,
+                                     Zend_Mime::ENCODING_BASE64, basename($filePath)
+                                 );
+                             } 
                             Mage::log("Serial Number created with Id: ".$aSerialNumber['serialnumber'], null, $this->_logFileName);        
-
+                            $serials = 1;
                        } 
                        
-                   }                          
+                          }catch (Exception $e) {
+                      Mage::log("Error creating pdf for: ".$aSerialNumber['serialnumber'], null, $this->_logFileName);       
+
+                    }
+                       
+                   }      
                    
-                    try {
-                        
-                       $eVars = array('name' => $order->getBillingAddress()->getName());
+                   if ($serials) {
+                   
+                        try {                       
 
-                       $eTemplate->setSenderName(Mage::getStoreConfig('serialnumber_conf/serialnumber_email/name'));
-                       $eTemplate->setSenderEmail(Mage::getStoreConfig('serialnumber_conf/serialnumber_email/sender_email_identity'));
+                           $eVars = array('name' => $order->getBillingAddress()->getName());
 
-                        $emailTemplate->send(
-                                $order->getCustomerEmail(),
-                                $order->getBillingAddress()->getName(),
-                                $eVars);
+                           $eTemplate->setSenderName(Mage::getStoreConfig('serialnumber_conf/serialnumber_email/name'));
+                           $eTemplate->setSenderEmail(Mage::getStoreConfig('serialnumber_conf/serialnumber_email/sender_email_identity'));
 
-                        $order->setData('softss_has_serialcode', 1);
-                        $order->setData('softss_serialcode_sent', 1);
-                        $order->save();
-                        
-                        Mage::log("Email for order: ".$order->getId().' sent!', null, $this->_logFileName);       
 
-                    }catch (Exception $e) {
-                      Mage::log("Error for order: ".$order->getId().'. No email sent!', null, $this->_logFileName);       
+                           $eTemplate->send(
+                                    $order->getCustomerEmail(),
+                                    $order->getBillingAddress()->getName(),
+                                    $eVars);
 
+                            $order->setData('softss_has_serialcode', 1);
+                            $order->setData('softss_serialcode_sent', 1);
+                            $order->save();
+
+                            Mage::log("Email for order: ".$order->getId().' sent!', null, $this->_logFileName);       
+
+                        }catch (Exception $e) {
+                          Mage::log("Error for order: ".$order->getId().'. No email sent!', null, $this->_logFileName);       
+
+                        }
+                    } else {
+                         Mage::log("Products belong to another attribute set", null, $this->_logFileName);      
                     }
                 }
 		
