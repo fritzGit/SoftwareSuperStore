@@ -2098,7 +2098,15 @@ ul.product-specs label{width:50%; display: inline-block;}
 
 /* Checkout Agreements */
 .checkout-agreements li { margin:30px 0; }
-.checkout-agreements .agreement-content { overflow:auto; height:12em; padding:10px; background-color:#fbfaf6; border:1px solid #bbb6a5; }
+.checkout-agreements .agreement-content {  
+    border: 1px solid #BBBBBB;
+    border-radius: 5px 5px 5px 5px;
+    height:12em; 
+    margin-left: 0;
+    margin-bottom: 10px; 
+    min-height: 24px;
+    overflow:auto; 
+    padding: 8px 2px 2px 15px; }
 .checkout-agreements .agree { margin:0; padding:10px 0 10px 11px; }
 .checkout-agreements .agree input.checkbox { margin-right:6px; }
 .checkout-agreements .agree label { font-weight:bold; color:#666; }
@@ -2431,15 +2439,15 @@ ul.accountlistheader, ul.accountlist{padding:0 10px; line-height: 30px; width: 7
 ul.accountlistheader li, ul.accountlist li{display: inline-block; padding: 0 20px 0 0; float:left;}
 ul.accountlist li{line-height: 2;}
 ul.accountlistheader li.last, ul.accountlist li.last{padding: 0; float: right;}
-ul.accountlistheader li.date, ul.accountlist li.date{width:5%;}
+ul.accountlistheader li.date, ul.accountlist li.date{width:7%;}
 ul.accountlistheader li.image, ul.accountlist li.image{width:15%;}
 ul.accountlistheader li.productname,ul.accountlist li.productname{width:30%;}
-ul.accountlistheader li.productnamelong,ul.accountlist li.productnamelong{width:59%;}
-ul.accountlistheader li.sku,ul.accountlist li.sku{width:12%;}
+ul.accountlistheader li.productnamelong,ul.accountlist li.productnamelong{width:58%;}
+ul.accountlistheader li.sku,ul.accountlist li.sku{width:10%;}
 ul.accountlistheader li.price,ul.accountlist li.price{width:5%;}
 ul.accountlistheader li.qty,ul.accountlist li.qty{width:5%;}
 ul.accountlistheader li.productanddetails,ul.accountlist li.productanddetails{width:40%;}
-ul.accountlistheader li.producttitle,ul.accountlist li.producttitle{width:48%;}
+ul.accountlistheader li.producttitle,ul.accountlist li.producttitle{width:45%;}
 ul.accountlistheader li.ordernum,ul.accountlist li.ordernum{width:10%;}
 ul.accountlistheader li.shipto,ul.accountlist li.shipto{width:20%;}
 ul.accountlistheader li.ordertotal,ul.accountlist li.ordertotal{width:10%;}

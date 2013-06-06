@@ -27,11 +27,11 @@
         </resources>
         <template>
             <email>
-                <serialnumber_email translate="label" module="softssserialnumber">
+                <serialnumber_conf_serialnumber_email_serialnumber_email_template translate="label" module="softssserialnumber">
                     <label>Serial Number Email</label>
                     <file>serialnumber.html</file>
                     <type>html</type>
-                </serialnumber_email>
+                </serialnumber_conf_serialnumber_email_serialnumber_email_template>
             </email>
         </template>
     </global>
@@ -56,7 +56,7 @@
             </resources>
         </acl>
     </adminhtml>
-    <!--<frontend>
+   <!-- <frontend>
         <routers>
             <softssserialnumber>
                 <use>standard</use>
@@ -66,25 +66,25 @@
                 </args>
             </softssserialnumber>
         </routers>
-    </frontend> 
+    </frontend> -->
     <crontab>
         <jobs>
             <send_serialnumber_email>
                 <schedule>
-                    <cron_expr>*/30 * * * *</cron_expr>
+                    <cron_expr>*/15 * * * *</cron_expr>
                 </schedule>             
                 <run>
-                    <model>serialNumber/observer::scheduledSerialNumberEmail</model>
+                    <model>softssserialnumber/observer::scheduledSerialNumberEmail</model>
                 </run>
             </send_serialnumber_email>
         </jobs>
-    </crontab> -->
+    </crontab> 
     <default>
         <serialnumber_conf>
             <serialnumber_email>
                 <name>softwaresuperstore Team</name>
                 <sender_email_identity>support</sender_email_identity>
-                <serialnumber_email_template>serialnumber_email</serialnumber_email_template>
+                <serialnumber_email_template>serialnumber_conf_serialnumber_email_serialnumber_email_template</serialnumber_email_template>
             </serialnumber_email>
         </serialnumber_conf>
     </default>
