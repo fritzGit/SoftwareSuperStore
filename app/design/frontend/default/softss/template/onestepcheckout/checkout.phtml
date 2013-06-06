@@ -238,16 +238,16 @@ $helper = Mage::helper('onestepcheckout/checkout');
                 <div class="onestepcheckout-column-right-top">
                            <p class="onestepcheckout-numbers onestepcheckout-numbers-<?php echo $step_counter++; ?>"><span><?php echo $step_counter-1; ?></span>
 
-                          <?php $customerEmail = (($this->isCustomerLoggedIn())) ? $this->getQuote()->getCustomer()->getEmail() : false; ?>
+                          <?php /* $customerEmail = (($this->isCustomerLoggedIn())) ? $this->getQuote()->getCustomer()->getEmail() : false; ?>
                     <?php if ($this->settings['enable_newsletter'] && !$this->isSubScribed($customerEmail)): ?>
                                <?php echo $this->__('Newsletter'); ?>                               
                         <div class="onestepcheckout-enable-newsletter">
                             <input type="checkbox" id="id_subscribe_newsletter" name="subscribe_newsletter" value="1" <?php if ($this->settings['newsletter_default_checked']): ?>checked="checked"<?php endif; ?> />
                             <label for="id_subscribe_newsletter"><?php echo $this->__('Subscribe to our newsletter'); ?></label>
                         </div>
-                           <?php else: ?>
+                           <?php else: */?> 
                                 <?php echo $this->__('Conditions and Policy'); ?>                              
-                                <?php endif; ?>
+                                <?php //endif; ?>
                            </p>
                     <p class="terms"><?php echo $this->__('Here you can learn about <a class="orange" href="/terms-conditions">Conditions</a>, <a class="orange" href="/privacy-policy">Privacy Policy</a> and our <a class="orange" href="/return-policy">Return Policy</a>.'); ?></p>
                     
