@@ -616,9 +616,9 @@ class Afterbuy_Afterbuycheckout_Model_Orderafterbuy extends Mage_Sales_Model_Ord
     }
 
     public function createAfterbuyCallString($afterbuyorderid){
-        $singleCall = '<?xml version="1.0" encoding="utf-8"?><Request><AfterbuyGlobal><PartnerID>1000004718</PartnerID><PartnerPassword><![CDATA[DiY01kVWcG633/9rIq7f/njkP]]></PartnerPassword><UserID><![CDATA[pcfritz]]></UserID><UserPassword><![CDATA[+2(cN%SS]]></UserPassword><CallName>GetSoldItems</CallName><DetailLevel>2</DetailLevel><ErrorLanguage>EN</ErrorLanguage></AfterbuyGlobal><DataFilter><Filter><FilterName>OrderID</FilterName><FilterValues><FilterValue>{orderid}</FilterValue></FilterValues></Filter></DataFilter></Request>';
+        $singleCall = '<?xml version="1.0" encoding="utf-8"?><Request><AfterbuyGlobal><PartnerID>1000004718</PartnerID><PartnerPassword><![CDATA[DiY01kVWcG633/9rIq7f/njkP]]></PartnerPassword><UserID><![CDATA[pcfritz]]></UserID><UserPassword><![CDATA[+2(cN%SS]]></UserPassword><CallName>GetSoldItems</CallName><DetailLevel>2</DetailLevel><ErrorLanguage>EN</ErrorLanguage></AfterbuyGlobal><DataFilter><Filter><FilterName>OrderID</FilterName><FilterValues><FilterValue>'.$afterbuyorderid.'</FilterValue></FilterValues></Filter></DataFilter></Request>';
 
-			$singleCall = str_replace('{orderid}', $afterbuyorderid, $singleCall);
+			#$singleCall = str_replace('{orderid}', $afterbuyorderid, $singleCall);
             return $singleCall;
     }
 
@@ -711,25 +711,32 @@ class Afterbuy_Afterbuycheckout_Model_Orderafterbuy extends Mage_Sales_Model_Ord
 
         public function checkAndUpdateStatus($checkandupdateXMLString, $afterbuyID)
 	{
+
+            Mage::log('xml string::');
+	Mage::log($checkandupdateXMLString);
             $domdoc = new DOMDocument();
             $domdoc->loadXML($checkandupdateXMLString);
 
             $afterbuy_URL = 'https://api.afterbuy.de/afterbuy/ShopInterface.aspx';
 
             // connect
-            $ch = curl_init("$afterbuy_URL");
-
+            $ch = curl_init();
+            curl_setopt ($ch, CURLOPT_URL, $afterbuy_URL );
           #  curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
            # curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
-
-            curl_setopt( $ch, CURLOPT_MUTE, 1 );
+           # curl_setopt( $ch, CURLOPT_MUTE, 1 );
             curl_setopt($ch, CURLOPT_POST, 1);
             curl_setopt( $ch, CURLOPT_HTTPHEADER, array( 'Content-Type: text/xml' ) );
             curl_setopt($ch, CURLOPT_POSTFIELDS, $domdoc->saveXML());
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+
+
+
             $result = curl_exec($ch);
             curl_close($ch);
-
+            Mage::log('xml sent::');
+Mage::log($domdoc->saveXML());
+Mage::log($result);
 
             $mail_content = 'Afterbuy status check: '.chr(13).chr(10).$result.chr(13).chr(10).' Afterbuy orderID:'.$afterbuyID.chr(13).chr(10);
             Mage::log(__LINE__ . ' | ' . __METHOD__ . "Daten: ".$afterbuy_URL.$checkandupdateXMLString);
