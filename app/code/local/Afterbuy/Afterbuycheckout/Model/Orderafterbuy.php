@@ -784,10 +784,11 @@ class Afterbuy_Afterbuycheckout_Model_Orderafterbuy extends Mage_Sales_Model_Ord
                     * change order status to 'Complete' by creating the invoice
                     */
                     try {
-                        
+
                         if(!$order->canInvoice())
                         {
-                            Mage::throwException(Mage::helper('core')->__('Cannot create an invoice. OrderId:'.$this->checkstatus_order_id));
+                            #Mage::throwException(Mage::helper('core')->__('Cannot create an invoice. OrderId:'.$this->checkstatus_order_id));
+                            Mage::log(Mage::helper('core')->__('Cannot create an invoice. OrderId:'.$this->checkstatus_order_id));
                         }
 
                         $savedQtys = array();
@@ -854,7 +855,7 @@ class Afterbuy_Afterbuycheckout_Model_Orderafterbuy extends Mage_Sales_Model_Ord
                 try{
                     $mail = new Zend_Mail();
                     $mail->setBodyText($mail_content);
-                    $mail->setFrom('j.galvez@pcfritz.de', 'Afterbuy');
+                    $mail->setFrom('j.galvez@pcfritz.de', 'Magento');
                     $mail->addTo('j.galvez@pcfritz.de', 'Admin');
                     $mail->setSubject('Afterbuy Fehler');
                     $mail->send();
