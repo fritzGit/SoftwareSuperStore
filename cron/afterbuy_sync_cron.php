@@ -1,5 +1,5 @@
 <?php
-echo "AB to Magento sync Cron<br>";
+echo "Start of AB to Magento sync Cron<br>";
 ini_set('display_errors',1);
 require_once '/var/www/vhosts/softwaresuperstore.co.uk/htdocs/app/Mage.php';
 
@@ -24,9 +24,9 @@ $query = 'SELECT aid, shoporderid FROM '.$tableNameAfterbuy.' WHERE bezahlt != 2
 $results = $readConnection->fetchAll($query);
 
 /**
-* Print out the results
+* Print out the errors
 */
-echo "Update Status:<pre>";
+
 
 $ab_class = Mage::getModel('afterbuycheckout/orderafterbuy');
 $ab_class->handler = 'cron';
@@ -35,10 +35,14 @@ foreach($results as $single_result)
 {
     $ab_class->setCheckStatusOrderID($single_result['shoporderid']);
     $sXML = $ab_class->createAfterbuyCallString($single_result['aid']);
-    $ab_class->checkAndUpdateStatus($sXML, $single_result['aid']);
+    $result = $ab_class->checkAndUpdateStatus($sXML, $single_result['aid']);
 
-    var_dump($sXML);
+    if($result==false){
+        echo "Update Status:<pre>";
+        var_dump($sXML);
+        echo '</pre><br/>';
+    }
 }
-echo "</pre>";
 
+echo "End of AB Magento sync Cron<br>";
 ?>
