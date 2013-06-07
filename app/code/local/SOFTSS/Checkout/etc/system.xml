@@ -83,11 +83,35 @@
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
-                        </import_category>                             
-                        <territory translate="label comment">
-                            <label>Request Import Territory</label>
+                        </import_category>    
+                        <url_order translate="label comment">
+                            <label>Request Order Url</label>
                             <frontend_type>text</frontend_type>
                             <sort_order>6</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </url_order>  
+                        <url_order_ext translate="label comment">
+                            <label>Request Extended Order Url</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>7</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </url_order_ext>     
+                        <url_order_cancel translate="label comment">
+                            <label>Request Order Cancel Url</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>8</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </url_order_cancel>                       
+                        <territory translate="label comment">
+                            <label>Territory</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>9</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
@@ -95,7 +119,7 @@
                         <resellerid translate="label comment">
                             <label>Reseller ID</label>
                             <frontend_type>text</frontend_type>
-                            <sort_order>7</sort_order>
+                            <sort_order>10</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
@@ -103,7 +127,7 @@
                         <password translate="label comment">
                             <label>Password</label>
                             <frontend_type>text</frontend_type>
-                            <sort_order>8</sort_order>
+                            <sort_order>11</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>

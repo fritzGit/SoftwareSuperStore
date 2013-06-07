@@ -148,6 +148,7 @@ class SOFTSS_Checkout_CartController extends Mage_Checkout_CartController {
         try {
 
             $url = Mage::helper('softsscheckout')->getSoftDistributionUrl();
+            
             $ch = curl_init();
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
             curl_setopt($ch, CURLOPT_URL, $url);    // get the url contents
@@ -155,24 +156,28 @@ class SOFTSS_Checkout_CartController extends Mage_Checkout_CartController {
             $data = curl_exec($ch); // execute curl request
             curl_close($ch);
 
-            $xml = simplexml_load_string($data);
-
-            $codes = array("N_A","OOS","PRE_SELL","PRE_SELL_ONLY","PRE_SELL_BONUS","DELISTED");
-            $productIds = array();
-
-            if($xml->status == 1) {
-                $response['products'] = false;
+            if(empty($data)) {
+               $response['error'] = true;
             } else {
+                  
+                $xml = simplexml_load_string($data);
 
-                foreach($xml->products->product as $product){
+                $codes = array("N_A","OOS","PRE_SELL","PRE_SELL_ONLY","PRE_SELL_BONUS","DELISTED");
+                $productIds = array();
 
-                  if(in_array($product->availability, $codes)) {
-                      $productIds[] = $product->productversionid;
-                  }
-                }
-                $response['products'] = implode(",", $productIds);
+                if($xml->status == 1) {
+                    $response['products'] = false;
+                } else {
+
+                    foreach($xml->products->product as $product){
+
+                      if(in_array($product->availability, $codes)) {
+                          $productIds[] = $product->productversionid;
+                      }
+                    }
+                    $response['products'] = implode(",", $productIds);
+                }           
             }
-
           } catch (Exception $e) {
             Mage::logException($e);
             $response['error'] = true;
