@@ -17,11 +17,11 @@
 class SOFTSS_Import_SoftdistributionController extends Mage_Core_Controller_Front_Action
 {
   
-    const XML_SOFTDISTIBUTION_RESELLERID = 'checkout/softdistribution/resellerid';
-    const XML_SOFTDISTIBUTION_PASSWORD = 'checkout/softdistribution/password';
-    const XML_SOFTDISTIBUTION_IMPORT_URL = 'checkout/softdistribution/url_import';
-    const XML_SOFTDISTIBUTION_IMPORT_CATEGORY = 'checkout/softdistribution/import_category';
-    const XML_SOFTDISTIBUTION_IMPORT_TERRITORY = 'checkout/softdistribution/url_import';
+    const XML_SOFTDISTIBUTION_RESELLERID             = 'checkout/softdistribution/resellerid';
+    const XML_SOFTDISTIBUTION_PASSWORD               = 'checkout/softdistribution/password';
+    const XML_SOFTDISTIBUTION_IMPORT_URL             = 'checkout/softdistribution/url_import';
+    const XML_SOFTDISTIBUTION_IMPORT_CATEGORY        = 'checkout/softdistribution/import_category';
+    const XML_SOFTDISTIBUTION_TERRITORY       = 'checkout/softdistribution/territory';
     const XML_SOFTDISTIBUTION_IMPORT_PRODUCT_DETAILS = 'checkout/softdistribution/url_import_product_detail';
     
     protected $_logFileName = 'import.log';
@@ -54,9 +54,11 @@ class SOFTSS_Import_SoftdistributionController extends Mage_Core_Controller_Fron
         $url .= '?resellerid='.Mage::getStoreConfig(self::XML_SOFTDISTIBUTION_RESELLERID);
         $url .= '&pass='.md5(Mage::getStoreConfig(self::XML_SOFTDISTIBUTION_PASSWORD));
         $url .= '&cat='.Mage::getStoreConfig(self::XML_SOFTDISTIBUTION_IMPORT_CATEGORY);
-        $url .= '&territory='.Mage::getStoreConfig(self::XML_SOFTDISTIBUTION_IMPORT_TERRITORY);
+        $url .= '&territory='.Mage::getStoreConfig(self::XML_SOFTDISTIBUTION_TERRITORY);
          
         $aProducts = array();
+        
+        die($url);
         
         $target =  Mage::getBaseDir(). DIRECTORY_SEPARATOR . 'softdistribution' . DIRECTORY_SEPARATOR . 'product_short_list3.xml';
 
@@ -144,7 +146,7 @@ class SOFTSS_Import_SoftdistributionController extends Mage_Core_Controller_Fron
                 'price'                         => $aProductDetail['srp'],
                 'meta_title'                    => $aProductDetail['full_name'].' | Softwaresuperstore',
                 'meta_description'              => $aProductDetail['teasertext'],
-                'meta_keyword'                 => $aProductDetail['keywords'],
+                'meta_keyword'                  => $aProductDetail['keywords'],
                 'categories'                    => $categories,
                 'softss_system_requirements'    => $aProductDetail['systemrequirements'],
                 'image_label'                   => '',
@@ -161,8 +163,8 @@ class SOFTSS_Import_SoftdistributionController extends Mage_Core_Controller_Fron
                 'softss_supplier_product_id'    => $aProductDetail['productversionid'],           
                 'softss_multiplayer'            => $aProductDetail['multiplayer'] == "yes" ? 1 : 0,
                 'softss_drm_type'               => $aProductDetail['drmtype'],
-                'softss_product_video'          => $aProductDetail['video']
-                //'_links_upsell_sku' => $this->getUpsellIds($aProductDetail['upsell_productversionid'])
+                'softss_product_video'          => $aProductDetail['video'],
+                '_links_upsell_sku'             => $this->getUpsellIds($aProductDetail['upsell_productversionid'])
             );
             
             try {                   
@@ -181,17 +183,26 @@ class SOFTSS_Import_SoftdistributionController extends Mage_Core_Controller_Fron
         }
     }
 
-    protected function getUpsellIds($supplierProductID){
+    protected function getUpsellIds($supplierProductID)
+    {
         
         $product = Mage::getModel('catalog/product')->loadByAttribute('softss_supplier_product_id', $supplierProductID);
 
-        if($product instanceof Mage_Catalog_Model_Product){
-           return $product->getId();
+        if($product instanceof Mage_Catalog_Model_Product && $product->getId()){
+            
+             $param = array(
+                    $product->getId() => array(
+                           'position' => '1'
+                     )
+             );
+             
+           return $param;
         }
          return;        
     }
 
-    protected function createCategory($catname, $parentID = null){
+    protected function createCategory($catname, $parentID = null)
+    {
                 
         $categoryAPImodel = Mage::getModel('catalog/category_api');
 
@@ -224,7 +235,8 @@ class SOFTSS_Import_SoftdistributionController extends Mage_Core_Controller_Fron
         return $catId;
     }
 
-    protected function loadCategoryByNameAndParent(Array $cat_nameparent){
+    protected function loadCategoryByNameAndParent(Array $cat_nameparent)
+    {
         
         $category = Mage::getModel('catalog/category')->getResourceCollection()
             ->addAttributeToSelect('id')
@@ -248,7 +260,7 @@ class SOFTSS_Import_SoftdistributionController extends Mage_Core_Controller_Fron
         
         $aProductDetail = array();
 
-       $productXML = $this->getXML($url);
+        $productXML = $this->getXML($url);
 
         if(isset($productXML)) {
             $productDetailXML = simplexml_load_string($productXML, null, LIBXML_NOCDATA);
@@ -270,7 +282,7 @@ class SOFTSS_Import_SoftdistributionController extends Mage_Core_Controller_Fron
 
             //$aProductDetail['productid'] = $productData->productid;
             $aProductDetail['productversionid'] = $productData->productversionid;
-            //$aProductDetail['upsell_productversionid'] = $productData->upsell_productversionid;
+            $aProductDetail['upsell_productversionid'] = $productData->upsell_productversionid;
             $aProductDetail['productdetailversion'] = $productData->productdetailversion;
             $aProductDetail['name'] = $productData->name;
             $aProductDetail['full_name'] = $productData->full_name;
@@ -452,17 +464,17 @@ class SOFTSS_Import_SoftdistributionController extends Mage_Core_Controller_Fron
             
             $imgData = $this->getXML($data['boxshot3d_large'].$usernamePass);
 
-            if($data) {            
-                file_put_contents($importDir.$data['productversionid'].'_2d', $imgData);   
-                $imgPath = $data['productversionid'].'_2d';
+            if($data) {       
+                $imgPath = $importDir.$data['productversionid'].'_2d.png';
+                file_put_contents($imgPath, $imgData);   
             } 
         } elseif($data['boxshot2d_large']){
             
             $imgData = $this->getXML($data['boxshot2d_large'].$usernamePass);
 
             if($data) {            
-                file_put_contents($importDir.$data['productversionid'].'_3d', $imgData);   
-                $imgPath = $data['productversionid'].'_3d';
+                $imgPath = $importDir.$data['productversionid'].'_3d.png';
+                file_put_contents($imgPath, $imgData);   
             } 
         }
         
@@ -473,8 +485,9 @@ class SOFTSS_Import_SoftdistributionController extends Mage_Core_Controller_Fron
             $imgData = $this->getXML($data['screenshot_'.$i].$usernamePass);
 
             if($data) {            
-                file_put_contents($importDir.$data['productversionid'].'_s'.$i, $imgData);   
-                $aImgPathScreenShot[] = $data['productversionid'].'_s'.$i;
+                $sImgFile = $importDir.$data['productversionid'].'_s'.$i.'.png';
+                file_put_contents($sImgFile, $imgData);   
+                $aImgPathScreenShot[] = $sImgFile;
             }             
         }        
         
@@ -520,7 +533,9 @@ class SOFTSS_Import_SoftdistributionController extends Mage_Core_Controller_Fron
         
     }
     
-    protected function delTree($dir) {
+    protected function delTree($dir) 
+    {
+       
         $files = glob($dir . '*', GLOB_MARK);
         foreach ($files as $file) {
             if (substr($file, -1) == '/')

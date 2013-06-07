@@ -28,14 +28,14 @@ class SOFTSS_Checkout_Helper_Data extends Mage_Checkout_Helper_Data
         
         foreach($items as $item) {
             
-           $aData[] = $item->getProduct()->getPcfSupplierProductId();
+           $aData[] = $item->getProduct()->getSoftssSupplierProductId();
            $aData[] = $item->getQty();    
     
         }
                                                          
         $products =  implode(";", $aData);
         
-        $url = self::XML_SOFTDISTIBUTION_URL;
+        $url = Mage::getStoreConfig(self::XML_SOFTDISTIBUTION_URL);
         $url .= '?resellerid='.Mage::getStoreConfig(self::XML_SOFTDISTIBUTION_RESELLERID);
         $url .= '&pass='.md5(Mage::getStoreConfig(self::XML_SOFTDISTIBUTION_PASSWORD));
         $url .= '&products='.$products;

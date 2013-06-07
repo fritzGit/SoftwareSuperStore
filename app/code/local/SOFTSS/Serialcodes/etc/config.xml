@@ -2,22 +2,99 @@
 <config>
     <modules>
         <SOFTSS_Serialcodes>
-            <version>0.1.0</version>
+            <version>0.1.1</version>
         </SOFTSS_Serialcodes>
     </modules>
 
-    <global>     
+    <global>   
+        <helpers>
+            <softssserialcodes>
+                <class>SOFTSS_Serialcodes_Helper</class>
+            </softssserialcodes>
+        </helpers> 
+        <models>
+            <softssserialcodes>
+                <class>SOFTSS_Serialcodes_Model</class>
+            </softssserialcodes>
+        </models>
+        <resources>
+            <softssserialcodes_setup>
+                <setup>
+                    <module>SOFTSS_Serialcodes</module>
+                    <class>Mage_Sales_Model_Resource_Setup</class>
+                </setup>
+            </softssserialcodes_setup>
+        </resources> 
         <events>
-                <checkout_onepage_controller_success_action>
-                        <observers>
-                                <serialcodes>
-                                        <type>singleton</type>
-                                        <class>SOFTSS_Serialcodes_Model_Observer</class>
-                                        <method>addCodesToOrder</method>
-                                </serialcodes>
-                        </observers>
-                </checkout_onepage_controller_success_action>
+            <checkout_onepage_controller_success_action>
+                <observers>
+                    <serialcodes>
+                        <type>singleton</type>
+                        <class>SOFTSS_Serialcodes_Model_Observer</class>
+                        <method>flagOrderSerialCodes</method>
+                    </serialcodes>
+                </observers>
+            </checkout_onepage_controller_success_action>
+         <!-- <order_cancel_after>
+                <observers>
+                    <softdistribution>
+                           <type>singleton</type>
+                           <class>SOFTSS_Serialcodes_Model_Observer</class>
+                           <method>sendCancelRequest</method>
+                    </softdistribution>
+                </observers>
+            </order_cancel_after> -->
         </events>
+        <template>
+            <email>
+                <serialnumber_conf_serialnumber_email_serialnumber_email_template translate="label" module="softssserialcodes">
+                    <label>Serial Number Email</label>
+                    <file>serialnumber.html</file>
+                    <type>html</type>
+                </serialnumber_conf_serialnumber_email_serialnumber_email_template>
+            </email>
+        </template>
     </global>
-   
+    <adminhtml>
+        <acl>
+            <resources>
+                <admin>
+                    <children>
+                        <system>
+                            <children>
+                                <config>
+                                    <children>
+                                        <serialnumber_conf>
+                                            <title>Serial Number Email Settings</title>
+                                        </serialnumber_conf>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+    </adminhtml>
+    <crontab>
+        <jobs>
+            <send_serialnumber_email>
+                <schedule>
+                    <cron_expr>*/15 * * * *</cron_expr>
+                </schedule>             
+                <run>
+                    <model>softssserialcodes/observer::scheduledSerialcodesEmail</model>
+                </run>
+            </send_serialnumber_email>
+        </jobs>
+    </crontab> 
+    <default>
+        <serialnumber_conf>
+            <serialnumber_email>
+                <name>softwaresuperstore Team</name>
+                <sender_email_identity>support</sender_email_identity>
+                <serialnumber_email_template>serialnumber_conf_serialnumber_email_serialnumber_email_template</serialnumber_email_template>
+            </serialnumber_email>
+        </serialnumber_conf>
+    </default>   
 </config>
