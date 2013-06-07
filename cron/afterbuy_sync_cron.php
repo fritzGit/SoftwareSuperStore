@@ -16,7 +16,7 @@ $resource = Mage::getSingleton('core/resource');
 */
 $readConnection = $resource->getConnection('core_read');
 
-$query = 'SELECT aid, increment_id FROM '.$tableNameAfterbuy.' WHERE bezahlt != 2';
+$query = 'SELECT aid, shoporderid FROM '.$tableNameAfterbuy.' WHERE bezahlt != 2 AND aid!=""';
 
 /**
  * Execute the query and store the results in $results
@@ -33,7 +33,7 @@ $ab_class->handler = 'cron';
 
 foreach($results as $single_result)
 {
-    $ab_class->setCheckStatusOrderID($single_result['increment_id']);
+    $ab_class->setCheckStatusOrderID($single_result['shoporderid']);
     $sXML = $ab_class->createAfterbuyCallString($single_result['aid']);
     $ab_class->checkAndUpdateStatus($sXML, $single_result['aid']);
 
