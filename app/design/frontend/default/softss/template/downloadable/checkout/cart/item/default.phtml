@@ -30,6 +30,8 @@
 ?>
 <tr>
     <td>
+        <a href="<?php echo $this->getProductUrl() ?>" class="product-image" title="<?php echo $this->htmlEscape($this->getProductName()) ?>"><img src="<?php echo $this->getProductThumbnail()->resize(75); ?>" alt="<?php echo $this->htmlEscape($this->getProductName()) ?>" /></a>
+        
         <h2 class="product-name"><a href="<?php echo $this->getProductUrl() ?>"><?php echo $this->htmlEscape($this->getProductName()) ?></a></h2>
         <?php if ($_options = $this->getOptionList()):?>
         <dl class="item-options">
@@ -49,7 +51,7 @@
             <?php endforeach; ?>
         </dl>
         <?php endif;?>
-        
+
         <?php $productAttributeSet = Mage::getModel('eav/entity_attribute_set')->load($_item->getProduct()->getAttributeSetId())->getAttributeSetName(); ?>
         <?php if($productAttributeSet != 'office' && $productAttributeSet != 'windows'): ?>
         <!-- downloadable -->
@@ -70,8 +72,7 @@
             * <?php echo $this->escapeHtml($message['text']) ?>
         </div>
         <?php endforeach; ?>
-        <?php endif; ?>       
-        <a href="<?php echo $this->getProductUrl() ?>" class="product-image" title="<?php echo $this->htmlEscape($this->getProductName()) ?>"><img src="<?php echo $this->getProductThumbnail()->resize(75); ?>" alt="<?php echo $this->htmlEscape($this->getProductName()) ?>" /></a>      
+        <?php endif; ?>
     </td>
     <!--<td class="a-center">
         <a href="<?php echo $this->getConfigureUrl() ?>" title="<?php echo $this->__('Edit item parameters') ?>"><?php echo $this->__('Edit') ?></a>
