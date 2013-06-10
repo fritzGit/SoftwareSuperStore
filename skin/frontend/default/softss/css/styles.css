@@ -1,7 +1,7 @@
 /* Reset ================================================================================= */
 * { margin:0; padding:0; }
 
-body          { background:#131918; font:12px/1.55 Vadana, sans-serif; color:#151515; text-align:center; }
+body          { background:#131918; font:12px/1.55 Vadana, sans-serif; color:#151515; text-align:center; height:100%;}
 
 img           { border:0; vertical-align:top; }
 
@@ -1438,6 +1438,10 @@ ul.product-specs label{width:50%; display: inline-block;}
     padding:55px 30px;
     display: inline-block;
     width:965px;
+}
+
+.product-collateral .product-tabs-content .product-tabs-content-inner p{
+    margin: 20px 0 10px 0;
 }
 
 .product-collateral .product-tabs-content .product-tabs-content-inner .left{
