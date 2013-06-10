@@ -57,9 +57,7 @@ class SOFTSS_Import_SoftdistributionController extends Mage_Core_Controller_Fron
         $url .= '&territory='.Mage::getStoreConfig(self::XML_SOFTDISTIBUTION_TERRITORY);
          
         $aProducts = array();
-        
-        die($url);
-        
+                
         $target =  Mage::getBaseDir(). DIRECTORY_SEPARATOR . 'softdistribution' . DIRECTORY_SEPARATOR . 'product_short_list3.xml';
 
         if (!is_file($target)) {
@@ -149,9 +147,9 @@ class SOFTSS_Import_SoftdistributionController extends Mage_Core_Controller_Fron
                 'meta_keyword'                  => $aProductDetail['keywords'],
                 'categories'                    => $categories,
                 'softss_system_requirements'    => $aProductDetail['systemrequirements'],
-                'image_label'                   => '',
-                'small_image_label'             => '',
-                'thumbnail_label'               => '',
+                'image_label'                   => $aProductDetail['name'],
+                'small_image_label'             => $aProductDetail['name'],
+                'thumbnail_label'               => $aProductDetail['name'],
                 'platform'                      => $aProductDetail['platform'],
                 'versiontype'                   => $aProductDetail['versiontype'],
                 'softss_mastersize'             => $aProductDetail['mastersize'],
@@ -168,13 +166,14 @@ class SOFTSS_Import_SoftdistributionController extends Mage_Core_Controller_Fron
             );
             
             try {                   
-                if($product instanceof Mage_Catalog_Model_Product){
+                if($product instanceof Mage_Catalog_Model_Product && $product->getId()){
                     $productAPImodel->update($product->getId(), $data, $this->_storeId);
+                    $this->addImages($product->getId(), $aProductDetail);
                     Mage::log("Product ".$product->getName()." updated: ".$product->getId(), null, $this->_logFileName);   
                 }else{            
                     $newProductId = $productAPImodel->create($this->_productType, $this->_attributeSetId, $sku, $data, $this->_storeId);
                     $this->addImages($newProductId, $aProductDetail);
-                    Mage::log("New Product ".$aProductDetail['name']." created: ".$newProductId, null, $this->_logFileName);   
+                    Mage::log("New Product ".$aProductDetail['name']." created: ".$newProductId, null, $this->_logFileName);  
                 }
             } catch (Exception $e) { // sku already used                    
                 Mage::log("Product ".$aProductDetail['name']." was not able to imported: ".$e->getMessage(), null, $this->_logFileName);   
@@ -198,7 +197,7 @@ class SOFTSS_Import_SoftdistributionController extends Mage_Core_Controller_Fron
              
            return $param;
         }
-         return;        
+        return;        
     }
 
     protected function createCategory($catname, $parentID = null)
@@ -374,7 +373,7 @@ class SOFTSS_Import_SoftdistributionController extends Mage_Core_Controller_Fron
             $aProductDetail['extendedorder_required'] = $productData->extendedorder_required;
             $aProductDetail['backupcd_available'] = $productData->backupcd_available;
                         
-            $this->addVideo($productData);            
+            $aProductDetail['video'] = $this->addVideo($productData);            
       
         }           
                
@@ -424,7 +423,8 @@ class SOFTSS_Import_SoftdistributionController extends Mage_Core_Controller_Fron
     }
     
     protected function addVideo($productData) 
-    {
+    {        
+          
           if ($videoType = $productData->videos->video->type) {            
 
             $aProductDetail['video'] = $aProductDetail['productversionid'].'.'.$videoType;
@@ -442,50 +442,65 @@ class SOFTSS_Import_SoftdistributionController extends Mage_Core_Controller_Fron
             $data = $this->getXML($url);
 
             if($data) {            
-                file_put_contents($path.$aProductDetail['video'], $data);            
+                file_put_contents($path.$aProductDetail['video'], $data);      
+                return  $aProductDetail['video'];
             }                
 
         }
+        return;
     }
     
     protected function addImages($productId, $data) 
     {        
         
         // Remove unset images, add image to gallery if exists
-        $importDir = Mage::getBaseDir('media') . DS . 'import'.DS. 'tmp'.DS. $data['productversionid']. DS;
-
-        if ( !file_exists($importDir)) {
-            mkdir($importDir);
-        } 
+        $importDir1 = Mage::getBaseDir('media') . DS . 'import'.DS;
+                
+        if ( !file_exists($importDir1)) {
+            mkdir($importDir1);        
+    
+        }
+        $importDir2 = Mage::getBaseDir('media') . DS . 'import'.DS. 'tmp'.DS;
+                
+        if ( !file_exists($importDir2)) {
+            mkdir($importDir2);
         
-        $usernamePass = '?resellerid='.Mage::getStoreConfig(self::XML_SOFTDISTIBUTION_RESELLERID).'&pass='.md5(Mage::getStoreConfig(self::XML_SOFTDISTIBUTION_PASSWORD));
+        }  
+        $importDir3 = Mage::getBaseDir('media') . DS . 'import'.DS. 'tmp'.DS. $data['productversionid']. DS;
+                
+        if ( !file_exists($importDir3)) {
+            mkdir($importDir3);
+        }         
         
-        if ($data['boxshot3d_large']) {
+        if ($data['boxshot3d_large']) {            
             
-            $imgData = $this->getXML($data['boxshot3d_large'].$usernamePass);
-
-            if($data) {       
-                $imgPath = $importDir.$data['productversionid'].'_2d.png';
-                file_put_contents($imgPath, $imgData);   
-            } 
+            $imgData = $this->getXML($data['boxshot3d_large']);
+                
+            if (!strpos($imgData, 'error')) {
+                $imgPath = $importDir3.$data['productversionid'].'_2d.png';            
+                file_put_contents($imgPath, $imgData);  
+            }         
+                
+             
         } elseif($data['boxshot2d_large']){
             
-            $imgData = $this->getXML($data['boxshot2d_large'].$usernamePass);
-
-            if($data) {            
-                $imgPath = $importDir.$data['productversionid'].'_3d.png';
-                file_put_contents($imgPath, $imgData);   
-            } 
+            $imgData = $this->getXML($data['boxshot2d_large']);
+         
+            if (!strpos($imgData, 'error')) {
+                $imgPath = $importDir3.$data['productversionid'].'_3d.png';
+                file_put_contents($imgPath, $imgData);  
+            }
+            
         }
         
         $aImgPathScreenShot = array();
         
-        for ($i=1;$i<=$data['screenshot_total'];$i++) {
+        for ($i=1;$i <= $data['screenshot_total'];$i++) {
                          
-            $imgData = $this->getXML($data['screenshot_'.$i].$usernamePass);
+            $imgData = $this->getXML($data['screenshot_'.$i]);
 
-            if($data) {            
-                $sImgFile = $importDir.$data['productversionid'].'_s'.$i.'.png';
+            if (!strpos($imgData, 'error')) {
+                $sImgFile = $importDir3.$data['productversionid'].'_s'.$i.'.png';
                 file_put_contents($sImgFile, $imgData);   
                 $aImgPathScreenShot[] = $sImgFile;
             }             
@@ -502,34 +517,32 @@ class SOFTSS_Import_SoftdistributionController extends Mage_Core_Controller_Fron
                    
         
         foreach($mediaArray as $imageType => $fileName) {
-            $filePath = $importDir.$fileName;
-            if ( file_exists($filePath) ) {
+            if ( file_exists($fileName) ) {
                 try {
-                    $product->addImageToMediaGallery($filePath, $imageType, false);
+                    $product->addImageToMediaGallery($fileName, $imageType, false);
                 } catch (Exception $e) {
                     echo $e->getMessage();
                 }
             } else {
-                echo "Product does not have an image or the path is incorrect. Path was:".$filePath."<br/>";
+                echo "Product does not have an image or the path is incorrect. Path was:".$fileName."<br/>";
             }
         }
         
         //add screenshots as additional images
         foreach($aImgPathScreenShot as $imgPathScreenShot) {
-            $filePath = $importDir.$imgPathScreenShot;
-            if ( file_exists($filePath) ) {
+            if ( file_exists($imgPathScreenShot) ) {
                 try {
-                    $product->addImageToMediaGallery($filePath);
+                    $product->addImageToMediaGallery($imgPathScreenShot);
                 } catch (Exception $e) {
                     echo $e->getMessage();
                 }
             } else {
-                echo "Product does not have an image or the path is incorrect. Path was:".$filePath."<br/>";
+                echo "Product does not have an image or the path is incorrect. Path was:".$imgPathScreenShot."<br/>";
             }
         }
         
         $product->save();  
-        $this->delTree($importDir);
+        
         
     }
     
