@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
 <config>
-	<modules>
-		<Afterbuy_Afterbuycheckout>
-		<version>1.1.2</version>
-		</Afterbuy_Afterbuycheckout>
-	</modules>
+    <modules>
+        <Afterbuy_Afterbuycheckout>
+            <version>1.1.2</version>
+        </Afterbuy_Afterbuycheckout>
+    </modules>
     <frontend>
         <routers>
             <afterbuycheckout>
@@ -25,60 +25,71 @@
     </frontend>
     <admin>
         <routers>
-			<afterbuycheckout>
-				<use>admin</use>
-				<args>
-					<module>Afterbuy_Afterbuycheckout</module>
-					<frontName>afterbuycheckout</frontName>
-				</args>
-			</afterbuycheckout>
+            <afterbuycheckout>
+                <use>admin</use>
+                <args>
+                    <module>Afterbuy_Afterbuycheckout</module>
+                    <frontName>afterbuycheckout</frontName>
+                </args>
+            </afterbuycheckout>
         </routers>
     </admin>
     <adminhtml>
-		<menu>
-			<afterbuycheckout module="afterbuycheckout">
-				<title>Afterbuycheckout</title>
-				<sort_order>71</sort_order>               
-				<children>
-					<items module="afterbuycheckout">
-						<title>Afterbuy Configuration</title>
-						<sort_order>0</sort_order>
-						<action>afterbuycheckout/adminhtml_afterbuycheckout</action>
-					</items>
-				</children>
-			</afterbuycheckout>
-		</menu>
-		<acl>
-			<resources>
-				<all>
-					<title>Allow Everything</title>
-				</all>
-				<admin>
-					<children>
-						<Afterbuy_Afterbuycheckout>
-							<title>Afterbuycheckout Module</title>
-							<sort_order>10</sort_order>
-						</Afterbuy_Afterbuycheckout>
-					</children>
-				</admin>
-			</resources>
-		</acl>
-		<layout>
-			<updates>
-				<afterbuycheckout>
-					<file>afterbuycheckout.xml</file>
-				</afterbuycheckout>
-			</updates>
-		</layout>
-    </adminhtml>   
-	<global>
-		<models>
-           <sales>  
-              <rewrite>
-				<order>Afterbuy_Afterbuycheckout_Model_Orderafterbuy</order>
-             </rewrite>
-           </sales>
-			<afterbuycheckout>
+        <menu>
+            <afterbuycheckout module="afterbuycheckout">
+                <title>Afterbuycheckout</title>
+                <sort_order>71</sort_order>
+                <children>
+                    <items module="afterbuycheckout">
+                        <title>Afterbuy Configuration</title>
+                        <sort_order>0</sort_order>
+                        <action>afterbuycheckout/adminhtml_afterbuycheckout</action>
+                    </items>
+                </children>
+            </afterbuycheckout>
+        </menu>
+        <acl>
+            <resources>
+                <all>
+                    <title>Allow Everything</title>
+                </all>
+                <admin>
+                    <children>
+                        <Afterbuy_Afterbuycheckout>
+                            <title>Afterbuycheckout Module</title>
+                            <sort_order>10</sort_order>
+                        </Afterbuy_Afterbuycheckout>
+                        <system>
+                            <children>
+                                <config>
+                                    <children>
+                                        <afterbuy_conf>
+                                            <title>AfterBuy Error Email Setting</title>
+                                        </afterbuy_conf>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+        <layout>
+            <updates>
+                <afterbuycheckout>
+                    <file>afterbuycheckout.xml</file>
+                </afterbuycheckout>
+            </updates>
+        </layout>
+    </adminhtml>
+    <global>
+        <models>
+            <sales>
+                <rewrite>
+                    <order>Afterbuy_Afterbuycheckout_Model_Orderafterbuy</order>
+                </rewrite>
+            </sales>
+            <afterbuycheckout>
                 <class>Afterbuy_Afterbuycheckout_Model</class>
                 <resourceModel>afterbuycheckout_mysql4</resourceModel>
             </afterbuycheckout>
@@ -91,7 +102,7 @@
                 </entities>
             </afterbuycheckout_mysql4>
         </models>
-		<resources>
+        <resources>
             <afterbuycheckout_setup>
                 <setup>
                     <module>Afterbuy_Afterbuycheckout</module>
@@ -122,14 +133,14 @@
                 <class>Afterbuy_Afterbuycheckout_Helper</class>
             </afterbuycheckout>
         </helpers>
-	</global>
-	<adminhtml>
-		<layout>
-			<updates>
-				<backend>
-					<file>afterbuy_orderview.xml</file>
-				</backend>
-			</updates>
-		</layout>
-	</adminhtml>
+    </global>
+    <adminhtml>
+        <layout>
+            <updates>
+                <backend>
+                    <file>afterbuy_orderview.xml</file>
+                </backend>
+            </updates>
+        </layout>
+    </adminhtml>
 </config>

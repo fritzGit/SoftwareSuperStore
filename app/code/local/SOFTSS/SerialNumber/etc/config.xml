@@ -6,7 +6,7 @@
         </SOFTSS_SerialNumber>
     </modules>
 
-    <global>     
+    <global>
         <helpers>
             <softssserialnumber>
                 <class>SOFTSS_SerialNumber_Helper</class>
@@ -72,13 +72,13 @@
             <send_serialnumber_email>
                 <schedule>
                     <cron_expr>*/15 * * * *</cron_expr>
-                </schedule>             
+                </schedule>
                 <run>
                     <model>softssserialnumber/observer::scheduledSerialNumberEmail</model>
                 </run>
             </send_serialnumber_email>
         </jobs>
-    </crontab> 
+    </crontab>
     <default>
         <serialnumber_conf>
             <serialnumber_email>
