@@ -120,14 +120,14 @@ ul.onestepcheckout-custom-options {
     padding: 3px 0;
 }
 .onestepcheckout-summary th {
-  border-bottom: 1px solid #CCCCCC; 
+  border-bottom: 1px solid #CCCCCC;
 }
 
 h1.onestepcheckout-title {
     color: #000;
-    border-bottom: 1px solid #CCCCCC; 
+    border-bottom: 1px solid #CCCCCC;
     font-size: 34px;
-    font-family: 'Aller_Lt',Sans-Serif;  
+    font-family: 'Aller_Lt',Sans-Serif;
     margin-bottom: 25px;
     padding-bottom: 20px;
 }
@@ -291,7 +291,7 @@ table.onestepcheckout-summary td.total,table.onestepcheckout-summary-head th.tot
 }
 
 table.onestepcheckout-totals {
-    border-top: 1px solid #CCCCCC; 
+    border-top: 1px solid #CCCCCC;
     width: 100%;
     margin-bottom: 20px;
 }
@@ -403,7 +403,7 @@ div.checkoutcontainer div.input-country {
 }
 
 div.checkoutcontainer div.input-country select {
-    width: 185px;
+    width: 180px;
 }
 
 div.checkoutcontainer div.input-region select {
@@ -448,13 +448,13 @@ div.onestepcheckout-shipping-method {
     margin-bottom: 20px;
 }
 
-div.onestepcheckout-shipping-method dt, 
+div.onestepcheckout-shipping-method dt,
 .payment-methods dt {
     background: linear-gradient(to bottom, #FFFFFF 0%, #F0F0F0 100%) repeat scroll 0 0 transparent;
     border: 1px solid #BBBBBB;
     border-radius: 5px 5px 5px 5px;
     margin-left: 0;
-    min-height: 24px;        
+    min-height: 24px;
     padding:8px 2px 2px 15px;
 }
 
@@ -588,7 +588,7 @@ div.onestepcheckout-skin-magento p.onestepcheckout-numbers-4 {
     margin: 0;
 }
 .onestepcheckout-popup-contents .return-link, #onestepcheckout-login-popup-contents-login .forget-link  {
-    clear:both;  
+    clear:both;
 }
 .onestepcheckout-popup-contents .return-link a, #onestepcheckout-login-popup-contents-login .forget-link a {
     color: #FF7300;
@@ -613,14 +613,14 @@ div.onestepcheckout-skin-magento p.onestepcheckout-numbers-4 {
 #onestepcheckout-forgot-table li .field {
     padding-top:25px;
 }
-#onestepcheckout-login-form-div {  
+#onestepcheckout-login-form-div {
     background: none repeat scroll 0 0 #FFFFFF;
     border-radius: 5px 5px 5px 5px;
     height: 140px;
     padding: 15px;
 }
-#onestepcheckout-login-form-div h1 {  
-    color:#000;   
+#onestepcheckout-login-form-div h1 {
+    color:#000;
 }
 
 #onestepcheckout-login-form-div .login-right {
