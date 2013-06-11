@@ -240,17 +240,17 @@ $helper = Mage::helper('onestepcheckout/checkout');
 
                           <?php /* $customerEmail = (($this->isCustomerLoggedIn())) ? $this->getQuote()->getCustomer()->getEmail() : false; ?>
                     <?php if ($this->settings['enable_newsletter'] && !$this->isSubScribed($customerEmail)): ?>
-                               <?php echo $this->__('Newsletter'); ?>                               
+                               <?php echo $this->__('Newsletter'); ?>
                         <div class="onestepcheckout-enable-newsletter">
                             <input type="checkbox" id="id_subscribe_newsletter" name="subscribe_newsletter" value="1" <?php if ($this->settings['newsletter_default_checked']): ?>checked="checked"<?php endif; ?> />
                             <label for="id_subscribe_newsletter"><?php echo $this->__('Subscribe to our newsletter'); ?></label>
                         </div>
-                           <?php else: */?> 
-                                <?php echo $this->__('Conditions and Policy'); ?>                              
+                           <?php else: */?>
+                                <?php echo $this->__('Conditions and Policy'); ?>
                                 <?php //endif; ?>
                            </p>
                     <p class="terms"><?php echo $this->__('Here you can learn about <a class="orange" href="/terms-conditions">Conditions</a>, <a class="orange" href="/privacy-policy">Privacy Policy</a> and our <a class="orange" href="/return-policy">Return Policy</a>.'); ?></p>
-                    
+
                 </div>
 
                 <div class="onestepcheckout-column-right">
@@ -675,7 +675,7 @@ $helper = Mage::helper('onestepcheckout/checkout');
         <?php echo $this->helper('onestepcheckout/message')->getInline('onepage_checkout', $this->getQuote(), $this->getDontDisplayContainer()) ?>
                             </div>
                         </div>
-                    <?php endif; ?>              
+                    <?php endif; ?>
 
     <?php $_extraProductsHelper = Mage::helper('onestepcheckout/extraproducts'); ?>
     <?php if ($_extraProductsHelper->hasExtraProducts()): ?>
@@ -861,10 +861,10 @@ $helper = Mage::helper('onestepcheckout/checkout');
      * Default magento agreements end
      */
     ?>
-     
-        </div>                           
+
+        </div>
         <div class="onestepcheckout-place-order-wrapper">
-            <button type="button" title="<?php echo $this->__('Place order now'); ?>" id="onestepcheckout-place-order" class="button black onestepcheckout-place-order" onclick="javascript:void(0);"><span><span><?php echo $this->__('Place order now'); ?></span></span></button>
+            <button type="button" title="<?php echo $this->__('Place order now'); ?>" id="onestepcheckout-place-order" class="button orange onestepcheckout-place-order" onclick="javascript:void(0);"><span><span><?php echo $this->__('Place order now'); ?></span></span></button>
         </div>
     <div style="clear: both;">&nbsp;</div>
 
@@ -1080,10 +1080,10 @@ $helper = Mage::helper('onestepcheckout/checkout');
                                                     submitelement.removeClassName('orange').addClassName('grey');
                                                     submitelement.disabled = true;
 
-                                                    //ajax check product avaiability with softdistribution   
-                                                    //ajaxCheckProductAvailability();        
+                                                    //ajax check product avaiability with softdistribution
+                                                    //ajaxCheckProductAvailability();
                                                     $('onestepcheckout-form').submit();
-                                                    
+
                                                 }
                                             }
                                         });
