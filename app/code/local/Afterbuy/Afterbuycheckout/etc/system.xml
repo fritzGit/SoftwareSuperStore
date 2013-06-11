@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <config>
     <sections>
-        <afterbuy_conf translate="label" module="afterbuyafterbuycheckout">
+        <afterbuy_conf translate="label" module="afterbuycheckout">
             <label>AfterBuy Error Email</label>
             <tab>softss</tab>
             <frontend_type>text</frontend_type>
