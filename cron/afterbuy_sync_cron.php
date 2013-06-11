@@ -4,7 +4,6 @@ ini_set('display_errors',1);
 require_once '/var/www/vhosts/softwaresuperstore.co.uk/htdocs/app/Mage.php';
 
 Mage::app()->setCurrentStore(Mage_Core_Model_App::ADMIN_STORE_ID);
-$tableNameAfterbuy = Mage::getSingleton('core/resource')->getTableName('afterbuyorderdata');
 
 /**
 * Get the resource model
@@ -16,7 +15,10 @@ $resource = Mage::getSingleton('core/resource');
 */
 $readConnection = $resource->getConnection('core_read');
 
-$query = 'SELECT aid, shoporderid FROM '.$tableNameAfterbuy.' WHERE bezahlt != 2 AND aid!=""';
+$query = 'SELECT afterbuyorderdata.aid, afterbuyorderdata.shoporderid,sales_flat_order.entity_id,sales_flat_order_payment.method FROM afterbuyorderdata RIGHT JOIN sales_flat_order
+ON afterbuyorderdata.shoporderid=sales_flat_order.increment_id
+RIGHT JOIN sales_flat_order_payment ON sales_flat_order.entity_id=sales_flat_order_payment.parent_id
+WHERE afterbuyorderdata.bezahlt !=2 AND afterbuyorderdata.aid!="" AND sales_flat_order_payment.method="banktransfer"';
 
 /**
  * Execute the query and store the results in $results

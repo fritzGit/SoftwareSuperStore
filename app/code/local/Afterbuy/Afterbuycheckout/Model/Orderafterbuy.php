@@ -171,7 +171,7 @@ class Afterbuy_Afterbuycheckout_Model_Orderafterbuy extends Mage_Sales_Model_Ord
 		//echo $order->getState();
 		//echo $order->getStatusLabel();
 
-		//Paymorrow und Sofort�berweisung nur, wenn bereits bezahlt
+		//Paymorrow und Sofortüberweisung nur, wenn bereits bezahlt
 		if (1 != 1)
 		//if (($zahlart == 'paymorrow' && $order->getState() != 'processing') ||
 		//	($zahlart == 'pnsofortueberweisung' && $order->getState() != 'complete') )
@@ -582,6 +582,9 @@ class Afterbuy_Afterbuycheckout_Model_Orderafterbuy extends Mage_Sales_Model_Ord
 		$ab_data.= "&Versandart=".urlencode($versandart_text);
 		if ($this->check_doppelbestellung == 1)
 			$ab_data.= "&CheckVID=1";
+
+                //SSS colour mark for afterbuy
+                $ab_data.= "&MarkierungID=1000002887";
 
 		/*** REMOVE ***/
 		//$this->payment_state = 1;
