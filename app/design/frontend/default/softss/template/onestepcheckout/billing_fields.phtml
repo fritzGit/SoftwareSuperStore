@@ -38,8 +38,8 @@ $dataHelper = Mage::helper('onestepcheckout');
 <?php if(!$this->settings['exclude_telephone']):?>
     <?php $billingFields['telephone'] = '<li class="clearfix">
         <div class="input-box input-telephone'.((in_array('telephone', $formErrors)) ? ' input-error' : '').'">
-            <label for="billing:telephone">'.$this->__('Telephone').' <span class="required">*</span></label>
-            <input type="text" name="billing[telephone]" value="'.$dataHelper->clearDash($this->getQuote()->getBillingAddress()->getTelephone()).'" title="'.$this->__('Telephone').'" class="required-entry input-text" id="billing:telephone" />
+            <label for="billing:telephone">'.$this->__('Telephone').'</label>
+            <input type="text" name="billing[telephone]" value="'.$dataHelper->clearDash($this->getQuote()->getBillingAddress()->getTelephone()).'" title="'.$this->__('Telephone').'" class="input-text" id="billing:telephone" />
         </div></li>';
     ?>
 <?php endif; ?>

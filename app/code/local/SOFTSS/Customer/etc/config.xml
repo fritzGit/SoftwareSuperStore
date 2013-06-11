@@ -6,7 +6,18 @@
             <version>0.1.0</version>
         </SOFTSS_Customer>
     </modules>
-
+    
+    <global>
+       <resources>
+            <softssscustomer_setup>
+                <setup>
+                    <module>SOFTSS_Customer</module>
+                    <class>Mage_Customer_Model_Resource_Setup</class>
+                </setup>
+            </softssscustomer_setup>
+        </resources> 
+    </global>
+    
     <frontend>
         <routers>
             <customer>
