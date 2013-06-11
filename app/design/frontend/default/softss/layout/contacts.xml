@@ -49,11 +49,11 @@
                 <template>page/2columns-left.phtml</template>
             </action>
             <action method="setHeaderTitle" translate="title" module="contacts">
-                <title>Contact us</title>
+                <title>Contact Us</title>
             </action>
             <block type="page/html_breadcrumbs" name="breadcrumbs" as="breadcrumbs">
                 <action method="setLabel">
-                    <label>Contact us</label>
+                    <label>Contact Us</label>
                 </action>
                 <action method="addCrumb">
                     <crumbName>Home</crumbName>
@@ -64,10 +64,10 @@
                     </crumbInfo>
                 </action>
                 <action method="addCrumb">
-                    <crumbName>Contact us</crumbName>
+                    <crumbName>Contact Us</crumbName>
                     <crumbInfo>
-                        <label>Contact us</label>
-                        <title>Contact us</title>
+                        <label>Contact Us</label>
+                        <title>Contact Us</title>
                     </crumbInfo>
                 </action>
             </block>
