@@ -416,11 +416,11 @@ p.required { font-size:11px; text-align:right; color:#898989; }
 .error-msg,
 .success-msg,
 .note-msg,
-.notice-msg { border-radius:5px; border-style:solid !important; border-width:1px !important; background-position:10px 9px !important; background-repeat:no-repeat !important; min-height:24px !important; padding:8px 8px 8px 32px !important; font-size:11px !important; font-weight:bold !important; clear: left;}
-.error-msg { border-radius:5px; border-color:#f16048; background-color:#faebe7; background-image:url(../images/i_msg-error.gif); color:#df280a; clear: left;}
-.success-msg { border-radius:5px; border-color:#446423; background-color:#eff5ea; background-image:url(../images/i_msg-success.gif); color:#3d6611; clear: left; background: rgba(239, 245, 234, 0.6);}
+.notice-msg { background-position:10px 7px !important; background-repeat:no-repeat !important; min-height:24px !important; padding:8px 8px 8px 45px !important; font-size:11px !important; font-weight:bold !important; clear: left;}
+.error-msg {background-color:#ff6666; background-image:url(../images/warn.png); color:#fff; clear: left;}
+.success-msg {background-color:#66cc99; background-image:url(../images/done.png); color:#fff; clear: left; }
 .note-msg,
-.notice-msg { border-radius:5px; border-color:#fcd344; background-color:#fafaec; background-image:url(../images/i_msg-note.gif); color:#3d6611; clear: left;}
+.notice-msg { background-color:#ff9933; background-image:url(../images/info.png); color:#fff; clear: left;}
 .my-account .messages, .my-wishlist .messages{margin-bottom: 10px;}
 
 
@@ -1267,10 +1267,10 @@ h1.homepage-softwaress{color:#ff7300;padding:20px 0; font-family: 'Aller_Lt',San
 .product-image-popup .image-label { font-size:13px; font-weight:bold; margin:0 0 10px; color:#2f2f2f; }
 
 /* Product Shop */
-.product-view-messages{position: absolute; display: block; width: 1024px; z-index: 100;}
+.product-view-messages{display: inline-block; float: right; clear: right;width: 450px;}
 .product-view .product-shop { float:right; width:330px; }
 .product-view .product-shop a{color:#5A5A5A;}
-.col1-layout .product-view .product-shop { float:right; width:440px; margin-top: 10px;}
+.col1-layout .product-view .product-shop { float:right; width:450px; margin-top: 10px;}
 .col3-layout .product-view .product-shop { float:none; width:auto; }
 .product-view .product-shop .product-name { margin:0 0 5px; }
 .product-view .product-shop .product-name h1 { margin:0; font:'Aller_Rg', sans-serif; color:#FF7300;}
