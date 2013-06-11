@@ -1464,6 +1464,10 @@ ul.product-specs label{width:50%; display: inline-block;}
     margin: 20px 0 10px 0;
 }
 
+.product-collateral .product-tabs-content .product-tabs-content-inner label{
+    width:130px; display: inline-block; font-weight:bold;
+}
+
 .product-collateral .product-tabs-content .product-tabs-content-inner .left{
     float:left;
     clear:left;
