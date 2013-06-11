@@ -227,6 +227,7 @@ p.onestepcheckout-numbers-5 {
     width: 245px;
     clear: both;
     padding-top: 3px;
+    display: inline-block;
 }
 
 div.onestepcheckout-error {
@@ -243,6 +244,7 @@ div.onestepcheckout-error {
     background-repeat: no-repeat;
     background-position: 5px 5px;
     border-radius:5px;
+    display: inline-block;
 }
 
 .onestepcheckout-column-left .onestepcheckout-error {

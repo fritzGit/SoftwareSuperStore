@@ -10,7 +10,7 @@
         </div>
         <input type="hidden" name="qty" id="qty" value="<?php echo $this->getProductDefaultQty() * 1 ?>" />
         <?php endif; ?>
-        <button type="button" title="<?php echo $buttonTitle ?>" class="button btn-cart" onclick="productAddToCartForm.submit(this)"><span><span><?php echo $buttonTitle ?></span></span></button>
+        <div type="button" title="<?php echo $buttonTitle ?>" class="button btn-cart" onclick="productAddToCartForm.submit(this)"><span><span><?php echo $buttonTitle ?></span></span></div>
         <?php echo $this->getChildHtml('', true, true) ?>
     </div>
 <script type="text/javascript">
