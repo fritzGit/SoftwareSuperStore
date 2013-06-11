@@ -684,11 +684,11 @@ tr.summary-details-excluded { font-style:italic; }
 .header .quick-access { float:right; width:600px; padding:28px 10px 0 0; }
 .header .welcome-msg { margin:0; color:#fff; text-align:right; }
 .header .welcome-msg a { color:#ebbc58; }
-.header .form-search { position:absolute; top:34px; right:33px; width:308px; height:36px; }
+.header .form-search { position:absolute; top:39px; right:55px; width:308px; height:27px; }
 .header .form-search .searchinput{
     width:200px;
-    height:36px;
-    line-height: 36px;
+    height:27px;
+    line-height: 27px;
     background-color: #d3d3d3;
     color:#666666;
     position:absolute;
@@ -699,7 +699,7 @@ tr.summary-details-excluded { font-style:italic; }
     -moz-border-radius: 5px;
     border-radius: 5px;
 }
-.header .searchbutton input{cursor:pointer; background:url(../images/buttons.png) 0 -120px no-repeat; width:62px; height:36px; border: none !important; padding: 0; margin: 0;}
+.header .searchbutton input{cursor:pointer; background:url(../images/buttons.png) 0 -120px no-repeat; width:47px; height:27px; border: none !important; padding: 0; margin: 0;}
 
 .header .form-search .search-autocomplete { z-index:999; top:40px !important; }
 .header .form-search .search-autocomplete ul {
