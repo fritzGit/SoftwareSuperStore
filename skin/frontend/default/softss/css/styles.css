@@ -421,7 +421,7 @@ p.required { font-size:11px; text-align:right; color:#898989; }
 .success-msg { border-radius:5px; border-color:#446423; background-color:#eff5ea; background-image:url(../images/i_msg-success.gif); color:#3d6611; clear: left; background: rgba(239, 245, 234, 0.6);}
 .note-msg,
 .notice-msg { border-radius:5px; border-color:#fcd344; background-color:#fafaec; background-image:url(../images/i_msg-note.gif); color:#3d6611; clear: left;}
-.my-account .messages, .my-wishlist .message{margin-bottom: 10px;}
+.my-account .messages, .my-wishlist .messages{margin-bottom: 10px;}
 
 
 /* BreadCrumbs */
@@ -684,7 +684,7 @@ tr.summary-details-excluded { font-style:italic; }
 .header .quick-access { float:right; width:600px; padding:28px 10px 0 0; }
 .header .welcome-msg { margin:0; color:#fff; text-align:right; }
 .header .welcome-msg a { color:#ebbc58; }
-.header .form-search { position:absolute; top:78px; right:29px; width:308px; height:36px; }
+.header .form-search { position:absolute; top:34px; right:33px; width:308px; height:36px; }
 .header .form-search .searchinput{
     width:200px;
     height:36px;
@@ -739,10 +739,10 @@ tr.summary-details-excluded { font-style:italic; }
 #nav li { float:left; }
 #nav li.active a { color:#fff; }
 #nav li.first a{padding:10px 12px 6px 0;}
-#nav a { float:left; padding:10px 12px 6px 10px; color:#fff; font-weight:normal; }
+#nav a { float:left; padding:10px 12px 6px 10px; color:#fff; font-weight:normal; font-size: 14px;}
 #nav li.over a,
 #nav a:hover { text-decoration: underline; }
-#nav li.TMdivider{padding:10px 0 0 0;}
+#nav li.TMdivider{padding:10px 0 0 0;font-size: 14px;}
 
 /* 1st Level */
 #nav ul li,
