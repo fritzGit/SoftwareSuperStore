@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<config>
+    <modules>
+        <SOFTSS_Paypal>
+            <version>0.1.0</version>
+        </SOFTSS_Paypal>
+    </modules>
+
+    <frontend>
+        <routers>
+            <paypal>
+                <args>
+                    <modules>
+                         <SOFTSS_Paypal before="Mage_Paypal">SOFTSS_Paypal</SOFTSS_Paypal>
+                    </modules>
+                </args>
+            </paypal>
+        </routers>
+    </frontend>
+</config>

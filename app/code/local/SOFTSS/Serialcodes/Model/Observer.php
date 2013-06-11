@@ -48,7 +48,7 @@ class SOFTSS_Serialcodes_Model_Observer extends Mmsmods_Serialcodes_Model_Observ
     } 
         
 
-    public function scheduledSerialcodesEmail(Varien_Event_Observer $observer) 
+    public function scheduledSerialcodesEmail() 
     {
         
         Mage::log("Cron for assigning Serial Numbers Started", null, $this->_logFileName);
