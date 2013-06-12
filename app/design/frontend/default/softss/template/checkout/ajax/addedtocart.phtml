@@ -47,17 +47,18 @@
                 $productName = $_basehelper->cutStr($productName, 45).'...';
             }
         ?>
+            <?php $instock = $_product->isSaleable(); ?>
             <li class="item<?php if(($i-1)%$_columnCount==0): ?> first<?php elseif($i%$_columnCount==0): ?> last<?php endif; ?>">
                 <h2 class="product-name"><a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($_product->getName(), null, true) ?>"><?php echo $productName ?></a></h2>
-                <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image"><img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(130); ?>" width="135" height="135" alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" /></a>
+                <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image"><img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(130); ?>" <?php if(!$instock) echo 'class="imgoutofstock"'; ?> width="135" height="135" alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" /></a>
 
                 <div class="priceBubble">
                     <?php echo $this->getPriceHtml($_product, true) ?>
                 </div>
 
                 <div class="actions">
-                    <?php if($_product->isSaleable()): ?>
-                    <?php echo $this->__('In stock - ').(int)Mage::getModel('cataloginventory/stock_item')->loadByProduct($_product)->getQty(); ?>
+                    <?php if($instock): ?>
+                    <?php #echo $this->__('In stock - ').(int)Mage::getModel('cataloginventory/stock_item')->loadByProduct($_product)->getQty(); ?>
                     <?php else: ?>
                         <p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
                     <?php endif; ?>

@@ -12,8 +12,6 @@
     var optionsPrice = new Product.OptionsPrice(<?php echo $this->getJsonConfig() ?>);
 </script>
 <div id="imagewhitebg"></div>
-<div id="messages_product_view" class="product-view-messages"><?php echo $this->getMessagesBlock()->getGroupedHtml() ?></div>
-<div class="clearer"></div>
 <div class="product-view">
     <div class="product-essential">
     <form action="<?php echo $this->getSubmitUrl($_product) ?>" method="post" id="product_addtocart_form"<?php if($_product->getOptions()): ?> enctype="multipart/form-data"<?php endif; ?>>
@@ -23,6 +21,9 @@
         </div>
 
         <div class="product-shop">
+            <div id="messages_product_view" class="product-view-messages"><?php echo $this->getMessagesBlock()->getGroupedHtml() ?></div>
+<div class="clearer"></div>
+
             <?php echo $this->getTierPriceHtml() ?>
             <?php echo $this->getChildHtml('product_type_data') ?>
 
