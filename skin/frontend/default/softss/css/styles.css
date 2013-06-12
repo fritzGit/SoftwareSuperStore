@@ -1,6 +1,6 @@
 /* Reset ================================================================================= */
 * { margin:0; padding:0; }
-
+html          { height:100%; }
 body          { background:#131918; font:12px/1.55 Vadana, sans-serif; color:#151515; text-align:center; height:100%;}
 
 img           { border:0; vertical-align:top; }
@@ -73,7 +73,13 @@ ul,ol         { list-style:none; }
 
 
 /* Layout ================================================================================ */
-.wrapper { min-width:954px; }
+.wrapper {
+    min-width:954px;
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    margin: 0 auto -40px;
+}
 .page {}
 .page-print { background:#fff; padding:25px 30px; text-align:left; }
 .page-empty { background:#fff; padding:20px; text-align:left; }
@@ -416,7 +422,7 @@ p.required { font-size:11px; text-align:right; color:#898989; }
 .error-msg,
 .success-msg,
 .note-msg,
-.notice-msg { background-position:10px 7px !important; background-repeat:no-repeat !important; min-height:24px !important; padding:8px 8px 8px 45px !important; font-size:11px !important; font-weight:bold !important; clear: left;}
+.notice-msg { background-position:10px 7px !important; background-repeat:no-repeat !important; min-height:24px !important; line-height: 24px; padding:8px 8px 8px 45px !important; font-size:11px !important; font-weight:bold !important; clear: left;}
 .error-msg {background-color:#ff6666; background-image:url(../images/warn.png); color:#fff; clear: left;}
 .success-msg {background-color:#66cc99; background-image:url(../images/done.png); color:#fff; clear: left; }
 .note-msg,
@@ -1719,6 +1725,12 @@ ul.product-specs label{width:50%; display: inline-block;}
 }
 #hp-latest-products .overview h2.product-name{width:179px; font-family: 'CALIBRI_1',Sans-Serif; font-size: 16px; line-height: 19px;}
 
+.imgoutofstock{
+    zoom: 1;
+    filter: alpha(opacity=60);
+    opacity: 0.6;
+}
+
 #hp-products .overview .product-name a,
 #hp-latest-products .overview .product-name a,
 #ajax-container-realated-items .overview .product-name a
@@ -2711,7 +2723,7 @@ ul.accountlist.grand_total{font-weight: bold;}
 .footer .footer-column{display: inline-block; float:left; width:178px;}
 .footer .footer-column h3{text-transform:uppercase;margin-bottom: 10px; font-weight:normal; font-family: 'Aller_Lt',Sans-Serif; font-size: 14px; font-weight: lighter;}
 .footer .footer-column .footer-cards{display: block;margin:2px 0 20px 0;}
-.footer-container .contactDetails{font-size: 12px; width: 250px;}
+.footer-container .contactDetails{font-size: 12px; width: 250px; float:right;}
 .footer a { color:#fff; text-decoration:none; }
 .footer a:hover { text-decoration:underline; }
 .footer ul { display:inline; }
@@ -2719,7 +2731,7 @@ ul.accountlist.grand_total{font-weight: bold;}
 .footer li.last { background:none !important; padding-right:0 !important; }
 .footer .telnum{color:#ea00ab;font-size: 14px;}
 .footer-container .bottom-container { margin:0 0 5px; }
-.footer-container .copyright {padding:15px 0 0 0; height:25px; color:#fff; text-align: center; background-color: #0b0b0b; bottom: 0; width: 100%;}
+.copyright {padding:15px 0 0 0; height:25px; color:#fff; text-align: center; background-color: #0b0b0b; bottom: 0; width: 100%;}
 /* ======================================================================================= */
 
 /* Sample Data============================================================================ */
