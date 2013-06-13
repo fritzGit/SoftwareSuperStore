@@ -131,7 +131,6 @@ class SOFTSS_Serialcodes_Model_Observer extends Mmsmods_Serialcodes_Model_Observ
                     } elseif ($product->getSoftssSupplierProductId()) {
 
                         $date = new DateTime();
-                        $orderId = $order->getOrderId();
                         $custId = $order->getBillingAddress()->getCustomerId();
                         $incrementId =$order->getIncrementId();
 
@@ -151,23 +150,9 @@ Mage::log('response xml:'.$responseXML);
                             $response = new SimpleXMLElement($responseXML);
                         } else {
                             Mage::log("No xml order detail for order: ".$order->getIncrementId(), null, $this->_logFileNameSoftD);
-                            $this->sendError('No xml order detail response for order', "No xml order detail for order: ".$order->getIncrementId());
+                            $this->sendError('No xml order detail response for order', "No xml order detail for order: ".$incrementId);
                         }
-/*
-                            $first = true;
 
-                            foreach ($orderDetailXML as $orderData) {
-
-                              //skip head node
-                              if ($first) {
-                                  $first = false;
-                                  continue;
-                              }
-
-                              //handle order
-
-                            }
-*/
                         if (preg_match("/<title><![CDATA[ An error has occured ]]><\/title>/", $responseXML))
                         {
                             $sErrormsgTitle    = (string)$response->errormsg->title;
@@ -188,14 +173,15 @@ Mage::log('response xml:'.$responseXML);
                                 $aSerial[] = (string)$serial;
                             }
 
-                            $orderItemResponseDetails[] = array('Productpid'=>$sProductpid,
-                                                                        'downloadlink'=>$sDownloadlink,
-                                                                        'transactionid'=>$sTransactionid,
-                                                                        'resellertransid'=>$sResellertransid,
-                                                                        'customerref'=>$sCustomerref,
-                                                                        'orderref'=>$sOrderref,
-                                                                        'additionalinfo'=>$sAdditionalinfo,
-                                                                        'serials'=>$aSerial);
+                            $orderItemResponseDetails[] = array('productname'   =>$product->getName(),
+                                                                'productpid'    =>$sProductpid,
+                                                                'downloadlink'  =>$sDownloadlink,
+                                                                'transactionid' =>$sTransactionid,
+                                                                'resellertransid'=>$sResellertransid,
+                                                                'customerref'   =>$sCustomerref,
+                                                                'orderref'      =>$sOrderref,
+                                                                'additionalinfo'=>$sAdditionalinfo,
+                                                                'serials'       =>$aSerial);
 
                             $oSoftDistributionCodes = Mage::getModel('serialcodes/softditribution');
                             $oSoftDistributionCodes->setProductpid($sProductpid);
@@ -310,7 +296,7 @@ Mage::log('response xml:'.$responseXML);
                     $sSerialDownloadEmailText='';
                     foreach($orderItemResponseDetails as $orderItemDetail){
                         foreach($orderItemDetail['serials'] as $serial){
-                            $sSerialDownloadEmailText .= '<td>'.$orderItemDetail['downloadlink'].'</td><td>'.$serial.'</td>';
+                            $sSerialDownloadEmailText .= '<td>'.$orderItemDetail['productname'].'</td><td>'.$orderItemDetail['downloadlink'].'</td><td>'.$serial.'</td>';
                         }
                     }
 
@@ -329,7 +315,6 @@ Mage::log('response xml:'.$responseXML);
                     $oOrder->setEmailSent('1')->save();
                 }
             }
-
         } else {
             Mage::log("No orders found", null, $this->_logFileName);
         }
