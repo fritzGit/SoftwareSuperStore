@@ -1392,7 +1392,7 @@ ul.product-specs label{width:50%; display: inline-block;}
 }
 
 .product-view .product-shop .btn-cart{
-    background: #000 url(../images/buttons.png) -250px -467px no-repeat;
+    background: #ff7300 url(../images/buttons.png) -250px -467px no-repeat;
     border: 0 none;
     color: #FFFFFF;
     cursor: pointer;
