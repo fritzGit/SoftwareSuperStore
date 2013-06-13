@@ -21,6 +21,7 @@ class SOFTSS_Serialcodes_Model_Observer extends Mmsmods_Serialcodes_Model_Observ
     const XML_SOFTDISTIBUTION_RESELLERID         = 'checkout/softdistribution/resellerid';
     const XML_SOFTDISTIBUTION_PASSWORD           = 'checkout/softdistribution/password';
     const XML_SOFTDISTIBUTION_ORDER_CANCEL_URL   = 'checkout/softdistribution/url_order_cancel';
+    const EXT_ORDER_REQUEST                      = 'http://test.reseller.softdistribution.net/request_ext_order.php';
 
     protected $_logFileName = 'serialcodes.log';
     protected $_logFileNameSoftD = 'softdistribution.log';
@@ -199,6 +200,7 @@ Mage::log('response xml:'.$responseXML);
 
                             if($product->getSoftssExtendedorderRequired() == 1 ){
                                 $billing_address = $order->getBillingAddress();
+                                Mage::log($billing_address);
                                 $prefix  = $billing_address_data['prefix'];
                                 $firstname  = $billing_address_data['firstname'];
                                 $lastname   = $billing_address_data['lastname'];
@@ -243,6 +245,10 @@ Mage::log('response xml:'.$responseXML);
        </product>
 </order>";
                                 Mage::log('Extended order request:'.$sXMLRequestExtended);
+
+                                $domdoc = new DOMDocument();
+                                $domdoc->loadXML($sXMLRequestExtended);
+                                $this->sendXMlRequest(self::EXT_ORDER_REQUEST, $domdoc);
                             }
 
                         }
