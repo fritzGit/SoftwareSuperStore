@@ -6,12 +6,12 @@
         </SOFTSS_Serialcodes>
     </modules>
 
-    <global>   
+    <global>
         <helpers>
             <softssserialcodes>
                 <class>SOFTSS_Serialcodes_Helper</class>
             </softssserialcodes>
-        </helpers> 
+        </helpers>
         <models>
             <softssserialcodes>
                 <class>SOFTSS_Serialcodes_Model</class>
@@ -24,7 +24,7 @@
                     <class>Mage_Sales_Model_Resource_Setup</class>
                 </setup>
             </softssserialcodes_setup>
-        </resources> 
+        </resources>
         <events>
             <checkout_onepage_controller_success_action>
                 <observers>
@@ -52,6 +52,12 @@
                     <file>serialnumber.html</file>
                     <type>html</type>
                 </serialnumber_conf_serialnumber_email_serialnumber_email_template>
+
+                <serialnumber_conf_serialnumber_email_softdistserialnumber_email_template translate="label" module="softssserialcodes">
+                    <label>Soft Distribution Serial Number Email</label>
+                    <file>serialnumber_softdistribution.html</file>
+                    <type>html</type>
+                </serialnumber_conf_serialnumber_email_softdistserialnumber_email_template>
             </email>
         </template>
     </global>
@@ -81,13 +87,13 @@
             <send_serialnumber_email>
                 <schedule>
                     <cron_expr>*/15 * * * *</cron_expr>
-                </schedule>             
+                </schedule>
                 <run>
                     <model>softssserialcodes/observer::scheduledSerialcodesEmail</model>
                 </run>
             </send_serialnumber_email>
         </jobs>
-    </crontab> 
+    </crontab>
     <default>
         <serialnumber_conf>
             <serialnumber_email>
@@ -96,5 +102,5 @@
                 <serialnumber_email_template>serialnumber_conf_serialnumber_email_serialnumber_email_template</serialnumber_email_template>
             </serialnumber_email>
         </serialnumber_conf>
-    </default>   
+    </default>
 </config>
