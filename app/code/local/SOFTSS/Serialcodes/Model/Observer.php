@@ -130,23 +130,29 @@ class SOFTSS_Serialcodes_Model_Observer extends Mmsmods_Serialcodes_Model_Observ
                         }
                     } elseif ($product->getSoftssSupplierProductId()) {
 
-                            $url = Mage::getStoreConfig(self::XML_SOFTDISTIBUTION_ORDER_URL);
-                            $url .= '?resellerid='.Mage::getStoreConfig(self::XML_SOFTDISTIBUTION_RESELLERID);
-                            $url .= '&pass='.md5(Mage::getStoreConfig(self::XML_SOFTDISTIBUTION_PASSWORD));
-                            $url .= '&id='.$order->getOrderId();
-                            $url .= '&custref='.$order->getBillingAddress()->getCustomerId();;
-                            $url .= '&resellertransid='.$order->getIncrementId();
+                        $date = new DateTime();
+                        $orderId = $order->getOrderId();
+                        $custId = $order->getBillingAddress()->getCustomerId();
+                        $incrementId =$order->getIncrementId();
 
-                            $responseXML = $this->getXML($url);
-                            $aOrderDetail = array();
+                        $url = Mage::getStoreConfig(self::XML_SOFTDISTIBUTION_ORDER_URL);
+                        $url .= '?resellerid='.Mage::getStoreConfig(self::XML_SOFTDISTIBUTION_RESELLERID);
+                        $url .= '&pass='.md5(Mage::getStoreConfig(self::XML_SOFTDISTIBUTION_PASSWORD));
+                        $url .= '&id='.$orderId;
+                        $url .= '&custref='.$custId;
+                        $url .= '&resellertransid='.$date->getTimestamp().$orderId.$custId.$incrementId;
+;
+
+                        $responseXML = $this->getXML($url);
+                        $aOrderDetail = array();
 Mage::log('response xml:'.$responseXML);
-                            if(isset($responseXML)) {
-                                #$orderDetailXML = simplexml_load_string($orderXML, null, LIBXML_NOCDATA);
-                                $response = new SimpleXMLElement($responseXML);
-                            } else {
-                                Mage::log("No xml order detail for order: ".$order->getIncrementId(), null, $this->_logFileNameSoftD);
-                                $this->sendError('No xml order detail response for order', "No xml order detail for order: ".$order->getIncrementId());
-                            }
+                        if(isset($responseXML)) {
+                            #$orderDetailXML = simplexml_load_string($orderXML, null, LIBXML_NOCDATA);
+                            $response = new SimpleXMLElement($responseXML);
+                        } else {
+                            Mage::log("No xml order detail for order: ".$order->getIncrementId(), null, $this->_logFileNameSoftD);
+                            $this->sendError('No xml order detail response for order', "No xml order detail for order: ".$order->getIncrementId());
+                        }
 /*
                             $first = true;
 
@@ -162,46 +168,46 @@ Mage::log('response xml:'.$responseXML);
 
                             }
 */
-                            if (preg_match("/<title><![CDATA[ An error has occured ]]><\/title>/", $responseXML))
-                            {
-                                $sErrormsgTitle    = (string)$response->errormsg->title;
-                                $sErrormsgText  = (string)$response->errormsg->text;
-                                $content = "$sErrormsgTitle<br/><br/>$sErrormsgText";
-                                //send error mail
-                                $this->sendError('Softdistribution download link response ERROR', $content);
-                            }else{
-                                $sProductpid        = (string)$response->productpid;
-                                $sDownloadlink      = (string)$response->downloadlink;
-                                $sTransactionid     = (string)$response->transactionid;
-                                $sResellertransid   = (string)$response->resellertransid;
-                                $sCustomerref       = (string)$response->customerref;
-                                $sOrderref          = (string)$response->orderref;
-                                $sAdditionalinfo    = (string)$response->additionalinfo;
-                                $aSerial = array();
-                                foreach($response->serials->serial as $serial){
-                                    $aSerial[] = (string)$serial;
-                                }
-
-                                $orderItemResponseDetails[] = array('Productpid'=>$sProductpid,
-                                                                            'downloadlink'=>$sDownloadlink,
-                                                                            'transactionid'=>$sTransactionid,
-                                                                            'resellertransid'=>$sResellertransid,
-                                                                            'customerref'=>$sCustomerref,
-                                                                            'orderref'=>$sOrderref,
-                                                                            'additionalinfo'=>$sAdditionalinfo,
-                                                                            'serials'=>$aSerial);
-
-                                $oSoftDistributionCodes = Mage::getModel('serialcodes/softditribution');
-                                $oSoftDistributionCodes->setProductpid($sProductpid);
-                                $oSoftDistributionCodes->setDownloadlink($sDownloadlink);
-                                $oSoftDistributionCodes->setTransactionid($sTransactionid);
-                                $oSoftDistributionCodes->setResellertransid($sResellertransid);
-                                $oSoftDistributionCodes->setCustomerref($sCustomerref);
-                                $oSoftDistributionCodes->setOrderref($sOrderref);
-                                $oSoftDistributionCodes->setAdditionalinfo($sAdditionalinfo);
-                                $oSoftDistributionCodes->save();
-
+                        if (preg_match("/<title><![CDATA[ An error has occured ]]><\/title>/", $responseXML))
+                        {
+                            $sErrormsgTitle    = (string)$response->errormsg->title;
+                            $sErrormsgText  = (string)$response->errormsg->text;
+                            $content = "$sErrormsgTitle<br/><br/>$sErrormsgText";
+                            //send error mail
+                            $this->sendError('Softdistribution download link response ERROR', $content);
+                        }else{
+                            $sProductpid        = (string)$response->productpid;
+                            $sDownloadlink      = (string)$response->downloadlink;
+                            $sTransactionid     = (string)$response->transactionid;
+                            $sResellertransid   = (string)$response->resellertransid;
+                            $sCustomerref       = (string)$response->customerref;
+                            $sOrderref          = (string)$response->orderref;
+                            $sAdditionalinfo    = (string)$response->additionalinfo;
+                            $aSerial = array();
+                            foreach($response->serials->serial as $serial){
+                                $aSerial[] = (string)$serial;
                             }
+
+                            $orderItemResponseDetails[] = array('Productpid'=>$sProductpid,
+                                                                        'downloadlink'=>$sDownloadlink,
+                                                                        'transactionid'=>$sTransactionid,
+                                                                        'resellertransid'=>$sResellertransid,
+                                                                        'customerref'=>$sCustomerref,
+                                                                        'orderref'=>$sOrderref,
+                                                                        'additionalinfo'=>$sAdditionalinfo,
+                                                                        'serials'=>$aSerial);
+
+                            $oSoftDistributionCodes = Mage::getModel('serialcodes/softditribution');
+                            $oSoftDistributionCodes->setProductpid($sProductpid);
+                            $oSoftDistributionCodes->setDownloadlink($sDownloadlink);
+                            $oSoftDistributionCodes->setTransactionid($sTransactionid);
+                            $oSoftDistributionCodes->setResellertransid($sResellertransid);
+                            $oSoftDistributionCodes->setCustomerref($sCustomerref);
+                            $oSoftDistributionCodes->setOrderref($sOrderref);
+                            $oSoftDistributionCodes->setAdditionalinfo($sAdditionalinfo);
+                            $oSoftDistributionCodes->save();
+
+                        }
                     }
                 }
                 if (!empty($aSerialNumbers)) {
