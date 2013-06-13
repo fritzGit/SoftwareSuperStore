@@ -133,13 +133,17 @@ class SOFTSS_Serialcodes_Model_Observer extends Mmsmods_Serialcodes_Model_Observ
                         $date = new DateTime();
                         $custId = $order->getBillingAddress()->getCustomerId();
                         $incrementId =$order->getIncrementId();
+                        $resellertransid = $date->getTimestamp().$orderId.$custId.$incrementId;
+
+                        $resellerID = Mage::getStoreConfig(self::XML_SOFTDISTIBUTION_RESELLERID);
+                        $pass = md5(Mage::getStoreConfig(self::XML_SOFTDISTIBUTION_PASSWORD));
 
                         $url = Mage::getStoreConfig(self::XML_SOFTDISTIBUTION_ORDER_URL);
-                        $url .= '?resellerid='.Mage::getStoreConfig(self::XML_SOFTDISTIBUTION_RESELLERID);
-                        $url .= '&pass='.md5(Mage::getStoreConfig(self::XML_SOFTDISTIBUTION_PASSWORD));
+                        $url .= '?resellerid='.$resellerID;
+                        $url .= '&pass='.$pass;
                         $url .= '&id='.$orderId;
                         $url .= '&custref='.$custId;
-                        $url .= '&resellertransid='.$date->getTimestamp().$orderId.$custId.$incrementId;
+                        $url .= '&resellertransid='.$resellertransid;
 ;
 
                         $responseXML = $this->getXML($url);
@@ -192,6 +196,54 @@ Mage::log('response xml:'.$responseXML);
                             $oSoftDistributionCodes->setOrderref($sOrderref);
                             $oSoftDistributionCodes->setAdditionalinfo($sAdditionalinfo);
                             $oSoftDistributionCodes->save();
+
+                            if($product->getSoftssExtendedorderRequired() == 1 ){
+                                $billing_address = $order->getBillingAddress();
+                                $prefix  = $billing_address_data['prefix'];
+                                $firstname  = $billing_address_data['firstname'];
+                                $lastname   = $billing_address_data['lastname'];
+                                $street     =  $billing_address_data['street'];
+                                $city       = $billing_address_data['city'];
+                                $postcode   = $billing_address_data['postcode'];
+                                $telephone  = $billing_address_data['telephone'];
+                                $fax  = $billing_address_data['telephone'];
+                                $country_id = $billing_address_data['country_id'];
+
+                                $productID = $item->getProductId();
+                                $qty = $item->getQtyOrdered();
+                                $sXMLRequestExtended = "<order>
+       <access>
+             <resellerid>$resellerID</resellerid>
+             <pass>$pass</pass>
+       </access>
+       <customer>
+             <companyname></companyname>
+             <title>Dr.</title>
+             <firstname>$firstname</firstname>
+             <lastname>$lastname</lastname>
+             <email>customer@email.com</email>
+             <address1>$street</address1>
+             <address2></address2>
+             <zipcode>$postcode</zipcode>
+             <city>$city</city>
+             <country_iso3166>$country_id</country_iso3166>
+             <phone>$telephone</phone>
+             <fax>$fax</fax>
+             <language>EN</language>
+       </customer>
+       <product>
+             <id>$productID</id>
+             <qty>$qty</qty>
+             <orderref>AB-1234</orderref>
+             <custref>$custId</custref>
+             <promotioncode></promotioncode>
+             <backupcd>1</backupcd>
+             <booking_comment></booking_comment>
+             <resellertransid>$resellertransid</resellertransid>
+       </product>
+</order>";
+                                Mage::log('Extended order request:'.$sXMLRequestExtended);
+                            }
 
                         }
                     }
@@ -354,6 +406,38 @@ Mage::log('response xml:'.$responseXML);
         curl_close($curl);
 
         return $responce;
+    }
+
+    /**
+    * Simple function, which will send a previously created XML to softdistribution and returns the
+    * result as a SimpleXMLElement.
+    *
+    * @param DOMDocument $XMLData
+    *
+    * @return SimpleXMLElement
+    */
+    protected function sendXMlRequest( $url, DOMDocument $XMLData )
+    {
+        $curlHandle = curl_init( $url );
+        curl_setopt( $curlHandle, CURLOPT_MUTE, 1 );
+        curl_setopt( $curlHandle, CURLOPT_POST, 1 );
+        curl_setopt( $curlHandle, CURLOPT_HTTPHEADER, array( 'Content-Type: text/xml' ) );
+        curl_setopt( $curlHandle, CURLOPT_POSTFIELDS, $XMLData->saveXML() );
+        curl_setopt( $curlHandle, CURLOPT_RETURNTRANSFER, 1 );
+
+        $output = curl_exec( $curlHandle );
+        if($output === false)
+        {
+            $curlError = curl_error($curlHandle);
+            Mage::log('Curl error: ' . $curlError);
+            $this->sendError('Softdistribution Extendedorder Curl error',$curlError);
+        }
+
+        $result = new SimpleXMLElement( $output );
+
+        curl_close( $curlHandle );
+
+        return $result;
     }
 
     protected function sendError($subject,$content){
