@@ -17,11 +17,11 @@
 
 class SOFTSS_Serialcodes_Model_Observer extends Mmsmods_Serialcodes_Model_Observer
 {
-
+    const XML_SOFTDISTIBUTION_ORDER_URL          = 'checkout/softdistribution/url_order';
     const XML_SOFTDISTIBUTION_RESELLERID         = 'checkout/softdistribution/resellerid';
     const XML_SOFTDISTIBUTION_PASSWORD           = 'checkout/softdistribution/password';
     const XML_SOFTDISTIBUTION_ORDER_CANCEL_URL   = 'checkout/softdistribution/url_order_cancel';
-    const EXT_ORDER_REQUEST                      = 'http://test.reseller.softdistribution.net/request_ext_order.php';
+    const XML_SOFTDISTIBUTION_EXT_ORDER_REQUEST  = 'checkout/softdistribution/url_order_ext';
 
     protected $_logFileName = 'serialcodes.log';
     protected $_logFileNameSoftD = 'softdistribution.log';
@@ -134,7 +134,7 @@ class SOFTSS_Serialcodes_Model_Observer extends Mmsmods_Serialcodes_Model_Observ
                         $date = new DateTime();
                         $custId = $order->getBillingAddress()->getCustomerId();
                         $incrementId =$order->getIncrementId();
-                        $resellertransid = $date->getTimestamp().$orderId.$custId.$incrementId;
+                        $resellertransid = $date->getTimestamp().$orderId.$custId;
 
                         $resellerID = Mage::getStoreConfig(self::XML_SOFTDISTIBUTION_RESELLERID);
                         $pass = md5(Mage::getStoreConfig(self::XML_SOFTDISTIBUTION_PASSWORD));
@@ -142,14 +142,17 @@ class SOFTSS_Serialcodes_Model_Observer extends Mmsmods_Serialcodes_Model_Observ
                         $url = Mage::getStoreConfig(self::XML_SOFTDISTIBUTION_ORDER_URL);
                         $url .= '?resellerid='.$resellerID;
                         $url .= '&pass='.$pass;
-                        $url .= '&id='.$orderId;
+                        $url .= '&id='.$product->getSoftssSupplierProductId();
+                        $url .= '&qty='.$item->getQtyOrdered();
+                        $url .= '&orderref='.$orderId;
                         $url .= '&custref='.$custId;
                         $url .= '&resellertransid='.$resellertransid;
-;
 
+Mage::log('url:'.$url, null, $this->_logFileName);
                         $responseXML = $this->getXML($url);
                         $aOrderDetail = array();
-Mage::log('response xml:'.$responseXML);
+Mage::log('response xml:'.$responseXML, null, $this->_logFileName);
+
                         if(isset($responseXML)) {
                             #$orderDetailXML = simplexml_load_string($orderXML, null, LIBXML_NOCDATA);
                             $response = new SimpleXMLElement($responseXML);
@@ -158,7 +161,7 @@ Mage::log('response xml:'.$responseXML);
                             $this->sendError('No xml order detail response for order', "No xml order detail for order: ".$incrementId);
                         }
 
-                        if (preg_match("/<title><![CDATA[ An error has occured ]]><\/title>/", $responseXML))
+                        if (preg_match("/<error>/", $responseXML))
                         {
                             $sErrormsgTitle    = (string)$response->errormsg->title;
                             $sErrormsgText  = (string)$response->errormsg->text;
@@ -244,11 +247,10 @@ Mage::log('response xml:'.$responseXML);
              <resellertransid>$resellertransid</resellertransid>
        </product>
 </order>";
-                                Mage::log('Extended order request:'.$sXMLRequestExtended);
 
                                 $domdoc = new DOMDocument();
                                 $domdoc->loadXML($sXMLRequestExtended);
-                                $this->sendXMlRequest(self::EXT_ORDER_REQUEST, $domdoc);
+                                $this->sendXMlRequest(Mage::getStoreConfig(self::XML_SOFTDISTIBUTION_EXT_ORDER_REQUEST), $domdoc);
                             }
 
                         }
@@ -498,7 +500,5 @@ Mage::log('response xml:'.$responseXML);
                 Mage::log("Order cancelation error for order: ".$order->getIncrementId(), null, $this->_logFileNameSoftD);
           }
         }
-
-
     }
 }

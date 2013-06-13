@@ -19,5 +19,4 @@ CREATE TABLE {$this->getTable('softdistribution')} (
   `created_time` datetime NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-    ");
+");
