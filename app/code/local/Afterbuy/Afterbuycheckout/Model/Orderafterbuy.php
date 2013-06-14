@@ -528,6 +528,8 @@ class Afterbuy_Afterbuycheckout_Model_Orderafterbuy extends Mage_Sales_Model_Ord
             $ab_data.= "&Kommentar=" . urlencode($last_comment['comment']);
         }
 
+        $ab_data.= '&VorgangsInfo3=Softwaresuperstore';
+
         $this->afterbuy_string = $ab_data;
     }
 
@@ -798,7 +800,7 @@ class Afterbuy_Afterbuycheckout_Model_Orderafterbuy extends Mage_Sales_Model_Ord
         $result = curl_exec($ch);
 
         if ($result === false) {
-            Mage::log(__LINE__ . ' | ' . __METHOD__ . 'URL: ' . $this->apiURL . 'Daten: ' . $afterbuyXML);
+            Mage::log(__LINE__ . ' | ' . __METHOD__ . 'URL: ' . $this->apiURL . 'Daten: ' . $requestXML);
             Mage::log(curl_error($ch));
         }
 
