@@ -333,9 +333,9 @@ class SOFTSS_Serialcodes_Model_Observer extends Mmsmods_Serialcodes_Model_Observ
                             $order->setData('softss_serialcode_sent', 1);
                             $order->save();
 
-                            Mage::log("Email for order: " . $order->getIncrementId() . ' sent!', null, $this->_logFileName);
+                            Mage::log("Email for order: " . $order->getIncrementId() . ' sent! - '.now(), null, $this->_logFileName);
                         } catch (Exception $e) {
-                            Mage::log("Error for order: " . $order->getIncrementId() . '. No email sent!', null, $this->_logFileName);
+                            Mage::log("Error for order: " . $order->getIncrementId() . '. No email sent! - '.now(), null, $this->_logFileName);
                         }
                     } else {
                         Mage::log("Products belong to another attribute set", null, $this->_logFileName);
