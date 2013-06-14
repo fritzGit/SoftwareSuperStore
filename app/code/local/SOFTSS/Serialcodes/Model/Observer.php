@@ -202,9 +202,7 @@ class SOFTSS_Serialcodes_Model_Observer extends Mmsmods_Serialcodes_Model_Observ
                             $oSoftDistributionCodes->save();
 
                             if($product->getSoftssExtendedorderRequired() == 1 ){
-                                $billing_address = $order->getBillingAddress();
-                                Mage::log($billing_address);
-                                $prefix  = $billing_address_data['prefix'];
+                                $billing_address_data = $order->getBillingAddress();
                                 $firstname  = $billing_address_data['firstname'];
                                 $lastname   = $billing_address_data['lastname'];
                                 $street     =  $billing_address_data['street'];
