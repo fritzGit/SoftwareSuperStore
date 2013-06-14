@@ -35,7 +35,7 @@
                     </serialcodes>
                 </observers>
             </checkout_onepage_controller_success_action>
-         <!-- <order_cancel_after>
+            <order_cancel_after>
                 <observers>
                     <softdistribution>
                            <type>singleton</type>
@@ -43,7 +43,7 @@
                            <method>sendCancelRequest</method>
                     </softdistribution>
                 </observers>
-            </order_cancel_after> -->
+            </order_cancel_after>
         </events>
         <template>
             <email>

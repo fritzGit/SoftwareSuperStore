@@ -594,19 +594,18 @@ class SOFTSS_Import_SoftdistributionController extends Mage_Core_Controller_Fron
 
     protected function deactivateCategories() {
 
-        $collection = Mage::getModel('catalog/category')->getCollection()
-                ->setStoreId($this->_storeId)
-                ->addAttributeToFilter('is_active', 1);
+        $collection = Mage::getModel('catalog/category')->getCategories($this->_gameCategoryId, 0, false, true);
 
         foreach ($collection as $category) {
 
             if ($category->getProductCount() == 0) {
-                $category->set('is_active', 0);
+                
+                $category->setData('is_active', 0);
                 $category->save();
+                Mage::log("Category is deactivated: ".$category->getName(), null, $this->_logFileName);
+
             }
         }
-
-        Mage::log("Categories with no products are deactivated", null, $this->_logFileName);
         return;
     }
 

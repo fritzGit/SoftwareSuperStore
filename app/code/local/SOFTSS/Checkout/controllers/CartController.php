@@ -112,12 +112,13 @@ class SOFTSS_Checkout_CartController extends Mage_Checkout_CartController {
             $aProducts = explode(",", $products);
             $productsStr = "";
             $cartHelper = Mage::helper('checkout/cart');
-
+            $hasItems = false;
+            
             $items = Mage::getSingleton('checkout/session')->getQuote()->getAllItems();
 
             foreach($items as $item) {
 
-               if(in_array($item->getProduct()->getPcfSupplierProductId(), $aProducts)) {
+               if(in_array($item->getProduct()->getSoftssSupplierProductId(), $aProducts)) {
 
                    $productsStr .= $item->getProduct()->getName();
                    $cartHelper->getCart()->removeItem($item->getId())->save();
@@ -126,12 +127,16 @@ class SOFTSS_Checkout_CartController extends Mage_Checkout_CartController {
                    $stockData = $product->getStockData();
                    $stockData['is_in_stock'] = 0;
                    $product->setStockData($stockData);
-
                    $product->save();
+                   $hasItems = true;
                }
 
             }
-            Mage::getSingleton('checkout/session')->addError("Some products are out of stock. The following products were removed from your cart: ".$productsStr);
+            if ($hasItems) {
+                Mage::getSingleton('checkout/session')->addError("Some products are out of stock. The following products were removed from your cart: ".$productsStr);
+            } else {
+                Mage::getSingleton('checkout/session')->addError("An error occured. Please try later.");
+            }
 
         }
 
