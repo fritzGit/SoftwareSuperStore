@@ -25,8 +25,11 @@ class SOFTSS_Import_SoftdistributionController extends Mage_Core_Controller_Fron
 
     protected $_logFileName = 'import.log';
     protected $_productType = Mage_Downloadable_Model_Product_Type::TYPE_DOWNLOADABLE;
-    protected $_attributeSetId = 17; //Games for live 12
+    protected $_attributeSetId = null;
+    protected $_attributeSetIdGames = 17; //Games attribute set for live 12
+    protected $_attributeSetIdSoftware = 19; //Software Softdistribution attribute set for live ?
     protected $_gameCategoryId = 16; //Games Category Id for live 4
+    protected $_softwareCategoryId = 9; //Software Category Id for live 9
     protected $_storeId;
 
     public function indexAction() {
@@ -40,7 +43,9 @@ class SOFTSS_Import_SoftdistributionController extends Mage_Core_Controller_Fron
             $this->insertProducts($aProducts);
         }
 
-        $this->deactivateCategories();
+        $this->deactivateCategories($this->_gameCategoryId);
+        $this->deactivateCategories($this->_softwareCategoryId);
+
 
         Mage::log("Import Finished", null, $this->_logFileName);
     }
@@ -106,14 +111,42 @@ class SOFTSS_Import_SoftdistributionController extends Mage_Core_Controller_Fron
 
             $sku = $aProductDetail['ean_esd'] != '' ? $aProductDetail['ean_esd'] : $aProductDetail['ean_box'];
 
-            if ($sku == '' || $aProductDetail['currency'] != 'GBP') {
-                Mage::log("Product with no SKU - EAN or curency not GBP skipped: " . $aProductDetail['name'] . '---' . $aProductDetail['productversionid'], null, $this->_logFileName);
+            if ($sku == '') {
+                $sku = $aProduct['productversionid'];
+            }
+            
+            if ($aProductDetail['currency'] != 'GBP') {
+                Mage::log("Product with curency not GBP skipped: " . $aProductDetail['name'] . '---' . $aProductDetail['productversionid'], null, $this->_logFileName);
                 continue;
             }
-
+            
+            if (strpos('windows', strtolower($aProductDetail['name'])) !== false || strpos('office', strtolower($aProductDetail['name'])) !== false) {
+                Mage::log("Possible windows or office product skipped: " . $aProductDetail['name'] . '---' . $aProductDetail['productversionid'], null, $this->_logFileName);
+                continue;
+            }            
+            
+            if ($aProductDetail['genre'] == 'Games') {
+                $rootCat = $this->_gameCategoryId;   
+                $this->_attributeSetId = $this->_attributeSetIdGames;
+            } else {
+                $rootCat = $this->_softwareCategoryId;   
+                $this->_attributeSetId = $this->_attributeSetIdSoftware;  
+            }
+       
             //create categories
-            $mainCatID = $this->createCategory($aProductDetail['maincategory']);
-            $categories = array($this->_gameCategoryId, $mainCatID);
+            $mainCatID = $this->createCategory($aProductDetail['maincategory'], $rootCat);
+            
+            if ($aProductDetail['genre'] == 'Games') {
+                if (!$mainCatID)
+                    $mainCatID = $this->_gameCategoryId;
+                
+            } else {
+                if (!$mainCatID)
+                    $mainCatID = $this->_softwareCategoryId;
+            }                
+       
+            
+            $categories = array($rootCat, $mainCatID);
             if ($aProductDetail['subcategory'] != '') {
                 $subCatID = $this->createCategory($aProductDetail['subcategory'], $mainCatID);
                 $categories[] = $subCatID;
@@ -227,12 +260,9 @@ class SOFTSS_Import_SoftdistributionController extends Mage_Core_Controller_Fron
         return;
     }
 
-    protected function createCategory($catname, $parentID = null) {
+    protected function createCategory($catname, $parentID) {
 
         $categoryAPImodel = Mage::getModel('catalog/category_api');
-
-        if ($parentID == null)
-            $parentID = $this->_gameCategoryId;
 
         $aCat_nameparent = array('name' => $catname, 'parent' => $parentID);
 
@@ -388,7 +418,7 @@ class SOFTSS_Import_SoftdistributionController extends Mage_Core_Controller_Fron
             $aProductDetail['srp'] = $productData->srp;
             $aProductDetail['ppd'] = $productData->ppd;
             $aProductDetail['currency'] = $productData->currency;
-            //$aProductDetail['genre'] = $productData->genre;
+            $aProductDetail['genre'] = $productData->genre;
             $aProductDetail['maincategory'] = $productData->maincategory;
             $aProductDetail['subcategory'] = $productData->subcategory;
             $aProductDetail['keywords'] = $productData->keywords;
@@ -592,9 +622,9 @@ class SOFTSS_Import_SoftdistributionController extends Mage_Core_Controller_Fron
         rmdir($dirPath);
     }
 
-    protected function deactivateCategories() {
+    protected function deactivateCategories($categoryId) {
 
-        $collection = Mage::getModel('catalog/category')->getCategories($this->_gameCategoryId, 0, false, true);
+        $collection = Mage::getModel('catalog/category')->getCategories($categoryId, 0, false, true);
 
         foreach ($collection as $category) {
 
