@@ -35,16 +35,17 @@ $ab_class->handler = 'cron';
 
 foreach($results as $single_result)
 {
-    $ab_class->setCheckStatusOrderID($single_result['shoporderid']);
-    $sXML = $ab_class->createAfterbuyCallString($single_result['aid']);
-    $result = $ab_class->checkAndUpdateStatus($sXML, $single_result['aid']);
+    $result = $ab_class->updateMagentoOrderStatus($single_result['aid'], $single_result['shoporderid']);
 
     if($result==false){
         echo "Update Status:<pre>";
-        var_dump($sXML);
+        var_dump($result);
         echo '</pre><br/>';
     }
 }
+
+//set afterbuy orders to compleate if compleate in Magento
+$ab_class->setOrderPaymentStatusComplete();
 
 echo "End of AB Magento sync Cron<br>";
 ?>
