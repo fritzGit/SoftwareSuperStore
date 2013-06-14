@@ -148,10 +148,10 @@ class SOFTSS_Serialcodes_Model_Observer extends Mmsmods_Serialcodes_Model_Observ
                         $url .= '&custref='.$custId;
                         $url .= '&resellertransid='.$resellertransid;
 
-Mage::log('url:'.$url, null, $this->_logFileName);
+                        Mage::log('url:'.$url, null, $this->_logFileNameSoftD);
                         $responseXML = $this->getXML($url);
                         $aOrderDetail = array();
-Mage::log('response xml:'.$responseXML, null, $this->_logFileName);
+                        Mage::log('response xml:'.$responseXML, null, $this->_logFileNameSoftD);
 
                         if(isset($responseXML)) {
                             #$orderDetailXML = simplexml_load_string($orderXML, null, LIBXML_NOCDATA);
@@ -202,9 +202,7 @@ Mage::log('response xml:'.$responseXML, null, $this->_logFileName);
                             $oSoftDistributionCodes->save();
 
                             if($product->getSoftssExtendedorderRequired() == 1 ){
-                                $billing_address = $order->getBillingAddress();
-                                Mage::log($billing_address);
-                                $prefix  = $billing_address_data['prefix'];
+                                $billing_address_data = $order->getBillingAddress();
                                 $firstname  = $billing_address_data['firstname'];
                                 $lastname   = $billing_address_data['lastname'];
                                 $street     =  $billing_address_data['street'];
@@ -333,9 +331,9 @@ Mage::log('response xml:'.$responseXML, null, $this->_logFileName);
                             $order->setData('softss_serialcode_sent', 1);
                             $order->save();
 
-                            Mage::log("Email for order: " . $order->getIncrementId() . ' sent!', null, $this->_logFileName);
+                            Mage::log("Email for order: " . $order->getIncrementId() . ' sent! - '.now(), null, $this->_logFileName);
                         } catch (Exception $e) {
-                            Mage::log("Error for order: " . $order->getIncrementId() . '. No email sent!', null, $this->_logFileName);
+                            Mage::log("Error for order: " . $order->getIncrementId() . '. No email sent! - '.now(), null, $this->_logFileName);
                         }
                     } else {
                         Mage::log("Products belong to another attribute set", null, $this->_logFileName);
@@ -469,36 +467,59 @@ Mage::log('response xml:'.$responseXML, null, $this->_logFileName);
 
         $order = $observer->getEvent()->getOrder();
 
-        $url = Mage::getStoreConfig(self::XML_SOFTDISTIBUTION_ORDER_CANCEL_URL);
-        $url .= '?resellerid='.Mage::getStoreConfig(self::XML_SOFTDISTIBUTION_RESELLERID);
-        $url .= '&pass='.md5(Mage::getStoreConfig(self::XML_SOFTDISTIBUTION_PASSWORD));
-        $url .= '&transacationid='.$order->getSoftssTransactionId();
-        $url .= '&booking_comment=wrong_purchase';
+            $url = Mage::getStoreConfig(self::XML_SOFTDISTIBUTION_ORDER_CANCEL_URL);
+            $url .= '?resellerid='.Mage::getStoreConfig(self::XML_SOFTDISTIBUTION_RESELLERID);
+            $url .= '&pass='.md5(Mage::getStoreConfig(self::XML_SOFTDISTIBUTION_PASSWORD));
+            $url .= '&booking_comment=wrong_purchase';
 
-        $orderXML = $this->getXML($url);
+            $items = $order->getAllItems();
 
-        if(isset($orderXML)) {
-            $orderDetailXML = simplexml_load_string($orderXML, null, LIBXML_NOCDATA);
-        } else {
-            Mage::log("No xml order cancel response for order: ".$order->getIncrementId(), null, $this->_logFileNameSoftD);
-            return false;
-        }
+            foreach ($items as $item) {
 
-        $first = true;
+                try {        
 
-        foreach ($orderDetailXML as $orderData) {
+                    if($productpId = $item->getSoftssSupplierProductId()) {
 
-          //skip head node
-          if ($first) {
-              $first = false;
-              continue;
-          }
+                        $oSoftDistribution = Mage::getModel('softdistribution/softdistribution')->getCollection()
+                                        ->addFieldToFilter('productpid', $productpId)
+                                        ->addFieldToFilter('orderref', $order->getIncrementId())
+                                        ->getFirstItem();
 
-          if($orderData->okmsg) {
-                Mage::log("Order cancelled with id: ".$order->getIncrementId(), null, $this->_logFileNameSoftD);
-          } else {
-                Mage::log("Order cancelation error for order: ".$order->getIncrementId(), null, $this->_logFileNameSoftD);
-          }
-        }
+                        $url .= '&transacationid='.$oSoftDistribution->getTransactionid();
+
+                        $orderXML = $this->getXML($url);
+
+                        if(isset($orderXML)) {
+                            $orderDetailXML = simplexml_load_string($orderXML, null, LIBXML_NOCDATA);
+                        } else {
+                            Mage::log("No xml order cancel response for order: ".$order->getIncrementId(), null, $this->_logFileNameSoftD);
+                            return false;
+                        }
+
+                        $first = true;
+
+                        foreach ($orderDetailXML as $orderData) {
+
+                          //skip head node
+                          if ($first) {
+                              $first = false;
+                              continue;
+                          }
+
+                          if($orderData->okmsg) {
+                                Mage::log("Order cancelled with id: ".$order->getIncrementId(), null, $this->_logFileNameSoftD);
+                          } else {
+                                Mage::log("Order cancelation error for order: ".$order->getIncrementId(), null, $this->_logFileNameSoftD);
+                          }
+                        }     
+                  }
+
+                } catch (Exception $e) {
+                    Mage::log('Error canceling order: '.$order->getIncrementId().'for item '.$item->getName(). $e->getMessage(), null, $this->_logFileNameSoftD);
+                }  
+
+            }        
+            return;
+
     }
 }
