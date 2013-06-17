@@ -6,15 +6,23 @@
  */
 ?>
 <?php
-    $_categoryCollection = $this->getCategories();
+    $helper = $this->helper('catalog/category');
+    $categories = $helper->getStoreCategories();
 ?>
-<?php if(count($_categoryCollection) > 0): ?>
-<div id="categories">
-<h2><?php echo $this->__('All Categories'); ?></h2>
-<ul>
-<?php foreach ($_categoryCollection as $category): ?>
-    <li><a href="<?php echo $category->getUrl(); ?>"><?php echo $category->getName(); ?></a></li>
-<?php endforeach; ?>
-</ul>
-</div>
+
+<?php if (count($categories) > 0): ?>
+    <div id="categories">
+        <h2><?php echo $this->__('All Categories'); ?></h2>
+        <ul>
+            <?php foreach ($categories as $category): ?>
+                <li><a href="<?php echo $helper->getCategoryUrl($category) ?>"><?php echo $category->getName(); ?></a></li>
+                <?php $subcategories = $category->getChildren() ?>
+                <?php if (count($subcategories) > 0): ?>
+                    <?php foreach ($subcategories as $subcategory): ?>
+                        <li><a href="<?php echo $helper->getCategoryUrl($subcategory); ?>"><?php echo $subcategory->getName(); ?></a></li>
+                    <?php endforeach; ?>
+                <?php endif; ?>
+            <?php endforeach; ?>
+        </ul>
+    </div>
 <?php endif; ?>
