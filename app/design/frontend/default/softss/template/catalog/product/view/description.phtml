@@ -7,6 +7,7 @@
 ?>
 <?php $_product = $this->getProduct(); ?>
 <?php $_description = $_product->getDescription(); ?>
+<?php $_cat_helper = Mage::helper('softsscatalog'); ?>
 <?php if ($_description): ?>
     <div class="left">
         <div class="std">
@@ -23,19 +24,14 @@
             <div class="btn_twitter"><a href="https://twitter.com/share" class="twitter-share-button" data-via="twitterapi" data-lang="en">Tweet</a></div>
         </div>
         <ul class="product-specs">
-            <li><label><?php echo $this->__('Article number') ?></label><?php echo $_product->getId(); ?></li>
-            <?php if($_product->getPcType()): ?>
-            <li><label><?php echo $this->__('System requirements') ?></label><?php echo $_product->getPcType(); ?></li>
-            <?php endif; ?>
-            <?php if($_product->getManufacturer()): ?>
-            <li><label><?php echo $this->__('Manufacturer') ?></label><?php echo $_product->getAttributeText('manufacturer'); ?></li>
-            <?php endif; ?>
-            <?php if($_product->getLanguageVersion()): ?>
-            <li><label><?php echo $this->__('Language version') ?></label><?php echo $_product->getLanguageVersion(); ?></li>
-            <?php endif; ?>
-            <?php if($_product->getServicePack()): ?>
-            <li><label><?php echo $this->__('Service pack') ?></label><?php echo $_product->getServicePack(); ?></li>
-            <?php endif; ?>
+            <?php foreach($_product->getAttributes() as $attribute):?>
+                <?php if ($attribute->getIsVisibleOnFront()) : ?>
+                <?php $attrValue = $_cat_helper->getProductAttributeValue($_product, $attribute); ?>
+                    <?php if ($attrValue !=  'N/A'  && !($attrValue ==  'No' && $attribute->getCode() != 'softss_backup_cd_available')) : ?>
+                        <li><label><?php echo $this->__($attribute->getStoreLabel()) ?></label><?php echo $_cat_helper->getProductAttributeValue($_product, $attribute) ?></li>
+                    <?php endif; ?>
+                <?php endif; ?>
+            <?php endforeach; ?>
         </ul>
     </div>
 
