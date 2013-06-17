@@ -1,6 +1,6 @@
 <?php
 
-class SOFTSS_SoftDistribution_Adminhtml_SoftDistributionController extends Mage_Adminhtml_Controller_action
+class SOFTSS_Softdistribution_Adminhtml_SoftDistributionController extends Mage_Adminhtml_Controller_action
 {
 
 	protected function _initAction() {

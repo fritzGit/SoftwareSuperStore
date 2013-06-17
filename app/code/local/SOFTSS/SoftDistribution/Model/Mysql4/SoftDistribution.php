@@ -1,6 +1,6 @@
 <?php
 
-class SOFTSS_SoftDistribution_Model_Mysql4_SoftDistribution extends Mage_Core_Model_Mysql4_Abstract
+class SOFTSS_Softdistribution_Model_Mysql4_Softdistribution extends Mage_Core_Model_Mysql4_Abstract
 {
     public function _construct()
     {    

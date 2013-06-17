@@ -29,6 +29,7 @@
             <li class="producttitle"><?php echo $this->escapeHtml($_item->getPurchased()->getProductName()) ?>
             <?php if (count($serials) > 0): ?>
                 <?php foreach($serials  as $serial): ?>
+                <?php if($serial == "") continue; ?>
                     <br><?php echo $serial; ?> - <a href="<?php echo $product->getData('softss_download_url'); ?>" title="<?php echo Mage::helper('downloadable')->__('Start Download') ?>" <?php echo $this->getIsOpenInNewWindow() ? 'onclick="this.target=\'_blank\'"' : ''; ?>><?php echo Mage::helper('downloadable')->__('Download') ?></a>
                 <?php endforeach; ?>
             <?php endif; ?>    

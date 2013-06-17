@@ -1,6 +1,6 @@
 <?php
 
-class SOFTSS_SoftDistribution_Block_Adminhtml_SoftDistribution_Grid extends Mage_Adminhtml_Block_Widget_Grid
+class SOFTSS_Softdistribution_Block_Adminhtml_Softdistribution_Grid extends Mage_Adminhtml_Block_Widget_Grid
 {
   public function __construct()
   {

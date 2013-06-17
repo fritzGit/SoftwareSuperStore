@@ -1,6 +1,6 @@
 <?php
 
-class SOFTSS_SoftDistribution_Block_Adminhtml_SoftDistribution_Edit_Tabs extends Mage_Adminhtml_Block_Widget_Tabs
+class SOFTSS_Softdistribution_Block_Adminhtml_Softdistribution_Edit_Tabs extends Mage_Adminhtml_Block_Widget_Tabs
 {
 
   public function __construct()

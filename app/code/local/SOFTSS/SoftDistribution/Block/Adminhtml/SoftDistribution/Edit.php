@@ -1,6 +1,6 @@
 <?php
 
-class SOFTSS_SoftDistribution_Block_Adminhtml_SoftDistribution_Edit extends Mage_Adminhtml_Block_Widget_Form_Container
+class SOFTSS_Softdistribution_Block_Adminhtml_Softdistribution_Edit extends Mage_Adminhtml_Block_Widget_Form_Container
 {
     public function __construct()
     {

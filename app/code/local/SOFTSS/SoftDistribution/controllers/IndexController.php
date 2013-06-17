@@ -1,5 +1,5 @@
 <?php
-class SOFTSS_SoftDistribution_IndexController extends Mage_Core_Controller_Front_Action
+class SOFTSS_Softdistribution_IndexController extends Mage_Core_Controller_Front_Action
 {
     public function indexAction()
     {

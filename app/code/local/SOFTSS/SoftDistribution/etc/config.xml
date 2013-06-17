@@ -9,16 +9,16 @@
 -->
 <config>
     <modules>
-        <SOFTSS_SoftDistribution>
+        <SOFTSS_Softdistribution>
             <version>0.1.0</version>
-        </SOFTSS_SoftDistribution>
+        </SOFTSS_Softdistribution>
     </modules>
     <frontend>
         <routers>
             <softdistribution>
                 <use>standard</use>
                 <args>
-                    <module>SOFTSS_SoftDistribution</module>
+                    <module>SOFTSS_Softdistribution</module>
                     <frontName>softdistribution</frontName>
                 </args>
             </softdistribution>
@@ -36,7 +36,7 @@
             <softdistribution>
                 <use>admin</use>
                 <args>
-                    <module>SOFTSS_SoftDistribution</module>
+                    <module>SOFTSS_Softdistribution</module>
                     <frontName>softdistribution</frontName>
                 </args>
             </softdistribution>
@@ -64,7 +64,7 @@
                 <admin>
                     <children>
                         <SOFTSS_SoftDistribution>
-                            <title>SoftDistribution Module</title>
+                            <title>Softdistribution Module</title>
                             <sort_order>10</sort_order>
                         </SOFTSS_SoftDistribution>
                     </children>
@@ -82,11 +82,11 @@
     <global>
         <models>
             <softdistribution>
-                <class>SOFTSS_SoftDistribution_Model</class>
+                <class>SOFTSS_Softdistribution_Model</class>
                 <resourceModel>softdistribution_mysql4</resourceModel>
             </softdistribution>
             <softdistribution_mysql4>
-                <class>SOFTSS_SoftDistribution_Model_Mysql4</class>
+                <class>SOFTSS_Softdistribution_Model_Mysql4</class>
                 <entities>
                     <softdistribution>
                         <table>softss_softdistribution</table>
@@ -97,7 +97,7 @@
         <resources>
             <softdistribution_setup>
                 <setup>
-                    <module>SOFTSS_SoftDistribution</module>
+                    <module>SOFTSS_Softdistribution</module>
                 </setup>
                 <connection>
                     <use>core_setup</use>
@@ -116,12 +116,12 @@
         </resources>
         <blocks>
             <softdistribution>
-                <class>SOFTSS_SoftDistribution_Block</class>
+                <class>SOFTSS_Softdistribution_Block</class>
             </softdistribution>
         </blocks>
         <helpers>
             <softdistribution>
-                <class>SOFTSS_SoftDistribution_Helper</class>
+                <class>SOFTSS_Softdistribution_Helper</class>
             </softdistribution>
         </helpers>
     </global>

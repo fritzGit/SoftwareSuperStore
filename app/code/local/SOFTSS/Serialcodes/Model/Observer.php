@@ -454,7 +454,6 @@ class SOFTSS_Serialcodes_Model_Observer extends Mmsmods_Serialcodes_Model_Observ
         $mail->addTo("j.galvez@pcfritz.de","Juan Galvez");
         $mail->setSubject($subject);
         $mail->setBodyHtml($content);
-        $mail->setType('html');// You can use Html or text as Mail format
 
         try {
             $mail->send();

@@ -1,6 +1,6 @@
 <?php
 
-class SOFTSS_SoftDistribution_Block_Adminhtml_SoftDistribution_Edit_Tab_Form extends Mage_Adminhtml_Block_Widget_Form
+class SOFTSS_Softdistribution_Block_Adminhtml_Softdistribution_Edit_Tab_Form extends Mage_Adminhtml_Block_Widget_Form
 {
   protected function _prepareForm()
   {

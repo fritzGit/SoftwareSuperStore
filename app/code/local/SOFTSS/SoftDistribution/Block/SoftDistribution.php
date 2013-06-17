@@ -1,12 +1,12 @@
-?php
-class SOFTSS_SoftDistribution_Block_SoftDistribution extends Mage_Core_Block_Template
+<?php
+class SOFTSS_Softdistribution_Block_Softdistribution extends Mage_Core_Block_Template
 {
 	public function _prepareLayout()
     {
 		return parent::_prepareLayout();
     }
     
-     public function getSoftDistribution()     
+     public function getSoftdistribution()     
      { 
         if (!$this->hasData('softdistribution')) {
             $this->setData('softdistribution', Mage::registry('softdistribution'));
