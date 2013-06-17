@@ -25,13 +25,20 @@
             <?php $product = Mage::getModel('catalog/product')->load($_item->getProductId()); ?>
             <?php $productAttributeSet = Mage::getModel('eav/entity_attribute_set')->load($product->getAttributeSetId())->getAttributeSetName(); ?>
             <?php if ($productAttributeSet == 'office' || $productAttributeSet == 'windows'): ?>
-                <li class="producttitle"><?php echo $this->escapeHtml($_item->getPurchased()->getProductName()) ?> - <a href="<?php echo $product->getData('softss_download_url'); ?>" title="<?php echo Mage::helper('downloadable')->__('Start Download') ?>" <?php echo $this->getIsOpenInNewWindow() ? 'onclick="this.target=\'_blank\'"' : ''; ?>><?php echo Mage::helper('downloadable')->__('Download') ?></a></li>
+            <?php $serials = explode("\n", Mage::getModel('sales/order_item')->load($_item->getOrderItemId())->getSerialCodes()); ?> 
+            <li class="producttitle"><?php echo $this->escapeHtml($_item->getPurchased()->getProductName()) ?>
+            <?php if (count($serials) > 0): ?>
+                <?php foreach($serials  as $serial): ?>
+                    <br><?php echo $serial; ?> - <a href="<?php echo $product->getData('softss_download_url'); ?>" title="<?php echo Mage::helper('downloadable')->__('Start Download') ?>" <?php echo $this->getIsOpenInNewWindow() ? 'onclick="this.target=\'_blank\'"' : ''; ?>><?php echo Mage::helper('downloadable')->__('Download') ?></a>
+                <?php endforeach; ?>
+            <?php endif; ?>    
+            </li>
             <?php elseif ($productAttributeSet == 'games' || $productAttributeSet == 'software'): ?>
                 <li class="producttitle"><?php echo $this->escapeHtml($_item->getPurchased()->getProductName()) ?> 
                    <?php $data = Mage::helper('softssdownloadable')->getSoftdistributionInfo($_item) ?>
-                    <?php if ($data['url'] != "" && $_item->getStatus() == "available"): ?>
-                    <?php foreach($data['serialcodes']  as $serialCode): ?>
-                        <br><?php echo $serialCode; ?> - <a href="<?php echo $data['url']; ?>" title="<?php echo Mage::helper('downloadable')->__('Start Download') ?>" <?php echo $this->getIsOpenInNewWindow() ? 'onclick="this.target=\'_blank\'"' : ''; ?>><?php echo $this->escapeHtml($_item->getLinkTitle()); ?></a>
+                    <?php if ($data['url'] != "" && count($data['serialnumber'])> 0): ?>
+                    <?php foreach($data['serialnumber']  as $serialNumber): ?>
+                        <br><?php echo $serialNumber; ?> - <a href="<?php echo $data['url']; ?>" title="<?php echo Mage::helper('downloadable')->__('Start Download') ?>" <?php echo $this->getIsOpenInNewWindow() ? 'onclick="this.target=\'_blank\'"' : ''; ?>><?php echo $this->escapeHtml($_item->getLinkTitle()); ?></a>
                     <?php endforeach; ?>
                 </li>
                 <?php endif; ?>
