@@ -18,18 +18,19 @@
 class SOFTSS_Downloadable_Helper_Data extends Mage_Downloadable_Helper_Data
 {
    
-    public function getDownloadSoftdistributionUrl($item)
+    public function getSoftdistributionInfo($item)
     {
+        $data = array();
        
         $softItem = Mage::getModel('softdistribution/softdistribution')->getCollection()
-                ->addFieldToFilter('', $item->getId())
+                ->addFieldToFilter('itemid', $item->getId())
                 ->addFieldToFilter('orderref', $item->getPurchased()->getOrderId())
                 ->getFirstItem();
         
-        if($url = $softItem->getDownloadlink()) {
-            return $url;
-        }
-        
-        return;
-    }
+        $data['url'] = $softItem->getDownloadlink();
+        $data['serialcodes'] = $softItem->getDownloadlink();
+                
+        return $data;
+    }    
+ 
 }

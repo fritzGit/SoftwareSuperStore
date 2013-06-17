@@ -89,7 +89,7 @@
                 <class>SOFTSS_SoftDistribution_Model_Mysql4</class>
                 <entities>
                     <softdistribution>
-                        <table>softss_softdistribution_sentorders</table>
+                        <table>softss_softdistribution</table>
                     </softdistribution>
                 </entities>
             </softdistribution_mysql4>
