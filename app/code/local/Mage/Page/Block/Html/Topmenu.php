@@ -128,7 +128,7 @@ class Mage_Page_Block_Html_Topmenu extends Mage_Core_Block_Template
             }
             if($counter == $childrenCount)
                 $html .= '</li>';
-            else
+            elseif ($childLevel == 0)
                 $html .= '</li><li class="orange TMdivider">/</li>';
 
             $counter++;

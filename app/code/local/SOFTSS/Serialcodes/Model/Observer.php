@@ -143,7 +143,7 @@ class SOFTSS_Serialcodes_Model_Observer extends Mmsmods_Serialcodes_Model_Observ
                         $url .= '?resellerid='.$resellerID;
                         $url .= '&pass='.$pass;
                         $url .= '&id='.$product->getSoftssSupplierProductId();
-                        $url .= '&qty='.$item->getQtyOrdered();
+                        $url .= '&qty='.(int)$item->getQtyOrdered();
                         $url .= '&orderref='.$orderId;
                         $url .= '&custref='.$custId;
                         $url .= '&resellertransid='.$resellertransid;
@@ -165,7 +165,7 @@ class SOFTSS_Serialcodes_Model_Observer extends Mmsmods_Serialcodes_Model_Observ
                         {
                             $sErrormsgTitle    = (string)$response->errormsg->title;
                             $sErrormsgText  = (string)$response->errormsg->text;
-                            $content = "$sErrormsgTitle<br/><br/>$sErrormsgText";
+                            $content = "Request URL: $url<br/><br/>$sErrormsgTitle<br/><br/>$sErrormsgText";
                             //send error mail
                             $this->sendError('Softdistribution download link response ERROR', $content);
                         }else{
