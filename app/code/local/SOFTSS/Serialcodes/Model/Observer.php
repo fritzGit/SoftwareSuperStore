@@ -191,8 +191,9 @@ class SOFTSS_Serialcodes_Model_Observer extends Mmsmods_Serialcodes_Model_Observ
                                                                 'additionalinfo'=>$sAdditionalinfo,
                                                                 'serials'       =>$aSerial);
 
-                            $oSoftDistributionCodes = Mage::getModel('serialcodes/softditribution');
+                            $oSoftDistributionCodes = Mage::getModel('softditribution/softditribution');
                             $oSoftDistributionCodes->setProductpid($sProductpid);
+                            $oSoftDistributionCodes->setItemid($item->getId());
                             $oSoftDistributionCodes->setDownloadlink($sDownloadlink);
                             $oSoftDistributionCodes->setTransactionid($sTransactionid);
                             $oSoftDistributionCodes->setResellertransid($sResellertransid);
@@ -476,7 +477,7 @@ class SOFTSS_Serialcodes_Model_Observer extends Mmsmods_Serialcodes_Model_Observ
 
             foreach ($items as $item) {
 
-                try {        
+                try {
 
                     if($productpId = $item->getSoftssSupplierProductId()) {
 
@@ -511,14 +512,14 @@ class SOFTSS_Serialcodes_Model_Observer extends Mmsmods_Serialcodes_Model_Observ
                           } else {
                                 Mage::log("Order cancelation error for order: ".$order->getIncrementId(), null, $this->_logFileNameSoftD);
                           }
-                        }     
+                        }
                   }
 
                 } catch (Exception $e) {
                     Mage::log('Error canceling order: '.$order->getIncrementId().'for item '.$item->getName(). $e->getMessage(), null, $this->_logFileNameSoftD);
-                }  
+                }
 
-            }        
+            }
             return;
 
     }
