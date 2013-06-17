@@ -9,30 +9,46 @@
 </div>
 <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
 <?php echo $this->getChildHtml('pager'); ?>
-<?php if(count($_items)): ?>
-<ul class="accountlistheader">
-    <li class="ordernum"><?php echo Mage::helper('downloadable')->__('Order #') ?></li>
-    <li class="date"><?php echo Mage::helper('downloadable')->__('Date') ?></li>
-    <li class="producttitle"><?php echo Mage::helper('downloadable')->__('Title') ?></li>
-    <li class="status"><?php echo Mage::helper('downloadable')->__('Status') ?></li>
-    <li class="last"><span class="nobr"><?php echo Mage::helper('downloadable')->__('Remaining Downloads') ?></span></li>
-</ul>
-
-<?php foreach ($_items as $_item): ?>
-    <ul class="accountlist">
-        <li class="ordernum"><a href="<?php echo $this->getOrderViewUrl($_item->getPurchased()->getOrderId()) ?>" title="<?php echo Mage::helper('downloadable')->__('View Order') ?>"><?php echo $_item->getPurchased()->getOrderIncrementId() ?></a></li>
-        <li class="date"><span class="nobr"><?php echo $this->formatDate($_item->getPurchased()->getCreatedAt()) ?></span></li>
-        <?php $product = Mage::getModel('catalog/product')->load($_item->getProductId()); ?>
-        <?php $productAttributeSet = Mage::getModel('eav/entity_attribute_set')->load($product->getAttributeSetId())->getAttributeSetName(); ?>
-        <?php if($productAttributeSet != 'office' && $productAttributeSet != 'windows'): ?>
-            <li class="producttitle"><?php echo $this->escapeHtml($_item->getPurchased()->getProductName()) ?> - <a href="<?php echo $this->getDownloadUrl($_item) ?>" title="<?php echo Mage::helper('downloadable')->__('Start Download') ?>" <?php echo $this->getIsOpenInNewWindow()?'onclick="this.target=\'_blank\'"':''; ?>><?php echo $this->escapeHtml($_item->getLinkTitle()); ?></a></li>
-        <?php else: ?>
-            <li class="producttitle"><?php echo $this->escapeHtml($_item->getPurchased()->getProductName()) ?> - <a href="<?php echo $product->getData('softss_download_url'); ?>" title="<?php echo Mage::helper('downloadable')->__('Start Download') ?>" <?php echo $this->getIsOpenInNewWindow()?'onclick="this.target=\'_blank\'"':''; ?>><?php echo Mage::helper('downloadable')->__('Download') ?></a></li>
-        <?php endif; ?>
-        <li class="status"><?php echo Mage::helper('downloadable')->__(ucfirst($_item->getStatus())) ?></li>
-        <li class="last"><?php echo $this->getRemainingDownloads($_item) ?></li>
+<?php if (count($_items)): ?>
+    <ul class="accountlistheader">
+        <li class="ordernum"><?php echo Mage::helper('downloadable')->__('Order #') ?></li>
+        <li class="date"><?php echo Mage::helper('downloadable')->__('Date') ?></li>
+        <li class="producttitle"><?php echo Mage::helper('downloadable')->__('Title') ?></li>
+        <li class="status"><?php echo Mage::helper('downloadable')->__('Status') ?></li>
+        <li class="last"><span class="nobr"><?php echo Mage::helper('downloadable')->__('Remaining Downloads') ?></span></li>
     </ul>
-<?php endforeach; ?>
+
+    <?php foreach ($_items as $_item): ?>
+        <ul class="accountlist">
+            <li class="ordernum"><a href="<?php echo $this->getOrderViewUrl($_item->getPurchased()->getOrderId()) ?>" title="<?php echo Mage::helper('downloadable')->__('View Order') ?>"><?php echo $_item->getPurchased()->getOrderIncrementId() ?></a></li>
+            <li class="date"><span class="nobr"><?php echo $this->formatDate($_item->getPurchased()->getCreatedAt()) ?></span></li>
+            <?php $product = Mage::getModel('catalog/product')->load($_item->getProductId()); ?>
+            <?php $productAttributeSet = Mage::getModel('eav/entity_attribute_set')->load($product->getAttributeSetId())->getAttributeSetName(); ?>
+            <?php if ($productAttributeSet == 'office' || $productAttributeSet == 'windows'): ?>
+            <?php $serials = explode("\n", Mage::getModel('sales/order_item')->load($_item->getOrderItemId())->getSerialCodes()); ?> 
+            <li class="producttitle"><?php echo $this->escapeHtml($_item->getPurchased()->getProductName()) ?>
+            <?php if (count($serials) > 0): ?>
+                <?php foreach($serials  as $serial): ?>
+                    <br><?php echo $serial; ?> - <a href="<?php echo $product->getData('softss_download_url'); ?>" title="<?php echo Mage::helper('downloadable')->__('Start Download') ?>" <?php echo $this->getIsOpenInNewWindow() ? 'onclick="this.target=\'_blank\'"' : ''; ?>><?php echo Mage::helper('downloadable')->__('Download') ?></a>
+                <?php endforeach; ?>
+            <?php endif; ?>    
+            </li>
+            <?php elseif ($productAttributeSet == 'games' || $productAttributeSet == 'software'): ?>
+                <li class="producttitle"><?php echo $this->escapeHtml($_item->getPurchased()->getProductName()) ?> 
+                   <?php $data = Mage::helper('softssdownloadable')->getSoftdistributionInfo($_item) ?>
+                    <?php if ($data['url'] != "" && count($data['serialnumber'])> 0): ?>
+                    <?php foreach($data['serialnumber']  as $serialNumber): ?>
+                        <br><?php echo $serialNumber; ?> - <a href="<?php echo $data['url']; ?>" title="<?php echo Mage::helper('downloadable')->__('Start Download') ?>" <?php echo $this->getIsOpenInNewWindow() ? 'onclick="this.target=\'_blank\'"' : ''; ?>><?php echo $this->escapeHtml($_item->getLinkTitle()); ?></a>
+                    <?php endforeach; ?>
+                </li>
+                <?php endif; ?>
+            <?php else: ?>
+                <li class="producttitle"><?php echo $this->escapeHtml($_item->getPurchased()->getProductName()) ?> - <a href="<?php echo $this->getDownloadUrl($_item) ?>" title="<?php echo Mage::helper('downloadable')->__('Start Download') ?>" <?php echo $this->getIsOpenInNewWindow() ? 'onclick="this.target=\'_blank\'"' : ''; ?>><?php echo $this->escapeHtml($_item->getLinkTitle()); ?></a></li>
+            <?php endif; ?>
+            <li class="status"><?php echo Mage::helper('downloadable')->__(ucfirst($_item->getStatus())) ?></li>
+            <li class="last"><?php echo $this->getRemainingDownloads($_item) ?></li>
+        </ul>
+    <?php endforeach; ?>
 
 <?php else: ?>
     <p><?php echo Mage::helper('downloadable')->__('You have not purchased any downloadable products yet.'); ?></p>

@@ -53,7 +53,7 @@
         <?php endif;?>
 
         <?php $productAttributeSet = Mage::getModel('eav/entity_attribute_set')->load($_item->getProduct()->getAttributeSetId())->getAttributeSetName(); ?>
-        <?php if($productAttributeSet != 'office' && $productAttributeSet != 'windows'): ?>
+        <?php if($productAttributeSet != 'office' && $productAttributeSet != 'windows' && $productAttributeSet != 'games' && $productAttributeSet != 'software'): ?>
         <!-- downloadable -->
         <?php if ($links = $this->getLinks()): ?>
         <dl class="item-options">

@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <SOFTSS_Downloadable>
+            <version>0.1.0</version>
+        </SOFTSS_Downloadable>
+    </modules>
+    <global> 
+        <helpers>
+            <softssdownloadable>
+                <class>SOFTSS_Downloadable_Helper</class>
+            </softssdownloadable>
+        </helpers>      
+    </global>
+</config>

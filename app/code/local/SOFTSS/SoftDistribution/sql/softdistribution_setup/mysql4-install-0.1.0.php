@@ -6,8 +6,8 @@ $installer->startSetup();
 
 $installer->run("
 
--- DROP TABLE IF EXISTS {$this->getTable('softdistribution')};
-CREATE TABLE {$this->getTable('softdistribution')} (
+-- DROP TABLE IF EXISTS {$this->getTable('softss_softdistribution')};
+CREATE TABLE {$this->getTable('softss_softdistribution')} (
   `id` int(11) unsigned NOT NULL auto_increment,
   `productpid` varchar(255) NOT NULL default '',
   `itemid` varchar(255) NOT NULL default '',
@@ -22,3 +22,6 @@ CREATE TABLE {$this->getTable('softdistribution')} (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 ");
+
+
+$installer->endSetup();

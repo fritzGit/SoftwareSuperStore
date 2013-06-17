@@ -40,7 +40,7 @@
         <?php $productAttributeSet = Mage::getModel('eav/entity_attribute_set')->load($_item->getProduct()->getAttributeSetId())->getAttributeSetName(); ?>
         <?php if ($links = $this->getLinks()->getPurchasedItems()): ?>
         <dl style="margin:0; padding:0;">
-            <?php if($productAttributeSet != 'office' && $productAttributeSet != 'windows'): ?>   
+        <?php if($productAttributeSet != 'office' && $productAttributeSet != 'windows' && $productAttributeSet != 'games' && $productAttributeSet != 'software'): ?>
             <dt><strong><em><?php echo $this->getLinksTitle() ?></em></strong></dt>
             <?php foreach ($links as $link): ?>
                 <dd style="margin:0; padding:0 0 0 9px;">

@@ -16,12 +16,12 @@
 
 class SOFTSS_Catalog_Block_Category_Menu extends Mage_Core_Block_Template {
 
-    public function getCategories()
+    /*public function getCategories() 
     {
         $rootCategoryId = Mage::app()->getStore()->getRootCategoryId();
         $categories = Mage::getModel('catalog/category')->getCategories($rootCategoryId, 0, true, true, true);
 
         return $categories;
-    }
+    } */
 
 }
