@@ -143,7 +143,7 @@ class SOFTSS_Serialcodes_Model_Observer extends Mmsmods_Serialcodes_Model_Observ
                         $url .= '?resellerid='.$resellerID;
                         $url .= '&pass='.$pass;
                         $url .= '&id='.$product->getSoftssSupplierProductId();
-                        $url .= '&qty='.$item->getQtyOrdered();
+                        $url .= '&qty='.(int)$item->getQtyOrdered();
                         $url .= '&orderref='.$orderId;
                         $url .= '&custref='.$custId;
                         $url .= '&resellertransid='.$resellertransid;
