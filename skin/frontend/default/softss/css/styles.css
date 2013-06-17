@@ -1287,6 +1287,8 @@ h1.homepage-softwaress{color:#ff7300;padding:20px 0; font-family: 'Aller_Lt',San
 .product-view .product-shop .add-to-links li{ display:inline; padding-right: 20px;}
 .product-view .product-shop .add-to-links li.last{padding-right: 0;}
 .product-view .product-shop .add-to-links a { color:#e5620b !important; font-weight:normal !important; text-decoration: none;}
+.product-view .product-shop .add-to-links a:hover{color:#000 !important;}
+
 .product-view .product-shop .short-description ul,
 .product-collateral .product-tabs-content .product-tabs-content-inner .left ul
 {list-style-type: none; list-style-position:inside; padding: 0px;margin: 0px;}
