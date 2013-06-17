@@ -16,6 +16,7 @@ CREATE TABLE {$this->getTable('softss_softdistribution')} (
   `resellertransid` varchar(255) NOT NULL default '',
   `orderref` varchar(255) NOT NULL default '',
   `customerref` varchar(255) NOT NULL default '',
+  `serialnumber` text NOT NULL default '',
   `additionalinfo` text NOT NULL default '',
   `created_time` datetime NULL,
   PRIMARY KEY (`id`)
