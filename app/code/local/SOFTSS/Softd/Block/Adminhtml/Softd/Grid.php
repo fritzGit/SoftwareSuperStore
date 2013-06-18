@@ -7,7 +7,7 @@ class SOFTSS_Softd_Block_Adminhtml_Softd_Grid extends Mage_Adminhtml_Block_Widge
       parent::__construct();
       $this->setId('softdGrid');
       $this->setDefaultSort('id');
-      $this->setDefaultDir('ASC');
+      $this->setDefaultDir('DESC');
       $this->setSaveParametersInSession(true);
   }
 
