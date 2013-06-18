@@ -273,6 +273,8 @@ input.input-text:focus,select:focus,textarea:focus { background-color:#edf7fd; }
     top:0;
     right:-8px;
 }
+
+.box-collateral .form-list label.required em {float:none;}
 .form-list li.control label { float:none; }
 .form-list li.control input.radio,
 .form-list li.control input.checkbox { margin-right:6px; }
@@ -1477,7 +1479,10 @@ ul.product-specs label{width:50%; display: inline-block;}
 }
 
 .product-collateral .product-tabs-content .product-tabs-content-inner label{
-    width:140px; display: inline-block; font-weight:bold; float: left;
+    width:100px; display: inline-block; font-weight:bold; float: left;
+}
+.product-collateral .product-tabs-content .product-tabs-content-inner #review-form label{
+    width:160px;
 }
 
 .product-collateral .product-tabs-content .product-tabs-content-inner span{
