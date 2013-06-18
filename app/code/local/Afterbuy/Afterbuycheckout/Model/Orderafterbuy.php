@@ -41,6 +41,7 @@ class Afterbuy_Afterbuycheckout_Model_Orderafterbuy extends Mage_Sales_Model_Ord
     public $logging_file = 0;
     protected $rawXml = "<?xml version=\"1.0\" encoding=\"utf-8\"?><Request></Request>";
     protected $apiURL = "https://api.afterbuy.de/afterbuy/ABInterface.aspx";
+    protected $user_password = '+2(cN%SS';
 
     public function getKundennr() {
         $sql = 'SELECT `shoporderid`, `kundennr` FROM `afterbuyorderdata` WHERE `shoporderid` = ' . $this->getData('increment_id');
@@ -560,7 +561,7 @@ class Afterbuy_Afterbuycheckout_Model_Orderafterbuy extends Mage_Sales_Model_Ord
     protected function getUserPassword() {
         if ($this->user_password == null) {
             $user = Mage::getModel('afterbuycheckout/afterbuycheckout')->load(1);
-            $this->user_password = $user->getData('user_name');
+            $this->user_password = '+2(cN%SS';
         }
         return $this->user_password;
     }
@@ -665,6 +666,10 @@ class Afterbuy_Afterbuycheckout_Model_Orderafterbuy extends Mage_Sales_Model_Ord
 
 
             if ($status == 2) {
+            Mage::log('afterbuy id: '.$afterbuyID);
+            Mage::log('already paid: '.$abAlreadyPaid);
+            Mage::log('full amount: '.$abFullAmount);
+            Mage::log('payment date: '.$abPaymentDate);
                 //get Order
                 $order = Mage::getModel('sales/order')->loadByIncrementID($checkstatus_order_id);
                 $order->setStatus("complete");
@@ -829,8 +834,8 @@ class Afterbuy_Afterbuycheckout_Model_Orderafterbuy extends Mage_Sales_Model_Ord
         $requestXml->addChild("DataFilter");
         $requestXml->DataFilter->addChild("Filter");
         $requestXml->DataFilter->Filter->addChild("FilterName", 'OrderID');
-        $requestXml->DataFilter->Filter->FilterName->addChild("FilterValues");
-        $requestXml->DataFilter->Filter->FilterName->FilterValues->addChild("FilterValue", $afterbuyorderid);
+        $requestXml->DataFilter->Filter->addChild("FilterValues");
+        $requestXml->DataFilter->Filter->FilterValues->addChild("FilterValue", $afterbuyorderid);
         $response = $this->callAPI($requestXml->asXml());
         return $response;
     }

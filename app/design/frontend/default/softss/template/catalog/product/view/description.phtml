@@ -28,7 +28,7 @@
                 <?php if ($attribute->getIsVisibleOnFront()) : ?>
                 <?php $attrValue = $_cat_helper->getProductAttributeValue($_product, $attribute); ?>
                     <?php if ($attrValue !=  'N/A'  && !($attrValue ==  'No' && $attribute->getCode() != 'softss_backup_cd_available')) : ?>
-                        <li><label><?php echo $this->__($attribute->getStoreLabel()) ?></label><?php echo $_cat_helper->getProductAttributeValue($_product, $attribute) ?></li>
+                    <li><label><?php echo $this->__($attribute->getStoreLabel()) ?></label><span><?php echo $_cat_helper->getProductAttributeValue($_product, $attribute) ?></span></li>
                     <?php endif; ?>
                 <?php endif; ?>
             <?php endforeach; ?>

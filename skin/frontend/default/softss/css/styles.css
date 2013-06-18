@@ -1477,7 +1477,13 @@ ul.product-specs label{width:50%; display: inline-block;}
 }
 
 .product-collateral .product-tabs-content .product-tabs-content-inner label{
-    width:130px; display: inline-block; font-weight:bold;
+    width:100px; display: inline-block; font-weight:bold; float: left;
+}
+
+.product-collateral .product-tabs-content .product-tabs-content-inner span{
+    display:inline-block;
+    float: right;
+    width:290px;
 }
 
 .product-collateral .product-tabs-content .product-tabs-content-inner .left{
@@ -1495,7 +1501,7 @@ ul.product-specs label{width:50%; display: inline-block;}
 .product-collateral .product-tabs-content .product-tabs-content-inner .left li
 {float:none; background: url(../images/tick.png) 0 -1px no-repeat; padding: 2px 0 2px 25px;}
 ul.product-specs{margin-top: 20px;}
-ul.product-specs li{border-bottom: 1px solid #FF7300;padding: 10px 20px;}
+ul.product-specs li{border-bottom: 1px solid #FF7300;padding: 10px 20px;display: inline-block;}
 ul.product-specs label{width:50%; display: inline-block;}
 
 .product-collateral .product-tabs-content .product-tabs-content-inner .right{
