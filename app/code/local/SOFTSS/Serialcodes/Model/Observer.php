@@ -335,7 +335,7 @@ class SOFTSS_Serialcodes_Model_Observer extends Mmsmods_Serialcodes_Model_Observ
 
                             Mage::log("Email for order: " . $order->getIncrementId() . ' sent! - '.now(), null, $this->_logFileName);
                         } catch (Exception $e) {
-                            Mage::log("Error for order: " . $order->getIncrementId() . '. No email sent! - '.now(), null, $this->_logFileName);
+                            Mage::log("Error for order: " . $order->getIncrementId() . '. No email sent! - '.now().'--'.$e->getMessage(), null, $this->_logFileName);
                         }
                     } else {
                         Mage::log("Products belong to another attribute set", null, $this->_logFileName);
@@ -343,36 +343,41 @@ class SOFTSS_Serialcodes_Model_Observer extends Mmsmods_Serialcodes_Model_Observ
                 }
 
                 if(count($orderItemResponseDetails)>0){
-                    $oOrder = Mage::getModel('sales/order')->load($orderId);
 
-                    //send email to customer
-                    $sCustomerFullName = $oOrder->getBillingAddress()->getName();
-                    $sCustomerEmail = $oOrder->getCustomerEmail();
+                   try {
+                        //send email to customer
+                        $sCustomerFullName = $order->getBillingAddress()->getName();
+                        $sCustomerEmail = $order->getCustomerEmail();
 
-                    $emailTemplate  = Mage::getModel('core/email_template')->loadDefault('serialnumber_conf_serialnumber_email_softdistserialnumber_email_template');
-                    $emailTemplateVariables = array();
-                    $emailTemplateVariables['name'] = $sCustomerFullName;
+                        $emailTemplate = Mage::getModel('core/email_template')->loadDefault('serialnumber_conf_serialnumber_email_softdistserialnumber_email_template');
+                        $emailTemplateVariables = array();
+                        $emailTemplateVariables['name'] = $sCustomerFullName;
 
-                    $sSerialDownloadEmailText='';
-                    foreach($orderItemResponseDetails as $orderItemDetail){
-                        foreach($orderItemDetail['serials'] as $serial){
-                            $sSerialDownloadEmailText .= '<td>'.$orderItemDetail['productname'].'</td><td>'.$orderItemDetail['downloadlink'].'</td><td>'.$serial.'</td>';
+                        $sSerialDownloadEmailText = '';
+                        foreach ($orderItemResponseDetails as $orderItemDetail) {
+                            foreach ($orderItemDetail['serials'] as $serial) {
+                                $sSerialDownloadEmailText .= '<td>' . $orderItemDetail['productname'] . '</td><td>' . $orderItemDetail['downloadlink'] . '</td><td>' . $serial . '</td>';
+                            }
                         }
+
+                        $emailTemplateVariables['download_serial'] = $sSerialDownloadEmailText;
+
+                        $emailTemplate->getProcessedTemplate($emailTemplateVariables);
+                        $salesName = Mage::getStoreConfig('serialnumber_conf/serialnumber_email/name');
+                        $salesEmail = Mage::getStoreConfig('serialnumber_conf/serialnumber_email/sender_email_identity');
+
+                        $emailTemplate->setSenderName($salesName);
+                        $emailTemplate->setSenderEmail($salesEmail);
+                        $emailTemplate->setTemplateSubject('Softwaresuperstore Download Link');
+                        $emailTemplate->send($sCustomerEmail, $sCustomerFullName, $emailTemplateVariables, $emailTemplateVariables);
+
+                        $order->setData('softss_serialcode_sent', 1);
+                        $order->save();
+                        
+                        Mage::log("Email for order: " . $order->getIncrementId() . ' sent! - ' . now(), null, $this->_logFileName);
+                    } catch (Exception $e) {
+                        Mage::log("Error for order: " . $order->getIncrementId() . '. No email sent! - ' . now().'--'.$e->getMessage(), null, $this->_logFileName);
                     }
-
-                    $emailTemplateVariables['download_serial'] = $sSerialDownloadEmailText;
-
-                    $processedTemplate = $emailTemplate->getProcessedTemplate($emailTemplateVariables);
-                    $salesName  = Mage::getStoreConfig('serialnumber_conf/serialnumber_email/name');
-                    $salesEmail = Mage::getStoreConfig('serialnumber_conf/serialnumber_email/sender_email_identity');
-
-                    $emailTemplate->setSenderName($salesName);
-                    $emailTemplate->setSenderEmail($salesEmail);
-                    $emailTemplate->setTemplateSubject('Softwaresuperstore Download Link');
-                    $emailTemplate->send($sCustomerEmail,$sCustomerFullName, $emailTemplateVariables, $emailTemplateVariables);
-
-                    //set object flag, download link sent
-                    $oOrder->setEmailSent('1')->save();
                 }
             }
         } else {
