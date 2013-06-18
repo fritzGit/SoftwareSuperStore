@@ -666,10 +666,6 @@ class Afterbuy_Afterbuycheckout_Model_Orderafterbuy extends Mage_Sales_Model_Ord
 
 
             if ($status == 2) {
-            Mage::log('afterbuy id: '.$afterbuyID);
-            Mage::log('already paid: '.$abAlreadyPaid);
-            Mage::log('full amount: '.$abFullAmount);
-            Mage::log('payment date: '.$abPaymentDate);
                 //get Order
                 $order = Mage::getModel('sales/order')->loadByIncrementID($checkstatus_order_id);
                 $order->setStatus("complete");
@@ -717,9 +713,10 @@ class Afterbuy_Afterbuycheckout_Model_Orderafterbuy extends Mage_Sales_Model_Ord
                 }
             } elseif ($status == 1) {
                 //get Order
-                $order = Mage::getModel('sales/order')->load($checkstatus_order_id);
+                /*$order = Mage::getModel('sales/order')->load($checkstatus_order_id);
                 $order->setStatus('processing');
-                $order->setState(Mage_Sales_Model_Order::STATE_PROCESSING, true)->save();
+                $order->setState(Mage_Sales_Model_Order::STATE_PROCESSING, true)->save();*/
+                
             }
 
             return $xml;
@@ -728,7 +725,7 @@ class Afterbuy_Afterbuycheckout_Model_Orderafterbuy extends Mage_Sales_Model_Ord
             $tableName = Mage::getSingleton('core/resource')->getTableName('afterbuyorderdata');
             $write = Mage::getSingleton("core/resource")->getConnection("core_write");
             $afterbuyError = $xml->errorlist->error;
-            $query = "UPDATE $tableName SET success=0, errorcode=:errorcode, update_time=NOW() WHERE shoporderid=:shoporderid";
+            $query = "UPDATE $tableName SET success=0, errorcode=:errorcode, update_time = NOW() WHERE shoporderid=:shoporderid";
             $binds = array(
                 'shoporderid' => $checkstatus_order_id,
                 'errorcode' => $afterbuyError
@@ -767,7 +764,7 @@ class Afterbuy_Afterbuycheckout_Model_Orderafterbuy extends Mage_Sales_Model_Ord
         foreach ($orders as $order) {
             $amount = $order->getGrandTotal();
             $orderIncrementId = $order->getIncrementId();
-            $afterbuyOrderID = Mage::getModel('afterbuycheckout/afterbuycheckout')->loadByShoporderid($orderIncrementId);
+            $afterbuyOrderID = Mage::getModel('afterbuycheckout/afterbuycheckout')->getCollection()->addFieldToFilter('shoporderid', $orderIncrementId)->getFirstItem();
             $responseXML = $this->createAfterbuyStatusXML($afterbuyOrderID, $amount);
 
             // if error...

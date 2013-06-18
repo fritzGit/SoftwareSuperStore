@@ -273,6 +273,8 @@ input.input-text:focus,select:focus,textarea:focus { background-color:#edf7fd; }
     top:0;
     right:-8px;
 }
+
+.box-collateral .form-list label.required em {float:none;}
 .form-list li.control label { float:none; }
 .form-list li.control input.radio,
 .form-list li.control input.checkbox { margin-right:6px; }
@@ -1041,15 +1043,14 @@ h1.homepage-softwaress{color:#ff7300;padding:20px 0; font-family: 'Aller_Lt',San
 .products-grid .price-box { margin:5px 0; }
 .products-grid .availability { line-height:21px; }
 .products-grid .priceBubble{background:url("../images/buttons.png") no-repeat -280px 0; width:70px; height:22px; position: absolute; top:67px; right:9px; text-align: right;}
-.products-grid .priceBubble .price-box{position: absolute; top:1px; right:8px;width:40px;margin: 0;}
+.products-grid .priceBubble .price-box{position: absolute; top:1px; right:8px; width:40px; margin: 0;}
 .products-grid .priceBubble .regular-price{padding-top:1px;}
-.products-grid .cartBubble{background:url("../images/buttons.png") no-repeat -140px 0; width:37px; height:41px; position: absolute; top:85px; right:10px; z-index: 10; cursor: pointer;}
+.products-grid .cartBubble{background:url("../images/buttons.png") no-repeat -140px 0; width:37px; height:41px; position: absolute; top:85px; right:10px; z-index: 5; cursor: pointer;}
 
 .products-grid .actions { position: absolute; left:0; padding: 0 0 2px 10px; bottom:0; width:150px; text-align: left; border-bottom: 1px solid #ececec;}
 .col2-left-layout .products-grid,
 .col2-right-layout .products-grid { width:830px; margin:0 auto 20px auto; }
 .col1-layout .products-grid { width:790px; margin:0 auto; }
-
 
 /* View Type: List */
 .products-list li.item { border-bottom:1px solid #d9ddd3; padding:12px 10px; }
@@ -1477,7 +1478,10 @@ ul.product-specs label{width:50%; display: inline-block;}
 }
 
 .product-collateral .product-tabs-content .product-tabs-content-inner label{
-    width:140px; display: inline-block; font-weight:bold; float: left;
+    width:100px; display: inline-block; font-weight:bold; float: left;
+}
+.product-collateral .product-tabs-content .product-tabs-content-inner #review-form label{
+    width:160px;
 }
 
 .product-collateral .product-tabs-content .product-tabs-content-inner span{
