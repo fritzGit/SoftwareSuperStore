@@ -1,4 +1,4 @@
-<?php
+created<?php
 /*
 * ModifyMage Solutions (http://ModifyMage.com)
 * Serial Codes - Serial Numbers, Product Codes, PINs, and More

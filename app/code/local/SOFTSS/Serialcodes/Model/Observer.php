@@ -201,6 +201,8 @@ class SOFTSS_Serialcodes_Model_Observer extends Mmsmods_Serialcodes_Model_Observ
                             $oSoftDistributionCodes->setOrderref($sOrderref);
                             $oSoftDistributionCodes->setAdditionalinfo($sAdditionalinfo);
                             $oSoftDistributionCodes->setSerialnumber(implode($aSerial));
+                            $oSoftDistributionCodes->setCreatedTime(now());
+
                             $oSoftDistributionCodes->save();
 
                             if($product->getSoftssExtendedorderRequired() == 1 ){
