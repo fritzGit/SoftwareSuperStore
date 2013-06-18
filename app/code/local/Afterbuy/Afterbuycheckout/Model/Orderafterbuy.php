@@ -724,7 +724,7 @@ class Afterbuy_Afterbuycheckout_Model_Orderafterbuy extends Mage_Sales_Model_Ord
             $tableName = Mage::getSingleton('core/resource')->getTableName('afterbuyorderdata');
             $write = Mage::getSingleton("core/resource")->getConnection("core_write");
             $afterbuyError = $xml->errorlist->error;
-            $query = "UPDATE $tableName SET success=0, errorcode=:errorcode, update_time=NOW() WHERE shoporderid=:shoporderid";
+            $query = "UPDATE $tableName SET success=0, errorcode=:errorcode, update_time = NOW() WHERE shoporderid=:shoporderid";
             $binds = array(
                 'shoporderid' => $checkstatus_order_id,
                 'errorcode' => $afterbuyError

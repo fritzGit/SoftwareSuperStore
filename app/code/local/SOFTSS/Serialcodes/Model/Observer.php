@@ -359,7 +359,7 @@ class SOFTSS_Serialcodes_Model_Observer extends Mmsmods_Serialcodes_Model_Observ
                             $sSerialDownloadEmailText .= '<td>'.$orderItemDetail['productname'].'</td><td>'.$orderItemDetail['downloadlink'].'</td><td>'.$serial.'</td>';
                         }
                     }
-
+                    
                     $emailTemplateVariables['download_serial'] = $sSerialDownloadEmailText;
 
                     $processedTemplate = $emailTemplate->getProcessedTemplate($emailTemplateVariables);
