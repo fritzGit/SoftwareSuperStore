@@ -655,11 +655,11 @@ class Afterbuy_Afterbuycheckout_Model_Orderafterbuy extends Mage_Sales_Model_Ord
         $xml = new SimpleXMLElement($responseXML);
         /*         * ************************************** */
         if (preg_match("/<CallStatus>Success<\/CallStatus>/", $responseXML)) {
-            $abPaymentDate = (string) $xml->PaymentInfo->PaymentDate;
-            $abAlreadyPaid = (string) $xml->PaymentInfo->AlreadyPaid;
-            $abFullAmount = (string) $xml->PaymentInfo->FullAmount;
+            $abPaymentDate = (string) $xml->Result->Orders->Order->PaymentInfo->PaymentDate;
+            $abAlreadyPaid = (string) $xml->Result->Orders->Order->PaymentInfo->AlreadyPaid;
+            $abFullAmount = (string) $xml->Result->Orders->Order->PaymentInfo->FullAmount;
 
-            if (isset($abPaymentDate) && $abAlreadyPaid == $abFullAmount)
+            if (isset($abPaymentDate) && isset($abAlreadyPaid) && $abAlreadyPaid == $abFullAmount)
                 $status = 2; // compleate
             else
                 $status = 1; // in process
