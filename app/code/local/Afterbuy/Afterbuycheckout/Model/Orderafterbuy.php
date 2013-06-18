@@ -666,10 +666,6 @@ class Afterbuy_Afterbuycheckout_Model_Orderafterbuy extends Mage_Sales_Model_Ord
 
 
             if ($status == 2) {
-            Mage::log('afterbuy id: '.$afterbuyID);
-            Mage::log('already paid: '.$abAlreadyPaid);
-            Mage::log('full amount: '.$abFullAmount);
-            Mage::log('payment date: '.$abPaymentDate);
                 //get Order
                 $order = Mage::getModel('sales/order')->loadByIncrementID($checkstatus_order_id);
                 $order->setStatus("complete");
