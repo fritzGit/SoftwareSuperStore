@@ -1,0 +1,128 @@
+<?xml version="1.0"?>
+<!-- 
+/**
+ * @category   SOFTSS
+ * @package    SOFTSS_Softd
+ * @author     ModuleCreator
+ * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+ -->
+<config>
+    <modules>
+        <SOFTSS_Softd>
+            <version>0.1.0</version>
+        </SOFTSS_Softd>
+    </modules>
+    <frontend>
+        <routers>
+            <softd>
+                <use>standard</use>
+                <args>
+                    <module>SOFTSS_Softd</module>
+                    <frontName>softd</frontName>
+                </args>
+            </softd>
+        </routers>
+        <layout>
+            <updates>
+                <softd>
+                    <file>softd.xml</file>
+                </softd>
+            </updates>
+        </layout>
+    </frontend>
+    <admin>
+        <routers>
+			<softd>
+				<use>admin</use>
+				<args>
+					<module>SOFTSS_Softd</module>
+					<frontName>softd</frontName>
+				</args>
+			</softd>
+        </routers>
+    </admin>
+    <adminhtml>
+		<menu>
+			<softd module="softd">
+				<title>SoftDistribution</title>
+				<sort_order>71</sort_order>               
+				<children>
+					<items module="softd">
+						<title>Product Info</title>
+						<sort_order>0</sort_order>
+						<action>softd/adminhtml_softd</action>
+					</items>
+				</children>
+			</softd>
+		</menu>
+		<acl>
+			<resources>
+				<all>
+					<title>Allow Everything</title>
+				</all>
+				<admin>
+					<children>
+						<SOFTSS_Softd>
+							<title>Softd Module</title>
+							<sort_order>10</sort_order>
+						</SOFTSS_Softd>
+					</children>
+				</admin>
+			</resources>
+		</acl>
+		<layout>
+			<updates>
+				<softd>
+					<file>softd.xml</file>
+				</softd>
+			</updates>
+		</layout>
+    </adminhtml>   
+    <global>
+        <models>
+            <softd>
+                <class>SOFTSS_Softd_Model</class>
+                <resourceModel>softd_mysql4</resourceModel>
+            </softd>
+            <softd_mysql4>
+                <class>SOFTSS_Softd_Model_Mysql4</class>
+                <entities>
+                    <softd>
+                        <table>softss_softdistribution</table>
+                    </softd>
+                </entities>
+            </softd_mysql4>
+        </models>
+        <resources>
+            <softd_setup>
+                <setup>
+                    <module>SOFTSS_Softd</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </softd_setup>
+            <softd_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </softd_write>
+            <softd_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </softd_read>
+        </resources>
+        <blocks>
+            <softd>
+                <class>SOFTSS_Softd_Block</class>
+            </softd>
+        </blocks>
+        <helpers>
+            <softd>
+                <class>SOFTSS_Softd_Helper</class>
+            </softd>
+        </helpers>
+    </global>
+</config>

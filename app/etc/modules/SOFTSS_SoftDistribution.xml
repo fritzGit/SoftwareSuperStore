@@ -1,9 +1,0 @@
-<?xml version="1.0"?>
-<config>
-    <modules>
-        <SOFTSS_SoftDistribution>
-            <active>true</active>
-            <codePool>local</codePool>
-        </SOFTSS_SoftDistribution>
-    </modules>
-</config>

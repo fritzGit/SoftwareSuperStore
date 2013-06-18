@@ -22,7 +22,7 @@ class SOFTSS_Downloadable_Helper_Data extends Mage_Downloadable_Helper_Data
     {
         $data = array();
        
-        $softItem = Mage::getModel('softdistribution/softdistribution')->getCollection()
+        $softItem = Mage::getModel('softd/softd')->getCollection()
                 ->addFieldToFilter('itemid', $item->getOrderItemId())
                 ->addFieldToFilter('orderref', $item->getPurchased()->getOrderId())
                 ->getFirstItem();

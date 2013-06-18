@@ -191,7 +191,7 @@ class SOFTSS_Serialcodes_Model_Observer extends Mmsmods_Serialcodes_Model_Observ
                                                                 'additionalinfo'=>$sAdditionalinfo,
                                                                 'serials'       =>$aSerial);
 
-                            $oSoftDistributionCodes = Mage::getModel('softditribution/softditribution');
+                            $oSoftDistributionCodes = Mage::getModel('softd/softd');
                             $oSoftDistributionCodes->setProductpid($sProductpid);
                             $oSoftDistributionCodes->setItemid($item->getId());
                             $oSoftDistributionCodes->setDownloadlink($sDownloadlink);
