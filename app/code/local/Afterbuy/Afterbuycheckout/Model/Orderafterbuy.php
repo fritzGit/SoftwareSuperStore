@@ -713,9 +713,10 @@ class Afterbuy_Afterbuycheckout_Model_Orderafterbuy extends Mage_Sales_Model_Ord
                 }
             } elseif ($status == 1) {
                 //get Order
-                $order = Mage::getModel('sales/order')->load($checkstatus_order_id);
+                /*$order = Mage::getModel('sales/order')->load($checkstatus_order_id);
                 $order->setStatus('processing');
-                $order->setState(Mage_Sales_Model_Order::STATE_PROCESSING, true)->save();
+                $order->setState(Mage_Sales_Model_Order::STATE_PROCESSING, true)->save();*/
+                
             }
 
             return $xml;
@@ -763,7 +764,7 @@ class Afterbuy_Afterbuycheckout_Model_Orderafterbuy extends Mage_Sales_Model_Ord
         foreach ($orders as $order) {
             $amount = $order->getGrandTotal();
             $orderIncrementId = $order->getIncrementId();
-            $afterbuyOrderID = Mage::getModel('afterbuycheckout/afterbuycheckout')->loadByShoporderid($orderIncrementId);
+            $afterbuyOrderID = Mage::getModel('afterbuycheckout/afterbuycheckout')->getCollection()->addFieldToFilter('shoporderid', $orderIncrementId)->getFirstItem();
             $responseXML = $this->createAfterbuyStatusXML($afterbuyOrderID, $amount);
 
             // if error...
