@@ -783,6 +783,9 @@ class Afterbuy_Afterbuycheckout_Model_Orderafterbuy extends Mage_Sales_Model_Ord
                 } catch (exception $e) {
                     Mage::log($e->getMessage());
                 }
+            }else{
+                // todo: set flag afterbuy synced to true
+                $orders->setSoftssAfterbuySynced('1')->save();
             }
         }
     }
