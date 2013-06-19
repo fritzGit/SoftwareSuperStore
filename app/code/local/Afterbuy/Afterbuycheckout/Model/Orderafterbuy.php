@@ -659,7 +659,7 @@ class Afterbuy_Afterbuycheckout_Model_Orderafterbuy extends Mage_Sales_Model_Ord
             $abAlreadyPaid = (string) $xml->Result->Orders->Order->PaymentInfo->AlreadyPaid;
             $abFullAmount = (string) $xml->Result->Orders->Order->PaymentInfo->FullAmount;
 
-            if (isset($abPaymentDate) && isset($abAlreadyPaid) && $abAlreadyPaid == $abFullAmount)
+            if (isset($abPaymentDate) && $abAlreadyPaid == $abFullAmount)
                 $status = 2; // compleate
             else
                 $status = 1; // in process
@@ -668,7 +668,6 @@ class Afterbuy_Afterbuycheckout_Model_Orderafterbuy extends Mage_Sales_Model_Ord
             if ($status == 2) {
                 //get Order
                 $order = Mage::getModel('sales/order')->loadByIncrementID($checkstatus_order_id);
-                $order->setStatus("complete");
 
                 /**
                  * change order status to 'Complete' by creating the invoice
@@ -711,14 +710,14 @@ class Afterbuy_Afterbuycheckout_Model_Orderafterbuy extends Mage_Sales_Model_Ord
                     );
                     $write->query($query, $binds);
                 } catch (Mage_Core_Exception $e) {
-                    die($e->getMessage());
+                    Mage::log($e->getMessage());
                 }
             } elseif ($status == 1) {
                 //get Order
                 /*$order = Mage::getModel('sales/order')->load($checkstatus_order_id);
                 $order->setStatus('processing');
                 $order->setState(Mage_Sales_Model_Order::STATE_PROCESSING, true)->save();*/
-                
+
             }
 
             return $xml;
@@ -760,20 +759,20 @@ class Afterbuy_Afterbuycheckout_Model_Orderafterbuy extends Mage_Sales_Model_Ord
      * return xml formatted string
      */
     public function setOrderPaymentStatusComplete() {
-        $orders = Mage::getmodel('sales/order')->getCollection()
-                ->addFieldToFilter('status', 'complete');
+        $orders = Mage::getmodel('sales/order')->getCollection()->addFieldToFilter('status', 'complete');
 
         foreach ($orders as $order) {
-            $amount = $order->getGrandTotal();
+            $amount = number_format($order->getGrandTotal(), 2, ',', '');
             $orderIncrementId = $order->getIncrementId();
-            $afterbuyOrderID = Mage::getModel('afterbuycheckout/afterbuycheckout')->getCollection()->addFieldToFilter('shoporderid', $orderIncrementId)->getFirstItem();
-            $responseXML = $this->createAfterbuyStatusXML($afterbuyOrderID, $amount);
+
+            $afterbuyOrderID = Mage::getModel('afterbuycheckout/afterbuycheckout')->getAfterbuyId($orderIncrementId);
+            $aResponse = $this->setAfterbuyStatus($afterbuyOrderID, $amount);
 
             // if error...
-            if (!preg_match("/<CallStatus>Success<\/CallStatus>/", $responseXML)) {
+            if (!preg_match("/<CallStatus>Success<\/CallStatus>/", $aResponse['response'])) {
                 try {
                     $mail_content = 'Magento Order Increment ID : ' . $orderIncrementId . ', AfterBuy OrderId : ' . $afterbuyOrderID . '. Fehler bei &Uuml;bertragung der Bestellung an Afterbuy: ' . chr(13) . chr(10) .
-                    'Folgende Fehlermeldung wurde gemeldet:' . chr(13) . chr(10) . $responseXML . chr(13) . chr(10);
+                    'Folgende Fehlermeldung wurde gemeldet:' . chr(13) . chr(10) . $aResponse['response'] . chr(13) . chr(10).' Request: '.$aResponse['request'].chr(13) . chr(10);
 
                     $mail = new Zend_Mail();
                     $mail->setBodyText($mail_content);
@@ -814,7 +813,6 @@ class Afterbuy_Afterbuycheckout_Model_Orderafterbuy extends Mage_Sales_Model_Ord
     }
 
     protected function setAfterbuyStatus($afterbuyOrderID, $amount) {
-
         $requestXml = $this->createAPIGlobals('UpdateSoldItems', '0');
         $requestXml->addChild("Orders");
         $requestXml->Orders->addChild("Order");
@@ -822,8 +820,9 @@ class Afterbuy_Afterbuycheckout_Model_Orderafterbuy extends Mage_Sales_Model_Ord
         $requestXml->Orders->Order->addChild("PaymentInfo");
         $requestXml->Orders->Order->PaymentInfo->addChild("AlreadyPaid", str_replace(".", ",", $amount));
         $requestXml->Orders->Order->PaymentInfo->addChild("PaymentDate", date("d.m.Y", time()));
-        $response = $this->callAPI($requestXml->asXml());
-        return $response;
+        $requestString = $requestXml->asXml();
+        $response = $this->callAPI($requestString);
+        return array('response'=>$response, 'request'=>$requestString);
     }
 
     public function getAfterbuySoldItems($afterbuyorderid) {
