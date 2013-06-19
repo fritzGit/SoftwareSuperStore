@@ -716,7 +716,7 @@ class Afterbuy_Afterbuycheckout_Model_Orderafterbuy extends Mage_Sales_Model_Ord
                 /*$order = Mage::getModel('sales/order')->load($checkstatus_order_id);
                 $order->setStatus('processing');
                 $order->setState(Mage_Sales_Model_Order::STATE_PROCESSING, true)->save();*/
-                
+
             }
 
             return $xml;
@@ -762,10 +762,11 @@ class Afterbuy_Afterbuycheckout_Model_Orderafterbuy extends Mage_Sales_Model_Ord
                 ->addFieldToFilter('status', 'complete');
 
         foreach ($orders as $order) {
-            $amount = $order->getGrandTotal();
+            $amount = number_format($order->getGrandTotal(), 2, ',', '');
             $orderIncrementId = $order->getIncrementId();
-            $afterbuyOrderID = Mage::getModel('afterbuycheckout/afterbuycheckout')->getCollection()->addFieldToFilter('shoporderid', $orderIncrementId)->getFirstItem();
-            $responseXML = $this->createAfterbuyStatusXML($afterbuyOrderID, $amount);
+
+			$afterbuyOrderID = Mage::getModel('afterbuycheckout/afterbuycheckout')->getAfterbuyId($orderIncrementId);
+            $responseXML = $this->setAfterbuyStatus($afterbuyOrderID, $amount);
 
             // if error...
             if (!preg_match("/<CallStatus>Success<\/CallStatus>/", $responseXML)) {
@@ -812,7 +813,6 @@ class Afterbuy_Afterbuycheckout_Model_Orderafterbuy extends Mage_Sales_Model_Ord
     }
 
     protected function setAfterbuyStatus($afterbuyOrderID, $amount) {
-
         $requestXml = $this->createAPIGlobals('UpdateSoldItems', '0');
         $requestXml->addChild("Orders");
         $requestXml->Orders->addChild("Order");
