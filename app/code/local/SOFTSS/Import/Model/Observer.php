@@ -1,21 +1,22 @@
 <?php
 
 /*
- *  Software property of Pcfritz.de. Copyright 2013.
+ * Copyright 2013 pcfritz.de Onlinestore GmbH – http://www.pcfritz.de
+ * all rights reserved
  */
 
 /**
- * softdistributionController.php (UTF-8)
+ * Softdistribuion import observer
  *
- * May 16, 2013
- * @author Juan Galvez :: juanjogalvez@gmail.com
- * @package SOFTSS
- * @subpackage
+ * @encoding    UTF-8
+ * @package     SOFTSS
+ * @subpackage  SOFTSS_Import
+ * @author      Nikolas Koumarianos <n.entwickler@pcfritz.de>
  *
- *
- * */
-class SOFTSS_Import_SoftdistributionController extends Mage_Core_Controller_Front_Action {
+ */
 
+class SOFTSS_Import_Model_Observer
+{
     const XML_SOFTDISTIBUTION_RESELLERID = 'checkout/softdistribution/resellerid';
     const XML_SOFTDISTIBUTION_PASSWORD = 'checkout/softdistribution/password';
     const XML_SOFTDISTIBUTION_IMPORT_URL = 'checkout/softdistribution/url_import';
@@ -32,7 +33,7 @@ class SOFTSS_Import_SoftdistributionController extends Mage_Core_Controller_Fron
     protected $_softwareCategoryId = 3; //Software Category Id for live 3
     protected $_storeId;
 
-    public function indexAction() {
+    public function import() {
 
         $this->_storeId = Mage::app()->getWebsite()->getDefaultGroup()->getDefaultStoreId();
 
@@ -114,38 +115,37 @@ class SOFTSS_Import_SoftdistributionController extends Mage_Core_Controller_Fron
             if ($sku == '') {
                 $sku = $aProduct['productversionid'];
             }
-            
+
             if ($aProductDetail['currency'] != 'GBP') {
                 Mage::log("Product with curency not GBP skipped: " . $aProductDetail['name'] . '---' . $aProductDetail['productversionid'], null, $this->_logFileName);
                 continue;
             }
-            
+
             if (strpos('windows', strtolower($aProductDetail['name'])) !== false || strpos('office', strtolower($aProductDetail['name'])) !== false) {
                 Mage::log("Possible windows or office product skipped: " . $aProductDetail['name'] . '---' . $aProductDetail['productversionid'], null, $this->_logFileName);
                 continue;
-            }            
-            
+            }
+
             if ($aProductDetail['genre'] == 'Games') {
-                $rootCat = $this->_gameCategoryId;   
+                $rootCat = $this->_gameCategoryId;
                 $this->_attributeSetId = $this->_attributeSetIdGames;
             } else {
-                $rootCat = $this->_softwareCategoryId;   
-                $this->_attributeSetId = $this->_attributeSetIdSoftware;  
+                $rootCat = $this->_softwareCategoryId;
+                $this->_attributeSetId = $this->_attributeSetIdSoftware;
             }
-       
+
             //create categories
             $mainCatID = $this->createCategory($aProductDetail['maincategory'], $rootCat);
-            
+
             if ($aProductDetail['genre'] == 'Games') {
                 if (!$mainCatID)
                     $mainCatID = $this->_gameCategoryId;
-                
             } else {
                 if (!$mainCatID)
                     $mainCatID = $this->_softwareCategoryId;
-            }                
-       
-            
+            }
+
+
             $categories = array($rootCat, $mainCatID);
             if ($aProductDetail['subcategory'] != '') {
                 $subCatID = $this->createCategory($aProductDetail['subcategory'], $mainCatID);
@@ -219,17 +219,17 @@ class SOFTSS_Import_SoftdistributionController extends Mage_Core_Controller_Fron
             try {
                 if ($product instanceof Mage_Catalog_Model_Product && $product->getId()) {
                     $productAPImodel->update($product->getId(), $data, $this->_storeId);
-                    
+
                     $_images = Mage::getModel('catalog/product')->load($product->getId())->getMediaGalleryImages();
-                    if(!$_images) {
-                       $this->addImages($product->getId(), $aProductDetail);
+                    if (!$_images) {
+                        $this->addImages($product->getId(), $aProductDetail);
                     }
-                    
+
                     Mage::log("Product " . $product->getName() . " updated: " . $product->getId(), null, $this->_logFileName);
                 } else {
                     $newProductId = $productAPImodel->create($this->_productType, $this->_attributeSetId, $sku, $data, $this->_storeId);
                     $this->addImages($newProductId, $aProductDetail);
-            
+
                     //add downloadable link    
                     $product = Mage::getModel('catalog/product')->load($newProductId);
                     $product->setDownloadableData($downloadData);
@@ -452,7 +452,7 @@ class SOFTSS_Import_SoftdistributionController extends Mage_Core_Controller_Fron
         $responce = curl_exec($curl);
 
         if (curl_errno($curl)) {
-            Mage::log("Curl error" . curl_error($curl).'url: '.$url, null, $this->_logFileName);
+            Mage::log("Curl error" . curl_error($curl) . 'url: ' . $url, null, $this->_logFileName);
             return 'Curl error';
         }
 
@@ -517,29 +517,29 @@ class SOFTSS_Import_SoftdistributionController extends Mage_Core_Controller_Fron
             if (!file_exists($importDir3)) {
                 mkdir($importDir3);
             }
-            
+
             $hasMainImage = false;
             if ($data['boxshot3d_large'] != "") {
-                
+
                 $imgData3d = $this->getXML($data['boxshot3d_large']);
-                
+
                 if (!strpos($imgData3d, 'error')) {
 
                     $imgPath = $importDir3 . $data['productversionid'] . '_3d.png';
                     file_put_contents($imgPath, $imgData3d);
                     $hasMainImage = true;
                 }
-            } elseif ($data['boxshot2d_large'] != "") {                
+            } elseif ($data['boxshot2d_large'] != "") {
 
                 $imgData2d = $this->getXML($data['boxshot2d_large']);
-                                          
+
                 if (!strpos($imgData2d, 'error')) {
 
                     $imgPath = $importDir3 . $data['productversionid'] . '_2d.png';
                     file_put_contents($imgPath, $imgData2d);
                     $hasMainImage = true;
                 }
-            } 
+            }
 
             $aImgPathScreenShot = array();
 
@@ -560,9 +560,9 @@ class SOFTSS_Import_SoftdistributionController extends Mage_Core_Controller_Fron
 
                 // Add three image sizes to media gallery
                 $mediaArray = array(
-                    'thumbnail'     => $imgPath,
-                    'small_image'   => $imgPath,
-                    'image'         => $imgPath,
+                    'thumbnail' => $imgPath,
+                    'small_image' => $imgPath,
+                    'image' => $imgPath,
                 );
 
 
@@ -578,7 +578,7 @@ class SOFTSS_Import_SoftdistributionController extends Mage_Core_Controller_Fron
                     }
                 }
             }
-            
+
             //add screenshots as additional images
             foreach ($aImgPathScreenShot as $imgPathScreenShot) {
                 if (file_exists($imgPathScreenShot)) {
@@ -629,15 +629,13 @@ class SOFTSS_Import_SoftdistributionController extends Mage_Core_Controller_Fron
         foreach ($collection as $category) {
 
             if ($category->getProductCount() == 0) {
-                
+
                 $category->setData('is_active', 0);
                 $category->save();
-                Mage::log("Category is deactivated: ".$category->getName(), null, $this->_logFileName);
-
+                Mage::log("Category is deactivated: " . $category->getName(), null, $this->_logFileName);
             }
         }
         return;
     }
 
 }
-

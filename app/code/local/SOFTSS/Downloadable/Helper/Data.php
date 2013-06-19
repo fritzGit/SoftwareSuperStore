@@ -23,9 +23,9 @@ class SOFTSS_Downloadable_Helper_Data extends Mage_Downloadable_Helper_Data
         $data = array();
        
         $softItem = Mage::getModel('softd/softd')->getCollection()
-                ->addFieldToFilter('itemid', $item->getOrderItemId())
-                ->addFieldToFilter('orderref', $item->getPurchased()->getOrderId())
-                ->getFirstItem();
+                        ->addFieldToFilter('itemid', $item->getOrderItemId())
+                        ->addFieldToFilter('orderref', $item->getPurchased()->getOrderId())
+                        ->getFirstItem();
         
         $data['url'] = $softItem->getDownloadlink();
         $data['serialnumber'] = explode(',', $softItem->getSerialnumber());
