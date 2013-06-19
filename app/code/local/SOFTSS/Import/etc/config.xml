@@ -13,6 +13,11 @@
                 <class>SOFTSS_Import_Helper</class>
             </softssimport>
         </helpers>
+        <models>
+            <softssimport>
+                <class>SOFTSS_Import_Model</class>
+            </softssimport>
+        </models>
     </global>
 
     <frontend>
@@ -26,4 +31,16 @@
             </softssimport>
         </routers>
     </frontend>
+    <crontab>
+        <jobs>
+            <softd_import>
+                <schedule>
+                    <cron_expr>* 3 * * *</cron_expr>
+                </schedule>
+                <run>
+                    <model>softssimport/observer::import</model>
+                </run>
+            </softd_import>
+        </jobs>
+    </crontab>
 </config>

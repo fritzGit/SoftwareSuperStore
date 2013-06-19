@@ -150,7 +150,6 @@ class SOFTSS_Serialcodes_Model_Observer extends Mmsmods_Serialcodes_Model_Observ
 
                         Mage::log('url:'.$url, null, $this->_logFileNameSoftD);
                         $responseXML = $this->getXML($url);
-                        $aOrderDetail = array();
                         Mage::log('response xml:'.$responseXML, null, $this->_logFileNameSoftD);
 
                         if(isset($responseXML)) {
@@ -177,6 +176,7 @@ class SOFTSS_Serialcodes_Model_Observer extends Mmsmods_Serialcodes_Model_Observ
                             $sOrderref          = (string)$response->orderref;
                             $sAdditionalinfo    = (string)$response->additionalinfo;
                             $aSerial = array();
+                            
                             foreach($response->serials->serial as $serial){
                                 $aSerial[] = (string)$serial;
                             }
@@ -200,7 +200,9 @@ class SOFTSS_Serialcodes_Model_Observer extends Mmsmods_Serialcodes_Model_Observ
                             $oSoftDistributionCodes->setCustomerref($sCustomerref);
                             $oSoftDistributionCodes->setOrderref($sOrderref);
                             $oSoftDistributionCodes->setAdditionalinfo($sAdditionalinfo);
-                            $oSoftDistributionCodes->setSerialnumber(implode($aSerial));
+                            $oSoftDistributionCodes->setSerialnumber(implode(',', $aSerial));
+                            $oSoftDistributionCodes->setCreatedTime(now());
+
                             $oSoftDistributionCodes->save();
 
                             if($product->getSoftssExtendedorderRequired() == 1 ){
@@ -356,7 +358,7 @@ class SOFTSS_Serialcodes_Model_Observer extends Mmsmods_Serialcodes_Model_Observ
                         $sSerialDownloadEmailText = '';
                         foreach ($orderItemResponseDetails as $orderItemDetail) {
                             foreach ($orderItemDetail['serials'] as $serial) {
-                                $sSerialDownloadEmailText .= '<td>' . $orderItemDetail['productname'] . '</td><td>' . $orderItemDetail['downloadlink'] . '</td><td>' . $serial . '</td>';
+                                $sSerialDownloadEmailText .= '<tr><td>' . $orderItemDetail['productname'] . '</td><td>' . $orderItemDetail['downloadlink'] . '</td><td>' . $serial . '</td></tr>';
                             }
                         }
 
@@ -373,7 +375,7 @@ class SOFTSS_Serialcodes_Model_Observer extends Mmsmods_Serialcodes_Model_Observ
 
                         $order->setData('softss_serialcode_sent', 1);
                         $order->save();
-
+                        
                         Mage::log("Email for order: " . $order->getIncrementId() . ' sent! - ' . now(), null, $this->_logFileName);
                     } catch (Exception $e) {
                         Mage::log("Error for order: " . $order->getIncrementId() . '. No email sent! - ' . now().'--'.$e->getMessage(), null, $this->_logFileName);
