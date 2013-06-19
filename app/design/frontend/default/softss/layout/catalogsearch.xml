@@ -35,7 +35,7 @@
         <reference name="content">
             <block type="catalogsearch/result" name="search.result" template="catalogsearch/result.phtml">
                 <block type="catalog/product_list" name="search_result_list" template="catalog/product/list.phtml">
-                    <block type="catalog/product_list_toolbar" name="product_list_toolbar" template="catalog/product/list/toolbar.phtml">
+                                    <block type="catalog/product_list_toolbar" name="product_list_toolbar_bottom" template="catalog/product/list/toolbar_bottom.phtml">
                         <block type="page/html_pager" name="product_list_toolbar_pager"/>
                     </block>
                     <action method="setColumnCount"><count>4</count></action>
