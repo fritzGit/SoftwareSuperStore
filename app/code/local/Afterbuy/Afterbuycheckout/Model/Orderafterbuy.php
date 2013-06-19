@@ -699,6 +699,8 @@ class Afterbuy_Afterbuycheckout_Model_Orderafterbuy extends Mage_Sales_Model_Ord
 
                     $transactionSave->save();
 
+                    Mage::dispatchEvent('softss_update_download_link', array('order'=>$order)); 
+
                     //update afterbuyorderdata table
                     $tableName = Mage::getSingleton('core/resource')->getTableName('afterbuyorderdata');
                     $write = Mage::getSingleton("core/resource")->getConnection("core_write");
