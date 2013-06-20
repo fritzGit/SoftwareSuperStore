@@ -761,7 +761,8 @@ class Afterbuy_Afterbuycheckout_Model_Orderafterbuy extends Mage_Sales_Model_Ord
     public function setOrderPaymentStatusComplete() {
         $orders = Mage::getmodel('sales/order')->getCollection()
                                                ->addFieldToFilter('status', 'complete')
-                                               ->addFieldToFilter('softss_afterbuy_synced', 0);
+                                               ->addFieldToFilter('softss_afterbuy_synced', 0)
+                                               ->addFieldToFilter('state', array('neq', 'canceled'));
 
         foreach ($orders as $order) {
             $amount = number_format($order->getGrandTotal(), 2, ',', '');
