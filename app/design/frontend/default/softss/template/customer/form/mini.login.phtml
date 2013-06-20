@@ -64,10 +64,13 @@
     <script type="text/javascript">
     //<![CDATA[
         var dataForm = new VarienForm('login-form-ajax', true);
+                
         $j(document).ready(function(){
-            if(event.keyCode == 13){
-                $j("#loginbutton").click();
-            }
+               $j('#login-form-ajax input').keydown(function(e) {
+                if (e.keyCode == 13) {
+                    ajaxLoginPost();
+                }
+            });
         });
     //]]>
     </script>
