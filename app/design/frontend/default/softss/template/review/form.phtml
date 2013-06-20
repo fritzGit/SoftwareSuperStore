@@ -10,8 +10,8 @@
 
                 <?php if( $this->getRatings() && $this->getRatings()->getSize()): ?>
                         <?php foreach ($this->getRatings() as $_rating): ?>
-                                <label for="rating_field" class="required"><b><?php echo $this->__('Rating') ?></b></label>
-                                <div class="input-box">
+                                <label for="rating_field" class="required"><b><?php echo $this->__($this->escapeHtml($_rating->getRatingCode())) ?></b></label>
+                                <div class="input-box" style="padding-bottom:5px;">
                                     <select id="rating_field" name="ratings[<?php echo $_rating->getId() ?>]" class="rating-select required">
                                         <?php $options = $_rating->getOptions();
                                               rsort ($options);

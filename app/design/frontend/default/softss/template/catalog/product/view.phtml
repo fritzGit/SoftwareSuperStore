@@ -21,7 +21,7 @@
         </div>
 
         <div class="product-shop">
-            <div id="messages_product_view" class="product-view-messages"><?php echo $this->getMessagesBlock()->getGroupedHtml() ?></div>
+            <div id="messages_product_view" class="product-view-messages"><?php echo $this->getBlockHtml('global_messages') ?><?php echo $this->getMessagesBlock()->getGroupedHtml() ?></div>
 <div class="clearer"></div>
 
             <?php echo $this->getTierPriceHtml() ?>
