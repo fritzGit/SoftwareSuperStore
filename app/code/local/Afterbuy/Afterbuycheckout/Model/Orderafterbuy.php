@@ -529,7 +529,7 @@ class Afterbuy_Afterbuycheckout_Model_Orderafterbuy extends Mage_Sales_Model_Ord
             $ab_data.= "&Kommentar=" . urlencode($last_comment['comment']);
         }
 
-        $ab_data.= '&VorgangsInfo3=Softwaresuperstore';
+        $ab_data.= '&VMemo=Softwaresuperstore';
 
         $this->afterbuy_string = $ab_data;
     }
