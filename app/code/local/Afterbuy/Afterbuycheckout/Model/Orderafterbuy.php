@@ -529,7 +529,7 @@ class Afterbuy_Afterbuycheckout_Model_Orderafterbuy extends Mage_Sales_Model_Ord
             $ab_data.= "&Kommentar=" . urlencode($last_comment['comment']);
         }
 
-        $ab_data.= '&VorgangsInfo3=Softwaresuperstore';
+        $ab_data.= '&VMemo=Softwaresuperstore';
 
         $this->afterbuy_string = $ab_data;
     }
@@ -698,7 +698,7 @@ class Afterbuy_Afterbuycheckout_Model_Orderafterbuy extends Mage_Sales_Model_Ord
 
                     $transactionSave->save();
 
-                    Mage::dispatchEvent('softss_update_download_link', array('order'=>$order)); 
+                    Mage::dispatchEvent('softss_update_download_link', array('order'=>$order));
 
                     //update afterbuyorderdata table
                     $tableName = Mage::getSingleton('core/resource')->getTableName('afterbuyorderdata');
@@ -759,7 +759,9 @@ class Afterbuy_Afterbuycheckout_Model_Orderafterbuy extends Mage_Sales_Model_Ord
      * return xml formatted string
      */
     public function setOrderPaymentStatusComplete() {
-        $orders = Mage::getmodel('sales/order')->getCollection()->addFieldToFilter('status', 'complete');
+        $orders = Mage::getmodel('sales/order')->getCollection()
+                                               ->addFieldToFilter('status', 'complete')
+                                               ->addFieldToFilter('softss_afterbuy_synced', 0);
 
         foreach ($orders as $order) {
             $amount = number_format($order->getGrandTotal(), 2, ',', '');
@@ -769,7 +771,10 @@ class Afterbuy_Afterbuycheckout_Model_Orderafterbuy extends Mage_Sales_Model_Ord
             $aResponse = $this->setAfterbuyStatus($afterbuyOrderID, $amount);
 
             // if error...
-            if (!preg_match("/<CallStatus>Success<\/CallStatus>/", $aResponse['response'])) {
+            if (preg_match("/<CallStatus>Success<\/CallStatus>/", $aResponse['response'])) {
+                // set flag afterbuy synced to true
+                $order->setSoftssAfterbuySynced('1')->save();
+            }else{
                 try {
                     $mail_content = 'Magento Order Increment ID : ' . $orderIncrementId . ', AfterBuy OrderId : ' . $afterbuyOrderID . '. Fehler bei &Uuml;bertragung der Bestellung an Afterbuy: ' . chr(13) . chr(10) .
                     'Folgende Fehlermeldung wurde gemeldet:' . chr(13) . chr(10) . $aResponse['response'] . chr(13) . chr(10).' Request: '.$aResponse['request'].chr(13) . chr(10);
@@ -783,9 +788,6 @@ class Afterbuy_Afterbuycheckout_Model_Orderafterbuy extends Mage_Sales_Model_Ord
                 } catch (exception $e) {
                     Mage::log($e->getMessage());
                 }
-            }else{
-                // todo: set flag afterbuy synced to true
-                $orders->setSoftssAfterbuySynced('1')->save();
             }
         }
     }
