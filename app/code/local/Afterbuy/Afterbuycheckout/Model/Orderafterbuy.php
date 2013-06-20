@@ -745,7 +745,7 @@ class Afterbuy_Afterbuycheckout_Model_Orderafterbuy extends Mage_Sales_Model_Ord
                 $mail->setBodyText($mail_content);
                 $mail->setFrom('j.galvez@pcfritz.de', 'Magento');
                 $mail->addTo('j.galvez@pcfritz.de', 'Admin');
-                $mail->setSubject('Afterbuy Fehler');
+                $mail->setSubject('UpdateMagentoOrderStatus Afterbuy Fehler');
                 $mail->send();
             } catch (exception $e) {
                 Mage::log($e->getMessage());
