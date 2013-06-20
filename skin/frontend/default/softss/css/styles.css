@@ -74,7 +74,7 @@ ul,ol         { list-style:none; }
 
 /* Layout ================================================================================ */
 .wrapper {
-    min-width:954px;
+    min-width:1202px;
     min-height: 100%;
     height: auto !important;
     height: 100%;
@@ -954,7 +954,7 @@ h1.homepage-softwaress{color:#ff7300;padding:20px 0; font-family: 'Aller_Lt',San
 .compare-table tr.first td .ratings { width:69px; margin:0 auto; }
 .compare-table tr.first td p,
 .compare-table tr.add-to-row td p { margin:0; }
-
+.compare-table .regular-price .price { color:#000000; }
 /* Block: Recently Viewed */
 .block-viewed .block-title strong { background-image:url(../images/i_block-viewed.gif); }
 
