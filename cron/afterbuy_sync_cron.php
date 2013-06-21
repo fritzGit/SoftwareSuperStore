@@ -18,7 +18,7 @@ $readConnection = $resource->getConnection('core_read');
 $query = 'SELECT afterbuyorderdata.aid, afterbuyorderdata.shoporderid,sales_flat_order.entity_id,sales_flat_order_payment.method FROM afterbuyorderdata RIGHT JOIN sales_flat_order
 ON afterbuyorderdata.shoporderid=sales_flat_order.increment_id
 RIGHT JOIN sales_flat_order_payment ON sales_flat_order.entity_id=sales_flat_order_payment.parent_id
-WHERE afterbuyorderdata.bezahlt !=2 AND afterbuyorderdata.aid!="" AND sales_flat_order_payment.method="banktransfer"';
+WHERE afterbuyorderdata.bezahlt !=2 AND afterbuyorderdata.aid!="" AND sales_flat_order_payment.method="banktransfer" AND sales_flat_order.state != "canceled"';
 
 /**
  * Execute the query and store the results in $results
