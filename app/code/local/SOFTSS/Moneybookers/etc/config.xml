@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<config>
+    <modules>
+        <SOFTSS_Moneybookers>
+            <version>0.1.0</version>
+        </SOFTSS_Moneybookers>
+    </modules>
+
+    <frontend>
+        <routers>
+            <moneybookers>
+                <args>
+                    <modules>
+                         <SOFTSS_Moneybookers before="Mage_Moneybookers">SOFTSS_Moneybookers</SOFTSS_Moneybookers>
+                    </modules>
+                </args>
+            </moneybookers>
+        </routers>
+    </frontend>
+</config>
