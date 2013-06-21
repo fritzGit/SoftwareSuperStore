@@ -2434,12 +2434,13 @@ ul.product-specs label{width:50%; display: inline-block;}
 }
 .moneybookers-processing-payment .main { position: relative; }
 .moneybookers-processing-payment .cancel-btn {  
-    color: #862165;
-    font-size: 70%;
-    left: 580px;
+    font-size: 12px;
+    left: 650px;
     position: absolute;
-    top: 650px; 
+    top: 50px; 
 }
+.moneybookers-processing-payment .cancel-btn a { color: #862165; }
+
 .my-account { padding-left: 50px; margin-bottom: 50px;}
 .my-account .title-buttons .link-rss { float:none; margin:0; }
 .my-account .page-title { font-family: MyriadPro,'Myriad Pro',MyriadPro-Regular,'Myriad Pro Regular',Helvetica,Arial,sans-serif; padding-bottom:10px; }
