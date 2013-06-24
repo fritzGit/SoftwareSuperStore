@@ -445,7 +445,9 @@ class SOFTSS_Import_SoftdistributionController extends Mage_Core_Controller_Fron
         curl_setopt_array($curl, array(
             CURLOPT_RETURNTRANSFER => 1,
             CURLOPT_URL => $url,
-            CURLOPT_USERAGENT => 'cURL Request'
+            CURLOPT_USERAGENT => 'cURL Request',
+            CURLOPT_SSL_VERIFYPEER => false
+
         ));
 
         // Send the request & save response to $resp

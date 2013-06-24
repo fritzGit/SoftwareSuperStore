@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <SOFTSS_Moneybookers>
+            <active>true</active>
+            <codePool>local</codePool>
+            <depends>
+                <Phoenix_Moneybookers />
+            </depends>
+        </SOFTSS_Moneybookers>
+    </modules>
+</config>

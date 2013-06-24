@@ -156,7 +156,8 @@ class SOFTSS_Checkout_CartController extends Mage_Checkout_CartController {
             
             $ch = curl_init();
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-            curl_setopt($ch, CURLOPT_URL, $url);    // get the url contents
+            curl_setopt($ch, CURLOPT_URL, $url);  
+            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 
             $data = curl_exec($ch); // execute curl request
             curl_close($ch);

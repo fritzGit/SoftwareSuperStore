@@ -2417,6 +2417,7 @@ ul.product-specs label{width:50%; display: inline-block;}
 .customer-account-forgotpassword .main-container,
 .customer-account-edit .main-container,
 .customer-address-form .main-container,
+.wishlist-index-share .main-container,
 .sales-order-view .main-container,
 .newsletter-manage-index .main-container,
 .downloadable-customer-products .main-container,
@@ -2431,6 +2432,14 @@ ul.product-specs label{width:50%; display: inline-block;}
     height:auto !important;
     height: 750px;
 }
+.moneybookers-processing-payment .main { position: relative; }
+.moneybookers-processing-payment .cancel-btn {  
+    font-size: 12px;
+    left: 650px;
+    position: absolute;
+    top: 50px; 
+}
+.moneybookers-processing-payment .cancel-btn a { color: #862165; }
 
 .my-account { padding-left: 50px; margin-bottom: 50px;}
 .my-account .title-buttons .link-rss { float:none; margin:0; }
