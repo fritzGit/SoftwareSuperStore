@@ -197,7 +197,7 @@ button.button {
 }
 button.button span {
     display:inline-block;
-    background:#f18200;
+    background:#ff7300;
     padding: 5px;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
@@ -236,6 +236,14 @@ button.button.btn-cart span{
 button.button.orange{}
 button.button.orange span {
     background:#ff7300;
+    padding: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
+button.button.grey span{
+    background:#ccc;
     padding: 5px;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
@@ -2433,11 +2441,11 @@ ul.product-specs label{width:50%; display: inline-block;}
     height: 750px;
 }
 .moneybookers-processing-payment .main { position: relative; }
-.moneybookers-processing-payment .cancel-btn {  
+.moneybookers-processing-payment .cancel-btn {
     font-size: 12px;
     left: 650px;
     position: absolute;
-    top: 50px; 
+    top: 50px;
 }
 .moneybookers-processing-payment .cancel-btn a { color: #862165; }
 
