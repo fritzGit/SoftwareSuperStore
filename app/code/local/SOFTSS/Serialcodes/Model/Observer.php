@@ -405,7 +405,9 @@ class SOFTSS_Serialcodes_Model_Observer extends Mmsmods_Serialcodes_Model_Observ
         curl_setopt_array($curl, array(
             CURLOPT_RETURNTRANSFER => 1,
             CURLOPT_URL => $url,
-            CURLOPT_USERAGENT => 'cURL Request'
+            CURLOPT_USERAGENT => 'cURL Request',
+            CURLOPT_SSL_VERIFYPEER => false
+
         ));
 
         // Send the request & save response to $resp
