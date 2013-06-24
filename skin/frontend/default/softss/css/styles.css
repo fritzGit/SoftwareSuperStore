@@ -781,7 +781,7 @@ tr.summary-details-excluded { font-style:italic; }
 #nav li ul.shown-sub,
 #nav li div.shown-sub { left:0; z-index:999; }
 #nav li .shown-sub ul.shown-sub,
-#nav li .shown-sub li div.shown-sub { left:100px; }
+#nav li .shown-sub li div.shown-sub { left:170px; }
 /********** Navigation > */
 /* ======================================================================================= */
 
