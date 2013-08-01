@@ -803,6 +803,8 @@ h1.homepage-softwaress{color:#ff7300;padding:20px 0; font-family: 'Aller_Lt',San
 #home-page-social .facebook{width:300px; float:left;}
 #home-page-social h2{font-family: 'Aller_Lt',Sans-Serif; font-size: 22px; font-weight: lighter;}
 
+.cat-home ul.products-grid{margin-bottom: 10px;}
+
 /* Sidebar =============================================================================== */
 .block { border:1px solid #c4c1bc; margin:0 0 15px; }
 .block .block-title { background:url(../images/bkg_block-title.gif) 0 0 repeat-x; padding:2px 9px; }

@@ -7,9 +7,11 @@
       <?php echo $this->getChildHtml('home.catalog.category.menu') ?>
     </div>
     <div class="right homepage-lastest">
-        <div class="latest-products">
+        <?php echo $this->getChildHtml('home.cat.games') ?>
+
+        <!--<div class="latest-products">
             <?php echo $this->getChildHtml('home.catalog.product.new') ?>
-        </div>
+        </div>-->
         <div id="home-page-social">
             <?php echo $this->getChildHtml('homepage-social') ?>
         </div>

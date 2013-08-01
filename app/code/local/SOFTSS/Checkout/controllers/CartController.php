@@ -113,7 +113,7 @@ class SOFTSS_Checkout_CartController extends Mage_Checkout_CartController {
             $productsStr = "";
             $cartHelper = Mage::helper('checkout/cart');
             $hasItems = false;
-            
+
             $items = Mage::getSingleton('checkout/session')->getQuote()->getAllItems();
 
             foreach($items as $item) {
@@ -153,10 +153,10 @@ class SOFTSS_Checkout_CartController extends Mage_Checkout_CartController {
         try {
 
             $url = Mage::helper('softsscheckout')->getSoftDistributionUrl();
-            
+
             $ch = curl_init();
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-            curl_setopt($ch, CURLOPT_URL, $url);  
+            curl_setopt($ch, CURLOPT_URL, $url);
             curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 
             $data = curl_exec($ch); // execute curl request
@@ -165,7 +165,7 @@ class SOFTSS_Checkout_CartController extends Mage_Checkout_CartController {
             if(empty($data)) {
                $response['error'] = true;
             } else {
-                  
+
                 $xml = simplexml_load_string($data);
 
                 $codes = array("N_A","OOS","PRE_SELL","PRE_SELL_ONLY","PRE_SELL_BONUS","DELISTED");
@@ -182,7 +182,7 @@ class SOFTSS_Checkout_CartController extends Mage_Checkout_CartController {
                       }
                     }
                     $response['products'] = implode(",", $productIds);
-                }           
+                }
             }
           } catch (Exception $e) {
             Mage::logException($e);

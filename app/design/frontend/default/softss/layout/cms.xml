@@ -52,6 +52,10 @@ Default layout, loads most of the pages
 
                 <block type="softsscatalog/product_featured" name="featured" template="catalog/product/featured_list.phtml" />
 
+                <block type="catalog/product_list" name="home.cat.games" template="catalog/product/list/home_cat_list.phtml">
+                    <action method="setCategoryId"><category_id>4</category_id></action>
+                </block>
+
                 <block type="catalog/product_new" name="home.catalog.product.new" alias="latest_product_homepage" template="catalog/product/list/latest.phtml">
                    <action method="setProductsCount"><count>8</count></action>
                </block>
