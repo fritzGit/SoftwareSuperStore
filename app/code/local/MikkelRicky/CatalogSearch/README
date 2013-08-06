@@ -1,0 +1,28 @@
+Mikkel Ricky Catalog Search
+===========================
+
+
+This extension makes it possible to give priotity to select attributes
+when searching product catalog. The assigned priorities are used to
+make the select attributes have more weight when computing product
+relevance.
+
+
+Installation
+------------
+
+1. Copy files to Magento directory.
+2. Clear cache.
+
+The extension creates a new database table,
+mikkelrickycatalogsearch_fulltext, for storing fulltext indexing
+data. Please check that this table exists after installation.
+
+
+Configuration
+-------------
+
+System > Configuration > Catalog > Catalog > Mikkel Ricky Catalog Search
+
+3 sets of weighted attributes can be defined: select attributes and
+assign weight below attribute list.
