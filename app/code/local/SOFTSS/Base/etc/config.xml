@@ -12,5 +12,7 @@
                 <class>SOFTSS_Base_Helper</class>
             </softssbase>
         </helpers>
+
+
     </global>
 </config>

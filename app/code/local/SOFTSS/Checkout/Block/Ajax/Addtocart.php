@@ -7,12 +7,13 @@
 class SOFTSS_Checkout_Block_Ajax_Addtocart extends Mage_Catalog_Block_Product_Abstract
 {
     protected $_productCollection;
-
+    protected $_fallback;
     /*
      *
      */
     public function _construct()
     {
+        $this->_fallback = true;
         $this->collection_type = Mage::getStoreConfig('checkout/ajaxcartadd/collection_type');
         $this->item_limit = Mage::getStoreConfig('checkout/ajaxcartadd/item_limit');
 
@@ -35,6 +36,12 @@ class SOFTSS_Checkout_Block_Ajax_Addtocart extends Mage_Catalog_Block_Product_Ab
         default:
           $this->_prepareCrossellProducts($this->product);
         }
+                
+        if($this->_productCollection->count() == 0 && $this->collection_type != Mage::getStoreConfig('checkout/ajaxcartadd/collection_type_fallback') && $this->_fallback) {
+            $this->_fallback = false;
+            $this->collection_type = Mage::getStoreConfig('checkout/ajaxcartadd/collection_type_fallback');
+            $this->_prepareCollection();
+        }
     }
 
     /**
@@ -43,11 +50,11 @@ class SOFTSS_Checkout_Block_Ajax_Addtocart extends Mage_Catalog_Block_Product_Ab
     protected function _prepareRelatedProducts($product)
     {
         $this->_productCollection = $product->getRelatedProductCollection()
-            ->addAttributeToSelect('required_options')
+            ->addAttributeToSelect(Mage::getSingleton('catalog/config')->getProductAttributes())
             ->setPositionOrder()
             ->addStoreFilter();
 
-        if(count($this->_productCollection) == 0)
+        if($this->_productCollection->count() == 0)
             return;
 
         if (Mage::helper('catalog')->isModuleEnabled('Mage_Checkout')) {
@@ -105,6 +112,7 @@ class SOFTSS_Checkout_Block_Ajax_Addtocart extends Mage_Catalog_Block_Product_Ab
     {
         /* @var $product Mage_Catalog_Model_Product */
         $this->_productCollection = $product->getUpSellProductCollection()
+            ->addAttributeToSelect(Mage::getSingleton('catalog/config')->getProductAttributes())
             ->setPositionOrder()
             ->addStoreFilter();
 
