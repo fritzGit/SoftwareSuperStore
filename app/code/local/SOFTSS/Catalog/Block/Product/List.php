@@ -14,7 +14,9 @@
  *
  *
  * */
-class SOFTSS_Catalog_Block_Product_List extends Mage_Catalog_Block_Product_List{
+class SOFTSS_Catalog_Block_Product_List extends Mage_Catalog_Block_Product_List {
+
+    const TOOLBAR_BOTTOM = 'product_list_toolbar_bottom';
 
     /**
      * Need use as _prepareLayout - but problem in declaring collection from
@@ -23,7 +25,7 @@ class SOFTSS_Catalog_Block_Product_List extends Mage_Catalog_Block_Product_List{
     protected function _beforeToHtml()
     {
         $toolbar_top = $this->getToolbarBlock();
-        $toolbar_bottom = $this->getToolbarBlock();
+        $toolbar_bottom = $this->getBottomToolbarBlock();
 
         // called prepare sortable parameters
         $collection = $this->_getProductCollection();
@@ -61,6 +63,22 @@ class SOFTSS_Catalog_Block_Product_List extends Mage_Catalog_Block_Product_List{
         $this->_getProductCollection()->load();
 
         return parent::_beforeToHtml();
+    }
+
+    /**
+     * Retrieve Toolbar bottom block
+     *
+     * @return Mage_Catalog_Block_Product_List_Toolbar
+     */
+    public function getBottomToolbarBlock()
+    {
+        $blockName = self::TOOLBAR_BOTTOM;
+        if ($block = $this->getLayout()->getBlock($blockName)) {
+            return $block;
+        }
+
+        $block = $this->getLayout()->createBlock($this->_defaultToolbarBlock, microtime());
+        return $block;
     }
 }
 
