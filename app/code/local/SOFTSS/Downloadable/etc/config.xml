@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <SOFTSS_Downloadable>
+            <version>0.1.0</version>
+        </SOFTSS_Downloadable>
+    </modules>
+    <global> 
+        <helpers>
+            <softssdownloadable>
+                <class>SOFTSS_Downloadable_Helper</class>
+            </softssdownloadable>
+        </helpers>   
+        <events>
+            <softss_update_download_link> 
+                <observers>
+                    <update_download_link_status>
+                           <type>singleton</type>
+                           <class>Mage_Downloadable_Model_Observer</class>
+                           <method>setLinkStatus</method>
+                    </update_download_link_status>
+                </observers>
+            </softss_update_download_link>
+        </events>  
+    </global>
+</config>

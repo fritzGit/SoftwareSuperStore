@@ -2,7 +2,7 @@
 <config>
     <modules>
         <SOFTSS_Catalog>
-            <version>0.1.0</version>
+            <version>0.1.15</version>
         </SOFTSS_Catalog>
     </modules>
 
@@ -12,6 +12,8 @@
             <catalog>
                 <rewrite>
                     <product_list>SOFTSS_Catalog_Block_Product_List</product_list>
+                    <product_view>SOFTSS_Catalog_Block_Product_View</product_view>
+                    <category_view>SOFTSS_Catalog_Block_Category_View</category_view>
                 </rewrite>
             </catalog>
         </blocks>
