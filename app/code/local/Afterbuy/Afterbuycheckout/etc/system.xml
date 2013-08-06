@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<config>
+    <sections>
+        <afterbuy_conf translate="label" module="afterbuycheckout">
+            <label>AfterBuy Error Email</label>
+            <tab>softss</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>995</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <afterbuy_error_email translate="label">
+                    <label>AfterBuy Error Email to be sent to:</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>650</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                       <name translate="label">
+                            <label>Receiver Name</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                       </name>
+                       <email translate="label">
+                            <label>Email</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </email>
+                    </fields>
+                </afterbuy_error_email>
+            </groups>
+        </afterbuy_conf>
+    </sections>
+</config>
