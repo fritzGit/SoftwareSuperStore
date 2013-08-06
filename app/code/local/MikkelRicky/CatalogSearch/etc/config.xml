@@ -1,0 +1,91 @@
+<?xml version="1.0"?>
+<config>
+	<modules>
+		<MikkelRicky_CatalogSearch>
+			<version>0.2.0</version>
+		</MikkelRicky_CatalogSearch>
+	</modules>
+	<global>
+		<resources>
+			<mikkelrickycatalogsearch_setup>
+				<setup>
+					<module>MikkelRicky_CatalogSearch</module>
+					<class>MikkelRicky_CatalogSearch_Model_Mysql4_Setup</class>
+				</setup>
+				<connection>
+					<use>core_setup</use>
+				</connection>
+			</mikkelrickycatalogsearch_setup>
+		</resources>
+
+		<models>
+			<mikkelrickycatalogsearch>
+				<class>MikkelRicky_CatalogSearch_Model</class>
+				<resourceModel>mikkelrickycatalogsearch_mysql4</resourceModel>
+			</mikkelrickycatalogsearch>
+
+			<!--
+			<catalogsearch>
+				<rewrite>
+					<advanced>MikkelRicky_CatalogSearch_Model_Advanced</advanced>
+				</rewrite>
+			</catalogsearch>
+			-->
+
+			<!-- Extend built-in fulltext search -->
+			<catalogsearch_mysql4>
+				<rewrite>
+					<fulltext>MikkelRicky_CatalogSearch_Model_Mysql4_Fulltext</fulltext>
+				</rewrite>
+
+<!--
+				<entities>
+					<fulltext>
+						<table>mikkelrickycatalogsearch_fulltext</table>
+					</fulltext>
+				</entities>
+-->
+			</catalogsearch_mysql4>
+
+			<mikkelrickycatalogsearch_mysql4>
+				<entities>
+					<fulltext>
+						<table>mikkelrickycatalogsearch_fulltext</table>
+					</fulltext>
+				</entities>
+			</mikkelrickycatalogsearch_mysql4>
+		</models>
+
+		<helpers>
+			<mikkelrickycatalogsearch>
+				<class>MikkelRicky_CatalogSearch_Helper</class>
+			</mikkelrickycatalogsearch>
+		</helpers>
+
+		<resources>
+			<mikkelrickycatalogsearch_write>
+				<connection>
+					<use>core_write</use>
+				</connection>
+			</mikkelrickycatalogsearch_write>
+			<mikkelrickycatalogsearch_read>
+				<connection>
+					<use>core_read</use>
+				</connection>
+			</mikkelrickycatalogsearch_read>
+		</resources>
+
+	</global>
+
+	<adminhtml>
+		<translate>
+			<modules>
+				<MikkelRicky_CatalogSearch>
+					<files>
+						<default>MikkelRicky_CatalogSearch.csv</default>
+					</files>
+				</MikkelRicky_CatalogSearch>
+			</modules>
+		</translate>
+	</adminhtml>
+</config>

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * @category  Devcores
+ * @package   Devcores_Userlike
+ * @author    Devcores <info@devcores.com>
+ * @author    Sven Gebhardt <sven@devcores.com>
+ * @copyright 2012 Devcores UG (haftungsbeschraenkt)
+ * @link      http://devcores.com/
+ */
+-->
+<config>
+    <modules>
+        <Devcores_Userlike>
+            <version>1.0.0</version>
+        </Devcores_Userlike>
+    </modules>
+    <global>
+        <blocks>
+            <userlike>
+                <class>Devcores_Userlike_Block</class>
+            </userlike>
+        </blocks>
+        <helpers>
+            <userlike>
+                <class>Devcores_Userlike_Helper</class>
+            </userlike>
+        </helpers>
+        <models>
+            <userlike>
+                <class>Devcores_Userlike_Model</class>
+            </userlike>
+        </models>
+    </global>
+	<frontend>
+		<layout>
+			<updates>
+				<userlike>
+					<file>userlike.xml</file>
+                </userlike>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <Devcores_Userlike>
+                    <files>
+                        <default>Devcores_Userlike.csv</default>
+                    </files>
+                </Devcores_Userlike>
+            </modules>
+        </translate>
+    </frontend>
+    <adminhtml>
+		<acl>
+			<resources>
+				<admin>
+					<children>
+						<system>
+							<children>
+								<config>
+									<children>
+										<userlike>
+											<title>Userlike Settings</title>
+										</userlike>
+									</children>
+								</config>
+							</children>
+						</system>
+					</children>
+				</admin>
+			</resources>
+		</acl>
+        <translate>
+            <modules>
+                <Devcores_Userlike>
+                    <files>
+                        <default>Devcores_Userlike.csv</default>
+                    </files>
+                </Devcores_Userlike>
+            </modules>
+        </translate>
+	</adminhtml>
+	<default>
+		<userlike>
+			<interest>
+				<default>1</default>
+				<catalog_product>9</catalog_product>
+				<catalog_compare>10</catalog_compare>
+				<catalog_cat>4</catalog_cat>
+				<cms_page>6</cms_page>
+				<cms_index>1</cms_index>
+				<checkout>2</checkout>
+				<cart>1</cart>
+				<customer_login>2</customer_login>
+				<customer_register>5</customer_register>
+				<customer_account>7</customer_account>
+				<wishlist>8</wishlist>
+			</interest>
+		</userlike>
+	</default>
+</config>
